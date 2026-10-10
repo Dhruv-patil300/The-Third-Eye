@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-deep-teal: #1e566c;
+  --primary-dark-steel: #367589;
+  --primary-muted-blue: #5795a7;
+  --primary-soft-blue: #89b8ca;
+  --primary-steel-blue: #1f7dad;
+  --primary-navy-blue: #1c478b;
+  --main-background: #f4f7f9;
+  --surface-background: #ffffff;
+  --primary-text: #172b35;
+  --secondary-text: #5d707b;
+  --borders: #d9e3e8;
+  --dark-sidebar: #173c4b;
+}
+
+body {
+  background-color: var(--main-background);
+  color: var(--primary-text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ebf1f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bdcdd5;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #889ca6;
+}
+
+/* Print Styles for Dossier Generation */
+@media print {
+  aside,
+  header,
+  .no-print {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: white !important;
+  }
+  .print-page-break {
+    page-break-before: always;
+  }
+}

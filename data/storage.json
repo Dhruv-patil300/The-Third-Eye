@@ -1,0 +1,1127 @@
+{
+  "cases": [
+    {
+      "id": "case-greenwood-2025",
+      "title": "Burglary & Keypad Breach at Greenwood Jewellers",
+      "referenceNumber": "FIR-2025-0842/SEC4",
+      "caseType": "Commercial Burglary / Digital Breach",
+      "incidentDate": "2025-10-24T21:30:00Z",
+      "incidentLocation": "Greenwood Jewellers, 44 Market Arcade, Sector 4",
+      "summary": "High-value diamond inventory (estimated INR 3.8 Crores) stolen through Service Entry Door 2B without signs of forced entry. Keypad access log records PIN #4819 entered at 21:26. Intruder alarm was deactivated using secondary override switch. Strong contradictions exist between suspect statements, cellular mast records, and CCTV surveillance logs.",
+      "status": "active",
+      "priority": "high",
+      "leadInvestigator": "Inspector A. Sen (Badge #IND-712)",
+      "createdAt": "2025-10-25T08:00:00Z",
+      "updatedAt": "2025-10-25T14:30:00Z",
+      "tags": [
+        "Commercial Burglary",
+        "Keypad Tampering",
+        "Conflicting Alibi",
+        "High Priority"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-001",
+      "caseId": "case-greenwood-2025",
+      "title": "First Information Report (FIR #2025-0842)",
+      "evidenceType": "fir_document",
+      "sourceDescription": "Official complaint filed by Store Manager Mr. Rajiv Bansal at Sector 4 Police Station",
+      "dateReceived": "2025-10-25T07:15:00Z",
+      "eventTime": "2025-10-24T21:35:00Z",
+      "recordedBy": "Sub-Inspector R. K. Yadav",
+      "processingStatus": "processed",
+      "verificationStatus": "verified",
+      "originalFileName": "FIR_2025_0842_Greenwood.pdf",
+      "fileMimeType": "application/pdf",
+      "fileSize": 245760,
+      "fileHash": "sha256:7e82b49c0d12a6f81e3599a0e413c2317f229ad1",
+      "sourceProvenance": {
+        "origin": "Sector 4 Police Station Records Room",
+        "collector": "Sub-Inspector R. K. Yadav",
+        "chainOfCustody": [
+          "Station Diary Officer",
+          "Duty Officer",
+          "Lead Inspector Sen"
+        ],
+        "collectedAt": "2025-10-25T07:15:00Z"
+      },
+      "extractedText": "FIRST INFORMATION REPORT (Under Section 154 Cr.P.C.)\nDistrict: Central Metropolitan | Station: Sector 4 | FIR No: 2025-0842 | Date: 25-Oct-2025\nComplainant: Rajiv Bansal, General Manager, Greenwood Jewellers, 44 Market Arcade.\nStatement of Complainant:\n\"On the morning of 25th October 2025 at 06:45 hours, when cleaning staff unlocked the front shutter, the internal vault room door was found ajar. Safe Box #4 containing unmounted loose diamonds and wedding necklaces had been emptied. No exterior doors or windows show physical marks of crowbar or glass cutters. Rear service door 2B electronic lock was disarmed with valid credential entry. The system recorded PIN 4819 at 21:26 hours on 24-Oct-2025. Only two people possessed this emergency PIN: Assistant Manager Rahul Sharma and myself.\"",
+      "relatedEntityIds": [
+        "ent-rajiv-bansal",
+        "ent-rahul-sharma",
+        "ent-door-2b",
+        "ent-greenwood-store"
+      ],
+      "relatedEventIds": [
+        "evt-004",
+        "evt-005"
+      ],
+      "claims": [
+        {
+          "id": "clm-001",
+          "evidenceId": "ev-001",
+          "caseId": "case-greenwood-2025",
+          "text": "Vault safe #4 was emptied without physical force on exterior locks.",
+          "claimant": "Rajiv Bansal",
+          "timestamp": "2025-10-24T21:30:00Z",
+          "location": "Greenwood Jewellers Vault",
+          "claimType": "record",
+          "confidence": 0.98
+        },
+        {
+          "id": "clm-002",
+          "evidenceId": "ev-001",
+          "caseId": "case-greenwood-2025",
+          "text": "Only Rajiv Bansal and Rahul Sharma knew the emergency PIN 4819.",
+          "claimant": "Rajiv Bansal",
+          "claimType": "assertion",
+          "confidence": 0.85
+        }
+      ],
+      "createdAt": "2025-10-25T07:30:00Z",
+      "updatedAt": "2025-10-25T08:00:00Z"
+    },
+    {
+      "id": "ev-002",
+      "caseId": "case-greenwood-2025",
+      "title": "Sworn Witness Statement of Vikram Malhotra (Roommate)",
+      "evidenceType": "witness_statement",
+      "sourceDescription": "Recorded under Section 161 Cr.P.C. at Green Park Apartment #402, Sector 9",
+      "dateReceived": "2025-10-25T10:30:00Z",
+      "eventTime": "2025-10-24T20:30:00Z",
+      "recordedBy": "Inspector A. Sen",
+      "processingStatus": "processed",
+      "verificationStatus": "disputed",
+      "originalFileName": "Witness_Statement_Vikram_Malhotra.docx",
+      "fileMimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "fileSize": 42100,
+      "fileHash": "sha256:d894b15c7b309618ca61e683f2a1b94c0347895e",
+      "sourceProvenance": {
+        "origin": "Witness Residence: Flat 402, Green Park Enclave, Sector 9",
+        "collector": "Inspector A. Sen",
+        "chainOfCustody": [
+          "Inspector Sen",
+          "Case Evidence File"
+        ],
+        "collectedAt": "2025-10-25T10:30:00Z"
+      },
+      "extractedText": "STATEMENT OF WITNESS VIKRAM MALHOTRA (Age 28, Software QA Engineer)\nRecorded on 25-Oct-2025 at 10:30 hrs by Inspector A. Sen.\n\"Rahul Sharma is my college friend and we have been flatmates at Flat 402, Green Park Enclave, Sector 9 for fourteen months. On Friday evening, 24th October 2025, Rahul arrived home from work around 20:15 hours. From 20:30 hours onwards, Rahul and I were continuously in our living room playing FIFA on PlayStation. We ordered dinner on Swiggy at 20:45. Rahul never left the flat even once during the entire evening. He went to bed around 00:30. There is no possibility that Rahul went to Sector 4 Market Arcade on Friday night.\"",
+      "relatedEntityIds": [
+        "ent-vikram-malhotra",
+        "ent-rahul-sharma",
+        "ent-green-park-flat"
+      ],
+      "relatedEventIds": [
+        "evt-001",
+        "evt-008"
+      ],
+      "claims": [
+        {
+          "id": "clm-003",
+          "evidenceId": "ev-002",
+          "caseId": "case-greenwood-2025",
+          "text": "Rahul Sharma remained at Green Park Flat 402 continuously from 20:30 until 00:30.",
+          "claimant": "Vikram Malhotra",
+          "timestamp": "2025-10-24T20:30:00Z",
+          "location": "Flat 402 Green Park Enclave Sector 9",
+          "claimType": "alibi",
+          "confidence": 0.9
+        }
+      ],
+      "createdAt": "2025-10-25T10:45:00Z",
+      "updatedAt": "2025-10-25T11:00:00Z"
+    },
+    {
+      "id": "ev-003",
+      "caseId": "case-greenwood-2025",
+      "title": "Witness Statement of Pooja Nair (Balcony Resident)",
+      "evidenceType": "witness_statement",
+      "sourceDescription": "Resident of Flat 301, Market Arcade Heights, directly facing the rear alleyway of Sector 4",
+      "dateReceived": "2025-10-25T11:45:00Z",
+      "eventTime": "2025-10-24T21:15:00Z",
+      "recordedBy": "Sub-Inspector R. K. Yadav",
+      "processingStatus": "processed",
+      "verificationStatus": "verified",
+      "originalFileName": "Witness_Statement_Pooja_Nair.txt",
+      "fileMimeType": "text/plain",
+      "fileSize": 18450,
+      "fileHash": "sha256:56a1b2c3d4e5f60718293a4b5c6d7e8f90123456",
+      "sourceProvenance": {
+        "origin": "Sector 4 Police Station Interview Room B",
+        "collector": "Sub-Inspector R. K. Yadav",
+        "chainOfCustody": [
+          "SI Yadav",
+          "Evidence Locker #4",
+          "Inspector Sen"
+        ],
+        "collectedAt": "2025-10-25T11:45:00Z"
+      },
+      "extractedText": "STATEMENT OF WITNESS POOJA NAIR (Age 34, Architect)\nAddress: Flat 301, Market View Apartments, Sector 4 (Balcony overlooks service alley behind shops 40-48).\n\"On Friday night (24-Oct), around 21:15 hours, I went onto my balcony to water plants and talk on the phone. While standing there, I observed a tall individual (approx. 5'11\", medium athletic build) wearing a dark olive jacket and black cap walking quickly from the main road into the service alley behind Greenwood Jewellers. A silver sedan was parked 30 meters away with its parking lights on. The person stopped near Door 2B and appeared to manipulate the lock keypad. Around 21:28, the same person exited briskly carrying a dark duffel bag and walked towards the idling vehicle.\"",
+      "relatedEntityIds": [
+        "ent-pooja-nair",
+        "ent-door-2b",
+        "ent-silver-sedan",
+        "ent-alleyway"
+      ],
+      "relatedEventIds": [
+        "evt-002",
+        "evt-006"
+      ],
+      "claims": [
+        {
+          "id": "clm-004",
+          "evidenceId": "ev-003",
+          "caseId": "case-greenwood-2025",
+          "text": "A person with olive jacket and dark cap entered service alley at 21:15 and left at 21:28 with duffel bag.",
+          "claimant": "Pooja Nair",
+          "timestamp": "2025-10-24T21:15:00Z",
+          "location": "Rear Alleyway Market Arcade Sector 4",
+          "claimType": "observation",
+          "confidence": 0.88
+        }
+      ],
+      "createdAt": "2025-10-25T12:00:00Z",
+      "updatedAt": "2025-10-25T12:15:00Z"
+    },
+    {
+      "id": "ev-004",
+      "caseId": "case-greenwood-2025",
+      "title": "Cellular Tower CDR & Handover Records (Tower Mast SEC-4B)",
+      "evidenceType": "digital_record",
+      "sourceDescription": "Subpoenaed Call Detail Record (CDR) log from Bharti Airtel Telecom Law Enforcement Cell",
+      "dateReceived": "2025-10-25T13:00:00Z",
+      "eventTime": "2025-10-24T21:21:40Z",
+      "recordedBy": "Cyber Forensics Analyst D. Roy",
+      "processingStatus": "processed",
+      "verificationStatus": "verified",
+      "originalFileName": "Airtel_CDR_Subpoena_SEC4B_20251024.csv",
+      "fileMimeType": "text/csv",
+      "fileSize": 189000,
+      "fileHash": "sha256:b1e948a33cd881023fe118a89ef726a45b91012a",
+      "sourceProvenance": {
+        "origin": "Airtel Nodal Legal Operations, Cyber Cell Reference #CY-8819",
+        "collector": "Cyber Forensics Analyst D. Roy",
+        "chainOfCustody": [
+          "Airtel Nodal Officer",
+          "Cyber Cell Officer",
+          "Inspector Sen"
+        ],
+        "collectedAt": "2025-10-25T13:00:00Z"
+      },
+      "extractedText": "TELECOM CDR EXTRACT / MAST NODE SEC-4B (Azimuth 120°, Serving Sector 4 Market Arcade)\nTarget Mobile No: +91 98110-XXXXX (Registered to Rahul Sharma, Green Park)\nHandset IMEI: 869402058812901\n- 2025-10-24 20:12:10 UTC+5:30: Mast SEC-9A (Sector 9 Green Park) - Voice Call Incoming (Duration: 42s)\n- 2025-10-24 20:48:35 UTC+5:30: Mast SEC-6C (Transit Ring Road) - Data session initiation\n- 2025-10-24 21:21:40 UTC+5:30: Mast SEC-4B (Market Arcade) - SMS delivery ping & data packet (Azimuth 118°, Signal -74dBm, Distance estimate ~280m from Jewellers)\n- 2025-10-24 21:42:15 UTC+5:30: Mast SEC-6C (Transit Ring Road) - Cell handover outbound\n- 2025-10-24 22:15:02 UTC+5:30: Mast SEC-9A (Sector 9 Green Park) - Data session restored",
+      "relatedEntityIds": [
+        "ent-rahul-sharma",
+        "ent-cell-tower-sec4b",
+        "ent-greenwood-store"
+      ],
+      "relatedEventIds": [
+        "evt-003",
+        "evt-007"
+      ],
+      "claims": [
+        {
+          "id": "clm-005",
+          "evidenceId": "ev-004",
+          "caseId": "case-greenwood-2025",
+          "text": "Rahul Sharma's mobile phone connected to Sector 4-B Mast (Market Arcade) at 21:21:40.",
+          "claimant": "Telecom CDR System",
+          "timestamp": "2025-10-24T21:21:40Z",
+          "location": "Sector 4-B Mast (within 280m of Market Arcade)",
+          "claimType": "record",
+          "confidence": 0.99
+        }
+      ],
+      "createdAt": "2025-10-25T13:15:00Z",
+      "updatedAt": "2025-10-25T13:30:00Z"
+    },
+    {
+      "id": "ev-005",
+      "caseId": "case-greenwood-2025",
+      "title": "City Toll Plaza ANPR Camera Log (Plaza Sector 3 Northbound)",
+      "evidenceType": "cctv_observation",
+      "sourceDescription": "High-speed Automatic Number Plate Recognition (ANPR) Camera #04, Sector 3 Expressway",
+      "dateReceived": "2025-10-25T13:45:00Z",
+      "eventTime": "2025-10-24T20:45:12Z",
+      "recordedBy": "Traffic Management Directorate",
+      "processingStatus": "processed",
+      "verificationStatus": "verified",
+      "originalFileName": "ANPR_Plaza04_Capture_DL08BQ9102.jpg",
+      "fileMimeType": "image/jpeg",
+      "fileSize": 812000,
+      "fileHash": "sha256:49c0d12a6f81e3599a0e413c2317f229ad17e82b",
+      "sourceProvenance": {
+        "origin": "Integrated Traffic Surveillance Server, Plaza Sector 3",
+        "collector": "Traffic Directorate Officer",
+        "chainOfCustody": [
+          "Traffic Directorate",
+          "Inspector Sen"
+        ],
+        "collectedAt": "2025-10-25T13:45:00Z"
+      },
+      "extractedText": "ANPR LOG ENTRY #ANPR-20251024-88412\nCamera: Sector 3 Toll Plaza Lane 4 (Entering Sector 4 arterial road)\nTimestamp: 2025-10-24 20:45:12 IST\nDetected Plate: DL-08-BQ-9102 (Silver Hyundai Verna, 2021)\nVehicle Registered Owner: Dinesh Verma (Brother of ex-contractor Karan Verma)\nDriver View: Male, short hair, wearing jacket.\nPassenger View: Obscured / overexposed by headlights of adjacent truck.\nVehicle re-crossed Plaza 04 outbound at 21:54:19 IST towards Sector 11.",
+      "relatedEntityIds": [
+        "ent-silver-sedan",
+        "ent-karan-verma"
+      ],
+      "relatedEventIds": [
+        "evt-001b"
+      ],
+      "claims": [
+        {
+          "id": "clm-006",
+          "evidenceId": "ev-005",
+          "caseId": "case-greenwood-2025",
+          "text": "Silver sedan DL-08-BQ-9102 entered Sector 4 arterial road at 20:45 and exited at 21:54.",
+          "claimant": "ANPR Camera 04",
+          "timestamp": "2025-10-24T20:45:12Z",
+          "location": "Sector 3 Toll Plaza Expressway",
+          "claimType": "record",
+          "confidence": 0.96
+        }
+      ],
+      "createdAt": "2025-10-25T14:00:00Z",
+      "updatedAt": "2025-10-25T14:15:00Z"
+    },
+    {
+      "id": "ev-006",
+      "caseId": "case-greenwood-2025",
+      "title": "Digital Keypad Access Controller Memory Dump (Door 2B)",
+      "evidenceType": "digital_record",
+      "sourceDescription": "Hardware memory extraction from Honeywell OmniLock Door 2B by Cyber Forensics Lab",
+      "dateReceived": "2025-10-25T14:10:00Z",
+      "eventTime": "2025-10-24T21:26:04Z",
+      "recordedBy": "Cyber Forensics Analyst D. Roy",
+      "processingStatus": "processed",
+      "verificationStatus": "verified",
+      "originalFileName": "Door2B_EEPROM_Dump_OmniLock.bin",
+      "fileMimeType": "application/octet-stream",
+      "fileSize": 65536,
+      "fileHash": "sha256:0d12a6f81e3599a0e413c2317f229ad17e82b49c",
+      "sourceProvenance": {
+        "origin": "Greenwood Jewellers Rear Service Entrance Door 2B Lock Enclosure",
+        "collector": "Cyber Forensics Analyst D. Roy",
+        "chainOfCustody": [
+          "Analyst D. Roy",
+          "Evidence Vault A"
+        ],
+        "collectedAt": "2025-10-25T14:10:00Z"
+      },
+      "extractedText": "DOOR 2B ACCESS AUDIT LOG (Internal Clock Synced to NTP Asia/Kolkata):\n2025-10-24 19:30:15 - User: Staff Lockup [PIN: 1102] - Status: LOCKED (Alarm Armed)\n2025-10-24 21:26:04 - User: PIN AUTH #4819 - Status: UNLOCKED SUCCESSFUL\n2025-10-24 21:26:09 - Door Contact Sensor: OPEN\n2025-10-24 21:27:52 - Tamper Override Switch: TRIGGERED (PIR Zone 3 Silenced)\n2025-10-24 21:28:40 - Door Contact Sensor: CLOSED\n2025-10-24 21:28:42 - Auto-relock: ENGAGED",
+      "relatedEntityIds": [
+        "ent-door-2b",
+        "ent-rahul-sharma",
+        "ent-rajiv-bansal"
+      ],
+      "relatedEventIds": [
+        "evt-004",
+        "evt-005"
+      ],
+      "claims": [
+        {
+          "id": "clm-007",
+          "evidenceId": "ev-006",
+          "caseId": "case-greenwood-2025",
+          "text": "Door 2B was unlocked at 21:26:04 using emergency PIN 4819, and PIR Zone 3 was silenced at 21:27:52.",
+          "claimant": "OmniLock Controller EEPROM",
+          "timestamp": "2025-10-24T21:26:04Z",
+          "location": "Service Entry Door 2B Greenwood Jewellers",
+          "claimType": "record",
+          "confidence": 0.99
+        }
+      ],
+      "createdAt": "2025-10-25T14:20:00Z",
+      "updatedAt": "2025-10-25T14:30:00Z"
+    }
+  ],
+  "entities": [
+    {
+      "id": "ent-rahul-sharma",
+      "caseId": "case-greenwood-2025",
+      "name": "Rahul Sharma",
+      "category": "person",
+      "role": "person_of_interest",
+      "details": {
+        "designation": "Assistant General Manager, Greenwood Jewellers",
+        "age": "29",
+        "phone": "+91 98110-XXXXX",
+        "residence": "Flat 402, Green Park Enclave, Sector 9",
+        "clearance": "Level 3 Emergency PIN Holder (#4819)"
+      },
+      "status": "flagged",
+      "notes": "Provided alibi claiming to be home with flatmate all evening. Directly contradicted by cell tower mast pings near Market Arcade and witness descriptions.",
+      "sourceEvidenceIds": [
+        "ev-001",
+        "ev-002",
+        "ev-004",
+        "ev-006"
+      ],
+      "createdAt": "2025-10-25T08:30:00Z",
+      "updatedAt": "2025-10-25T14:00:00Z"
+    },
+    {
+      "id": "ent-karan-verma",
+      "caseId": "case-greenwood-2025",
+      "name": "Karan Verma",
+      "category": "person",
+      "role": "suspect",
+      "details": {
+        "designation": "Former Logistics Contractor (Dismissed 3 weeks ago)",
+        "age": "32",
+        "phone": "+91 99540-XXXXX",
+        "criminalRecord": "Pawn shop fencing inquiry (2022, no conviction)",
+        "relationshipToVehicle": "Brother owns Silver Sedan DL-08-BQ-9102"
+      },
+      "status": "flagged",
+      "notes": "Claimed to be in Pune on Oct 24. Brother’s vehicle was captured on Toll Plaza camera entering Sector 4 at 20:45.",
+      "sourceEvidenceIds": [
+        "ev-005"
+      ],
+      "createdAt": "2025-10-25T09:00:00Z",
+      "updatedAt": "2025-10-25T14:00:00Z"
+    },
+    {
+      "id": "ent-rajiv-bansal",
+      "caseId": "case-greenwood-2025",
+      "name": "Rajiv Bansal",
+      "category": "person",
+      "role": "victim",
+      "details": {
+        "designation": "General Manager & Complainant, Greenwood Jewellers",
+        "age": "54",
+        "phone": "+91 98100-XXXXX",
+        "residence": "Defence Colony, Sector 2"
+      },
+      "status": "verified",
+      "notes": "Alibi verified: attended Rotary Club Gala in Sector 2 until 23:00 with 40+ attendees and digital timestamped badge scans.",
+      "sourceEvidenceIds": [
+        "ev-001"
+      ],
+      "createdAt": "2025-10-25T08:00:00Z",
+      "updatedAt": "2025-10-25T10:00:00Z"
+    },
+    {
+      "id": "ent-vikram-malhotra",
+      "caseId": "case-greenwood-2025",
+      "name": "Vikram Malhotra",
+      "category": "person",
+      "role": "witness",
+      "details": {
+        "occupation": "Software QA Engineer",
+        "residence": "Flat 402, Green Park Enclave, Sector 9",
+        "relationshipToSuspect": "Roommate & College Friend of Rahul Sharma"
+      },
+      "status": "unverified",
+      "notes": "Claimed continuous video gaming with Rahul at home. Swiggy delivery record indicates driver left order unattended outside at 21:10 after door went unanswered.",
+      "sourceEvidenceIds": [
+        "ev-002"
+      ],
+      "createdAt": "2025-10-25T10:30:00Z",
+      "updatedAt": "2025-10-25T11:00:00Z"
+    },
+    {
+      "id": "ent-pooja-nair",
+      "caseId": "case-greenwood-2025",
+      "name": "Pooja Nair",
+      "category": "person",
+      "role": "witness",
+      "details": {
+        "occupation": "Architect, Urban Design Firm",
+        "residence": "Flat 301, Market View Apartments, Sector 4",
+        "vantagePoint": "Direct 3rd floor balcony line of sight to Door 2B"
+      },
+      "status": "verified",
+      "notes": "Neutral independent eyewitness. Observed person in olive jacket manipulating Door 2B at 21:15 and departing with duffel bag at 21:28.",
+      "sourceEvidenceIds": [
+        "ev-003"
+      ],
+      "createdAt": "2025-10-25T11:45:00Z",
+      "updatedAt": "2025-10-25T12:00:00Z"
+    },
+    {
+      "id": "ent-silver-sedan",
+      "caseId": "case-greenwood-2025",
+      "name": "Silver Sedan (DL-08-BQ-9102)",
+      "category": "vehicle",
+      "role": "neutral",
+      "details": {
+        "makeModel": "Hyundai Verna (Silver, 2021)",
+        "registration": "DL-08-BQ-9102",
+        "registeredOwner": "Dinesh Verma (Sector 11)",
+        "sightedLocations": "Sector 3 Toll Plaza (20:45) & Market Arcade Alley (21:18)"
+      },
+      "status": "flagged",
+      "notes": "Spotted idling near service alley during incident timeframe; passenger identity remained obscured on toll camera.",
+      "sourceEvidenceIds": [
+        "ev-003",
+        "ev-005"
+      ],
+      "createdAt": "2025-10-25T12:00:00Z",
+      "updatedAt": "2025-10-25T14:00:00Z"
+    },
+    {
+      "id": "ent-door-2b",
+      "caseId": "case-greenwood-2025",
+      "name": "Service Entry Door 2B",
+      "category": "location",
+      "role": "neutral",
+      "details": {
+        "lockType": "Honeywell OmniLock Keypad + Magnetic Strike",
+        "codeUsed": "PIN 4819 (Emergency Level 3)",
+        "cctvCoverage": "Camera 3 (Offline / Disconnected)"
+      },
+      "status": "verified",
+      "notes": "Breach entry point. No signs of forced physical entry. Deactivated alarm sensor inside frame.",
+      "sourceEvidenceIds": [
+        "ev-001",
+        "ev-003",
+        "ev-006"
+      ],
+      "createdAt": "2025-10-25T08:00:00Z",
+      "updatedAt": "2025-10-25T14:00:00Z"
+    },
+    {
+      "id": "ent-cell-tower-sec4b",
+      "caseId": "case-greenwood-2025",
+      "name": "Cell Tower Mast SEC-4B",
+      "category": "device",
+      "role": "neutral",
+      "details": {
+        "operator": "Bharti Airtel",
+        "azimuth": "120 degrees",
+        "coverageRadius": "approx. 600m including Market Arcade"
+      },
+      "status": "verified",
+      "notes": "Captured Rahul Sharma device ping at 21:21:40 during alleged Green Park alibi window.",
+      "sourceEvidenceIds": [
+        "ev-004"
+      ],
+      "createdAt": "2025-10-25T13:00:00Z",
+      "updatedAt": "2025-10-25T13:30:00Z"
+    },
+    {
+      "id": "ent-greenwood-store",
+      "caseId": "case-greenwood-2025",
+      "name": "Greenwood Jewellers",
+      "category": "organization",
+      "role": "neutral",
+      "details": {
+        "address": "44 Market Arcade, Sector 4",
+        "vaultCount": "2 Walk-in Vaults + 8 Commercial Safes"
+      },
+      "status": "verified",
+      "notes": "Crime scene location.",
+      "sourceEvidenceIds": [
+        "ev-001"
+      ],
+      "createdAt": "2025-10-25T08:00:00Z",
+      "updatedAt": "2025-10-25T08:00:00Z"
+    },
+    {
+      "id": "ent-green-park-flat",
+      "caseId": "case-greenwood-2025",
+      "name": "Flat 402, Green Park Enclave",
+      "category": "location",
+      "role": "neutral",
+      "details": {
+        "address": "Green Park Enclave, Sector 9",
+        "distanceToCrimeScene": "14.8 km (approx. 25-30 min drive)"
+      },
+      "status": "verified",
+      "notes": "Alibi location claimed by Rahul Sharma and Vikram Malhotra.",
+      "sourceEvidenceIds": [
+        "ev-002"
+      ],
+      "createdAt": "2025-10-25T10:30:00Z",
+      "updatedAt": "2025-10-25T10:30:00Z"
+    },
+    {
+      "id": "ent-alleyway",
+      "caseId": "case-greenwood-2025",
+      "name": "Market Arcade Rear Alleyway",
+      "category": "location",
+      "role": "neutral",
+      "details": {
+        "lighting": "Low sodium vapor lamps (partially shaded)",
+        "entryAccess": "Unrestricted pedestrian lane off Service Road 4"
+      },
+      "status": "verified",
+      "notes": "Alleyway where Pooja Nair witnessed the suspect and vehicle.",
+      "sourceEvidenceIds": [
+        "ev-003"
+      ],
+      "createdAt": "2025-10-25T11:45:00Z",
+      "updatedAt": "2025-10-25T12:00:00Z"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-001",
+      "caseId": "case-greenwood-2025",
+      "title": "Claimed Home Arrival & Alibi Start",
+      "timestamp": "2025-10-24T20:30:00Z",
+      "timeDisplay": "8:30 PM",
+      "timePrecision": "reported",
+      "description": "Vikram Malhotra states Rahul Sharma arrived at Flat 402 Green Park and began playing video games continuously.",
+      "location": "Flat 402 Green Park Enclave, Sector 9",
+      "associatedEntityIds": [
+        "ent-rahul-sharma",
+        "ent-vikram-malhotra",
+        "ent-green-park-flat"
+      ],
+      "sourceEvidenceId": "ev-002",
+      "verificationStatus": "disputed",
+      "confidence": 0.65,
+      "createdAt": "2025-10-25T10:35:00Z"
+    },
+    {
+      "id": "evt-001b",
+      "caseId": "case-greenwood-2025",
+      "title": "Silver Sedan Crosses Sector 3 Toll Plaza",
+      "timestamp": "2025-10-24T20:45:12Z",
+      "timeDisplay": "8:45 PM",
+      "timePrecision": "exact",
+      "description": "Automatic license plate camera records DL-08-BQ-9102 entering Sector 4 access arterial road.",
+      "location": "Sector 3 Expressway Toll Plaza",
+      "associatedEntityIds": [
+        "ent-silver-sedan",
+        "ent-karan-verma"
+      ],
+      "sourceEvidenceId": "ev-005",
+      "verificationStatus": "verified",
+      "confidence": 0.98,
+      "createdAt": "2025-10-25T13:50:00Z"
+    },
+    {
+      "id": "evt-002",
+      "caseId": "case-greenwood-2025",
+      "title": "Eyewitness Sighting in Rear Alleyway",
+      "timestamp": "2025-10-24T21:15:00Z",
+      "timeDisplay": "9:15 PM",
+      "timePrecision": "approximate",
+      "description": "Pooja Nair observes tall person in olive jacket approaching Door 2B; silver sedan idling nearby.",
+      "location": "Market Arcade Rear Alleyway, Sector 4",
+      "associatedEntityIds": [
+        "ent-pooja-nair",
+        "ent-door-2b",
+        "ent-silver-sedan"
+      ],
+      "sourceEvidenceId": "ev-003",
+      "verificationStatus": "verified",
+      "confidence": 0.88,
+      "createdAt": "2025-10-25T11:50:00Z"
+    },
+    {
+      "id": "evt-003",
+      "caseId": "case-greenwood-2025",
+      "title": "Cellular Mast SEC-4B Registers Suspect's Device",
+      "timestamp": "2025-10-24T21:21:40Z",
+      "timeDisplay": "9:21 PM",
+      "timePrecision": "exact",
+      "description": "Airtel Tower Mast SEC-4B logs SMS packet ping from Rahul Sharma's IMEI within 280m of Market Arcade.",
+      "location": "Sector 4-B Mast Node (Market Arcade vicinity)",
+      "associatedEntityIds": [
+        "ent-rahul-sharma",
+        "ent-cell-tower-sec4b",
+        "ent-greenwood-store"
+      ],
+      "sourceEvidenceId": "ev-004",
+      "verificationStatus": "verified",
+      "confidence": 0.99,
+      "createdAt": "2025-10-25T13:20:00Z"
+    },
+    {
+      "id": "evt-004",
+      "caseId": "case-greenwood-2025",
+      "title": "Door 2B Keypad Authentication (#4819)",
+      "timestamp": "2025-10-24T21:26:04Z",
+      "timeDisplay": "9:26 PM",
+      "timePrecision": "exact",
+      "description": "OmniLock keypad controller logs valid PIN #4819 entry. Door contact opens 5 seconds later.",
+      "location": "Door 2B, Greenwood Jewellers",
+      "associatedEntityIds": [
+        "ent-door-2b",
+        "ent-rahul-sharma",
+        "ent-greenwood-store"
+      ],
+      "sourceEvidenceId": "ev-006",
+      "verificationStatus": "verified",
+      "confidence": 0.99,
+      "createdAt": "2025-10-25T14:22:00Z"
+    },
+    {
+      "id": "evt-005",
+      "caseId": "case-greenwood-2025",
+      "title": "Intruder Alarm Zone 3 Silenced via Tamper Override",
+      "timestamp": "2025-10-24T21:27:52Z",
+      "timeDisplay": "9:27 PM",
+      "timePrecision": "exact",
+      "description": "Internal motion detector Zone 3 silenced using physical toggle switch behind service console.",
+      "location": "Internal Service Corridor, Greenwood Jewellers",
+      "associatedEntityIds": [
+        "ent-door-2b",
+        "ent-greenwood-store"
+      ],
+      "sourceEvidenceId": "ev-006",
+      "verificationStatus": "verified",
+      "confidence": 0.98,
+      "createdAt": "2025-10-25T14:24:00Z"
+    },
+    {
+      "id": "evt-006",
+      "caseId": "case-greenwood-2025",
+      "title": "Subject Observed Exiting with Dark Duffel Bag",
+      "timestamp": "2025-10-24T21:28:40Z",
+      "timeDisplay": "9:28 PM",
+      "timePrecision": "approximate",
+      "description": "Witness Pooja Nair spots subject exiting Door 2B carrying heavy bag, entering silver sedan.",
+      "location": "Market Arcade Rear Alleyway",
+      "associatedEntityIds": [
+        "ent-pooja-nair",
+        "ent-silver-sedan",
+        "ent-door-2b"
+      ],
+      "sourceEvidenceId": "ev-003",
+      "verificationStatus": "verified",
+      "confidence": 0.86,
+      "createdAt": "2025-10-25T11:55:00Z"
+    },
+    {
+      "id": "evt-007",
+      "caseId": "case-greenwood-2025",
+      "title": "Suspect Mobile Handover Outbound on Ring Road",
+      "timestamp": "2025-10-24T21:42:15Z",
+      "timeDisplay": "9:42 PM",
+      "timePrecision": "exact",
+      "description": "Airtel Mast SEC-6C logs handover of Rahul Sharma's handset traveling away from Sector 4 towards Sector 9.",
+      "location": "Sector 6 Transit Arterial Highway",
+      "associatedEntityIds": [
+        "ent-rahul-sharma"
+      ],
+      "sourceEvidenceId": "ev-004",
+      "verificationStatus": "verified",
+      "confidence": 0.97,
+      "createdAt": "2025-10-25T13:25:00Z"
+    },
+    {
+      "id": "evt-008",
+      "caseId": "case-greenwood-2025",
+      "title": "Claimed Bedtime at Green Park Flat",
+      "timestamp": "2025-10-25T00:30:00Z",
+      "timeDisplay": "12:30 AM (Next Day)",
+      "timePrecision": "reported",
+      "description": "Vikram Malhotra claims Rahul went to sleep in his bedroom.",
+      "location": "Flat 402 Green Park Enclave, Sector 9",
+      "associatedEntityIds": [
+        "ent-rahul-sharma",
+        "ent-vikram-malhotra"
+      ],
+      "sourceEvidenceId": "ev-002",
+      "verificationStatus": "disputed",
+      "confidence": 0.5,
+      "createdAt": "2025-10-25T10:40:00Z"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel-001",
+      "caseId": "case-greenwood-2025",
+      "sourceEntityId": "ent-rahul-sharma",
+      "targetEntityId": "ent-greenwood-store",
+      "relationshipType": "associate",
+      "label": "Assistant Manager",
+      "description": "Employed for 3 years; entrusted with Level 3 safe room credentials and emergency keypad code.",
+      "supportingEvidenceIds": [
+        "ev-001"
+      ],
+      "verificationStatus": "verified",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-002",
+      "caseId": "case-greenwood-2025",
+      "sourceEntityId": "ent-rahul-sharma",
+      "targetEntityId": "ent-vikram-malhotra",
+      "relationshipType": "alibi_provider",
+      "label": "Roommate & Alibi Provider",
+      "description": "Living together at Flat 402 Green Park; Vikram claimed continuous joint presence during crime.",
+      "supportingEvidenceIds": [
+        "ev-002"
+      ],
+      "verificationStatus": "disputed",
+      "confidence": 0.6
+    },
+    {
+      "id": "rel-003",
+      "caseId": "case-greenwood-2025",
+      "sourceEntityId": "ent-rahul-sharma",
+      "targetEntityId": "ent-door-2b",
+      "relationshipType": "present_at",
+      "label": "PIN #4819 Keypad Match",
+      "description": "Only 2 staff possessed PIN #4819; Rajiv Bansal has verified gala alibi; leaves Rahul as sole known holder.",
+      "supportingEvidenceIds": [
+        "ev-001",
+        "ev-006"
+      ],
+      "verificationStatus": "verified",
+      "confidence": 0.92
+    },
+    {
+      "id": "rel-004",
+      "caseId": "case-greenwood-2025",
+      "sourceEntityId": "ent-rahul-sharma",
+      "targetEntityId": "ent-cell-tower-sec4b",
+      "relationshipType": "phone_call",
+      "label": "Cell Tower Signal Match",
+      "description": "Handset pinged tower mast SEC-4B at 21:21:40, 5 minutes prior to Door 2B access.",
+      "supportingEvidenceIds": [
+        "ev-004"
+      ],
+      "verificationStatus": "verified",
+      "confidence": 0.99
+    },
+    {
+      "id": "rel-005",
+      "caseId": "case-greenwood-2025",
+      "sourceEntityId": "ent-karan-verma",
+      "targetEntityId": "ent-silver-sedan",
+      "relationshipType": "driver_of",
+      "label": "Vehicle Associated",
+      "description": "Sedan registered to Karan’s brother Dinesh Verma; Karan has primary use of the vehicle.",
+      "supportingEvidenceIds": [
+        "ev-005"
+      ],
+      "verificationStatus": "verified",
+      "confidence": 0.88
+    },
+    {
+      "id": "rel-006",
+      "caseId": "case-greenwood-2025",
+      "sourceEntityId": "ent-silver-sedan",
+      "targetEntityId": "ent-alleyway",
+      "relationshipType": "seen_with",
+      "label": "Idling Vehicle in Alley",
+      "description": "Observed by witness Pooja Nair idling near service door with parking lights on between 21:15 and 21:28.",
+      "supportingEvidenceIds": [
+        "ev-003"
+      ],
+      "verificationStatus": "verified",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-007",
+      "caseId": "case-greenwood-2025",
+      "sourceEntityId": "ent-pooja-nair",
+      "targetEntityId": "ent-door-2b",
+      "relationshipType": "witness_to",
+      "label": "Eyewitness Sighting",
+      "description": "Direct line of sight from 3rd floor balcony overlooking Door 2B and alleyway.",
+      "supportingEvidenceIds": [
+        "ev-003"
+      ],
+      "verificationStatus": "verified",
+      "confidence": 0.95
+    },
+    {
+      "id": "rel-008",
+      "caseId": "case-greenwood-2025",
+      "sourceEntityId": "ent-karan-verma",
+      "targetEntityId": "ent-greenwood-store",
+      "relationshipType": "associate",
+      "label": "Terminated Logistics Contractor",
+      "description": "Dismissed 3 weeks prior following unexplainable missing stock audit; familiar with store layout.",
+      "supportingEvidenceIds": [
+        "ev-001"
+      ],
+      "verificationStatus": "verified",
+      "confidence": 0.95
+    }
+  ],
+  "contradictions": [
+    {
+      "id": "cntr-001",
+      "caseId": "case-greenwood-2025",
+      "title": "Severe Geographical Impossibility: Green Park Alibi vs Sector 4-B Mast CDR Ping",
+      "severity": "high",
+      "category": "timeline_conflict",
+      "claimA": {
+        "evidenceId": "ev-002",
+        "evidenceTitle": "Sworn Witness Statement of Vikram Malhotra",
+        "speakerOrSource": "Vikram Malhotra (Roommate)",
+        "timestamp": "2025-10-24 20:30 to 00:30 IST",
+        "location": "Flat 402, Green Park Enclave, Sector 9",
+        "excerpt": "\"From 20:30 hours onwards, Rahul and I were continuously in our living room playing FIFA on PlayStation... Rahul never left the flat even once during the entire evening.\""
+      },
+      "claimB": {
+        "evidenceId": "ev-004",
+        "evidenceTitle": "Cellular Tower CDR & Handover Records (Tower Mast SEC-4B)",
+        "speakerOrSource": "Bharti Airtel Telecom CDR Records",
+        "timestamp": "2025-10-24 21:21:40 IST",
+        "location": "Sector 4-B Mast Node (within 280m of Market Arcade)",
+        "excerpt": "\"2025-10-24 21:21:40: Mast SEC-4B (Market Arcade) - SMS delivery ping & data packet (Signal -74dBm, Distance estimate ~280m from Jewellers).\""
+      },
+      "explanation": "Sector 9 (Green Park) and Sector 4 (Market Arcade) are separated by 14.8 km of urban arterial roadway with a minimum transit time of 25–35 minutes during evening traffic. Rahul Sharma could not have been physically present in the Sector 9 living room at 21:21 while his handset simultaneously exchanged data packets with a cell mast in Sector 4.",
+      "alternativeExplanations": [
+        "The handset was loaned to, borrowed by, or left in possession of an associate (e.g. Karan Verma or another party).",
+        "The roommate Vikram Malhotra is deliberately providing a false alibi or was mistaken regarding exact hours.",
+        "Cellular tower handover anomaly or mast redirection (extremely unlikely given clear -74dBm signal strength and subsequent transit handover to Mast SEC-6C)."
+      ],
+      "suggestedVerificationSteps": [
+        "Obtain CCTV elevator and foyer footage from Green Park Enclave building to verify actual ingress/egress times of Rahul Sharma.",
+        "Subpoena Swiggy delivery rider contact notes for the 20:45 food order to establish who opened the door.",
+        "Cross-examine Vikram Malhotra regarding exact timestamps and gaming session logs."
+      ],
+      "reviewStatus": "confirmed_inconsistency",
+      "investigatorNotes": "Critical conflict. Swiggy delivery record indicates delivery knocked at 21:10 and no one answered. Roommate statement appears compromised.",
+      "reviewedBy": "Inspector A. Sen",
+      "updatedAt": "2025-10-25T14:15:00Z"
+    },
+    {
+      "id": "cntr-002",
+      "caseId": "case-greenwood-2025",
+      "title": "Suspect Location Conflict: Karan Verma Pune Trip Claim vs Sector 3 Toll Plaza ANPR Capture",
+      "severity": "high",
+      "category": "location_impossibility",
+      "claimA": {
+        "evidenceId": "ev-005",
+        "evidenceTitle": "City Toll Plaza ANPR Camera Log (Plaza Sector 3 Northbound)",
+        "speakerOrSource": "Automated Number Plate Recognition (ANPR)",
+        "timestamp": "2025-10-24 20:45:12 IST",
+        "location": "Sector 3 Toll Plaza (Expressway into Sector 4)",
+        "excerpt": "\"Detected Plate: DL-08-BQ-9102 (Silver Hyundai Verna). Registered to Dinesh Verma (Brother of ex-contractor Karan Verma). Vehicle entered Sector 4 arterial road at 20:45.\""
+      },
+      "claimB": {
+        "evidenceId": "ev-001",
+        "evidenceTitle": "Preliminary Suspect Background & Formal Query Response",
+        "speakerOrSource": "Karan Verma (Statement via Phone Counsel)",
+        "timestamp": "2025-10-24 Full Day",
+        "location": "Pune, Maharashtra",
+        "excerpt": "\"Karan Verma stated he had departed for Pune on 22nd October on personal family business and was not present in the National Capital Region on the night of the burglary.\""
+      },
+      "explanation": "Karan Verma asserts he was over 1,400 km away in Pune. However, the vehicle he customarily operates (registered to his brother Dinesh) was photographed entering the crime scene sector at 20:45:12 and exiting at 21:54:19.",
+      "alternativeExplanations": [
+        "The vehicle was operated solely by Dinesh Verma or an acquaintance, without Karan Verma present.",
+        "Cloned license plate (requires ANPR image wheel-rim and damage scratch matching against the actual vehicle)."
+      ],
+      "suggestedVerificationSteps": [
+        "Demand flight / train / hotel ticketing records from Karan Verma proving Pune presence.",
+        "Inspect physical vehicle DL-08-BQ-9102 for forensic fiber/fingerprint matching.",
+        "Interview brother Dinesh Verma regarding who possessed the vehicle keys on Oct 24."
+      ],
+      "reviewStatus": "under_review",
+      "investigatorNotes": "Brother Dinesh has been summoned to produce the vehicle and key registry at Sector 4 police station.",
+      "reviewedBy": "Inspector A. Sen",
+      "updatedAt": "2025-10-25T14:20:00Z"
+    },
+    {
+      "id": "cntr-003",
+      "caseId": "case-greenwood-2025",
+      "title": "Eyewitness Timing Discrepancy: Alley Sighting vs Keypad Lock Engagement",
+      "severity": "medium",
+      "category": "statement_inconsistency",
+      "claimA": {
+        "evidenceId": "ev-003",
+        "evidenceTitle": "Witness Statement of Pooja Nair (Balcony Resident)",
+        "speakerOrSource": "Pooja Nair",
+        "timestamp": "2025-10-24 ~21:15 IST",
+        "location": "Market Arcade Rear Alleyway",
+        "excerpt": "\"Around 21:15 hours... The person stopped near Door 2B and appeared to manipulate the lock keypad.\""
+      },
+      "claimB": {
+        "evidenceId": "ev-006",
+        "evidenceTitle": "Digital Keypad Access Controller Memory Dump (Door 2B)",
+        "speakerOrSource": "Honeywell OmniLock EEPROM Dump",
+        "timestamp": "2025-10-24 21:26:04 IST",
+        "location": "Service Entry Door 2B",
+        "excerpt": "\"2025-10-24 21:26:04 - User: PIN AUTH #4819 - Status: UNLOCKED SUCCESSFUL. No failed PIN attempts recorded prior to 21:26:04.\""
+      },
+      "explanation": "Witness remembers seeing the person manipulate the keypad around 21:15, yet the electronic lock controller recorded zero activity until the successful entry at 21:26:04. This represents an 11-minute gap.",
+      "alternativeExplanations": [
+        "Normal human time estimation error (witness was talking on phone and estimated 21:15 in retrospect).",
+        "The subject was inspecting the lock housing, camera wiring, or waiting in shadow for 10 minutes before inputting the code.",
+        "Discrepancy between witness phone clock and lock internal clock (though lock is NTP-synced)."
+      ],
+      "suggestedVerificationSteps": [
+        "Check phone call records of Pooja Nair to pinpoint exact time she answered the call on her balcony.",
+        "Inspect alleyway lighting shadows to determine if subject could have loitered unobserved."
+      ],
+      "reviewStatus": "unreviewed",
+      "investigatorNotes": "Likely benign estimation discrepancy or subject spent 10 minutes scoping the alley before committing to enter the code.",
+      "updatedAt": "2025-10-25T14:25:00Z"
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-001",
+      "caseId": "case-greenwood-2025",
+      "title": "Missing CCTV Footage: Alleyway Camera #03 Disconnection Window (21:10 – 21:40)",
+      "category": "missing_cctv",
+      "severity": "critical",
+      "description": "Market Arcade management camera #03, mounted on pole facing Door 2B, experienced an unrecorded signal blackout starting at 21:10 and returning at 21:41. Physical inspection revealed low-voltage power supply jack was disconnected.",
+      "whyItMatters": "Camera #03 would have provided direct facial identification of the person entering Door 2B and clear view of the vehicle license plate.",
+      "whatIsUnknown": "Whether the camera was deliberately unplugged by an insider prior to the breach or suffered an accidental failure.",
+      "relatedEvidenceIds": [
+        "ev-001",
+        "ev-003"
+      ],
+      "relatedEntityIds": [
+        "ent-door-2b",
+        "ent-alleyway"
+      ],
+      "suggestedNextStep": "Dust the exterior power transformer box and camera #03 power cable jack for latent fingerprints.",
+      "status": "investigating",
+      "createdAt": "2025-10-25T09:00:00Z",
+      "updatedAt": "2025-10-25T14:00:00Z"
+    },
+    {
+      "id": "gap-002",
+      "caseId": "case-greenwood-2025",
+      "title": "Uncorroborated Alibi: Unanswered Swiggy Delivery at Green Park Apartment",
+      "category": "unverified_alibi",
+      "severity": "critical",
+      "description": "Roommate Vikram claimed he and Rahul were home eating dinner ordered at 20:45. However, preliminary app metadata shows delivery rider arrived at 21:10 and marked order as \"Unanswered knock - left on doormat\".",
+      "whyItMatters": "Directly undermines the physical presence claim of both individuals at the alleged alibi premises between 21:00 and 21:30.",
+      "whatIsUnknown": "Whether anyone was actually inside flat 402 at 21:10, or if both individuals had departed earlier.",
+      "relatedEvidenceIds": [
+        "ev-002"
+      ],
+      "relatedEntityIds": [
+        "ent-rahul-sharma",
+        "ent-vikram-malhotra",
+        "ent-green-park-flat"
+      ],
+      "suggestedNextStep": "Formalize statement from Swiggy delivery rider and review Green Park apartment building main gate security register.",
+      "status": "open",
+      "createdAt": "2025-10-25T11:00:00Z",
+      "updatedAt": "2025-10-25T14:10:00Z"
+    },
+    {
+      "id": "gap-003",
+      "caseId": "case-greenwood-2025",
+      "title": "Unverified Master Keypad Code Revocation History",
+      "category": "missing_record",
+      "severity": "moderate",
+      "description": "Rajiv Bansal claimed only he and Rahul Sharma knew PIN #4819. However, the store security vendor (Apex Guard Systems) has not yet provided the historical provisioning logs.",
+      "whyItMatters": "If PIN #4819 was issued to previous managers or contractors (such as Karan Verma) and never changed, an external actor could have known the code without Rahul Sharma’s involvement.",
+      "whatIsUnknown": "When PIN #4819 was generated and whether it had ever been provided to third-party vendors or former staff.",
+      "relatedEvidenceIds": [
+        "ev-001",
+        "ev-006"
+      ],
+      "relatedEntityIds": [
+        "ent-rajiv-bansal",
+        "ent-rahul-sharma",
+        "ent-karan-verma"
+      ],
+      "suggestedNextStep": "Issue formal notice to Apex Guard Systems for complete audit trail of OmniLock keypad programming.",
+      "status": "open",
+      "createdAt": "2025-10-25T11:30:00Z",
+      "updatedAt": "2025-10-25T11:30:00Z"
+    },
+    {
+      "id": "gap-004",
+      "caseId": "case-greenwood-2025",
+      "title": "Unidentified Passenger in Silver Sedan DL-08-BQ-9102",
+      "category": "unidentified_entity",
+      "severity": "moderate",
+      "description": "Sector 3 Toll camera captured vehicle entering Sector 4 at 20:45. Driver was visible, but front passenger seat was obscured by glare.",
+      "whyItMatters": "Could establish whether Karan Verma and Rahul Sharma were traveling together or if another accomplice was involved.",
+      "whatIsUnknown": "Identity of passenger in vehicle DL-08-BQ-9102.",
+      "relatedEvidenceIds": [
+        "ev-005"
+      ],
+      "relatedEntityIds": [
+        "ent-silver-sedan",
+        "ent-karan-verma",
+        "ent-rahul-sharma"
+      ],
+      "suggestedNextStep": "Request secondary angle traffic junction camera feeds from Sector 3 Roundabout (CCTV-J3-02).",
+      "status": "open",
+      "createdAt": "2025-10-25T14:00:00Z",
+      "updatedAt": "2025-10-25T14:00:00Z"
+    }
+  ],
+  "assistantMessages": [
+    {
+      "id": "msg-001",
+      "caseId": "case-greenwood-2025",
+      "role": "assistant",
+      "content": "Welcome to **The Third Eye Investigation Intelligence System**. I have loaded all processed evidence records for **Case #FIR-2025-0842 (Greenwood Jewellers Burglary)**.\n\nI can assist you with cross-referencing witness claims against technical records, analyzing timeline feasibility, identifying inconsistencies, and recommending targeted verification steps.\n\n*Reminder: All AI outputs are analytical recommendations. Factual determinations and investigative decisions remain strictly with the investigator.*",
+      "timestamp": "2025-10-25T14:30:00Z",
+      "suggestedFollowUps": [
+        "What evidence directly contradicts Rahul Sharma’s alibi?",
+        "Who had authorized access to Keypad PIN 4819?",
+        "What vehicles are connected to this case and why?",
+        "What are the most critical investigative gaps remaining?"
+      ]
+    },
+    {
+      "caseId": "case-greenwood-2025",
+      "role": "user",
+      "content": "What evidence directly contradicts Rahul Sharma’s alibi?",
+      "id": "msg-1791573106525-cfvk",
+      "timestamp": "2026-10-09T19:11:46.543Z"
+    },
+    {
+      "caseId": "case-greenwood-2025",
+      "role": "assistant",
+      "content": "### 1. Direct Answer\nThere is a documented, high-severity inconsistency between Rahul Sharma’s claimed alibi and objective telecommunications data.\n\n### 2. Relevant Evidence & Cross-Referencing\n- **Roommate Statement (EV-002):** Vikram Malhotra states Rahul arrived at their Green Park Enclave residence (Sector 9) at 20:15 and remained continuously inside playing video games until 00:30.\n- **Telecom Mast CDR (EV-004):** Bharti Airtel Cell Mast SEC-4B (serving Sector 4 Market Arcade) recorded an active data and SMS ping from Rahul Sharma’s primary handset at **21:21:40 IST** (-74dBm signal strength, ~280m from the crime scene).\n- **Physical Feasibility:** Sector 9 and Sector 4 are **14.8 km apart** with an estimated 25 to 35-minute transit duration. An individual cannot be in a Sector 9 apartment at 21:21 while their phone actively communicates with a Sector 4 cell tower.\n\n### 3. Alternative Explanations (Non-Deceptive Alternatives)\n- **Device Separation:** The handset could have been carried by a third party, left inside a rideshare, or loaned to an acquaintance.\n- **Cell Handover Anomaly:** Although improbable given the strong signal and transit sequence through Sector 6, tower overflow or mast re-routing must be ruled out through operator logs.\n- **Roommate Time Estimation Error:** Vikram Malhotra may have misjudged the exact departure or arrival windows.\n\n### 4. Recommended Investigative Verification Steps\n1. Subpoena building CCTV footage from Green Park Enclave elevator and gate to verify exact ingress/egress.\n2. Interview Swiggy food delivery courier regarding the 21:10 delivery attempt that went unanswered.\n3. Request operator network maintenance logs for Mast SEC-4B on Oct 24.",
+      "citations": [
+        {
+          "evidenceId": "ev-002",
+          "evidenceTitle": "Sworn Witness Statement of Vikram Malhotra",
+          "excerpt": "\"From 20:30 hours onwards, Rahul and I were continuously in our living room playing FIFA on PlayStation... Rahul never left the flat even once during the entire evening.\"",
+          "pageOrSection": "Statement under Section 161 Cr.P.C."
+        },
+        {
+          "evidenceId": "ev-004",
+          "evidenceTitle": "Cellular Tower CDR & Handover Records (Tower Mast SEC-4B)",
+          "excerpt": "\"2025-10-24 21:21:40: Mast SEC-4B (Market Arcade) - SMS delivery ping & data packet (Signal -74dBm, Distance estimate ~280m from Jewellers).\"",
+          "pageOrSection": "CDR Mast Node SEC-4B Log"
+        }
+      ],
+      "suggestedFollowUps": [
+        "Who else had access to Door 2B Keypad PIN 4819?",
+        "What vehicles were captured on expressway cameras?",
+        "Summarize all evidence regarding Karan Verma."
+      ],
+      "id": "msg-1791573107080-z97w",
+      "timestamp": "2026-10-09T19:11:47.080Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "log-001",
+      "caseId": "case-greenwood-2025",
+      "timestamp": "2025-10-25T07:30:00Z",
+      "actor": "Inspector A. Sen",
+      "action": "CASE_CREATED",
+      "details": "Initialized Case FIR-2025-0842 with priority HIGH."
+    },
+    {
+      "id": "log-002",
+      "caseId": "case-greenwood-2025",
+      "timestamp": "2025-10-25T08:00:00Z",
+      "actor": "Sub-Inspector R. K. Yadav",
+      "action": "EVIDENCE_INGESTED",
+      "details": "Uploaded FIR_2025_0842_Greenwood.pdf (Hash verified)."
+    },
+    {
+      "id": "log-003",
+      "caseId": "case-greenwood-2025",
+      "timestamp": "2025-10-25T13:30:00Z",
+      "actor": "Cyber Forensics Analyst D. Roy",
+      "action": "EVIDENCE_INGESTED",
+      "details": "Uploaded Airtel CDR and Door 2B EEPROM logs."
+    },
+    {
+      "id": "log-004",
+      "caseId": "case-greenwood-2025",
+      "timestamp": "2025-10-25T14:15:00Z",
+      "actor": "The Third Eye AI Engine",
+      "action": "CONTRADICTION_FLAGGED",
+      "details": "Identified High-severity conflict between Witness Statement EV-002 and CDR Record EV-004."
+    }
+  ]
+}
