@@ -17,6 +17,7 @@ import {
   CheckCircle2,
   Clock,
   Archive,
+  ShieldCheck,
 } from 'lucide-react';
 
 export default function CasesPage() {
@@ -74,47 +75,55 @@ export default function CasesPage() {
   };
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto">
+    <div className="space-y-6 max-w-7xl mx-auto text-slate-100">
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-text-primary tracking-tight flex items-center gap-2">
-            <Briefcase className="w-5 h-5 text-brand-steelBlue" />
-            <span>Case Management Workspace</span>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 font-bold border border-sky-800">
+              PCPC CENTRAL CRIME REGISTER
+            </span>
+            <span className="text-[10px] font-mono text-slate-400">
+              POLICE COMMISSIONERATE DOSSIERS
+            </span>
+          </div>
+          <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+            <Briefcase className="w-5 h-5 text-sky-400" />
+            <span>FIR & Master Case Register</span>
           </h1>
-          <p className="text-xs text-text-secondary mt-1">
-            Organize, configure, and isolate distinct investigative matters and jurisdiction records.
+          <p className="text-xs text-slate-400 mt-1 font-sans">
+            Manage official FIR dossiers, station jurisdiction parameters, and investigating officer assignments across Pimpri Chinchwad.
           </p>
         </div>
 
         <button
           onClick={() => setShowNewCaseModal(true)}
-          className="px-3.5 py-2 bg-brand-deepTeal text-white rounded text-xs font-semibold hover:bg-brand-darkSteelTeal transition-colors shadow-subtle flex items-center gap-2 self-start sm:self-auto"
+          className="px-3.5 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold transition-all shadow-md flex items-center gap-2 self-start sm:self-auto font-mono"
         >
           <Plus className="w-4 h-4" />
-          <span>Initialize New Case</span>
+          <span>Register New FIR Case</span>
         </button>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white border border-border-light rounded-lg p-4 shadow-subtle flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
-        <div className="relative w-full md:w-80">
-          <Search className="w-3.5 h-3.5 text-text-muted absolute left-2.5 top-1/2 -translate-y-1/2" />
+      <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl p-4 shadow-md flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+        <div className="relative w-full md:w-84">
+          <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search cases by reference, title, or location..."
+            placeholder="Search cases by FIR reference, location, or IO..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-8 pr-3 py-1.5 border border-border-light rounded bg-bg-main focus:bg-white focus:outline-none focus:border-brand-steelBlue"
+            className="w-full pl-9 pr-3 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500 font-sans"
           />
         </div>
 
-        <div className="flex items-center gap-2 w-full md:w-auto">
-          <span className="text-text-secondary font-medium">Status:</span>
+        <div className="flex items-center gap-2 w-full md:w-auto font-mono text-[11px]">
+          <span className="text-slate-400">Status:</span>
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-2.5 py-1.5 border border-border-light rounded bg-white focus:outline-none focus:border-brand-steelBlue"
+            className="px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#0E1A27] text-slate-200 focus:outline-none focus:border-sky-500"
           >
             <option value="all">All Statuses ({cases.length})</option>
             <option value="active">Active</option>
@@ -131,32 +140,32 @@ export default function CasesPage() {
           return (
             <div
               key={c.id}
-              className={`bg-white rounded-lg border transition-all flex flex-col justify-between p-5 shadow-card ${
+              className={`bg-[#0C1724] rounded-xl border transition-all flex flex-col justify-between p-5 shadow-xl ${
                 isActive
-                  ? 'border-brand-steelBlue ring-2 ring-brand-steelBlue/20'
-                  : 'border-border-light hover:border-brand-mutedBlueTeal'
+                  ? 'border-sky-500 ring-2 ring-sky-500/20 bg-[#122030]'
+                  : 'border-[#1E2E3F] hover:border-sky-500/60 hover:bg-[#101D2B]'
               }`}
             >
               <div>
                 <div className="flex items-start justify-between gap-2 mb-2">
-                  <span className="font-mono text-[10px] font-semibold text-brand-deepTeal bg-bg-highlight/60 px-2 py-0.5 rounded border border-border-subtle">
+                  <span className="font-mono text-[10px] font-bold text-sky-400 bg-[#08121B] px-2 py-0.5 rounded border border-[#1E2E3F]">
                     {c.referenceNumber}
                   </span>
-                  <div className="flex items-center gap-1.5">
+                  <div className="flex items-center gap-1.5 font-mono">
                     <span
-                      className={`text-[9px] px-1.5 py-0.5 rounded uppercase font-semibold ${
+                      className={`text-[9px] px-1.5 py-0.5 rounded uppercase font-bold border ${
                         c.priority === 'high'
-                          ? 'bg-status-criticalBg text-status-critical border border-status-criticalBorder'
-                          : 'bg-bg-muted text-text-secondary'
+                          ? 'bg-rose-950/80 text-rose-300 border-rose-800'
+                          : 'bg-[#08121B] text-slate-400 border-[#1E2E3F]'
                       }`}
                     >
                       {c.priority}
                     </span>
                     <span
-                      className={`text-[9px] px-1.5 py-0.5 rounded uppercase font-semibold ${
+                      className={`text-[9px] px-1.5 py-0.5 rounded uppercase font-bold border ${
                         c.status === 'active'
-                          ? 'bg-status-successBg text-status-success border border-status-successBorder'
-                          : 'bg-bg-muted text-text-secondary'
+                          ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-800'
+                          : 'bg-[#08121B] text-slate-400 border-[#1E2E3F]'
                       }`}
                     >
                       {c.status}
@@ -164,60 +173,59 @@ export default function CasesPage() {
                   </div>
                 </div>
 
-                <h3 className="font-bold text-sm text-text-primary leading-snug mt-1">
+                <h3 className="font-bold text-sm text-white leading-snug mt-1 font-sans">
                   {c.title}
                 </h3>
 
-                <p className="text-xs text-text-secondary mt-2 line-clamp-3 leading-relaxed">
+                <p className="text-xs text-slate-300 mt-2 line-clamp-3 leading-relaxed font-sans">
                   {c.summary || 'No preliminary summary documented for this matter.'}
                 </p>
 
-                <div className="mt-4 pt-3 border-t border-border-subtle space-y-1.5 text-[11px] text-text-secondary">
+                <div className="mt-4 pt-3 border-t border-[#1E2E3F] space-y-1.5 text-[11px] text-slate-400 font-mono">
                   <div className="flex items-center gap-2">
-                    <MapPin className="w-3 h-3 text-brand-steelBlue flex-shrink-0" />
-                    <span className="truncate">{c.incidentLocation}</span>
+                    <MapPin className="w-3 h-3 text-sky-400 flex-shrink-0" />
+                    <span className="truncate text-slate-300">{c.incidentLocation}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Calendar className="w-3 h-3 text-brand-steelBlue flex-shrink-0" />
+                    <Calendar className="w-3 h-3 text-sky-400 flex-shrink-0" />
                     <span>{new Date(c.incidentDate).toLocaleDateString()}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <User className="w-3 h-3 text-brand-steelBlue flex-shrink-0" />
-                    <span>Lead: {c.leadInvestigator}</span>
+                    <User className="w-3 h-3 text-sky-400 flex-shrink-0" />
+                    <span className="text-slate-300">{c.leadInvestigator}</span>
                   </div>
                 </div>
               </div>
 
-              {/* Action Toolbar */}
-              <div className="mt-5 pt-3 border-t border-border-subtle flex items-center justify-between gap-2 text-xs">
+              {/* Action Buttons */}
+              <div className="mt-5 pt-3 border-t border-[#1E2E3F] flex items-center justify-between font-mono text-xs">
                 {isActive ? (
-                  <span className="text-[11px] text-status-success font-semibold flex items-center gap-1">
+                  <span className="text-[11px] font-bold text-emerald-400 flex items-center gap-1">
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span>Current Active Case</span>
+                    ACTIVE WORKSPACE
                   </span>
                 ) : (
                   <button
                     onClick={() => setActiveCaseId(c.id)}
-                    className="px-2.5 py-1 bg-brand-deepTeal text-white rounded text-[11px] font-medium hover:bg-brand-darkSteelTeal transition-colors flex items-center gap-1"
+                    className="text-[11px] text-sky-400 hover:text-sky-300 font-semibold"
                   >
-                    <FolderOpen className="w-3 h-3" />
-                    <span>Open Case</span>
+                    Set as Active Case →
                   </button>
                 )}
 
                 <div className="flex items-center gap-1">
                   <button
                     onClick={() => setEditingCase(c)}
+                    className="p-1 text-slate-400 hover:text-sky-400 rounded transition-colors"
                     title="Edit Case Details"
-                    className="p-1 text-text-secondary hover:text-brand-steelBlue rounded hover:bg-bg-main"
                   >
                     <Edit2 className="w-3.5 h-3.5" />
                   </button>
-                  {c.id !== 'case-greenwood-2025' && (
+                  {cases.length > 1 && (
                     <button
                       onClick={() => handleDeleteCase(c.id, c.title)}
+                      className="p-1 text-slate-400 hover:text-rose-400 rounded transition-colors"
                       title="Delete Case"
-                      className="p-1 text-text-secondary hover:text-status-critical rounded hover:bg-bg-main"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
@@ -231,72 +239,99 @@ export default function CasesPage() {
 
       {/* Edit Case Modal */}
       {editingCase && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xs p-4 select-none">
-          <div className="bg-white rounded-lg border border-border-light shadow-modal w-full max-w-lg overflow-hidden text-xs">
-            <div className="px-5 py-3 bg-bg-main border-b border-border-light flex items-center justify-between">
-              <h3 className="font-semibold text-text-primary">Edit Case: {editingCase.referenceNumber}</h3>
-              <button onClick={() => setEditingCase(null)} className="text-text-muted hover:text-text-primary">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 select-none">
+          <div className="bg-[#0C1724] rounded-xl border border-[#1E2E3F] shadow-2xl w-full max-w-lg overflow-hidden text-xs text-slate-100">
+            <div className="px-5 py-3 bg-[#0F1B2A] border-b border-[#1E2E3F] flex items-center justify-between font-mono">
+              <h3 className="font-bold text-white uppercase">Edit Police Case Record</h3>
+              <button
+                onClick={() => setEditingCase(null)}
+                className="text-slate-400 hover:text-white"
+              >
                 ✕
               </button>
             </div>
+
             <form onSubmit={handleUpdateCase} className="p-5 space-y-3">
               <div>
-                <label className="block font-medium mb-1">Case Title</label>
+                <label className="block font-mono text-[11px] mb-1 text-slate-300">Case Title *</label>
                 <input
                   type="text"
                   value={editingCase.title}
                   onChange={(e) => setEditingCase({ ...editingCase, title: e.target.value })}
-                  className="w-full px-2.5 py-1.5 border border-border-light rounded focus:outline-none focus:border-brand-steelBlue"
+                  className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 focus:outline-none focus:border-sky-500"
+                  required
                 />
               </div>
+
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-medium mb-1">Status</label>
+                  <label className="block font-mono text-[11px] mb-1 text-slate-300">FIR Reference No *</label>
+                  <input
+                    type="text"
+                    value={editingCase.referenceNumber}
+                    onChange={(e) => setEditingCase({ ...editingCase, referenceNumber: e.target.value })}
+                    className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 focus:outline-none focus:border-sky-500 font-mono"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block font-mono text-[11px] mb-1 text-slate-300">Status</label>
                   <select
                     value={editingCase.status}
                     onChange={(e) => setEditingCase({ ...editingCase, status: e.target.value as any })}
-                    className="w-full px-2.5 py-1.5 border border-border-light rounded bg-white"
+                    className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 font-mono"
                   >
                     <option value="active">Active</option>
                     <option value="archived">Archived</option>
                     <option value="closed">Closed</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block font-medium mb-1">Priority</label>
-                  <select
-                    value={editingCase.priority}
-                    onChange={(e) => setEditingCase({ ...editingCase, priority: e.target.value as any })}
-                    className="w-full px-2.5 py-1.5 border border-border-light rounded bg-white"
-                  >
-                    <option value="high">High</option>
-                    <option value="medium">Medium</option>
-                    <option value="low">Low</option>
+                    <option value="cold">Cold</option>
                   </select>
                 </div>
               </div>
+
               <div>
-                <label className="block font-medium mb-1">Incident Summary</label>
-                <textarea
-                  rows={4}
-                  value={editingCase.summary}
-                  onChange={(e) => setEditingCase({ ...editingCase, summary: e.target.value })}
-                  className="w-full px-2.5 py-1.5 border border-border-light rounded focus:outline-none focus:border-brand-steelBlue"
+                <label className="block font-mono text-[11px] mb-1 text-slate-300">Incident Location</label>
+                <input
+                  type="text"
+                  value={editingCase.incidentLocation}
+                  onChange={(e) => setEditingCase({ ...editingCase, incidentLocation: e.target.value })}
+                  className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 focus:outline-none focus:border-sky-500"
                 />
               </div>
-              <div className="pt-2 flex justify-end gap-2 border-t border-border-light">
+
+              <div>
+                <label className="block font-mono text-[11px] mb-1 text-slate-300">Lead IO / Inspector</label>
+                <input
+                  type="text"
+                  value={editingCase.leadInvestigator}
+                  onChange={(e) => setEditingCase({ ...editingCase, leadInvestigator: e.target.value })}
+                  className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 focus:outline-none focus:border-sky-500"
+                />
+              </div>
+
+              <div>
+                <label className="block font-mono text-[11px] mb-1 text-slate-300">Executive Summary</label>
+                <textarea
+                  rows={3}
+                  value={editingCase.summary}
+                  onChange={(e) => setEditingCase({ ...editingCase, summary: e.target.value })}
+                  className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 focus:outline-none focus:border-sky-500 font-sans"
+                />
+              </div>
+
+              <div className="pt-2 flex justify-end gap-2 border-t border-[#1E2E3F]">
                 <button
                   type="button"
                   onClick={() => setEditingCase(null)}
-                  className="px-3 py-1.5 border border-border-light rounded text-text-secondary"
+                  className="px-3 py-1.5 border border-[#22364A] rounded-lg text-slate-400 hover:text-white"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 bg-brand-deepTeal text-white rounded font-medium hover:bg-brand-darkSteelTeal"
+                  className="px-4 py-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg font-mono font-semibold"
                 >
-                  Save Changes
+                  Update Case File
                 </button>
               </div>
             </form>

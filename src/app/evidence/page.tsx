@@ -19,6 +19,8 @@ import {
   User,
   Calendar,
   ExternalLink,
+  ShieldCheck,
+  Radio,
 } from 'lucide-react';
 
 export default function EvidenceVaultPage() {
@@ -101,23 +103,31 @@ export default function EvidenceVaultPage() {
   });
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto">
+    <div className="space-y-6 max-w-7xl mx-auto text-slate-100">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-text-primary tracking-tight flex items-center gap-2">
-            <FileText className="w-5 h-5 text-brand-steelBlue" />
-            <span>Evidence Vault & Repository</span>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 font-bold border border-sky-800">
+              CHAIN OF CUSTODY VAULT
+            </span>
+            <span className="text-[10px] font-mono text-slate-400">
+              WAKAD PS // PCPC FORENSIC REGISTRY
+            </span>
+          </div>
+          <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+            <FileText className="w-5 h-5 text-sky-400" />
+            <span>Certified Evidence Vault & Repository</span>
           </h1>
-          <p className="text-xs text-text-secondary mt-1">
-            Tamper-evident evidence storage, extraction inspection, and source chain of custody records for{' '}
-            <span className="font-semibold text-text-primary">{activeCase?.referenceNumber}</span>.
+          <p className="text-xs text-slate-400 mt-1 font-sans">
+            Cryptographically sealed forensic repository, OCR transcripts, and telecommunication packet archives for{' '}
+            <span className="font-semibold text-slate-200">{activeCase?.referenceNumber}</span>.
           </p>
         </div>
 
         <button
           onClick={() => setShowNewEvidenceModal(true)}
-          className="px-3.5 py-2 bg-brand-deepTeal text-white rounded text-xs font-semibold hover:bg-brand-darkSteelTeal transition-colors shadow-subtle flex items-center gap-2 self-start sm:self-auto"
+          className="px-3.5 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold transition-all shadow-md flex items-center gap-2 self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" />
           <span>Ingest New Evidence</span>
@@ -125,25 +135,25 @@ export default function EvidenceVaultPage() {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white border border-border-light rounded-lg p-3.5 shadow-subtle flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
-        <div className="relative w-full md:w-80">
-          <Search className="w-3.5 h-3.5 text-text-muted absolute left-2.5 top-1/2 -translate-y-1/2" />
+      <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl p-3.5 shadow-md flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+        <div className="relative w-full md:w-84">
+          <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search extracted statements, titles, hashes..."
+            placeholder="Search transcripts, hashes, IMEI, CDR nodes..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-8 pr-3 py-1.5 border border-border-light rounded bg-bg-main focus:bg-white focus:outline-none focus:border-brand-steelBlue"
+            className="w-full pl-9 pr-3 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500 font-sans"
           />
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
+        <div className="flex flex-wrap items-center gap-3 w-full md:w-auto font-mono text-[11px]">
           <div className="flex items-center gap-1.5">
-            <span className="text-text-secondary font-medium">Type:</span>
+            <span className="text-slate-400">Type:</span>
             <select
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
-              className="px-2 py-1.5 border border-border-light rounded bg-white focus:outline-none focus:border-brand-steelBlue text-xs"
+              className="px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#0E1A27] text-slate-200 focus:outline-none focus:border-sky-500"
             >
               <option value="all">All Types</option>
               <option value="fir_document">FIR Document</option>
@@ -151,15 +161,16 @@ export default function EvidenceVaultPage() {
               <option value="cctv_observation">CCTV Observation</option>
               <option value="digital_record">Digital Record</option>
               <option value="movement_record">Movement Record</option>
+              <option value="forensic_report">Forensic Report</option>
             </select>
           </div>
 
           <div className="flex items-center gap-1.5">
-            <span className="text-text-secondary font-medium">Status:</span>
+            <span className="text-slate-400">Verification:</span>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-2 py-1.5 border border-border-light rounded bg-white focus:outline-none focus:border-brand-steelBlue text-xs"
+              className="px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#0E1A27] text-slate-200 focus:outline-none focus:border-sky-500"
             >
               <option value="all">All Statuses</option>
               <option value="verified">Verified</option>
@@ -175,13 +186,13 @@ export default function EvidenceVaultPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left Column: Evidence List */}
         <div className="lg:col-span-5 space-y-2.5">
-          <div className="text-[11px] font-semibold text-text-secondary uppercase tracking-wider px-1 flex items-center justify-between">
+          <div className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider px-1 flex items-center justify-between">
             <span>Evidence Records ({filtered.length})</span>
-            <span>Case: {activeCase?.referenceNumber}</span>
+            <span className="text-sky-400">{activeCase?.referenceNumber}</span>
           </div>
 
           {filtered.length === 0 ? (
-            <div className="bg-white border border-border-light rounded-lg p-8 text-center text-xs text-text-secondary">
+            <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl p-8 text-center text-xs text-slate-400 font-mono">
               No evidence matching search filters.
             </div>
           ) : (
@@ -191,38 +202,38 @@ export default function EvidenceVaultPage() {
                 <div
                   key={item.id}
                   onClick={() => setSelectedItem(item)}
-                  className={`bg-white border rounded-lg p-3.5 cursor-pointer transition-all shadow-subtle ${
+                  className={`bg-[#0C1724] border rounded-xl p-3.5 cursor-pointer transition-all shadow-md ${
                     isSelected
-                      ? 'border-brand-steelBlue ring-2 ring-brand-steelBlue/20 bg-bg-highlight/20'
-                      : 'border-border-light hover:border-brand-mutedBlueTeal hover:bg-bg-main/40'
+                      ? 'border-sky-500 ring-2 ring-sky-500/20 bg-[#122030]'
+                      : 'border-[#1E2E3F] hover:border-sky-500/60 hover:bg-[#101D2B]'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2">
-                    <span className="font-mono text-[9px] font-semibold text-brand-deepTeal uppercase px-1.5 py-0.5 rounded bg-bg-muted">
-                      {item.id}
+                    <span className="font-mono text-[9px] font-bold text-sky-400 uppercase px-1.5 py-0.5 rounded bg-[#08121B]">
+                      {item.id.toUpperCase()}
                     </span>
                     <span
-                      className={`text-[9px] px-1.5 py-0.5 rounded uppercase font-semibold ${
+                      className={`text-[9px] px-1.5 py-0.5 rounded font-mono uppercase font-bold ${
                         item.verificationStatus === 'verified'
-                          ? 'bg-status-successBg text-status-success border border-status-successBorder'
+                          ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-800'
                           : item.verificationStatus === 'disputed'
-                          ? 'bg-status-criticalBg text-status-critical border border-status-criticalBorder'
-                          : 'bg-status-warningBg text-status-warning border border-status-warningBorder'
+                          ? 'bg-rose-950/80 text-rose-300 border border-rose-800'
+                          : 'bg-amber-950/80 text-amber-300 border border-amber-800'
                       }`}
                     >
                       {item.verificationStatus}
                     </span>
                   </div>
 
-                  <h3 className="font-semibold text-xs text-text-primary mt-1.5 leading-snug">
+                  <h3 className="font-bold text-xs text-white mt-1.5 leading-snug font-sans">
                     {item.title}
                   </h3>
 
-                  <div className="text-[11px] text-text-secondary mt-1 line-clamp-2">
+                  <div className="text-[11px] text-slate-300 mt-1 line-clamp-2 font-sans">
                     {item.sourceDescription}
                   </div>
 
-                  <div className="mt-2.5 pt-2 border-t border-border-subtle flex items-center justify-between text-[10px] text-text-secondary">
+                  <div className="mt-2.5 pt-2 border-t border-[#1E2E3F] flex items-center justify-between text-[10px] font-mono text-slate-400">
                     <span className="capitalize">{item.evidenceType.replace('_', ' ')}</span>
                     <span>{new Date(item.dateReceived).toLocaleDateString()}</span>
                   </div>
@@ -235,19 +246,19 @@ export default function EvidenceVaultPage() {
         {/* Right Column: Evidence Inspector & Verbatim Text Viewer */}
         <div className="lg:col-span-7">
           {selectedItem ? (
-            <div className="bg-white border border-border-light rounded-lg shadow-card overflow-hidden text-xs">
+            <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl shadow-xl overflow-hidden text-xs">
               {/* Header */}
-              <div className="p-4 bg-bg-main border-b border-border-light flex items-start justify-between gap-3">
+              <div className="p-4 bg-[#0F1B2A] border-b border-[#1E2E3F] flex items-start justify-between gap-3">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-[10px] font-bold text-brand-deepTeal bg-white px-2 py-0.5 rounded border border-border-light">
-                      {selectedItem.id}
+                    <span className="font-mono text-[10px] font-bold text-sky-400 bg-[#08121B] px-2 py-0.5 rounded border border-[#1E2E3F]">
+                      {selectedItem.id.toUpperCase()}
                     </span>
-                    <span className="text-[10px] uppercase font-semibold text-text-secondary">
+                    <span className="text-[10px] uppercase font-mono font-bold text-slate-400">
                       {selectedItem.evidenceType.replace('_', ' ')}
                     </span>
                   </div>
-                  <h2 className="text-sm font-bold text-text-primary mt-1">
+                  <h2 className="text-sm font-bold text-white mt-1 font-sans">
                     {selectedItem.title}
                   </h2>
                 </div>
@@ -257,7 +268,7 @@ export default function EvidenceVaultPage() {
                   <select
                     value={selectedItem.verificationStatus}
                     onChange={(e) => handleUpdateStatus(selectedItem.id, e.target.value as any)}
-                    className="px-2.5 py-1 text-xs font-semibold rounded border border-border-light bg-white focus:outline-none focus:border-brand-steelBlue"
+                    className="px-2.5 py-1 text-xs font-mono font-semibold rounded-lg border border-[#22364A] bg-[#08121B] text-slate-200 focus:outline-none focus:border-sky-500"
                   >
                     <option value="unverified">Status: Unverified</option>
                     <option value="verified">Status: Verified</option>
@@ -268,7 +279,7 @@ export default function EvidenceVaultPage() {
                   <button
                     onClick={() => handleDeleteEvidence(selectedItem.id, selectedItem.title)}
                     title="Remove item from vault"
-                    className="p-1 text-text-secondary hover:text-status-critical rounded"
+                    className="p-1.5 text-slate-400 hover:text-rose-400 hover:bg-rose-950/40 rounded-lg transition-colors"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -276,24 +287,24 @@ export default function EvidenceVaultPage() {
               </div>
 
               {/* Provenance & File Integrity Strip */}
-              <div className="px-4 py-2.5 bg-bg-highlight/30 border-b border-border-subtle grid grid-cols-2 md:grid-cols-4 gap-2 text-[10px] text-text-secondary font-mono">
+              <div className="px-4 py-2.5 bg-[#09131E] border-b border-[#1E2E3F] grid grid-cols-2 md:grid-cols-4 gap-2 text-[10px] text-slate-400 font-mono">
                 <div>
-                  <span className="font-semibold text-text-primary block">Integrity Hash:</span>
-                  <span className="truncate block" title={selectedItem.fileHash}>
-                    {selectedItem.fileHash?.slice(0, 16)}...
+                  <span className="text-slate-200 font-bold block">Integrity SHA-256:</span>
+                  <span className="truncate block text-sky-400" title={selectedItem.fileHash}>
+                    {selectedItem.fileHash?.slice(0, 18)}...
                   </span>
                 </div>
                 <div>
-                  <span className="font-semibold text-text-primary block">Recorded By:</span>
-                  <span className="truncate block">{selectedItem.recordedBy}</span>
+                  <span className="text-slate-200 font-bold block">Officer / Collector:</span>
+                  <span className="truncate block text-slate-300">{selectedItem.recordedBy}</span>
                 </div>
                 <div>
-                  <span className="font-semibold text-text-primary block">Date Received:</span>
-                  <span>{new Date(selectedItem.dateReceived).toLocaleDateString()}</span>
+                  <span className="text-slate-200 font-bold block">Date Logged:</span>
+                  <span className="text-slate-300">{new Date(selectedItem.dateReceived).toLocaleDateString()}</span>
                 </div>
                 <div>
-                  <span className="font-semibold text-text-primary block">Processing:</span>
-                  <span className="uppercase text-status-success font-semibold">
+                  <span className="text-slate-200 font-bold block">Ingestion Integrity:</span>
+                  <span className="uppercase text-emerald-400 font-bold">
                     {selectedItem.processingStatus}
                   </span>
                 </div>
@@ -302,13 +313,13 @@ export default function EvidenceVaultPage() {
               {/* Verbatim Content Viewer */}
               <div className="p-4 space-y-4">
                 <div>
-                  <h3 className="font-semibold text-xs text-text-primary mb-1.5 flex items-center justify-between">
-                    <span>Extracted Verbatim Record Content</span>
-                    <span className="text-[10px] text-text-secondary font-normal font-mono">
-                      UTF-8 Document Buffer
+                  <h3 className="font-bold text-xs text-white mb-1.5 flex items-center justify-between font-mono">
+                    <span>VERBATIM RECORD CONTENT // CERTIFIED TRANSCRIPT</span>
+                    <span className="text-[10px] text-sky-400 font-normal">
+                      Sec 65B BNSS Compliant Buffer
                     </span>
                   </h3>
-                  <div className="bg-bg-main p-3.5 rounded border border-border-subtle font-mono text-[11px] text-text-primary whitespace-pre-wrap leading-relaxed max-h-72 overflow-y-auto">
+                  <div className="bg-[#08121B] p-3.5 rounded-lg border border-[#1E2E3F] font-mono text-[11px] text-slate-200 whitespace-pre-wrap leading-relaxed max-h-72 overflow-y-auto shadow-inner">
                     {selectedItem.extractedText || 'No textual content extracted from binary.'}
                   </div>
                 </div>
@@ -316,24 +327,24 @@ export default function EvidenceVaultPage() {
                 {/* Extracted Factual Claims */}
                 {selectedItem.claims && selectedItem.claims.length > 0 && (
                   <div>
-                    <h3 className="font-semibold text-xs text-text-primary mb-1.5">
-                      Extracted Claims & Assertions ({selectedItem.claims.length})
+                    <h3 className="font-bold text-xs text-white mb-1.5 font-mono">
+                      EXTRACTED PROBATIVE CLAIMS ({selectedItem.claims.length})
                     </h3>
                     <div className="space-y-2">
                       {selectedItem.claims.map((claim, idx) => (
                         <div
                           key={idx}
-                          className="p-2.5 rounded bg-bg-main/60 border border-border-subtle text-xs space-y-1"
+                          className="p-3 rounded-lg bg-[#0F1C2B] border border-[#1E2E3F] text-xs space-y-1"
                         >
-                          <div className="flex items-center justify-between">
-                            <span className="font-semibold text-[11px] text-brand-deepTeal">
+                          <div className="flex items-center justify-between font-mono">
+                            <span className="font-bold text-[11px] text-sky-400">
                               Claimant: {claim.claimant}
                             </span>
-                            <span className="text-[9px] uppercase px-1 py-0.2 bg-white rounded border border-border-subtle">
+                            <span className="text-[9px] uppercase px-1.5 py-0.2 bg-[#08121B] rounded border border-[#1E2E3F] text-slate-300">
                               {claim.claimType} (Conf: {(claim.confidence * 100).toFixed(0)}%)
                             </span>
                           </div>
-                          <div className="text-text-primary italic">"{claim.text}"</div>
+                          <div className="text-slate-200 italic font-sans">"{claim.text}"</div>
                         </div>
                       ))}
                     </div>
@@ -342,15 +353,17 @@ export default function EvidenceVaultPage() {
 
                 {/* Chain of Custody */}
                 {selectedItem.sourceProvenance && (
-                  <div className="pt-2 border-t border-border-subtle text-[11px] text-text-secondary">
-                    <span className="font-semibold text-text-primary">Chain of Custody: </span>
-                    {selectedItem.sourceProvenance.chainOfCustody?.join(' → ') || 'Direct Ingestion'}
+                  <div className="pt-2 border-t border-[#1E2E3F] text-[11px] text-slate-400 font-mono">
+                    <span className="font-bold text-slate-200">Certified Chain of Custody: </span>
+                    <span className="text-sky-300">
+                      {selectedItem.sourceProvenance.chainOfCustody?.join(' → ') || 'Direct Ingestion'}
+                    </span>
                   </div>
                 )}
               </div>
             </div>
           ) : (
-            <div className="bg-white border border-border-light rounded-lg p-12 text-center text-xs text-text-secondary shadow-card">
+            <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl p-12 text-center text-xs text-slate-400 font-mono shadow-xl">
               Select an evidence item from the repository to inspect extracted text and source provenance.
             </div>
           )}

@@ -15,39 +15,66 @@ import {
   FileBarChart,
   Settings,
   ShieldAlert,
-  Database,
+  Radio,
+  Eye,
+  Crosshair,
 } from 'lucide-react';
 
-interface NavItem {
-  name: string;
-  href: string;
-  icon: React.ComponentType<{ className?: string }>;
-  badge?: string;
+interface NavSection {
+  title: string;
+  items: {
+    name: string;
+    href: string;
+    icon: React.ComponentType<{ className?: string }>;
+    badge?: string;
+    badgeColor?: string;
+  }[];
 }
 
-const navItems: NavItem[] = [
-  { name: 'Overview', href: '/', icon: LayoutDashboard },
-  { name: 'Cases', href: '/cases', icon: Briefcase },
-  { name: 'Evidence Vault', href: '/evidence', icon: FileText },
-  { name: 'Timeline Analysis', href: '/timeline', icon: Clock },
-  { name: 'Relationship Graph', href: '/graph', icon: Network },
-  { name: 'Contradiction Analysis', href: '/contradictions', icon: AlertTriangle, badge: 'Active' },
-  { name: 'Investigation Gaps', href: '/gaps', icon: Search },
-  { name: 'AI Assistant', href: '/assistant', icon: Sparkles },
-  { name: 'Reports & Export', href: '/reports', icon: FileBarChart },
-  { name: 'Settings & Audit', href: '/settings', icon: Settings },
+const navSections: NavSection[] = [
+  {
+    title: 'COMMAND & TRIAGE',
+    items: [
+      { name: 'Command Center', href: '/', icon: LayoutDashboard },
+      { name: 'FIR & Case Register', href: '/cases', icon: Briefcase },
+    ],
+  },
+  {
+    title: 'FORENSIC & FIELD ANALYSIS',
+    items: [
+      { name: 'Evidence Vault', href: '/evidence', icon: FileText },
+      { name: 'Chronological Timeline', href: '/timeline', icon: Clock },
+      { name: 'Entity & Network Graph', href: '/graph', icon: Network },
+      {
+        name: 'Inconsistency Matrix',
+        href: '/contradictions',
+        icon: AlertTriangle,
+        badge: '4 CLASH',
+        badgeColor: 'bg-rose-500/20 text-rose-300 border-rose-500/40',
+      },
+      { name: 'Investigation Gaps', href: '/gaps', icon: Search },
+    ],
+  },
+  {
+    title: 'INTELLIGENCE & PROSECUTION',
+    items: [
+      { name: 'AI Co-Investigator', href: '/assistant', icon: Sparkles },
+      { name: 'Prosecution Dossier', href: '/reports', icon: FileBarChart },
+      { name: 'Audit & Chain of Custody', href: '/settings', icon: Settings },
+    ],
+  },
 ];
 
 export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 bg-brand-darkSidebar text-white flex flex-col flex-shrink-0 h-screen sticky top-0 border-r border-[#13323E] select-none">
-      {/* Brand Header */}
-      <div className="p-4 border-b border-[#1E4B5E]">
+    <aside className="w-64 bg-[#08111A] text-slate-100 flex flex-col flex-shrink-0 h-screen sticky top-0 border-r border-[#192736] select-none shadow-2xl z-20">
+      {/* Brand & Commissionerate Header */}
+      <div className="p-4 border-b border-[#192736] bg-gradient-to-b from-[#0B1522] to-[#08111A]">
         <div className="flex items-center gap-2.5">
-          {/* Geometric Eye Emblem Logo */}
-          <div className="w-9 h-9 rounded bg-brand-mutedBlueTeal/20 border border-brand-mutedBlueTeal/40 flex items-center justify-center text-brand-softBlue">
+          {/* Third Eye Tactical Emblem */}
+          <div className="w-10 h-10 rounded-lg bg-sky-950/80 border border-sky-500/40 flex items-center justify-center text-sky-400 shadow-lg shadow-sky-950/60 relative flex-shrink-0">
             <svg
               className="w-5 h-5"
               viewBox="0 0 24 24"
@@ -57,88 +84,95 @@ export function Sidebar() {
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              {/* Outer almond eye contour */}
               <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" />
-              {/* Concentric analysis aperture */}
               <circle cx="12" cy="12" r="3.2" strokeWidth="2.2" />
               <line x1="12" y1="2" x2="12" y2="4.5" />
               <line x1="12" y1="19.5" x2="12" y2="22" />
             </svg>
+            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-[#08111A]" />
           </div>
+
           <div>
-            <h1 className="font-semibold text-sm tracking-wide text-white uppercase font-sans">
-              The Third Eye
+            <div className="text-[10px] font-mono font-bold tracking-wider text-sky-400 uppercase leading-none">
+              पिंपरी चिंचवड पोलीस
+            </div>
+            <h1 className="font-bold text-sm tracking-tight text-white uppercase font-sans mt-0.5">
+              THE THIRD EYE
             </h1>
-            <p className="text-[10px] text-brand-softBlue font-medium tracking-tight">
-              Investigation Intelligence
+            <p className="text-[9px] text-slate-400 font-mono tracking-tight leading-none mt-0.5">
+              PCPC INVESTIGATION INTELLIGENCE
             </p>
           </div>
         </div>
 
-        <div className="mt-2.5 text-[10px] text-[#8CB1C0] leading-snug font-sans">
-          “Turning scattered evidence into actionable intelligence.”
+        {/* Tactical Sub-banner */}
+        <div className="mt-3 px-2 py-1.5 rounded bg-[#0D1B2A] border border-[#1E3347] flex items-center justify-between text-[10px] font-mono">
+          <span className="text-slate-400 flex items-center gap-1">
+            <Crosshair className="w-3 h-3 text-sky-400" />
+            UNIT: CRIME BRANCH
+          </span>
+          <span className="text-emerald-400 font-semibold">ICCC ACTIVE</span>
         </div>
       </div>
 
-      {/* Navigation Links */}
-      <nav className="flex-1 overflow-y-auto px-2 py-3 space-y-0.5 text-xs font-medium">
-        <div className="px-2 pb-1 text-[10px] font-semibold tracking-wider text-[#7A9EAF] uppercase">
-          Workspace Modules
-        </div>
+      {/* Navigation Sections */}
+      <nav className="flex-1 overflow-y-auto px-3 py-3 space-y-4 text-xs font-medium">
+        {navSections.map((section, idx) => (
+          <div key={idx} className="space-y-1">
+            <div className="px-2 pb-1 text-[9px] font-mono font-bold tracking-widest text-slate-400 uppercase">
+              {section.title}
+            </div>
 
-        {navItems.map((item) => {
-          const isActive = pathname === item.href;
-          const Icon = item.icon;
+            {section.items.map((item) => {
+              const isActive = pathname === item.href;
+              const Icon = item.icon;
 
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`flex items-center justify-between px-2.5 py-2 rounded transition-colors ${
-                isActive
-                  ? 'bg-brand-deepTeal text-white shadow-sm font-semibold'
-                  : 'text-[#C3D7E0] hover:bg-brand-darkSidebarHover hover:text-white'
-              }`}
-            >
-              <div className="flex items-center gap-2.5">
-                <Icon
-                  className={`w-4 h-4 ${
-                    isActive ? 'text-brand-softBlue' : 'text-[#8AA8B6]'
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`flex items-center justify-between px-3 py-2 rounded-lg transition-all ${
+                    isActive
+                      ? 'bg-sky-950/80 text-white font-semibold border border-sky-500/60 shadow-md shadow-sky-950/50'
+                      : 'text-slate-300 hover:bg-[#101D2B] hover:text-white border border-transparent'
                   }`}
-                />
-                <span>{item.name}</span>
-              </div>
-              {item.badge && (
-                <span className="text-[9px] px-1.5 py-0.5 rounded bg-brand-mutedBlueTeal/30 text-brand-softBlue border border-brand-mutedBlueTeal/40 font-mono">
-                  {item.badge}
-                </span>
-              )}
-            </Link>
-          );
-        })}
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <Icon
+                      className={`w-4 h-4 flex-shrink-0 ${
+                        isActive ? 'text-sky-400' : 'text-slate-400'
+                      }`}
+                    />
+                    <span className="truncate">{item.name}</span>
+                  </div>
+
+                  {item.badge && (
+                    <span
+                      className={`text-[9px] font-mono font-bold px-1.5 py-0.2 rounded border ${
+                        item.badgeColor || 'bg-sky-900/50 text-sky-300 border-sky-700'
+                      }`}
+                    >
+                      {item.badge}
+                    </span>
+                  )}
+                </Link>
+              );
+            })}
+          </div>
+        ))}
       </nav>
 
-      {/* System Status & Philosophy Footer */}
-      <div className="p-3 border-t border-[#1E4B5E] bg-[#122F3B] text-[11px] space-y-2">
-        <div className="flex items-center justify-between text-[#8CB1C0]">
-          <div className="flex items-center gap-1.5">
-            <ShieldAlert className="w-3.5 h-3.5 text-brand-softBlue" />
-            <span className="text-[10px] font-medium">Philosophy</span>
-          </div>
-          <span className="text-[9px] text-[#6E93A3] font-mono">v1.4.0</span>
+      {/* Police Station & Authority Status Footer */}
+      <div className="p-3 border-t border-[#192736] bg-[#0A141F] text-[10px] font-mono space-y-1">
+        <div className="flex items-center justify-between text-slate-400">
+          <span className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            WAKAD PS GRID
+          </span>
+          <span className="text-slate-400">SEC-BNS 309(4)</span>
         </div>
-        <p className="text-[10px] text-[#A6C5D4] italic leading-tight">
-          AI recommends. Humans investigate. Humans decide.
-        </p>
-
-        <div className="pt-1 border-t border-[#1A3E4D] flex items-center justify-between text-[10px] text-[#7E9FA0]">
-          <span className="flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-status-success animate-pulse"></span>
-            Storage: Persistent File DB
-          </span>
-          <span className="text-[9px] text-brand-softBlue bg-[#184455] px-1.5 py-0.5 rounded">
-            Audit Active
-          </span>
+        <div className="text-[9px] text-slate-400 leading-tight">
+          Pimpri Chinchwad Police Commissionerate • Law Enforcement Sensitive
         </div>
       </div>
     </aside>

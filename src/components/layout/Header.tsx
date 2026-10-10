@@ -9,10 +9,10 @@ import {
   FilePlus2,
   Search,
   RotateCcw,
-  CheckCircle2,
-  AlertCircle,
   Shield,
   Layers,
+  Crosshair,
+  Radio,
 } from 'lucide-react';
 
 export function Header() {
@@ -33,7 +33,11 @@ export function Header() {
   const [resetting, setResetting] = useState(false);
 
   const handleReset = async () => {
-    if (confirm('Reset investigation database to the demonstration benchmark case? Any custom additions will be restored to benchmark.')) {
+    if (
+      confirm(
+        'Restore investigation database to Pimpri Chinchwad Police benchmark case (FIR No. 0389/2025 Wakad PS)? Custom additions will be reset to authentic benchmark.'
+      )
+    ) {
       setResetting(true);
       await resetToDemo();
       setResetting(false);
@@ -41,40 +45,40 @@ export function Header() {
   };
 
   return (
-    <header className="h-14 bg-white border-b border-border-light px-4 flex items-center justify-between sticky top-0 z-30 shadow-subtle select-none">
-      {/* Left: Active Case Selector & Context */}
+    <header className="h-14 bg-[#0A141F] border-b border-[#1A2A3A] px-4 flex items-center justify-between sticky top-0 z-30 shadow-md select-none text-slate-100">
+      {/* Left: Active Case Selector & Police Station Context */}
       <div className="flex items-center gap-3">
         <div className="relative">
           <button
             onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="flex items-center gap-2.5 px-3 py-1.5 rounded border border-border-light hover:border-brand-mutedBlueTeal bg-bg-main hover:bg-bg-highlight/50 transition-colors text-left"
+            className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg border border-[#22364A] hover:border-sky-500/60 bg-[#0E1A27] hover:bg-[#132334] transition-all text-left shadow-sm"
           >
-            <Briefcase className="w-4 h-4 text-brand-steelBlue flex-shrink-0" />
+            <Shield className="w-4 h-4 text-sky-400 flex-shrink-0" />
             <div className="max-w-[280px]">
-              <div className="text-[10px] uppercase font-semibold text-text-secondary tracking-wider flex items-center gap-1.5">
-                <span>Active Case</span>
+              <div className="text-[9px] uppercase font-mono font-bold text-sky-400 tracking-wider flex items-center gap-1.5">
+                <span>ACTIVE POLICE STATION CASE</span>
                 {activeCase?.priority === 'high' && (
-                  <span className="text-[9px] px-1 py-0.2 rounded bg-status-criticalBg text-status-critical font-medium border border-status-criticalBorder">
-                    High Priority
+                  <span className="text-[8px] font-mono px-1 py-0.2 rounded bg-rose-950 text-rose-300 font-semibold border border-rose-800">
+                    PRIORITY HIGH
                   </span>
                 )}
               </div>
-              <div className="text-xs font-semibold text-text-primary truncate font-sans">
+              <div className="text-xs font-bold text-white truncate font-sans">
                 {activeCase ? `${activeCase.referenceNumber}: ${activeCase.title}` : 'No Case Selected'}
               </div>
             </div>
-            <ChevronDown className="w-3.5 h-3.5 text-text-secondary ml-1" />
+            <ChevronDown className="w-3.5 h-3.5 text-slate-400 ml-1" />
           </button>
 
           {/* Case Dropdown */}
           {dropdownOpen && (
             <div
-              className="absolute left-0 mt-1 w-80 bg-white border border-border-light rounded-md shadow-dropdown py-1 z-50 text-xs"
+              className="absolute left-0 mt-1 w-84 bg-[#0D1824] border border-[#22364A] rounded-lg shadow-2xl py-1 z-50 text-xs text-slate-200"
               onMouseLeave={() => setDropdownOpen(false)}
             >
-              <div className="px-3 py-1.5 text-[10px] font-semibold text-text-secondary uppercase border-b border-border-subtle flex items-center justify-between">
-                <span>Available Investigations</span>
-                <span className="text-brand-steelBlue">{cases.length} loaded</span>
+              <div className="px-3 py-1.5 text-[9px] font-mono font-bold text-slate-400 uppercase border-b border-[#1A2A3A] flex items-center justify-between">
+                <span>PCPC INVESTIGATION DOSSIERS</span>
+                <span className="text-sky-400">{cases.length} loaded</span>
               </div>
 
               <div className="max-h-60 overflow-y-auto py-1">
@@ -85,102 +89,80 @@ export function Header() {
                       setActiveCaseId(c.id);
                       setDropdownOpen(false);
                     }}
-                    className={`w-full px-3 py-2 text-left hover:bg-bg-main flex items-start justify-between gap-2 transition-colors ${
-                      c.id === activeCaseId ? 'bg-bg-highlight/40 border-l-2 border-brand-steelBlue' : ''
+                    className={`w-full px-3 py-2 text-left hover:bg-[#142334] flex items-start justify-between gap-2 transition-colors ${
+                      c.id === activeCaseId ? 'bg-sky-950/50 border-l-2 border-sky-400' : ''
                     }`}
                   >
                     <div className="overflow-hidden">
-                      <div className="font-semibold text-text-primary truncate">{c.title}</div>
-                      <div className="text-[10px] text-text-secondary flex items-center gap-2 mt-0.5">
-                        <span className="font-mono">{c.referenceNumber}</span>
+                      <div className="font-semibold text-white truncate">{c.title}</div>
+                      <div className="text-[10px] text-slate-400 font-mono flex items-center gap-2 mt-0.5">
+                        <span>{c.referenceNumber}</span>
                         <span>•</span>
                         <span>{new Date(c.incidentDate).toLocaleDateString()}</span>
                       </div>
                     </div>
-                    <span
-                      className={`text-[9px] px-1.5 py-0.5 rounded uppercase font-medium flex-shrink-0 ${
-                        c.status === 'active'
-                          ? 'bg-status-successBg text-status-success'
-                          : 'bg-bg-muted text-text-secondary'
-                      }`}
-                    >
-                      {c.status}
-                    </span>
                   </button>
                 ))}
               </div>
 
-              <div className="border-t border-border-subtle p-1.5 bg-bg-main/50 flex items-center gap-2">
+              <div className="p-2 border-t border-[#1A2A3A]">
                 <button
                   onClick={() => {
-                    setDropdownOpen(false);
                     setShowNewCaseModal(true);
+                    setDropdownOpen(false);
                   }}
-                  className="flex-1 flex items-center justify-center gap-1.5 py-1 px-2 rounded bg-brand-deepTeal text-white text-[11px] font-medium hover:bg-brand-darkSteelTeal transition-colors"
+                  className="w-full py-1.5 px-2 bg-sky-900/40 hover:bg-sky-900/70 text-sky-200 rounded font-mono text-[11px] flex items-center justify-center gap-1.5 transition-colors border border-sky-700/60"
                 >
                   <Plus className="w-3 h-3" />
-                  <span>Create New Case</span>
+                  <span>Register New FIR Case File</span>
                 </button>
               </div>
             </div>
           )}
         </div>
-      </div>
 
-      {/* Center: Global Quick Search */}
-      <div className="hidden md:flex items-center flex-1 max-w-md mx-6">
-        <div className="relative w-full">
-          <Search className="w-3.5 h-3.5 text-text-muted absolute left-2.5 top-1/2 -translate-y-1/2" />
-          <input
-            type="text"
-            placeholder="Search evidence, witnesses, vehicles, claims..."
-            value={globalSearch}
-            onChange={(e) => setGlobalSearch(e.target.value)}
-            className="w-full pl-8 pr-3 py-1.5 text-xs bg-bg-main border border-border-light rounded focus:outline-none focus:border-brand-steelBlue focus:bg-white text-text-primary placeholder:text-text-muted transition-colors"
-          />
-          {globalSearch && (
-            <button
-              onClick={() => setGlobalSearch('')}
-              className="absolute right-2 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-primary text-[10px]"
-            >
-              Clear
-            </button>
-          )}
+        {/* Classification Tag */}
+        <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#0D1824] border border-[#1A2A3A] text-[10px] font-mono text-slate-300">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+          <span>SECURITY LEVEL: CONFIDENTIAL // PCPC CIID</span>
         </div>
       </div>
 
-      {/* Right: Quick Action Controls */}
+      {/* Center: Global Search Bar */}
+      <div className="flex-1 max-w-md mx-4 hidden md:block">
+        <div className="relative">
+          <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+          <input
+            type="text"
+            value={globalSearch}
+            onChange={(e) => setGlobalSearch(e.target.value)}
+            placeholder="Search FIR, suspect, vehicle plate, CDR mast, or location..."
+            className="w-full pl-9 pr-14 py-1.5 bg-[#0D1824] border border-[#22364A] rounded-lg text-xs text-white placeholder-slate-400 focus:outline-none focus:border-sky-500 transition-colors font-sans"
+          />
+          <span className="absolute right-2 top-1/2 -translate-y-1/2 text-[9px] font-mono text-slate-400 bg-[#142334] px-1.5 py-0.5 rounded border border-[#22364A]">
+            Ctrl+K
+          </span>
+        </div>
+      </div>
+
+      {/* Right: Operational Actions */}
       <div className="flex items-center gap-2">
         <button
-          onClick={handleReset}
-          disabled={resetting}
-          title="Reset database to the rich demonstration case benchmark"
-          className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-text-secondary bg-white border border-border-light hover:bg-bg-main rounded transition-colors"
-        >
-          <RotateCcw className={`w-3.5 h-3.5 text-text-secondary ${resetting ? 'animate-spin' : ''}`} />
-          <span className="hidden sm:inline">Reset Demo</span>
-        </button>
-
-        <button
           onClick={() => setShowNewEvidenceModal(true)}
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white bg-brand-deepTeal hover:bg-brand-darkSteelTeal rounded shadow-subtle transition-colors"
+          className="px-3 py-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold transition-all shadow-md flex items-center gap-1.5"
         >
-          <FilePlus2 className="w-3.5 h-3.5 text-brand-softBlue" />
+          <FilePlus2 className="w-3.5 h-3.5" />
           <span>Ingest Evidence</span>
         </button>
 
-        {/* Investigator Badge */}
-        <div className="hidden lg:flex items-center gap-2 pl-3 ml-1 border-l border-border-light">
-          <div className="w-7 h-7 rounded-full bg-brand-mutedBlueTeal/20 border border-brand-mutedBlueTeal/30 flex items-center justify-center text-brand-deepTeal">
-            <Shield className="w-3.5 h-3.5" />
-          </div>
-          <div className="text-left">
-            <div className="text-xs font-semibold text-text-primary leading-tight">
-              Insp. A. Sen
-            </div>
-            <div className="text-[10px] text-text-secondary leading-none">Cyber Unit 4</div>
-          </div>
-        </div>
+        <button
+          onClick={handleReset}
+          disabled={resetting}
+          title="Restore Pimpri Chinchwad benchmark case"
+          className="p-1.5 text-slate-400 hover:text-white hover:bg-[#142334] rounded-lg border border-[#22364A] transition-colors"
+        >
+          <RotateCcw className={`w-3.5 h-3.5 ${resetting ? 'animate-spin' : ''}`} />
+        </button>
       </div>
     </header>
   );

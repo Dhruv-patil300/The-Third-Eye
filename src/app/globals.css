@@ -3,18 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --primary-deep-teal: #1e566c;
-  --primary-dark-steel: #367589;
-  --primary-muted-blue: #5795a7;
-  --primary-soft-blue: #89b8ca;
-  --primary-steel-blue: #1f7dad;
-  --primary-navy-blue: #1c478b;
-  --main-background: #f4f7f9;
-  --surface-background: #ffffff;
-  --primary-text: #172b35;
-  --secondary-text: #5d707b;
-  --borders: #d9e3e8;
-  --dark-sidebar: #173c4b;
+  --main-background: #070e17;
+  --surface-background: #0c1724;
+  --primary-text: #f1f5f9;
+  --secondary-text: #94a3b8;
+  --borders: #1e2e3f;
+  --dark-sidebar: #08111a;
 }
 
 body {
@@ -25,23 +19,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom subtle scrollbar */
+/* Custom Tactical Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #ebf1f5;
+  background: #081018;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #bdcdd5;
+  background: #1e3347;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #889ca6;
+  background: #38bdf8;
 }
 
 /* Print Styles for Dossier Generation */
@@ -55,6 +49,7 @@ body {
     padding: 0 !important;
     margin: 0 !important;
     background: white !important;
+    color: black !important;
   }
   .print-page-break {
     page-break-before: always;

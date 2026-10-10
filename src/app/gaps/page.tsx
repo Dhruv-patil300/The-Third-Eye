@@ -14,6 +14,8 @@ import {
   Shield,
   HelpCircle,
   XCircle,
+  Target,
+  Sparkles,
 } from 'lucide-react';
 
 export default function InvestigationGapsPage() {
@@ -75,25 +77,33 @@ export default function InvestigationGapsPage() {
   const filtered = gaps.filter((g) => statusFilter === 'all' || g.status === statusFilter);
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto">
+    <div className="space-y-6 max-w-7xl mx-auto text-slate-100">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-text-primary tracking-tight flex items-center gap-2">
-            <Search className="w-5 h-5 text-status-warning" />
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 font-bold border border-amber-800">
+              PROCEDURAL GAP DETECTOR
+            </span>
+            <span className="text-[10px] font-mono text-slate-400">
+              WAKAD PS // PCPC PROSECUTION DEFICIENCIES
+            </span>
+          </div>
+          <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+            <Search className="w-5 h-5 text-amber-400" />
             <span>Investigation Gap Detection & Triage</span>
           </h1>
-          <p className="text-xs text-text-secondary mt-1">
-            Systematic identification of uncorroborated assertions, camera blackouts, missing records, and procedural voids.
+          <p className="text-xs text-slate-400 mt-1 font-sans">
+            Identification of uncorroborated windows, camera blind spots, unserved notices, and forensic lacunae.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-xs">
-          <span className="font-semibold text-text-secondary">Filter Status:</span>
+        <div className="flex items-center gap-2 text-xs font-mono">
+          <span className="text-slate-400">Filter Status:</span>
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-2.5 py-1.5 border border-border-light rounded bg-white text-xs focus:outline-none"
+            className="px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#0C1724] text-slate-200 focus:outline-none focus:border-sky-500"
           >
             <option value="all">All Gaps ({gaps.length})</option>
             <option value="open">Open</option>
@@ -108,9 +118,9 @@ export default function InvestigationGapsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left Column: List of Gaps */}
         <div className="lg:col-span-5 space-y-3">
-          <div className="text-[11px] font-semibold text-text-secondary uppercase tracking-wider px-1 flex items-center justify-between">
+          <div className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider px-1 flex items-center justify-between">
             <span>Detected Gaps ({filtered.length})</span>
-            <span>Case: {activeCase?.referenceNumber}</span>
+            <span className="text-sky-400">{activeCase?.referenceNumber}</span>
           </div>
 
           <div className="space-y-2.5">
@@ -120,40 +130,40 @@ export default function InvestigationGapsPage() {
                 <div
                   key={gap.id}
                   onClick={() => setSelectedGap(gap)}
-                  className={`bg-white border rounded-lg p-3.5 cursor-pointer transition-all shadow-subtle ${
+                  className={`bg-[#0C1724] border rounded-xl p-3.5 cursor-pointer transition-all shadow-md ${
                     isSelected
-                      ? 'border-brand-steelBlue ring-2 ring-brand-steelBlue/20 bg-bg-highlight/20'
-                      : 'border-border-light hover:border-brand-mutedBlueTeal hover:bg-bg-main/50'
+                      ? 'border-amber-500 ring-2 ring-amber-500/20 bg-[#141F2C]'
+                      : 'border-[#1E2E3F] hover:border-amber-500/60 hover:bg-[#101D2B]'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2 mb-1.5">
-                    <span className="font-mono text-[9px] font-bold text-text-secondary uppercase px-1.5 py-0.5 rounded bg-bg-muted">
-                      {gap.id}
+                    <span className="font-mono text-[9px] font-bold text-slate-400 uppercase px-1.5 py-0.5 rounded bg-[#08121B]">
+                      {gap.id.toUpperCase()}
                     </span>
                     <span
-                      className={`text-[9px] px-1.5 py-0.5 rounded uppercase font-semibold ${
+                      className={`text-[9px] px-1.5 py-0.5 rounded font-mono uppercase font-bold border ${
                         gap.severity === 'critical'
-                          ? 'bg-status-criticalBg text-status-critical border border-status-criticalBorder'
-                          : 'bg-status-warningBg text-status-warning border border-status-warningBorder'
+                          ? 'bg-rose-950/80 text-rose-300 border-rose-800'
+                          : 'bg-amber-950/80 text-amber-300 border-amber-800'
                       }`}
                     >
                       {gap.severity}
                     </span>
                   </div>
 
-                  <h3 className="font-bold text-xs text-text-primary leading-snug">
+                  <h3 className="font-bold text-xs text-white leading-snug font-sans">
                     {gap.title}
                   </h3>
 
-                  <p className="text-[11px] text-text-secondary mt-1.5 line-clamp-2">
+                  <p className="text-[11px] text-slate-300 mt-1.5 line-clamp-2 font-sans">
                     {gap.description}
                   </p>
 
-                  <div className="mt-2.5 pt-2 border-t border-border-subtle flex items-center justify-between text-[10px]">
-                    <span className="capitalize text-text-secondary">
+                  <div className="mt-2.5 pt-2 border-t border-[#1E2E3F] flex items-center justify-between text-[10px] font-mono">
+                    <span className="capitalize text-slate-400">
                       {gap.category.replace('_', ' ')}
                     </span>
-                    <span className="font-semibold text-text-primary uppercase">
+                    <span className="font-bold text-amber-400 uppercase">
                       {gap.status}
                     </span>
                   </div>
@@ -166,27 +176,27 @@ export default function InvestigationGapsPage() {
         {/* Right Column: Deep-Dive Gap Details */}
         <div className="lg:col-span-7">
           {selectedGap ? (
-            <div className="bg-white border border-border-light rounded-lg shadow-card p-5 space-y-4 text-xs">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border-subtle pb-3">
+            <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl shadow-xl p-5 space-y-4 text-xs">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#1E2E3F] pb-3">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="font-mono text-[10px] font-bold text-brand-deepTeal bg-bg-highlight px-2 py-0.5 rounded border border-border-subtle">
-                      {selectedGap.id}
+                    <span className="font-mono text-[10px] font-bold text-amber-400 bg-[#08121B] px-2 py-0.5 rounded border border-[#1E2E3F]">
+                      {selectedGap.id.toUpperCase()}
                     </span>
-                    <span className="text-[10px] uppercase font-semibold text-text-secondary">
+                    <span className="text-[10px] uppercase font-mono font-bold text-slate-400">
                       {selectedGap.category.replace('_', ' ')}
                     </span>
                   </div>
-                  <h2 className="text-sm font-bold text-text-primary">{selectedGap.title}</h2>
+                  <h2 className="text-sm font-bold text-white font-sans">{selectedGap.title}</h2>
                 </div>
 
                 {/* Status Toggle Dropdown */}
-                <div className="flex items-center gap-2 flex-shrink-0">
-                  <span className="font-semibold text-text-secondary text-[11px]">Status:</span>
+                <div className="flex items-center gap-2 flex-shrink-0 font-mono">
+                  <span className="text-slate-400 text-[11px]">Status:</span>
                   <select
                     value={selectedGap.status}
                     onChange={(e) => handleUpdateStatus(selectedGap.id, e.target.value as any)}
-                    className="px-2.5 py-1 text-xs font-semibold rounded border border-border-light bg-white focus:outline-none focus:border-brand-steelBlue"
+                    className="px-2.5 py-1 text-xs font-semibold rounded-lg border border-[#22364A] bg-[#08121B] text-slate-200 focus:outline-none focus:border-sky-500"
                   >
                     <option value="open">Open</option>
                     <option value="investigating">Investigating</option>
@@ -198,43 +208,49 @@ export default function InvestigationGapsPage() {
 
               {/* Factual Description */}
               <div className="space-y-1">
-                <span className="font-semibold text-text-primary block">Observed Factual Gap</span>
-                <p className="p-3 bg-bg-main rounded border border-border-subtle text-text-primary leading-relaxed">
+                <span className="font-mono text-[11px] font-bold text-slate-300 block uppercase">
+                  Observed Factual Lacuna / Gap
+                </span>
+                <p className="p-3 bg-[#08121B] rounded-lg border border-[#1E2E3F] text-slate-200 leading-relaxed font-sans">
                   {selectedGap.description}
                 </p>
               </div>
 
               {/* Why It Matters */}
               <div className="space-y-1">
-                <span className="font-semibold text-text-primary block">Investigative Significance</span>
-                <p className="p-3 bg-bg-highlight/30 rounded border border-border-subtle text-text-primary leading-relaxed">
+                <span className="font-mono text-[11px] font-bold text-amber-400 block uppercase">
+                  Investigative & Legal Significance
+                </span>
+                <p className="p-3 bg-[#0D1A27] rounded-lg border border-sky-900/60 text-slate-200 leading-relaxed font-sans">
                   {selectedGap.whyItMatters}
                 </p>
               </div>
 
               {/* What Is Unknown */}
               <div className="space-y-1">
-                <span className="font-semibold text-text-primary block">What Remains Unresolved</span>
-                <p className="p-3 bg-status-warningBg/30 rounded border border-status-warningBorder text-text-primary leading-relaxed font-mono text-[11px]">
+                <span className="font-mono text-[11px] font-bold text-rose-400 block uppercase">
+                  Unresolved Forensic Void
+                </span>
+                <p className="p-3 bg-rose-950/20 rounded-lg border border-rose-900/60 text-slate-200 leading-relaxed font-mono text-[11px]">
                   {selectedGap.whatIsUnknown}
                 </p>
               </div>
 
               {/* Actionable Next Step */}
               <div className="space-y-1">
-                <span className="font-semibold text-text-primary block">
-                  Recommended Concrete Verification Action
+                <span className="font-mono text-[11px] font-bold text-emerald-400 block uppercase">
+                  Recommended Concrete Police Verification Step
                 </span>
-                <div className="p-3 bg-status-successBg/40 border border-status-successBorder rounded text-status-success font-medium flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                  <span className="text-text-primary">{selectedGap.suggestedNextStep}</span>
+                <div className="p-3 bg-emerald-950/20 border border-emerald-900/70 rounded-lg text-emerald-300 font-medium flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-400" />
+                  <span className="text-slate-100 font-sans">{selectedGap.suggestedNextStep}</span>
                 </div>
               </div>
 
               {/* Dismissal Reason Form if dismissed */}
               {selectedGap.status === 'dismissed' && (
-                <div className="pt-3 border-t border-border-subtle space-y-2">
-                  <label className="font-semibold text-text-secondary block">
+                <div className="pt-3 border-t border-[#1E2E3F] space-y-2">
+                  <label className="font-mono text-[11px] text-slate-400 block uppercase font-bold">
                     Document Reason for Dismissal
                   </label>
                   <textarea
@@ -242,11 +258,11 @@ export default function InvestigationGapsPage() {
                     value={dismissalNote}
                     onChange={(e) => setDismissalNote(e.target.value)}
                     placeholder="e.g. Ruled non-material following physical lock inspection..."
-                    className="w-full p-2 border border-border-light rounded text-xs"
+                    className="w-full p-2.5 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500"
                   />
                   <button
                     onClick={() => handleUpdateStatus(selectedGap.id, 'dismissed')}
-                    className="px-3 py-1 bg-brand-deepTeal text-white rounded text-xs font-medium"
+                    className="px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded font-mono font-semibold text-xs"
                   >
                     Save Dismissal Record
                   </button>
@@ -254,8 +270,8 @@ export default function InvestigationGapsPage() {
               )}
             </div>
           ) : (
-            <div className="bg-white border border-border-light rounded-lg p-12 text-center text-xs text-text-secondary shadow-card">
-              Select an investigation gap from the list to review why it matters and recommended next steps.
+            <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl p-12 text-center text-xs text-slate-400 font-mono shadow-xl">
+              Select an investigation gap from the list to review why it matters and recommended police steps.
             </div>
           )}
         </div>

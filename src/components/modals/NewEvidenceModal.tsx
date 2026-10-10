@@ -13,6 +13,7 @@ import {
   AlertCircle,
   Loader2,
   Sparkles,
+  Shield,
 } from 'lucide-react';
 
 export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: () => void }) {
@@ -22,8 +23,8 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
   const [file, setFile] = useState<File | null>(null);
   const [title, setTitle] = useState('');
   const [evidenceType, setEvidenceType] = useState('witness_statement');
-  const [sourceDescription, setSourceDescription] = useState('');
-  const [recordedBy, setRecordedBy] = useState('Inspector A. Sen');
+  const [sourceDescription, setSourceDescription] = useState('Wakad Police Station Crime Cell');
+  const [recordedBy, setRecordedBy] = useState('Sr. PI Vitthal More (Wakad PS)');
   const [manualText, setManualText] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -99,45 +100,45 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xs p-4 select-none">
-      <div className="bg-white rounded-lg border border-border-light shadow-modal w-full max-w-xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 select-none text-slate-100">
+      <div className="bg-[#0C1724] rounded-xl border border-[#1E2E3F] shadow-2xl w-full max-w-xl overflow-hidden text-xs">
         {/* Header */}
-        <div className="px-5 py-3.5 bg-bg-main border-b border-border-light flex items-center justify-between">
+        <div className="px-5 py-3.5 bg-[#0F1B2A] border-b border-[#1E2E3F] flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <FilePlus2 className="w-4 h-4 text-brand-steelBlue" />
+            <FilePlus2 className="w-4 h-4 text-sky-400" />
             <div>
-              <h3 className="font-semibold text-sm text-text-primary">
-                Ingest Evidence into Investigation Vault
+              <h3 className="font-bold text-sm text-white font-mono uppercase tracking-wide">
+                Ingest Evidence into PCPC Vault
               </h3>
-              <p className="text-[10px] text-text-secondary">
-                Target Case:{' '}
-                <span className="font-mono font-medium text-brand-steelBlue">
+              <p className="text-[10px] text-slate-400 font-mono">
+                Target Dossier:{' '}
+                <span className="font-bold text-sky-400">
                   {activeCase?.referenceNumber || activeCaseId}
                 </span>
               </p>
             </div>
           </div>
-          <button onClick={handleClose} className="text-text-muted hover:text-text-primary p-1 rounded">
+          <button onClick={handleClose} className="text-slate-400 hover:text-white p-1 rounded transition-colors">
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Tab switch */}
-        <div className="flex border-b border-border-light bg-bg-muted/40 text-xs">
+        <div className="flex border-b border-[#1E2E3F] bg-[#08121B] text-xs font-mono">
           <button
             type="button"
             onClick={() => {
               setTab('upload');
               setError('');
             }}
-            className={`flex-1 py-2.5 px-4 font-medium flex items-center justify-center gap-2 border-b-2 transition-colors ${
+            className={`flex-1 py-2.5 px-4 font-semibold flex items-center justify-center gap-2 border-b-2 transition-colors ${
               tab === 'upload'
-                ? 'border-brand-steelBlue text-brand-deepTeal bg-white font-semibold'
-                : 'border-transparent text-text-secondary hover:text-text-primary'
+                ? 'border-sky-500 text-sky-300 bg-[#0C1724]'
+                : 'border-transparent text-slate-400 hover:text-white'
             }`}
           >
             <Upload className="w-3.5 h-3.5" />
-            <span>Upload File (PDF / DOCX / TXT / IMG)</span>
+            <span>Upload File (PDF / DOCX / TXT / CSV)</span>
           </button>
 
           <button
@@ -146,38 +147,40 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
               setTab('manual');
               setError('');
             }}
-            className={`flex-1 py-2.5 px-4 font-medium flex items-center justify-center gap-2 border-b-2 transition-colors ${
+            className={`flex-1 py-2.5 px-4 font-semibold flex items-center justify-center gap-2 border-b-2 transition-colors ${
               tab === 'manual'
-                ? 'border-brand-steelBlue text-brand-deepTeal bg-white font-semibold'
-                : 'border-transparent text-text-secondary hover:text-text-primary'
+                ? 'border-sky-500 text-sky-300 bg-[#0C1724]'
+                : 'border-transparent text-slate-400 hover:text-white'
             }`}
           >
             <FileText className="w-3.5 h-3.5" />
-            <span>Manual Statement / Log Entry</span>
+            <span>Verbatim Statement / CDR Entry</span>
           </button>
         </div>
 
         {/* Form Body */}
         {successInfo ? (
           <div className="p-6 space-y-4 text-center">
-            <div className="w-12 h-12 rounded-full bg-status-successBg border border-status-successBorder text-status-success mx-auto flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-emerald-950/80 border border-emerald-800 text-emerald-400 mx-auto flex items-center justify-center">
               <FileCheck2 className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-semibold text-sm text-text-primary">Evidence Successfully Ingested & Processed</h4>
-              <p className="text-xs text-text-secondary mt-1 max-w-md mx-auto">
-                Text was extracted and analyzed for named entities, timestamps, and factual claims.
+              <h4 className="font-bold text-sm text-white font-mono uppercase">
+                Evidence Ingested & Cryptographically Sealed
+              </h4>
+              <p className="text-xs text-slate-300 mt-1 max-w-md mx-auto font-sans">
+                Verbatim text was extracted, SHA-256 hashed, and analyzed for named entities, timestamps, and factual claims.
               </p>
             </div>
 
-            <div className="bg-bg-main p-3 rounded border border-border-subtle text-left text-xs space-y-1">
-              <div className="font-medium text-text-primary">{successInfo.title}</div>
-              <div className="text-[11px] text-text-secondary">Type: <span className="font-mono">{successInfo.evidenceType}</span></div>
-              <div className="text-[11px] text-text-secondary">Extracted Claims: <span className="font-semibold text-brand-steelBlue">{successInfo.claims?.length || 0}</span></div>
-              <div className="text-[11px] text-text-secondary">Hash: <span className="font-mono text-[10px]">{successInfo.fileHash}</span></div>
+            <div className="bg-[#08121B] p-3 rounded-lg border border-[#1E2E3F] text-left text-xs space-y-1 font-mono">
+              <div className="font-bold text-white font-sans">{successInfo.title}</div>
+              <div className="text-[11px] text-slate-400">Type: <span className="text-sky-300">{successInfo.evidenceType}</span></div>
+              <div className="text-[11px] text-slate-400">Extracted Claims: <span className="font-bold text-sky-400">{successInfo.claims?.length || 0}</span></div>
+              <div className="text-[11px] text-slate-400">Integrity Hash: <span className="text-emerald-400 text-[10px]">{successInfo.fileHash}</span></div>
             </div>
 
-            <div className="flex justify-center gap-3 pt-2">
+            <div className="flex justify-center gap-3 pt-2 font-mono">
               <button
                 type="button"
                 onClick={() => {
@@ -186,14 +189,14 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
                   setManualText('');
                   setFile(null);
                 }}
-                className="px-3 py-1.5 border border-border-light text-text-primary rounded text-xs hover:bg-bg-main"
+                className="px-3.5 py-1.5 border border-[#22364A] text-slate-300 rounded-lg text-xs hover:bg-[#122030]"
               >
                 Ingest Another Item
               </button>
               <button
                 type="button"
                 onClick={handleClose}
-                className="px-4 py-1.5 bg-brand-deepTeal text-white rounded text-xs hover:bg-brand-darkSteelTeal font-medium"
+                className="px-4 py-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-bold"
               >
                 Done
               </button>
@@ -202,7 +205,7 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
         ) : (
           <form onSubmit={handleSubmit} className="p-5 space-y-3.5 text-xs">
             {error && (
-              <div className="p-2.5 rounded bg-status-criticalBg border border-status-criticalBorder text-status-critical flex items-center gap-2">
+              <div className="p-2.5 rounded-lg bg-rose-950/80 border border-rose-800 text-rose-300 flex items-center gap-2">
                 <AlertCircle className="w-4 h-4 flex-shrink-0" />
                 <span>{error}</span>
               </div>
@@ -210,35 +213,35 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block font-medium text-text-primary mb-1">
+                <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
                   Evidence Classification *
                 </label>
                 <select
                   value={evidenceType}
                   onChange={(e) => setEvidenceType(e.target.value)}
-                  className="w-full px-2.5 py-1.5 border border-border-light rounded focus:outline-none focus:border-brand-steelBlue bg-white"
+                  className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 focus:outline-none focus:border-sky-500 font-mono"
                 >
-                  <option value="witness_statement">Witness Statement</option>
+                  <option value="witness_statement">Witness Statement (Sec 161 CrPC)</option>
                   <option value="fir_document">FIR / Police Report</option>
-                  <option value="cctv_observation">CCTV Observation Record</option>
-                  <option value="movement_record">Movement / Toll / Travel Record</option>
-                  <option value="digital_record">Digital CDR / Keypad / Device Record</option>
-                  <option value="forensic_report">Forensic / Ballistic / DNA Report</option>
-                  <option value="physical_evidence">Physical Evidence Inventory</option>
-                  <option value="other">Other Document</option>
+                  <option value="cctv_observation">CCTV / ANPR Record</option>
+                  <option value="movement_record">FASTag / Toll Movement Log</option>
+                  <option value="digital_record">Digital CDR / Keypad / Device</option>
+                  <option value="forensic_report">Forensic Panchnama / FSL</option>
+                  <option value="physical_evidence">Physical Seizure Inventory</option>
+                  <option value="other">Other Record</option>
                 </select>
               </div>
 
               <div>
-                <label className="block font-medium text-text-primary mb-1">
-                  Evidence Title / Designation *
+                <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
+                  Evidence Title / Reference *
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. Sworn Statement of Security Guard"
+                  placeholder="e.g. Sworn Panchnama of Recovery"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full px-2.5 py-1.5 border border-border-light rounded focus:outline-none focus:border-brand-steelBlue"
+                  className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 focus:outline-none focus:border-sky-500 font-sans"
                   required
                 />
               </div>
@@ -246,10 +249,10 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
 
             {tab === 'upload' ? (
               <div>
-                <label className="block font-medium text-text-primary mb-1">
+                <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
                   File Attachment (PDF, DOCX, TXT, CSV, JPEG) *
                 </label>
-                <div className="border-2 border-dashed border-border-light hover:border-brand-steelBlue rounded-md p-4 text-center cursor-pointer bg-bg-main/40 transition-colors">
+                <div className="border-2 border-dashed border-[#1E2E3F] hover:border-sky-500 rounded-lg p-5 text-center cursor-pointer bg-[#08121B] transition-colors">
                   <input
                     type="file"
                     id="file-upload"
@@ -262,15 +265,15 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
                     }}
                   />
                   <label htmlFor="file-upload" className="cursor-pointer block">
-                    <Upload className="w-6 h-6 text-brand-mutedBlueTeal mx-auto mb-1.5" />
-                    <div className="font-medium text-text-primary">
-                      {file ? file.name : 'Click to select or drag and drop document'}
+                    <Upload className="w-6 h-6 text-sky-400 mx-auto mb-1.5" />
+                    <div className="font-semibold text-white">
+                      {file ? file.name : 'Click to select or drag and drop official document'}
                     </div>
-                    <div className="text-[10px] text-text-secondary mt-0.5">
-                      Supports PDF, Microsoft Word (.docx), Plain Text (.txt), CSV, and Images
+                    <div className="text-[10px] text-slate-400 mt-0.5">
+                      Supports PDF, Microsoft Word (.docx), Plain Text (.txt), CSV, and Scanned Panchnama
                     </div>
                     {file && (
-                      <div className="text-[10px] font-mono text-brand-steelBlue mt-1">
+                      <div className="text-[10px] font-mono text-sky-400 mt-1">
                         Size: {(file.size / 1024).toFixed(1)} KB
                       </div>
                     )}
@@ -279,15 +282,15 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
               </div>
             ) : (
               <div>
-                <label className="block font-medium text-text-primary mb-1">
-                  Verbatim Statement or Log Text *
+                <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
+                  Verbatim Statement or Telemetry Text *
                 </label>
                 <textarea
                   rows={5}
-                  placeholder={`Paste or type statement verbatim, e.g.:\n"At 21:15 hours, I observed a silver car idling near the alley. An individual in a dark jacket stepped out and entered through Door 2B..."`}
+                  placeholder={`Paste statement verbatim, e.g.:\n"On 24-Oct-2025 at 22:18 hours, rear service Door 2B was disarmed via emergency code 7291..."`}
                   value={manualText}
                   onChange={(e) => setManualText(e.target.value)}
-                  className="w-full px-2.5 py-1.5 border border-border-light rounded focus:outline-none focus:border-brand-steelBlue font-mono text-[11px]"
+                  className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 focus:outline-none focus:border-sky-500 font-mono text-[11px]"
                   required
                 />
               </div>
@@ -295,49 +298,49 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block font-medium text-text-primary mb-1">
+                <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
                   Source Provenance / Origin
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. Sector 4 Police Diary / Witness Interview"
+                  placeholder="e.g. Wakad Police Station Diary"
                   value={sourceDescription}
                   onChange={(e) => setSourceDescription(e.target.value)}
-                  className="w-full px-2.5 py-1.5 border border-border-light rounded focus:outline-none focus:border-brand-steelBlue"
+                  className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 focus:outline-none focus:border-sky-500"
                 />
               </div>
 
               <div>
-                <label className="block font-medium text-text-primary mb-1">
-                  Collector / Recording Officer
+                <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
+                  Collector / Investigating Officer
                 </label>
                 <input
                   type="text"
                   value={recordedBy}
                   onChange={(e) => setRecordedBy(e.target.value)}
-                  className="w-full px-2.5 py-1.5 border border-border-light rounded focus:outline-none focus:border-brand-steelBlue"
+                  className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 focus:outline-none focus:border-sky-500"
                 />
               </div>
             </div>
 
-            <div className="pt-3 border-t border-border-light flex items-center justify-between">
-              <div className="flex items-center gap-1.5 text-[10px] text-text-secondary">
-                <Sparkles className="w-3 h-3 text-brand-mutedBlueTeal" />
-                <span>Deterministic extraction + AI verification enabled</span>
+            <div className="pt-3 border-t border-[#1E2E3F] flex items-center justify-between">
+              <div className="flex items-center gap-1.5 text-[10px] text-slate-400 font-mono">
+                <Sparkles className="w-3 h-3 text-sky-400" />
+                <span>Deterministic extraction + AI verification active</span>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 font-mono">
                 <button
                   type="button"
                   onClick={handleClose}
-                  className="px-3 py-1.5 border border-border-light text-text-secondary hover:bg-bg-main rounded font-medium"
+                  className="px-3 py-1.5 border border-[#22364A] text-slate-400 hover:text-white rounded-lg"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-1.5 bg-brand-deepTeal hover:bg-brand-darkSteelTeal text-white font-medium rounded shadow-subtle flex items-center gap-1.5 disabled:opacity-60"
+                  className="px-4 py-1.5 bg-sky-600 hover:bg-sky-500 text-white font-semibold rounded-lg shadow-md flex items-center gap-1.5 disabled:opacity-60"
                 >
                   {submitting && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
                   <span>{submitting ? 'Extracting & Ingesting...' : 'Ingest & Process'}</span>

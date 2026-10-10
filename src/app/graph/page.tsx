@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCase } from '@/context/CaseContext';
 import {
   ReactFlow,
@@ -29,14 +29,16 @@ import {
   FileText,
   X,
   ExternalLink,
+  Crosshair,
+  ShieldAlert,
 } from 'lucide-react';
 
 const CATEGORY_COLORS: Record<string, { bg: string; border: string; text: string }> = {
-  person: { bg: '#EBF1F5', border: '#1E566C', text: '#172B35' },
-  vehicle: { bg: '#EEF7FC', border: '#1F7DAD', text: '#172B35' },
-  location: { bg: '#EBF5F0', border: '#2E7D5B', text: '#172B35' },
-  device: { bg: '#FEF7EC', border: '#C07D2B', text: '#172B35' },
-  organization: { bg: '#F4F7F9', border: '#5795A7', text: '#172B35' },
+  person: { bg: '#0F1E2E', border: '#38BDF8', text: '#F1F5F9' },
+  vehicle: { bg: '#0F2333', border: '#0EA5E9', text: '#F1F5F9' },
+  location: { bg: '#0B261D', border: '#10B981', text: '#F1F5F9' },
+  device: { bg: '#261B0E', border: '#F59E0B', text: '#F1F5F9' },
+  organization: { bg: '#1C162A', border: '#A855F7', text: '#F1F5F9' },
 };
 
 export default function RelationshipGraphPage() {
@@ -82,10 +84,9 @@ export default function RelationshipGraphPage() {
   useEffect(() => {
     if (entities.length === 0) return;
 
-    // Layout nodes in organized concentric or clustered pattern
-    const centerX = 380;
-    const centerY = 260;
-    const radius = 240;
+    const centerX = 420;
+    const centerY = 300;
+    const radius = 250;
 
     const flowNodes: Node[] = entities.map((ent, i) => {
       const angle = (i / entities.length) * 2 * Math.PI;
@@ -99,21 +100,21 @@ export default function RelationshipGraphPage() {
         position: { x, y },
         data: {
           label: (
-            <div className="p-2 text-left">
-              <div className="flex items-center justify-between gap-1 mb-1">
-                <span className="text-[9px] uppercase font-bold tracking-wider opacity-80">
+            <div className="p-2.5 text-left text-slate-100">
+              <div className="flex items-center justify-between gap-1 mb-1 font-mono">
+                <span className="text-[9px] uppercase font-bold tracking-wider text-sky-400">
                   {ent.category}
                 </span>
                 <span
-                  className={`text-[8px] px-1 rounded font-semibold ${
-                    ent.status === 'flagged' ? 'bg-[#FDEEEB] text-[#B84A39]' : 'bg-[#EBF5F0] text-[#2E7D5B]'
+                  className={`text-[8px] px-1 py-0.2 rounded font-bold uppercase ${
+                    ent.status === 'flagged' ? 'bg-rose-950 text-rose-300 border border-rose-800' : 'bg-emerald-950 text-emerald-300 border border-emerald-800'
                   }`}
                 >
                   {ent.status}
                 </span>
               </div>
-              <div className="font-bold text-xs leading-tight truncate">{ent.name}</div>
-              <div className="text-[10px] text-text-secondary truncate mt-0.5 capitalize">
+              <div className="font-bold text-xs leading-tight truncate text-white">{ent.name}</div>
+              <div className="text-[10px] text-slate-400 truncate mt-0.5 capitalize font-mono">
                 {ent.role.replace('_', ' ')}
               </div>
             </div>
@@ -122,11 +123,11 @@ export default function RelationshipGraphPage() {
         },
         style: {
           background: color.bg,
-          border: `2px solid ${color.border}`,
-          borderRadius: '8px',
+          border: `1.5px solid ${color.border}`,
+          borderRadius: '10px',
           color: color.text,
-          width: 175,
-          boxShadow: '0 2px 5px rgba(23, 43, 53, 0.08)',
+          width: 185,
+          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)',
         },
       };
     });
@@ -141,13 +142,27 @@ export default function RelationshipGraphPage() {
         type: 'smoothstep',
         animated: isDisputed,
         style: {
-          stroke: isDisputed ? '#B84A39' : '#367589',
+          stroke: isDisputed ? '#EF4444' : '#0EA5E9',
           strokeWidth: 2,
           strokeDasharray: isDisputed ? '4,4' : undefined,
         },
+        labelStyle: {
+          fill: '#F1F5F9',
+          fontWeight: 600,
+          fontSize: 10,
+          fontFamily: 'monospace',
+        },
+        labelBgStyle: {
+          fill: '#08121B',
+          fillOpacity: 0.85,
+          stroke: isDisputed ? '#EF4444' : '#1E2E3F',
+          strokeWidth: 1,
+          rx: 4,
+          ry: 4,
+        },
         markerEnd: {
           type: MarkerType.ArrowClosed,
-          color: isDisputed ? '#B84A39' : '#367589',
+          color: isDisputed ? '#EF4444' : '#0EA5E9',
           width: 16,
           height: 16,
         },
@@ -170,39 +185,47 @@ export default function RelationshipGraphPage() {
   };
 
   return (
-    <div className="space-y-4 max-w-7xl mx-auto h-[calc(100vh-6rem)] flex flex-col">
+    <div className="space-y-4 max-w-7xl mx-auto h-[calc(100vh-6.5rem)] flex flex-col text-slate-100">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 flex-shrink-0">
         <div>
-          <h1 className="text-xl font-bold text-text-primary tracking-tight flex items-center gap-2">
-            <Network className="w-5 h-5 text-brand-steelBlue" />
-            <span>Interactive Evidence Relationship Topology</span>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 font-bold border border-sky-800">
+              NETWORK CORRELATION TOPOLOGY
+            </span>
+            <span className="text-[10px] font-mono text-slate-400">
+              PCPC ENTITY & ASSET MAPPING
+            </span>
+          </div>
+          <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+            <Network className="w-5 h-5 text-sky-400" />
+            <span>Interactive Forensic Network Topology</span>
           </h1>
-          <p className="text-xs text-text-secondary mt-0.5">
-            Evidence-backed relational graph mapping suspects, vehicles, keypads, and cell nodes for {activeCase?.referenceNumber}.
+          <p className="text-xs text-slate-400 mt-0.5 font-sans">
+            Cross-referenced topological graph mapping suspects, vehicles, cell towers, and vault keypads for {activeCase?.referenceNumber}.
           </p>
         </div>
 
         {/* Legend */}
-        <div className="flex items-center gap-3 text-[11px] bg-white border border-border-light px-3 py-1.5 rounded-lg shadow-subtle">
-          <span className="font-semibold text-text-secondary">Legend:</span>
-          <span className="flex items-center gap-1 text-text-primary">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#1E566C]" /> Person
+        <div className="flex flex-wrap items-center gap-3 text-[10px] font-mono bg-[#0C1724] border border-[#1E2E3F] px-3 py-1.5 rounded-lg shadow-md">
+          <span className="text-slate-400">LEGEND:</span>
+          <span className="flex items-center gap-1 text-slate-200">
+            <span className="w-2.5 h-2.5 rounded-full bg-sky-400" /> Person
           </span>
-          <span className="flex items-center gap-1 text-text-primary">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#1F7DAD]" /> Vehicle
+          <span className="flex items-center gap-1 text-slate-200">
+            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400" /> Vehicle
           </span>
-          <span className="flex items-center gap-1 text-text-primary">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#2E7D5B]" /> Location
+          <span className="flex items-center gap-1 text-slate-200">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" /> Location
           </span>
-          <span className="flex items-center gap-1 text-text-primary">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#C07D2B]" /> Device / Cell Mast
+          <span className="flex items-center gap-1 text-slate-200">
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-400" /> Device / Tower
           </span>
         </div>
       </div>
 
       {/* Main Flow Canvas with Slide-out Inspector Panel */}
-      <div className="flex-1 bg-white border border-border-light rounded-lg shadow-card relative overflow-hidden">
+      <div className="flex-1 bg-[#070E17] border border-[#1E2E3F] rounded-xl shadow-2xl relative overflow-hidden">
         <ReactFlow
           nodes={nodes}
           edges={edges}
@@ -215,71 +238,76 @@ export default function RelationshipGraphPage() {
           maxZoom={2.5}
           attributionPosition="bottom-left"
         >
-          <Background color="#D9E3E8" gap={20} size={1} />
-          <Controls position="top-right" />
+          <Background color="#162738" gap={24} size={1} />
+          <Controls position="top-right" className="bg-[#0C1724] border border-[#1E2E3F] text-white" />
           <MiniMap
             nodeColor={(n) => {
               const cat = (n.data?.rawEntity as Entity)?.category;
-              return CATEGORY_COLORS[cat]?.border || '#367589';
+              return CATEGORY_COLORS[cat]?.border || '#0EA5E9';
             }}
-            style={{ width: 140, height: 100 }}
+            maskColor="rgba(7, 14, 23, 0.75)"
+            style={{ width: 140, height: 100, backgroundColor: '#09121B', border: '1px solid #1E2E3F' }}
           />
         </ReactFlow>
 
         {/* Node Detail Inspector Slide-out */}
         {selectedEntity && (
-          <div className="absolute top-4 right-4 w-80 bg-white border border-border-light rounded-lg shadow-modal p-4 text-xs z-40 max-h-[85%] overflow-y-auto space-y-3">
-            <div className="flex items-start justify-between gap-2 border-b border-border-subtle pb-2">
+          <div className="absolute top-4 right-4 w-84 bg-[#0C1724] border border-[#1E2E3F] rounded-xl shadow-2xl p-4 text-xs z-40 max-h-[85%] overflow-y-auto space-y-3 text-slate-100">
+            <div className="flex items-start justify-between gap-2 border-b border-[#1E2E3F] pb-2">
               <div>
-                <span className="text-[9px] uppercase font-mono font-bold text-brand-steelBlue block">
+                <span className="text-[9px] uppercase font-mono font-bold text-sky-400 block">
                   Entity Inspector
                 </span>
-                <h3 className="font-bold text-sm text-text-primary leading-tight">
+                <h3 className="font-bold text-sm text-white leading-tight font-sans">
                   {selectedEntity.name}
                 </h3>
               </div>
               <button
                 onClick={() => setSelectedEntity(null)}
-                className="text-text-muted hover:text-text-primary p-0.5 rounded"
+                className="text-slate-400 hover:text-white p-0.5 rounded"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="grid grid-cols-2 gap-2 text-[11px]">
-              <div className="bg-bg-main p-2 rounded">
-                <span className="font-semibold text-text-secondary block">Category</span>
-                <span className="capitalize font-medium text-text-primary">
+            <div className="grid grid-cols-2 gap-2 text-[11px] font-mono">
+              <div className="bg-[#08121B] p-2 rounded-lg border border-[#1E2E3F]">
+                <span className="text-slate-400 block text-[10px]">CATEGORY</span>
+                <span className="capitalize font-bold text-sky-300">
                   {selectedEntity.category}
                 </span>
               </div>
-              <div className="bg-bg-main p-2 rounded">
-                <span className="font-semibold text-text-secondary block">Role</span>
-                <span className="capitalize font-medium text-text-primary">
-                  {selectedEntity.role.replace('_', ' ')}
+              <div className="bg-[#08121B] p-2 rounded-lg border border-[#1E2E3F]">
+                <span className="text-slate-400 block text-[10px]">STATUS</span>
+                <span
+                  className={`capitalize font-bold ${
+                    selectedEntity.status === 'flagged' ? 'text-rose-400' : 'text-emerald-400'
+                  }`}
+                >
+                  {selectedEntity.status}
                 </span>
               </div>
             </div>
 
             <div>
-              <span className="font-semibold text-[11px] text-text-secondary block mb-1">
-                Investigative Notes
+              <span className="font-mono text-[10px] font-bold text-slate-400 block mb-1 uppercase">
+                Investigative Annotations
               </span>
-              <p className="bg-bg-main/50 p-2.5 rounded border border-border-subtle text-text-primary leading-relaxed text-[11px]">
+              <p className="bg-[#08121B] p-2.5 rounded-lg border border-[#1E2E3F] text-slate-200 leading-relaxed text-[11px] font-sans">
                 {selectedEntity.notes || 'No investigative annotations on file.'}
               </p>
             </div>
 
             {selectedEntity.details && Object.keys(selectedEntity.details).length > 0 && (
               <div>
-                <span className="font-semibold text-[11px] text-text-secondary block mb-1">
+                <span className="font-mono text-[10px] font-bold text-slate-400 block mb-1 uppercase">
                   Metadata & Attributes
                 </span>
-                <div className="space-y-1 font-mono text-[10px] bg-bg-main p-2 rounded border border-border-subtle">
+                <div className="space-y-1 font-mono text-[10px] bg-[#08121B] p-2 rounded-lg border border-[#1E2E3F]">
                   {Object.entries(selectedEntity.details).map(([k, v]) => (
                     <div key={k} className="flex justify-between gap-2">
-                      <span className="text-text-secondary capitalize">{k}:</span>
-                      <span className="text-text-primary font-semibold truncate">{String(v)}</span>
+                      <span className="text-slate-400 capitalize">{k}:</span>
+                      <span className="text-sky-300 font-semibold truncate">{String(v)}</span>
                     </div>
                   ))}
                 </div>
@@ -288,7 +316,7 @@ export default function RelationshipGraphPage() {
 
             {selectedEntity.sourceEvidenceIds && selectedEntity.sourceEvidenceIds.length > 0 && (
               <div>
-                <span className="font-semibold text-[11px] text-text-secondary block mb-1">
+                <span className="font-mono text-[10px] font-bold text-slate-400 block mb-1 uppercase">
                   Source Evidence References
                 </span>
                 <div className="space-y-1">
@@ -297,12 +325,12 @@ export default function RelationshipGraphPage() {
                     return (
                       <div
                         key={evId}
-                        className="p-1.5 rounded bg-bg-highlight/40 border border-border-subtle flex items-center justify-between text-[11px]"
+                        className="p-1.5 rounded bg-[#0F1B2A] border border-[#1E2E3F] flex items-center justify-between text-[11px]"
                       >
-                        <span className="font-medium text-brand-deepTeal">
+                        <span className="font-medium text-slate-200 truncate">
                           {ev ? ev.title : evId}
                         </span>
-                        <span className="font-mono text-[9px] text-text-secondary uppercase">
+                        <span className="font-mono text-[9px] text-sky-400 uppercase font-bold flex-shrink-0 ml-2">
                           {evId}
                         </span>
                       </div>
@@ -316,38 +344,40 @@ export default function RelationshipGraphPage() {
 
         {/* Edge Detail Inspector Slide-out */}
         {selectedRelationship && (
-          <div className="absolute top-4 right-4 w-80 bg-white border border-border-light rounded-lg shadow-modal p-4 text-xs z-40 space-y-3">
-            <div className="flex items-start justify-between gap-2 border-b border-border-subtle pb-2">
+          <div className="absolute top-4 right-4 w-84 bg-[#0C1724] border border-[#1E2E3F] rounded-xl shadow-2xl p-4 text-xs z-40 space-y-3 text-slate-100">
+            <div className="flex items-start justify-between gap-2 border-b border-[#1E2E3F] pb-2">
               <div>
-                <span className="text-[9px] uppercase font-mono font-bold text-brand-steelBlue block">
+                <span className="text-[9px] uppercase font-mono font-bold text-sky-400 block">
                   Relationship Proof
                 </span>
-                <h3 className="font-bold text-sm text-text-primary">
+                <h3 className="font-bold text-sm text-white font-sans">
                   {selectedRelationship.label}
                 </h3>
               </div>
               <button
                 onClick={() => setSelectedRelationship(null)}
-                className="text-text-muted hover:text-text-primary p-0.5 rounded"
+                className="text-slate-400 hover:text-white p-0.5 rounded"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="bg-bg-main p-2.5 rounded border border-border-subtle space-y-1">
-              <span className="font-semibold text-text-secondary text-[11px]">Nature of Connection:</span>
-              <p className="text-text-primary text-xs leading-relaxed">
+            <div className="bg-[#08121B] p-2.5 rounded-lg border border-[#1E2E3F] space-y-1">
+              <span className="font-mono text-[10px] text-slate-400 uppercase block font-bold">
+                Nature of Connection:
+              </span>
+              <p className="text-slate-200 text-xs leading-relaxed font-sans">
                 {selectedRelationship.description}
               </p>
             </div>
 
-            <div className="flex items-center justify-between text-[11px]">
-              <span className="text-text-secondary font-medium">Verification Status:</span>
+            <div className="flex items-center justify-between text-[11px] font-mono">
+              <span className="text-slate-400">Verification Status:</span>
               <span
-                className={`px-1.5 py-0.5 rounded uppercase font-semibold text-[9px] ${
+                className={`px-1.5 py-0.5 rounded uppercase font-bold text-[9px] border ${
                   selectedRelationship.verificationStatus === 'disputed'
-                    ? 'bg-status-criticalBg text-status-critical'
-                    : 'bg-status-successBg text-status-success'
+                    ? 'bg-rose-950 text-rose-300 border-rose-800'
+                    : 'bg-emerald-950 text-emerald-300 border-emerald-800'
                 }`}
               >
                 {selectedRelationship.verificationStatus}
@@ -355,17 +385,17 @@ export default function RelationshipGraphPage() {
             </div>
 
             <div>
-              <span className="font-semibold text-[11px] text-text-secondary block mb-1">
+              <span className="font-mono text-[10px] font-bold text-slate-400 block mb-1 uppercase">
                 Supporting Source Documents
               </span>
               <div className="space-y-1">
                 {selectedRelationship.supportingEvidenceIds.map((evId) => (
                   <div
                     key={evId}
-                    className="p-1.5 rounded bg-bg-highlight/40 border border-border-subtle flex items-center justify-between text-[11px]"
+                    className="p-1.5 rounded bg-[#0F1B2A] border border-[#1E2E3F] flex items-center justify-between text-[11px]"
                   >
-                    <span className="text-brand-deepTeal font-medium">Evidence Record</span>
-                    <span className="font-mono text-[9px] text-text-secondary uppercase">{evId}</span>
+                    <span className="text-slate-200 font-medium">Evidence Record</span>
+                    <span className="font-mono text-[9px] text-sky-400 uppercase font-bold">{evId}</span>
                   </div>
                 ))}
               </div>

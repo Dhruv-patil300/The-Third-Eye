@@ -16,6 +16,7 @@ import {
   Terminal,
   Activity,
   Server,
+  ShieldAlert,
 } from 'lucide-react';
 
 export default function SettingsPage() {
@@ -49,7 +50,7 @@ export default function SettingsPage() {
   }, [activeCaseId]);
 
   const handleResetDemo = async () => {
-    if (confirm('Reset entire system database to the reference demonstration benchmark?')) {
+    if (confirm('Reset entire system database to the authentic Pimpri Chinchwad Police benchmark case (FIR No. 0389/2025 Wakad PS)?')) {
       setResetting(true);
       await resetToDemo();
       await fetchAuditLogs();
@@ -66,160 +67,168 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="space-y-6 max-w-5xl mx-auto text-xs">
+    <div className="space-y-6 max-w-5xl mx-auto text-xs text-slate-100">
       {/* Header */}
       <div>
-        <h1 className="text-xl font-bold text-text-primary tracking-tight flex items-center gap-2">
-          <Settings className="w-5 h-5 text-brand-steelBlue" />
-          <span>System Settings & Forensic Audit Trail</span>
+        <div className="flex items-center gap-2 mb-1">
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 font-bold border border-sky-800">
+            SYSTEM INTEGRITY & LOGS
+          </span>
+          <span className="text-[10px] font-mono text-slate-400">
+            WAKAD PS // PCPC CRIME BRANCH
+          </span>
+        </div>
+        <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+          <Settings className="w-5 h-5 text-sky-400" />
+          <span>System Administration & Chain of Custody Audit</span>
         </h1>
-        <p className="text-text-secondary mt-1">
-          Configure analytical runtime adapters, review system integrity logs, and manage persistent storage.
+        <p className="text-slate-400 mt-1 font-sans">
+          Runtime intelligence models, cryptographic persistence status, and immutable Section 172 Cr.P.C. / BNSS case diary audit trail.
         </p>
       </div>
 
       {/* Grid: AI Provider & Storage Persistence */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* AI Engine Configuration */}
-        <div className="bg-white border border-border-light rounded-lg p-5 shadow-card space-y-4">
-          <div className="flex items-center justify-between border-b border-border-subtle pb-2.5">
+        <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl p-5 shadow-xl space-y-4">
+          <div className="flex items-center justify-between border-b border-[#1E2E3F] pb-2.5">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-brand-steelBlue" />
-              <h2 className="font-bold text-sm text-text-primary">Analytical AI Engine</h2>
+              <Sparkles className="w-4 h-4 text-sky-400" />
+              <h2 className="font-bold text-sm text-white font-mono uppercase">Analytical AI Engine</h2>
             </div>
-            <span className="text-[10px] px-2 py-0.5 rounded font-mono font-semibold bg-status-successBg text-status-success border border-status-successBorder">
-              Engine Ready
+            <span className="text-[10px] px-2 py-0.5 rounded font-mono font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-800">
+              ENGINE READY
             </span>
           </div>
 
-          <div className="space-y-2 text-text-secondary">
-            <div className="flex items-center justify-between p-2 rounded bg-bg-main border border-border-subtle">
-              <span className="font-medium text-text-primary">Primary Provider:</span>
-              <span className="font-mono text-brand-deepTeal font-semibold">Local Deterministic Engine</span>
+          <div className="space-y-2 text-slate-300">
+            <div className="flex items-center justify-between p-2.5 rounded-lg bg-[#08121B] border border-[#1E2E3F] font-mono">
+              <span className="font-bold text-slate-200">Primary Provider:</span>
+              <span className="text-sky-400 font-bold">Local Grounded Forensics</span>
             </div>
-            <p className="text-[11px] leading-relaxed">
-              The local engine extracts named entities, timestamps, vehicle plates, and PIN credentials with zero external network latency and complete evidentiary air-gapping.
+            <p className="text-[11px] leading-relaxed font-sans text-slate-300">
+              The local engine indexes CDR towers, ANPR plates, PIN logs, and panchnama depositions with zero external network latency and complete evidentiary air-gapping.
             </p>
           </div>
 
-          <form onSubmit={handleSaveKey} className="space-y-2 pt-2 border-t border-border-subtle">
-            <label className="block font-medium text-text-primary">
+          <form onSubmit={handleSaveKey} className="space-y-2 pt-2 border-t border-[#1E2E3F]">
+            <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase">
               Optional Google Gemini API Key
             </label>
-            <div className="flex gap-2">
+            <div className="flex gap-2 font-mono">
               <input
                 type="password"
                 placeholder="AIzaSy..."
                 value={geminiKey}
                 onChange={(e) => setGeminiKey(e.target.value)}
-                className="flex-1 px-2.5 py-1.5 border border-border-light rounded text-xs focus:outline-none focus:border-brand-steelBlue font-mono"
+                className="flex-1 px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 text-xs focus:outline-none focus:border-sky-500"
               />
               <button
                 type="submit"
-                className="px-3 py-1.5 bg-brand-deepTeal hover:bg-brand-darkSteelTeal text-white rounded font-medium text-xs shadow-subtle"
+                className="px-3 py-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg font-bold text-xs shadow-md"
               >
                 Apply
               </button>
             </div>
             {keySaved && (
-              <span className="text-[10px] text-status-success font-medium flex items-center gap-1">
+              <span className="text-[10px] text-emerald-400 font-mono font-semibold flex items-center gap-1">
                 <CheckCircle2 className="w-3 h-3" />
-                <span>Configuration noted in runtime memory.</span>
+                <span>Configuration updated in runtime memory.</span>
               </span>
             )}
           </form>
         </div>
 
         {/* Database & Storage */}
-        <div className="bg-white border border-border-light rounded-lg p-5 shadow-card space-y-4">
-          <div className="flex items-center justify-between border-b border-border-subtle pb-2.5">
+        <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl p-5 shadow-xl space-y-4">
+          <div className="flex items-center justify-between border-b border-[#1E2E3F] pb-2.5">
             <div className="flex items-center gap-2">
-              <Database className="w-4 h-4 text-brand-steelBlue" />
-              <h2 className="font-bold text-sm text-text-primary">Evidentiary Persistence</h2>
+              <Database className="w-4 h-4 text-sky-400" />
+              <h2 className="font-bold text-sm text-white font-mono uppercase">Atomic Storage Integrity</h2>
             </div>
-            <span className="text-[10px] px-2 py-0.5 rounded font-mono font-semibold bg-bg-highlight text-brand-deepTeal border border-border-subtle">
-              Atomic Disk DB
+            <span className="text-[10px] px-2 py-0.5 rounded font-mono font-bold bg-sky-950/80 text-sky-300 border border-sky-800">
+              ATOMIC DISK DB
             </span>
           </div>
 
-          <div className="space-y-2 text-[11px] text-text-secondary">
-            <div className="p-2.5 bg-bg-main rounded border border-border-subtle space-y-1 font-mono text-[10px]">
+          <div className="space-y-2 text-[11px] text-slate-300">
+            <div className="p-2.5 bg-[#08121B] rounded-lg border border-[#1E2E3F] space-y-1 font-mono text-[10px]">
               <div className="flex justify-between">
-                <span>Storage Path:</span>
-                <span className="text-text-primary">./data/storage.json</span>
+                <span className="text-slate-400">Storage Path:</span>
+                <span className="text-sky-300 font-semibold">./data/storage.json</span>
               </div>
               <div className="flex justify-between">
-                <span>Integrity Lock:</span>
-                <span className="text-status-success font-semibold">Active Mutex (Atomic Rename)</span>
+                <span className="text-slate-400">Lock Mechanism:</span>
+                <span className="text-emerald-400 font-bold">Active Mutex (Atomic Rename)</span>
               </div>
               <div className="flex justify-between">
-                <span>Active Isolation:</span>
-                <span className="text-text-primary">{activeCase?.referenceNumber}</span>
+                <span className="text-slate-400">Active Dossier:</span>
+                <span className="text-slate-200 font-bold">{activeCase?.referenceNumber}</span>
               </div>
             </div>
-            <p className="leading-relaxed">
-              Every newly uploaded evidence item, created entity, or changed contradiction status is safely persisted to disk.
+            <p className="leading-relaxed font-sans text-slate-300">
+              Every newly ingested evidence item, created entity, or changed contradiction status is safely persisted to disk.
             </p>
           </div>
 
-          <div className="pt-2 border-t border-border-subtle flex items-center justify-between">
+          <div className="pt-2 border-t border-[#1E2E3F] flex items-center justify-between">
             <div>
-              <span className="font-medium text-text-primary block">Reset Benchmark</span>
-              <span className="text-[10px] text-text-secondary">Restore the reference Greenwood Jewellers case.</span>
+              <span className="font-bold text-white block font-mono text-[11px]">Restore Benchmark Case</span>
+              <span className="text-[10px] text-slate-400">Reset to Wakad PS Jewellery Vault Heist.</span>
             </div>
             <button
               onClick={handleResetDemo}
               disabled={resetting}
-              className="px-3 py-1.5 bg-white border border-border-light hover:bg-bg-main text-text-primary rounded font-medium flex items-center gap-1.5 shadow-subtle disabled:opacity-50"
+              className="px-3 py-1.5 bg-[#122030] border border-[#22364A] hover:bg-[#182b3e] text-slate-200 rounded-lg font-mono font-semibold text-xs flex items-center gap-1.5 shadow-md disabled:opacity-50"
             >
               <RotateCcw className={`w-3.5 h-3.5 ${resetting ? 'animate-spin' : ''}`} />
-              <span>{resetting ? 'Resetting...' : 'Reset Data'}</span>
+              <span>{resetting ? 'Resetting...' : 'Restore Benchmark'}</span>
             </button>
           </div>
           {resetSuccess && (
-            <div className="p-2 rounded bg-status-successBg text-status-success border border-status-successBorder text-[11px] flex items-center gap-1.5">
+            <div className="p-2 rounded-lg bg-emerald-950/80 text-emerald-300 border border-emerald-800 text-[11px] font-mono flex items-center gap-1.5">
               <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>Demonstration dataset benchmark restored successfully.</span>
+              <span>PCPC benchmark dataset restored successfully.</span>
             </div>
           )}
         </div>
       </div>
 
       {/* Forensic Audit Log Table */}
-      <div className="bg-white border border-border-light rounded-lg p-5 shadow-card space-y-3">
-        <div className="flex items-center justify-between border-b border-border-subtle pb-3">
+      <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl p-5 shadow-xl space-y-3">
+        <div className="flex items-center justify-between border-b border-[#1E2E3F] pb-3">
           <div className="flex items-center gap-2">
-            <Activity className="w-4 h-4 text-brand-steelBlue" />
-            <h2 className="font-bold text-sm text-text-primary">
+            <Activity className="w-4 h-4 text-sky-400" />
+            <h2 className="font-bold text-sm text-white font-mono uppercase">
               Immutable Case Audit Log ({auditLogs.length} Events)
             </h2>
           </div>
-          <span className="text-[10px] font-mono text-text-secondary">
+          <span className="text-[10px] font-mono text-sky-400">
             Case: {activeCase?.referenceNumber}
           </span>
         </div>
 
-        <div className="border border-border-light rounded overflow-hidden">
-          <table className="w-full text-left">
-            <thead className="bg-bg-main text-[10px] uppercase font-semibold text-text-secondary">
+        <div className="border border-[#1E2E3F] rounded-lg overflow-hidden">
+          <table className="w-full text-left font-mono">
+            <thead className="bg-[#08121B] text-[10px] uppercase font-bold text-slate-400 border-b border-[#1E2E3F]">
               <tr>
-                <th className="p-2.5 border-b border-border-light">Log ID</th>
-                <th className="p-2.5 border-b border-border-light">Timestamp</th>
-                <th className="p-2.5 border-b border-border-light">Action Event</th>
-                <th className="p-2.5 border-b border-border-light">Actor / Officer</th>
-                <th className="p-2.5 border-b border-border-light">Event Details</th>
+                <th className="p-2.5">Log ID</th>
+                <th className="p-2.5">Timestamp</th>
+                <th className="p-2.5">Action Event</th>
+                <th className="p-2.5">Actor / Officer</th>
+                <th className="p-2.5">Event Details</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-border-subtle font-mono text-[11px]">
+            <tbody className="divide-y divide-[#1A2A3A] text-[11px]">
               {auditLogs.map((log) => (
-                <tr key={log.id} className="hover:bg-bg-main/40">
-                  <td className="p-2.5 text-[10px] text-text-muted">{log.id}</td>
-                  <td className="p-2.5 text-text-secondary">
+                <tr key={log.id} className="hover:bg-[#101D2B]">
+                  <td className="p-2.5 text-[10px] text-slate-400">{log.id.toUpperCase()}</td>
+                  <td className="p-2.5 text-slate-300">
                     {new Date(log.timestamp).toLocaleString()}
                   </td>
-                  <td className="p-2.5 font-bold text-brand-deepTeal">{log.action}</td>
-                  <td className="p-2.5 text-text-primary font-sans">{log.actor}</td>
-                  <td className="p-2.5 text-text-primary font-sans">{log.details}</td>
+                  <td className="p-2.5 font-bold text-sky-400">{log.action}</td>
+                  <td className="p-2.5 text-slate-200 font-sans">{log.actor}</td>
+                  <td className="p-2.5 text-slate-300 font-sans">{log.details}</td>
                 </tr>
               ))}
             </tbody>

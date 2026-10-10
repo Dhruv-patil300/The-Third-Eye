@@ -16,6 +16,8 @@ import {
   Bot,
   User,
   ArrowRight,
+  Crosshair,
+  Radio,
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -83,38 +85,46 @@ export default function AssistantPage() {
   };
 
   const defaultSuggestions = [
-    'What evidence directly contradicts Rahul Sharma’s alibi?',
-    'Who had authorized access to Keypad PIN 4819?',
-    'What vehicles are connected to this case and why?',
-    'What are the most critical investigative gaps remaining?',
+    'Show evidence directly disproving Sachin Gaikwad’s alibi.',
+    'What connects ex-guard Nilesh Shinde to the crime scene?',
+    'Track movement of Hyundai Creta MH-14-GX-8842 from Wakad to Somatane.',
+    'Who had authorized access to Door 2B Keypad PIN 7291?',
   ];
 
   return (
-    <div className="space-y-4 max-w-5xl mx-auto h-[calc(100vh-6.5rem)] flex flex-col">
+    <div className="space-y-4 max-w-5xl mx-auto h-[calc(100vh-6.5rem)] flex flex-col text-slate-100">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 flex-shrink-0">
         <div>
-          <h1 className="text-xl font-bold text-text-primary tracking-tight flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-brand-steelBlue" />
-            <span>AI Investigation Assistant</span>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 font-bold border border-sky-800">
+              POLICE INTELLIGENCE CO-PILOT
+            </span>
+            <span className="text-[10px] font-mono text-slate-400">
+              WAKAD PS // PCPC REASONING ENGINE
+            </span>
+          </div>
+          <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-sky-400" />
+            <span>AI Forensic Investigation Assistant</span>
           </h1>
-          <p className="text-xs text-text-secondary mt-0.5">
-            Strictly grounded in ingested evidence, event timelines, and witness depositions for Case{' '}
-            <span className="font-semibold text-text-primary font-mono">{activeCase?.referenceNumber}</span>.
+          <p className="text-xs text-slate-400 mt-0.5 font-sans">
+            Strictly grounded in certified case evidence, CDR mast logs, ANPR cameras, and FSL reports for{' '}
+            <span className="font-semibold text-slate-200 font-mono">{activeCase?.referenceNumber}</span>.
           </p>
         </div>
 
         {/* Operating Doctrine Badge */}
-        <div className="text-[11px] bg-bg-highlight/40 border border-brand-mutedBlueTeal/30 px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-          <ShieldAlert className="w-3.5 h-3.5 text-brand-steelBlue" />
-          <span className="italic text-text-primary font-medium">
-            AI recommends. Humans investigate. Humans decide.
+        <div className="text-[11px] bg-[#0C1724] border border-[#1E2E3F] px-3 py-1.5 rounded-lg flex items-center gap-2 shadow-md">
+          <ShieldAlert className="w-3.5 h-3.5 text-sky-400" />
+          <span className="italic text-slate-300 font-medium font-sans">
+            AI recommends. Police investigate. Law decides.
           </span>
         </div>
       </div>
 
       {/* Chat Messages Workspace */}
-      <div className="flex-1 bg-white border border-border-light rounded-lg shadow-card p-4 overflow-y-auto space-y-5 text-xs">
+      <div className="flex-1 bg-[#070E17] border border-[#1E2E3F] rounded-xl shadow-2xl p-4 overflow-y-auto space-y-5 text-xs">
         {messages.map((msg) => (
           <div
             key={msg.id}
@@ -124,8 +134,8 @@ export default function AssistantPage() {
           >
             {/* Avatar */}
             <div
-              className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-white ${
-                msg.role === 'user' ? 'bg-brand-steelBlue' : 'bg-brand-deepTeal'
+              className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 text-white shadow-md ${
+                msg.role === 'user' ? 'bg-sky-600' : 'bg-sky-950 border border-sky-700/80 text-sky-300'
               }`}
             >
               {msg.role === 'user' ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
@@ -133,10 +143,10 @@ export default function AssistantPage() {
 
             {/* Bubble */}
             <div
-              className={`p-4 rounded-lg space-y-3 ${
+              className={`p-4 rounded-xl space-y-3 ${
                 msg.role === 'user'
-                  ? 'bg-brand-deepTeal text-white shadow-subtle'
-                  : 'bg-bg-main/60 border border-border-subtle text-text-primary shadow-subtle'
+                  ? 'bg-sky-600 text-white shadow-lg'
+                  : 'bg-[#0C1724] border border-[#1E2E3F] text-slate-100 shadow-xl'
               }`}
             >
               <div className="whitespace-pre-wrap leading-relaxed text-xs font-sans">
@@ -145,22 +155,22 @@ export default function AssistantPage() {
 
               {/* Verified Source Citations */}
               {msg.citations && msg.citations.length > 0 && (
-                <div className="pt-3 border-t border-border-subtle/80 space-y-1.5">
-                  <div className="text-[10px] font-semibold text-text-secondary uppercase tracking-wider flex items-center gap-1">
-                    <FileText className="w-3 h-3 text-brand-steelBlue" />
-                    <span>Verified Source Citations</span>
+                <div className="pt-3 border-t border-[#1E2E3F] space-y-1.5">
+                  <div className="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-wider flex items-center gap-1">
+                    <FileText className="w-3 h-3 text-sky-400" />
+                    <span>Certified Source Citations</span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {msg.citations.map((cite, idx) => (
                       <div
                         key={idx}
                         onClick={() => setSelectedCitation(cite)}
-                        className="bg-white p-2 rounded border border-border-light hover:border-brand-steelBlue cursor-pointer transition-colors shadow-subtle"
+                        className="bg-[#08121B] p-2.5 rounded-lg border border-[#1E2E3F] hover:border-sky-500 cursor-pointer transition-colors shadow-sm"
                       >
-                        <div className="font-semibold text-[11px] text-brand-steelBlue truncate">
+                        <div className="font-mono font-bold text-[11px] text-sky-300 truncate">
                           {cite.evidenceTitle}
                         </div>
-                        <div className="text-[10px] text-text-secondary italic line-clamp-2 mt-0.5">
+                        <div className="text-[10px] text-slate-400 italic line-clamp-2 mt-0.5 font-sans">
                           "{cite.excerpt}"
                         </div>
                       </div>
@@ -171,35 +181,31 @@ export default function AssistantPage() {
 
               {/* Suggested Follow-Ups */}
               {msg.suggestedFollowUps && msg.suggestedFollowUps.length > 0 && (
-                <div className="pt-2 border-t border-border-subtle/60 flex flex-wrap gap-1.5">
+                <div className="pt-2 border-t border-[#1E2E3F] flex flex-wrap gap-1.5">
                   {msg.suggestedFollowUps.map((prompt, idx) => (
                     <button
                       key={idx}
                       onClick={() => handleSend(prompt)}
-                      className="text-[10px] px-2 py-1 bg-white hover:bg-bg-highlight border border-border-light text-brand-deepTeal rounded font-medium transition-colors flex items-center gap-1"
+                      className="text-[10px] px-2.5 py-1 bg-[#08121B] hover:bg-sky-950/80 border border-[#1E2E3F] hover:border-sky-500 text-sky-300 rounded-lg font-mono transition-colors flex items-center gap-1"
                     >
                       <span>{prompt}</span>
-                      <ArrowRight className="w-2.5 h-2.5" />
+                      <ArrowRight className="w-2.5 h-2.5 text-sky-400" />
                     </button>
                   ))}
                 </div>
               )}
-
-              <div className="text-[9px] text-text-muted text-right font-mono">
-                {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-              </div>
             </div>
           </div>
         ))}
 
         {loading && (
-          <div className="flex gap-3 max-w-lg mr-auto">
-            <div className="w-7 h-7 rounded-full bg-brand-deepTeal flex items-center justify-center text-white flex-shrink-0">
-              <Bot className="w-3.5 h-3.5" />
+          <div className="flex gap-3 max-w-xl mr-auto items-center">
+            <div className="w-7 h-7 rounded-lg bg-sky-950 border border-sky-700/80 flex items-center justify-center text-sky-400">
+              <Bot className="w-3.5 h-3.5 animate-pulse" />
             </div>
-            <div className="p-3.5 bg-bg-main/60 border border-border-subtle rounded-lg flex items-center gap-2 text-xs text-text-secondary">
-              <Loader2 className="w-4 h-4 animate-spin text-brand-steelBlue" />
-              <span>Cross-referencing evidence vault and factual claims...</span>
+            <div className="p-3 rounded-xl bg-[#0C1724] border border-[#1E2E3F] text-xs text-sky-400 flex items-center gap-2 font-mono">
+              <Loader2 className="w-4 h-4 animate-spin text-sky-400" />
+              <span>Analyzing telecommunications and optical records...</span>
             </div>
           </div>
         )}
@@ -207,87 +213,42 @@ export default function AssistantPage() {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Suggested Quick Queries Ribbon */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-1 text-[11px]">
-        <span className="font-semibold text-text-secondary whitespace-nowrap">Suggested Inquiries:</span>
-        {defaultSuggestions.map((sug, i) => (
-          <button
-            key={i}
-            onClick={() => handleSend(sug)}
-            className="px-2.5 py-1 bg-white border border-border-light hover:border-brand-steelBlue rounded text-text-secondary hover:text-brand-deepTeal whitespace-nowrap font-medium transition-colors"
-          >
-            {sug}
-          </button>
-        ))}
-      </div>
-
-      {/* Input Form */}
-      <form onSubmit={(e) => { e.preventDefault(); handleSend(); }} className="flex gap-2">
-        <input
-          type="text"
-          placeholder="Ask analytical questions about this case's evidence, timeline, or suspect alibis..."
-          value={inputQuery}
-          onChange={(e) => setInputQuery(e.target.value)}
-          disabled={loading}
-          className="flex-1 px-3.5 py-2.5 text-xs bg-white border border-border-light rounded-lg focus:outline-none focus:border-brand-steelBlue shadow-subtle text-text-primary"
-        />
-        <button
-          type="submit"
-          disabled={loading || !inputQuery.trim()}
-          className="px-5 py-2.5 bg-brand-deepTeal hover:bg-brand-darkSteelTeal text-white font-medium text-xs rounded-lg shadow-subtle flex items-center gap-1.5 disabled:opacity-50 transition-colors"
-        >
-          <Send className="w-3.5 h-3.5" />
-          <span>Ask Assistant</span>
-        </button>
-      </form>
-
-      {/* Citation Detail Modal */}
-      {selectedCitation && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xs p-4 select-none">
-          <div className="bg-white rounded-lg border border-border-light shadow-modal w-full max-w-lg overflow-hidden text-xs">
-            <div className="p-4 bg-bg-main border-b border-border-light flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <FileText className="w-4 h-4 text-brand-steelBlue" />
-                <h3 className="font-semibold text-text-primary">Grounded Evidence Verification</h3>
-              </div>
-              <button
-                onClick={() => setSelectedCitation(null)}
-                className="text-text-muted hover:text-text-primary p-1"
-              >
-                ✕
-              </button>
-            </div>
-            <div className="p-5 space-y-3">
-              <div>
-                <span className="font-semibold text-text-secondary text-[11px] block">Evidence Title:</span>
-                <span className="font-bold text-text-primary text-sm">{selectedCitation.evidenceTitle}</span>
-              </div>
-              <div>
-                <span className="font-semibold text-text-secondary text-[11px] block">Verified Excerpt:</span>
-                <div className="bg-bg-main p-3 rounded border border-border-subtle font-mono text-[11px] text-text-primary whitespace-pre-wrap leading-relaxed mt-1">
-                  "{selectedCitation.excerpt}"
-                </div>
-              </div>
-              <div className="pt-2 flex justify-between items-center border-t border-border-subtle">
-                <Link
-                  href="/evidence"
-                  onClick={() => setSelectedCitation(null)}
-                  className="text-brand-steelBlue hover:underline flex items-center gap-1 font-medium"
-                >
-                  <span>Open Full Record in Evidence Vault</span>
-                  <ExternalLink className="w-3 h-3" />
-                </Link>
-                <button
-                  onClick={() => setSelectedCitation(null)}
-                  className="px-3 py-1 bg-brand-deepTeal text-white rounded font-medium"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
+      {/* Suggested Starting Prompts (If fresh) */}
+      {messages.length <= 1 && (
+        <div className="flex flex-wrap gap-2 text-xs">
+          {defaultSuggestions.map((s, idx) => (
+            <button
+              key={idx}
+              onClick={() => handleSend(s)}
+              className="text-[11px] px-3 py-1.5 rounded-lg bg-[#0C1724] hover:bg-sky-950/80 border border-[#1E2E3F] hover:border-sky-500 text-sky-300 font-mono transition-all flex items-center gap-1.5"
+            >
+              <span>{s}</span>
+              <ArrowRight className="w-3 h-3 text-sky-400" />
+            </button>
+          ))}
         </div>
       )}
+
+      {/* Query Input Box */}
+      <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl p-2 shadow-2xl flex items-center gap-2 flex-shrink-0">
+        <input
+          type="text"
+          value={inputQuery}
+          onChange={(e) => setInputQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') handleSend();
+          }}
+          placeholder="Ask analytical question regarding suspect alibi, CDR mast, ANPR cameras, or FSL reports..."
+          className="flex-1 bg-transparent px-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none font-sans"
+        />
+        <button
+          onClick={() => handleSend()}
+          disabled={!inputQuery.trim() || loading}
+          className="p-2 bg-sky-600 hover:bg-sky-500 disabled:opacity-40 text-white rounded-lg transition-all shadow-md flex items-center justify-center"
+        >
+          <Send className="w-4 h-4" />
+        </button>
+      </div>
     </div>
   );
 }

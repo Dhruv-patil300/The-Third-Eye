@@ -102,32 +102,40 @@ export default function ReportsPage() {
   };
 
   return (
-    <div className="space-y-6 max-w-5xl mx-auto">
+    <div className="space-y-6 max-w-5xl mx-auto text-slate-100">
       {/* Controls Ribbon (hidden during print) */}
-      <div className="bg-white border border-border-light rounded-lg p-5 shadow-card no-print space-y-4">
+      <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl p-5 shadow-2xl no-print space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-xl font-bold text-text-primary tracking-tight flex items-center gap-2">
-              <FileBarChart className="w-5 h-5 text-brand-steelBlue" />
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 font-bold border border-sky-800">
+                PROSECUTION CHARGESHEET DOSSIER
+              </span>
+              <span className="text-[10px] font-mono text-slate-400">
+                WAKAD PS // PCPC
+              </span>
+            </div>
+            <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+              <FileBarChart className="w-5 h-5 text-sky-400" />
               <span>Investigative Dossier & Report Generator</span>
             </h1>
-            <p className="text-xs text-text-secondary mt-1">
+            <p className="text-xs text-slate-400 mt-1 font-sans">
               Assemble certified intelligence briefs, chronological exhibits, and analytical triage records for Case{' '}
-              <span className="font-semibold text-text-primary">{activeCase?.referenceNumber}</span>.
+              <span className="font-semibold text-slate-200 font-mono">{activeCase?.referenceNumber}</span>.
             </p>
           </div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={handleExportJSON}
-              className="px-3.5 py-2 bg-white border border-border-light text-text-primary hover:bg-bg-main rounded text-xs font-semibold flex items-center gap-1.5 transition-colors"
+              className="px-3.5 py-2 bg-[#122131] hover:bg-[#182b3f] border border-[#22364A] text-slate-200 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors font-mono"
             >
-              <Download className="w-4 h-4 text-brand-steelBlue" />
+              <Download className="w-4 h-4 text-sky-400" />
               <span>Export JSON</span>
             </button>
             <button
               onClick={handlePrint}
-              className="px-4 py-2 bg-brand-deepTeal hover:bg-brand-darkSteelTeal text-white rounded text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-subtle"
+              className="px-4 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-md font-mono"
             >
               <Printer className="w-4 h-4" />
               <span>Print / Save PDF</span>
@@ -136,8 +144,8 @@ export default function ReportsPage() {
         </div>
 
         {/* Section Selectors */}
-        <div className="pt-3 border-t border-border-subtle">
-          <div className="text-[11px] font-semibold text-text-secondary uppercase tracking-wider mb-2">
+        <div className="pt-3 border-t border-[#1E2E3F]">
+          <div className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider mb-2">
             Select Dossier Exhibits to Include:
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
@@ -211,22 +219,22 @@ export default function ReportsPage() {
       {/* Rendered Printable Dossier Document */}
       <div className="bg-white border border-border-light rounded-lg shadow-card p-8 md:p-12 space-y-8 text-text-primary text-xs print:p-0 print:border-0 print:shadow-none font-serif">
         {/* Official Header */}
-        <div className="border-b-2 border-brand-deepTeal pb-6 flex items-start justify-between">
+        <div className="border-b-2 border-slate-900 pb-6 flex items-start justify-between">
           <div>
-            <div className="text-[10px] tracking-widest uppercase font-mono font-bold text-brand-deepTeal">
-              The Third Eye • Investigation Intelligence Platform
+            <div className="text-[10px] tracking-widest uppercase font-mono font-bold text-sky-800">
+              PIMPRI CHINCHWAD POLICE COMMISSIONERATE • WAKAD POLICE STATION
             </div>
-            <h1 className="text-2xl font-bold text-text-primary mt-1 font-sans">
-              INVESTIGATIVE CASE DOSSIER
+            <h1 className="text-2xl font-bold text-slate-900 mt-1 font-sans">
+              INVESTIGATIVE CASE DOSSIER // CHARGESHEET BRIEF
             </h1>
-            <div className="text-xs text-text-secondary mt-1 font-mono">
-              Reference: <strong className="text-text-primary">{activeCase?.referenceNumber}</strong> | Security Level: Law Enforcement / Official Use
+            <div className="text-xs text-slate-600 mt-1 font-mono">
+              Reference: <strong className="text-slate-900">{activeCase?.referenceNumber}</strong> | Security Level: RESTRICTED // LAW ENFORCEMENT SENSITIVE
             </div>
           </div>
-          <div className="text-right text-[11px] text-text-secondary font-mono">
+          <div className="text-right text-[11px] text-slate-600 font-mono">
             <div>Date: {new Date().toLocaleDateString()}</div>
             <div>Time: {new Date().toLocaleTimeString()}</div>
-            <div className="text-brand-steelBlue font-semibold">Status: {activeCase?.status?.toUpperCase()}</div>
+            <div className="text-sky-800 font-semibold">Status: {activeCase?.status?.toUpperCase()}</div>
           </div>
         </div>
 
