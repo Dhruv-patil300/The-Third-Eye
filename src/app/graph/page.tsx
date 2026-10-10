@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useCase } from '@/context/CaseContext';
+import { useLanguage } from '@/context/LanguageContext';
 import {
   ReactFlow,
   Controls,
@@ -34,15 +35,16 @@ import {
 } from 'lucide-react';
 
 const CATEGORY_COLORS: Record<string, { bg: string; border: string; text: string }> = {
-  person: { bg: '#0F1E2E', border: '#38BDF8', text: '#F1F5F9' },
-  vehicle: { bg: '#0F2333', border: '#0EA5E9', text: '#F1F5F9' },
-  location: { bg: '#0B261D', border: '#10B981', text: '#F1F5F9' },
-  device: { bg: '#261B0E', border: '#F59E0B', text: '#F1F5F9' },
-  organization: { bg: '#1C162A', border: '#A855F7', text: '#F1F5F9' },
+  person: { bg: '#eee9df', border: '#9b8068', text: '#302f2a' },
+  vehicle: { bg: '#e9eee9', border: '#7c8d7e', text: '#302f2a' },
+  location: { bg: '#edf0e5', border: '#85916e', text: '#302f2a' },
+  device: { bg: '#f3eadb', border: '#b18c5e', text: '#302f2a' },
+  organization: { bg: '#efebe4', border: '#8d8172', text: '#302f2a' },
 };
 
 export default function RelationshipGraphPage() {
   const { activeCaseId, activeCase } = useCase();
+  const { t } = useLanguage();
 
   const [entities, setEntities] = useState<Entity[]>([]);
   const [relationships, setRelationships] = useState<EntityRelationship[]>([]);
@@ -142,27 +144,27 @@ export default function RelationshipGraphPage() {
         type: 'smoothstep',
         animated: isDisputed,
         style: {
-          stroke: isDisputed ? '#EF4444' : '#0EA5E9',
+          stroke: isDisputed ? '#a45f56' : '#829078',
           strokeWidth: 2,
           strokeDasharray: isDisputed ? '4,4' : undefined,
         },
         labelStyle: {
-          fill: '#F1F5F9',
+          fill: '#514d44',
           fontWeight: 600,
           fontSize: 10,
           fontFamily: 'monospace',
         },
         labelBgStyle: {
-          fill: '#08121B',
-          fillOpacity: 0.85,
-          stroke: isDisputed ? '#EF4444' : '#1E2E3F',
+          fill: '#f7f3eb',
+          fillOpacity: 0.96,
+          stroke: isDisputed ? '#a45f56' : '#d4c9b7',
           strokeWidth: 1,
           rx: 4,
           ry: 4,
         },
         markerEnd: {
           type: MarkerType.ArrowClosed,
-          color: isDisputed ? '#EF4444' : '#0EA5E9',
+          color: isDisputed ? '#a45f56' : '#829078',
           width: 16,
           height: 16,
         },
@@ -191,7 +193,7 @@ export default function RelationshipGraphPage() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 font-bold border border-sky-800">
-              NETWORK CORRELATION TOPOLOGY
+              {t('graph.title')}
             </span>
             <span className="text-[10px] font-mono text-slate-400">
               PCPC ENTITY & ASSET MAPPING
@@ -199,24 +201,24 @@ export default function RelationshipGraphPage() {
           </div>
           <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
             <Network className="w-5 h-5 text-sky-400" />
-            <span>Interactive Forensic Network Topology</span>
+            <span>{t('graph.title')}</span>
           </h1>
           <p className="text-xs text-slate-400 mt-0.5 font-sans">
-            Cross-referenced topological graph mapping suspects, vehicles, cell towers, and vault keypads for {activeCase?.referenceNumber}.
+            {t('graph.description')} {activeCase?.referenceNumber}.
           </p>
         </div>
 
         {/* Legend */}
         <div className="flex flex-wrap items-center gap-3 text-[10px] font-mono bg-[#0C1724] border border-[#1E2E3F] px-3 py-1.5 rounded-lg shadow-md">
-          <span className="text-slate-400">LEGEND:</span>
+          <span className="text-slate-400">{t('graph.legend')}:</span>
           <span className="flex items-center gap-1 text-slate-200">
-            <span className="w-2.5 h-2.5 rounded-full bg-sky-400" /> Person
+            <span className="w-2.5 h-2.5 rounded-full bg-sky-400" /> {t('graph.person')}
           </span>
           <span className="flex items-center gap-1 text-slate-200">
-            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400" /> Vehicle
+            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400" /> {t('graph.vehicle')}
           </span>
           <span className="flex items-center gap-1 text-slate-200">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" /> Location
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" /> {t('graph.location')}
           </span>
           <span className="flex items-center gap-1 text-slate-200">
             <span className="w-2.5 h-2.5 rounded-full bg-amber-400" /> Device / Tower
@@ -256,7 +258,7 @@ export default function RelationshipGraphPage() {
             <div className="flex items-start justify-between gap-2 border-b border-[#1E2E3F] pb-2">
               <div>
                 <span className="text-[9px] uppercase font-mono font-bold text-sky-400 block">
-                  Entity Inspector
+                  {t('graph.inspector')}
                 </span>
                 <h3 className="font-bold text-sm text-white leading-tight font-sans">
                   {selectedEntity.name}
@@ -272,13 +274,13 @@ export default function RelationshipGraphPage() {
 
             <div className="grid grid-cols-2 gap-2 text-[11px] font-mono">
               <div className="bg-[#08121B] p-2 rounded-lg border border-[#1E2E3F]">
-                <span className="text-slate-400 block text-[10px]">CATEGORY</span>
+                <span className="text-slate-400 block text-[10px]">{t('graph.category')}</span>
                 <span className="capitalize font-bold text-sky-300">
                   {selectedEntity.category}
                 </span>
               </div>
               <div className="bg-[#08121B] p-2 rounded-lg border border-[#1E2E3F]">
-                <span className="text-slate-400 block text-[10px]">STATUS</span>
+                <span className="text-slate-400 block text-[10px]">{t('graph.status')}</span>
                 <span
                   className={`capitalize font-bold ${
                     selectedEntity.status === 'flagged' ? 'text-rose-400' : 'text-emerald-400'
@@ -291,17 +293,17 @@ export default function RelationshipGraphPage() {
 
             <div>
               <span className="font-mono text-[10px] font-bold text-slate-400 block mb-1 uppercase">
-                Investigative Annotations
+                {t('graph.annotations')}
               </span>
               <p className="bg-[#08121B] p-2.5 rounded-lg border border-[#1E2E3F] text-slate-200 leading-relaxed text-[11px] font-sans">
-                {selectedEntity.notes || 'No investigative annotations on file.'}
+                {selectedEntity.notes || t('graph.noAnnotations')}
               </p>
             </div>
 
             {selectedEntity.details && Object.keys(selectedEntity.details).length > 0 && (
               <div>
                 <span className="font-mono text-[10px] font-bold text-slate-400 block mb-1 uppercase">
-                  Metadata & Attributes
+                  {t('graph.metadata')}
                 </span>
                 <div className="space-y-1 font-mono text-[10px] bg-[#08121B] p-2 rounded-lg border border-[#1E2E3F]">
                   {Object.entries(selectedEntity.details).map(([k, v]) => (
@@ -317,7 +319,7 @@ export default function RelationshipGraphPage() {
             {selectedEntity.sourceEvidenceIds && selectedEntity.sourceEvidenceIds.length > 0 && (
               <div>
                 <span className="font-mono text-[10px] font-bold text-slate-400 block mb-1 uppercase">
-                  Source Evidence References
+                  {t('graph.sourceEvidence')}
                 </span>
                 <div className="space-y-1">
                   {selectedEntity.sourceEvidenceIds.map((evId) => {
@@ -348,7 +350,7 @@ export default function RelationshipGraphPage() {
             <div className="flex items-start justify-between gap-2 border-b border-[#1E2E3F] pb-2">
               <div>
                 <span className="text-[9px] uppercase font-mono font-bold text-sky-400 block">
-                  Relationship Proof
+                  {t('graph.relationshipProof')}
                 </span>
                 <h3 className="font-bold text-sm text-white font-sans">
                   {selectedRelationship.label}
@@ -364,7 +366,7 @@ export default function RelationshipGraphPage() {
 
             <div className="bg-[#08121B] p-2.5 rounded-lg border border-[#1E2E3F] space-y-1">
               <span className="font-mono text-[10px] text-slate-400 uppercase block font-bold">
-                Nature of Connection:
+                {t('graph.connection')}:
               </span>
               <p className="text-slate-200 text-xs leading-relaxed font-sans">
                 {selectedRelationship.description}

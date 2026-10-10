@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { Case } from '@/types';
-import { DEMO_CASE_ID } from '@/lib/demoData';
+import { DEFAULT_ACTIVE_CASE_ID, DEMO_CASE_ID } from '@/lib/demoData';
 
 interface CaseContextType {
   cases: Case[];
@@ -25,7 +25,7 @@ const CaseContext = createContext<CaseContextType | undefined>(undefined);
 
 export function CaseProvider({ children }: { children: React.ReactNode }) {
   const [cases, setCases] = useState<Case[]>([]);
-  const [activeCaseId, setActiveCaseIdState] = useState<string>(DEMO_CASE_ID);
+  const [activeCaseId, setActiveCaseIdState] = useState<string>(DEFAULT_ACTIVE_CASE_ID);
   const [loading, setLoading] = useState<boolean>(true);
   const [globalSearch, setGlobalSearch] = useState<string>('');
   const [showNewCaseModal, setShowNewCaseModal] = useState<boolean>(false);
@@ -39,11 +39,12 @@ export function CaseProvider({ children }: { children: React.ReactNode }) {
       if (json.success && json.data) {
         setCases(json.data);
         if (json.data.length > 0) {
-          // If activeCaseId doesn't exist in fetched cases, fallback to first
-          const exists = json.data.some((c: Case) => c.id === activeCaseId);
-          if (!exists) {
-            setActiveCaseIdState(json.data[0].id);
-          }
+          const savedId = window.localStorage.getItem('the_third_eye_active_case');
+          const preferredId = savedId && savedId !== DEMO_CASE_ID ? savedId : activeCaseId;
+          const fallbackCase = json.data.find((c: Case) => c.id === DEFAULT_ACTIVE_CASE_ID) || json.data[0];
+          const selectedCase = json.data.find((c: Case) => c.id === preferredId) || fallbackCase;
+          setActiveCaseIdState(selectedCase.id);
+          window.localStorage.setItem('the_third_eye_active_case', selectedCase.id);
         }
       }
     } catch (err) {
@@ -89,7 +90,8 @@ export function CaseProvider({ children }: { children: React.ReactNode }) {
       setLoading(true);
       await fetch('/api/reset', { method: 'POST' });
       await fetchCases();
-      setActiveCaseIdState(DEMO_CASE_ID);
+      setActiveCaseIdState(DEFAULT_ACTIVE_CASE_ID);
+      window.localStorage.setItem('the_third_eye_active_case', DEFAULT_ACTIVE_CASE_ID);
     } catch (err) {
       console.error('Reset failed:', err);
     } finally {

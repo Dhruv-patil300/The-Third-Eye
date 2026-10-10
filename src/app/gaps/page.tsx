@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useCase } from '@/context/CaseContext';
+import { useLanguage } from '@/context/LanguageContext';
 import { InvestigationGap, GapStatus } from '@/types';
 import {
   Search,
@@ -20,6 +21,7 @@ import {
 
 export default function InvestigationGapsPage() {
   const { activeCaseId, activeCase } = useCase();
+  const { t } = useLanguage();
 
   const [gaps, setGaps] = useState<InvestigationGap[]>([]);
   const [selectedGap, setSelectedGap] = useState<InvestigationGap | null>(null);
@@ -83,7 +85,7 @@ export default function InvestigationGapsPage() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 font-bold border border-amber-800">
-              PROCEDURAL GAP DETECTOR
+              {t('gaps.title')}
             </span>
             <span className="text-[10px] font-mono text-slate-400">
               WAKAD PS // PCPC PROSECUTION DEFICIENCIES
@@ -91,25 +93,25 @@ export default function InvestigationGapsPage() {
           </div>
           <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
             <Search className="w-5 h-5 text-amber-400" />
-            <span>Investigation Gap Detection & Triage</span>
+            <span>{t('gaps.title')}</span>
           </h1>
           <p className="text-xs text-slate-400 mt-1 font-sans">
-            Identification of uncorroborated windows, camera blind spots, unserved notices, and forensic lacunae.
+            {t('gaps.description')}
           </p>
         </div>
 
         <div className="flex items-center gap-2 text-xs font-mono">
-          <span className="text-slate-400">Filter Status:</span>
+          <span className="text-slate-400">{t('common.status')}:</span>
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
             className="px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#0C1724] text-slate-200 focus:outline-none focus:border-sky-500"
           >
-            <option value="all">All Gaps ({gaps.length})</option>
-            <option value="open">Open</option>
-            <option value="investigating">Investigating</option>
-            <option value="addressed">Addressed</option>
-            <option value="dismissed">Dismissed</option>
+            <option value="all">{t('common.all')} ({gaps.length})</option>
+            <option value="open">{t('common.open')}</option>
+            <option value="investigating">{t('common.pending')}</option>
+            <option value="addressed">{t('common.addressed')}</option>
+            <option value="dismissed">{t('common.closed')}</option>
           </select>
         </div>
       </div>
@@ -119,7 +121,7 @@ export default function InvestigationGapsPage() {
         {/* Left Column: List of Gaps */}
         <div className="lg:col-span-5 space-y-3">
           <div className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider px-1 flex items-center justify-between">
-            <span>Detected Gaps ({filtered.length})</span>
+            <span>{t('gaps.detected')} ({filtered.length})</span>
             <span className="text-sky-400">{activeCase?.referenceNumber}</span>
           </div>
 
@@ -192,16 +194,16 @@ export default function InvestigationGapsPage() {
 
                 {/* Status Toggle Dropdown */}
                 <div className="flex items-center gap-2 flex-shrink-0 font-mono">
-                  <span className="text-slate-400 text-[11px]">Status:</span>
+                  <span className="text-slate-400 text-[11px]">{t('common.status')}:</span>
                   <select
                     value={selectedGap.status}
                     onChange={(e) => handleUpdateStatus(selectedGap.id, e.target.value as any)}
                     className="px-2.5 py-1 text-xs font-semibold rounded-lg border border-[#22364A] bg-[#08121B] text-slate-200 focus:outline-none focus:border-sky-500"
                   >
-                    <option value="open">Open</option>
-                    <option value="investigating">Investigating</option>
-                    <option value="addressed">Addressed</option>
-                    <option value="dismissed">Dismissed</option>
+                    <option value="open">{t('common.open')}</option>
+                    <option value="investigating">{t('common.pending')}</option>
+                    <option value="addressed">{t('common.addressed')}</option>
+                    <option value="dismissed">{t('common.closed')}</option>
                   </select>
                 </div>
               </div>
@@ -209,7 +211,7 @@ export default function InvestigationGapsPage() {
               {/* Factual Description */}
               <div className="space-y-1">
                 <span className="font-mono text-[11px] font-bold text-slate-300 block uppercase">
-                  Observed Factual Lacuna / Gap
+                  {t('gaps.descriptionLabel')}
                 </span>
                 <p className="p-3 bg-[#08121B] rounded-lg border border-[#1E2E3F] text-slate-200 leading-relaxed font-sans">
                   {selectedGap.description}
@@ -219,7 +221,7 @@ export default function InvestigationGapsPage() {
               {/* Why It Matters */}
               <div className="space-y-1">
                 <span className="font-mono text-[11px] font-bold text-amber-400 block uppercase">
-                  Investigative & Legal Significance
+                  {t('gaps.significance')}
                 </span>
                 <p className="p-3 bg-[#0D1A27] rounded-lg border border-sky-900/60 text-slate-200 leading-relaxed font-sans">
                   {selectedGap.whyItMatters}
@@ -229,7 +231,7 @@ export default function InvestigationGapsPage() {
               {/* What Is Unknown */}
               <div className="space-y-1">
                 <span className="font-mono text-[11px] font-bold text-rose-400 block uppercase">
-                  Unresolved Forensic Void
+                  {t('gaps.unknown')}
                 </span>
                 <p className="p-3 bg-rose-950/20 rounded-lg border border-rose-900/60 text-slate-200 leading-relaxed font-mono text-[11px]">
                   {selectedGap.whatIsUnknown}
@@ -239,7 +241,7 @@ export default function InvestigationGapsPage() {
               {/* Actionable Next Step */}
               <div className="space-y-1">
                 <span className="font-mono text-[11px] font-bold text-emerald-400 block uppercase">
-                  Recommended Concrete Police Verification Step
+                  {t('gaps.reviewStep')}
                 </span>
                 <div className="p-3 bg-emerald-950/20 border border-emerald-900/70 rounded-lg text-emerald-300 font-medium flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-400" />
@@ -251,27 +253,27 @@ export default function InvestigationGapsPage() {
               {selectedGap.status === 'dismissed' && (
                 <div className="pt-3 border-t border-[#1E2E3F] space-y-2">
                   <label className="font-mono text-[11px] text-slate-400 block uppercase font-bold">
-                    Document Reason for Dismissal
+                    {t('gaps.dismissReason')}
                   </label>
                   <textarea
                     rows={2}
                     value={dismissalNote}
                     onChange={(e) => setDismissalNote(e.target.value)}
-                    placeholder="e.g. Ruled non-material following physical lock inspection..."
+                    placeholder={t('gaps.dismissPlaceholder')}
                     className="w-full p-2.5 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500"
                   />
                   <button
                     onClick={() => handleUpdateStatus(selectedGap.id, 'dismissed')}
                     className="px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded font-mono font-semibold text-xs"
                   >
-                    Save Dismissal Record
+                    {t('gaps.saveDismissal')}
                   </button>
                 </div>
               )}
             </div>
           ) : (
             <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl p-12 text-center text-xs text-slate-400 font-mono shadow-xl">
-              Select an investigation gap from the list to review why it matters and recommended police steps.
+              {t('gaps.selectPrompt')}
             </div>
           )}
         </div>

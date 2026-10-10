@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useCase } from '@/context/CaseContext';
+import { useLanguage } from '@/context/LanguageContext';
 import { EventItem, Entity, EvidenceItem } from '@/types';
 import {
   Clock,
@@ -21,6 +22,7 @@ import {
 } from 'lucide-react';
 
 export default function TimelinePage() {
+  const { t } = useLanguage();
   const { activeCaseId, activeCase } = useCase();
 
   const [events, setEvents] = useState<EventItem[]>([]);
@@ -124,18 +126,18 @@ export default function TimelinePage() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 font-bold border border-sky-800">
-              POLICE CHRONOLOGY RECONSTRUCTION
+              {t('timeline.title')}
             </span>
             <span className="text-[10px] font-mono text-slate-400">
-              TIME-SPATIAL TRAJECTORY MATRIX
+              {t('timeline.description')}
             </span>
           </div>
           <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
             <Clock className="w-5 h-5 text-sky-400" />
-            <span>Chronological Incident Reconstruction</span>
+            <span>{t('timeline.title')}</span>
           </h1>
           <p className="text-xs text-slate-400 mt-1 font-sans">
-            Forensic temporal sequencing across Pimpri Chinchwad grid: Wakad, Dange Chowk, Bhumkar Chowk, Pimple Saudagar, and Somatane Toll.
+            {t('timeline.description')}
           </p>
         </div>
 
@@ -144,7 +146,7 @@ export default function TimelinePage() {
           className="px-3.5 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold transition-all shadow-md flex items-center gap-2 self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" />
-          <span>Record Timeline Node</span>
+          <span>{t('timeline.record')}</span>
         </button>
       </div>
 
@@ -154,7 +156,7 @@ export default function TimelinePage() {
           <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search events, statements, actions..."
+            placeholder={t('timeline.search')}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-9 pr-3 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500 font-sans"
@@ -163,13 +165,13 @@ export default function TimelinePage() {
 
         <div className="flex flex-wrap items-center gap-3 w-full md:w-auto font-mono text-[11px]">
           <div className="flex items-center gap-1.5">
-            <span className="text-slate-400">Tracked Entity:</span>
+            <span className="text-slate-400">{t('timeline.entity')}:</span>
             <select
               value={selectedEntityId}
               onChange={(e) => setSelectedEntityId(e.target.value)}
               className="px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#0E1A27] text-slate-200 focus:outline-none focus:border-sky-500"
             >
-              <option value="all">All Entities ({entities.length})</option>
+              <option value="all">{t('common.all')} ({entities.length})</option>
               {entities.map((ent) => (
                 <option key={ent.id} value={ent.id}>
                   {ent.name}
@@ -179,13 +181,13 @@ export default function TimelinePage() {
           </div>
 
           <div className="flex items-center gap-1.5">
-            <span className="text-slate-400">Sector / Location:</span>
+            <span className="text-slate-400">{t('timeline.location')}:</span>
             <select
               value={selectedLocation}
               onChange={(e) => setSelectedLocation(e.target.value)}
               className="px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#0E1A27] text-slate-200 focus:outline-none focus:border-sky-500"
             >
-              <option value="all">All Locations ({locations.length})</option>
+              <option value="all">{t('common.all')} ({locations.length})</option>
               {locations.map((loc) => (
                 <option key={loc} value={loc}>
                   {loc}
@@ -200,7 +202,7 @@ export default function TimelinePage() {
       <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl p-6 shadow-xl">
         {filteredEvents.length === 0 ? (
           <div className="text-center py-12 text-xs text-slate-400 font-mono">
-            No events match the selected filter criteria.
+            {t('common.noData')}
           </div>
         ) : (
           <div className="relative border-l-2 border-sky-500/30 ml-4 md:ml-36 space-y-8 py-2">
@@ -260,7 +262,7 @@ export default function TimelinePage() {
                               : 'bg-amber-950/80 text-amber-300 border border-amber-800'
                           }`}
                         >
-                          {ev.verificationStatus}
+                          {t(`common.${ev.verificationStatus}`) || ev.verificationStatus}
                         </span>
                         <span className="text-[10px] text-slate-300 font-mono bg-[#08121B] px-2 py-0.5 rounded border border-[#1E2E3F]">
                           Conf: {(ev.confidence * 100).toFixed(0)}%
@@ -282,7 +284,7 @@ export default function TimelinePage() {
                         {srcEvidence && (
                           <div className="flex items-center gap-1 text-sky-300 font-medium bg-sky-950/60 border border-sky-800/60 px-2 py-0.5 rounded">
                             <FileText className="w-3 h-3" />
-                            <span>Source: {srcEvidence.id.toUpperCase()} ({srcEvidence.title})</span>
+                            <span>{t('timeline.source')}: {srcEvidence.id.toUpperCase()} ({srcEvidence.title})</span>
                           </div>
                         )}
                       </div>
@@ -300,17 +302,17 @@ export default function TimelinePage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 select-none">
           <div className="bg-[#0C1724] rounded-xl border border-[#1E2E3F] shadow-2xl w-full max-w-lg overflow-hidden text-xs text-slate-100">
             <div className="px-5 py-3 bg-[#0F1B2A] border-b border-[#1E2E3F] flex items-center justify-between">
-              <h3 className="font-bold text-white font-mono uppercase">Record New Timeline Event</h3>
+              <h3 className="font-bold text-white font-mono uppercase">{t('timeline.modalTitle')}</h3>
               <button onClick={() => setShowAddModal(false)} className="text-slate-400 hover:text-white">
                 ✕
               </button>
             </div>
             <form onSubmit={handleCreateEvent} className="p-5 space-y-3">
               <div>
-                <label className="block font-mono text-[11px] mb-1 text-slate-300">Event Title *</label>
+                <label className="block font-mono text-[11px] mb-1 text-slate-300">{t('timeline.eventTitle')} *</label>
                 <input
                   type="text"
-                  placeholder="e.g. Sighting of dark jacket in rear service lane"
+                  placeholder={t('timeline.sightingPlaceholder')}
                   value={newEventTitle}
                   onChange={(e) => setNewEventTitle(e.target.value)}
                   className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500"
@@ -319,10 +321,10 @@ export default function TimelinePage() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-mono text-[11px] mb-1 text-slate-300">Time Display *</label>
+                  <label className="block font-mono text-[11px] mb-1 text-slate-300">{t('timeline.timeDisplay')} *</label>
                   <input
                     type="text"
-                    placeholder="e.g. 22:36 IST"
+                    placeholder={t('timeline.timePlaceholder')}
                     value={newEventTimeDisplay}
                     onChange={(e) => setNewEventTimeDisplay(e.target.value)}
                     className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500"
@@ -330,31 +332,31 @@ export default function TimelinePage() {
                   />
                 </div>
                 <div>
-                  <label className="block font-mono text-[11px] mb-1 text-slate-300">Precision Tier</label>
+                  <label className="block font-mono text-[11px] mb-1 text-slate-300">{t('timeline.precision')}</label>
                   <select
                     value={newEventPrecision}
                     onChange={(e) => setNewEventPrecision(e.target.value as any)}
                     className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100"
                   >
-                    <option value="exact">Exact (NTP / Log Timed)</option>
-                    <option value="approximate">Approximate</option>
-                    <option value="reported">Reported by Source</option>
-                    <option value="inferred">Inferred by System</option>
+                    <option value="exact">{t('timeline.precision.exact')}</option>
+                    <option value="approximate">{t('timeline.precision.approximate')}</option>
+                    <option value="reported">{t('timeline.precision.reported')}</option>
+                    <option value="inferred">{t('timeline.precision.inferred')}</option>
                   </select>
                 </div>
               </div>
               <div>
-                <label className="block font-mono text-[11px] mb-1 text-slate-300">Location</label>
+                <label className="block font-mono text-[11px] mb-1 text-slate-300">{t('timeline.location')}</label>
                 <input
                   type="text"
-                  placeholder="e.g. Dange Chowk Junction"
+                  placeholder={t('timeline.locationPlaceholder')}
                   value={newEventLocation}
                   onChange={(e) => setNewEventLocation(e.target.value)}
                   className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500"
                 />
               </div>
               <div>
-                <label className="block font-mono text-[11px] mb-1 text-slate-300">Event Narrative Description</label>
+                <label className="block font-mono text-[11px] mb-1 text-slate-300">{t('timeline.descriptionField')}</label>
                 <textarea
                   rows={3}
                   value={newEventDescription}
@@ -368,13 +370,13 @@ export default function TimelinePage() {
                   onClick={() => setShowAddModal(false)}
                   className="px-3 py-1.5 border border-[#22364A] rounded-lg text-slate-400 hover:text-white"
                 >
-                  Cancel
+                  {t('timeline.cancel')}
                 </button>
                 <button
                   type="submit"
                   className="px-4 py-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg font-mono font-semibold"
                 >
-                  Save Timeline Event
+                  {t('timeline.save')}
                 </button>
               </div>
             </form>

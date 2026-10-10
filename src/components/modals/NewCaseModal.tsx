@@ -2,18 +2,20 @@
 
 import React, { useState } from 'react';
 import { useCase } from '@/context/CaseContext';
+import { useLanguage } from '@/context/LanguageContext';
 import { X, Briefcase, Plus, AlertCircle, Shield } from 'lucide-react';
 
 export function NewCaseModal() {
+  const { t } = useLanguage();
   const { showNewCaseModal, setShowNewCaseModal, createCase } = useCase();
 
   const [title, setTitle] = useState('');
   const [referenceNumber, setReferenceNumber] = useState('');
-  const [caseType, setCaseType] = useState('Commercial Dacoity / Vault Breach');
-  const [incidentLocation, setIncidentLocation] = useState('Wakad, Pimpri Chinchwad');
+  const [caseType, setCaseType] = useState('');
+  const [incidentLocation, setIncidentLocation] = useState('');
   const [summary, setSummary] = useState('');
   const [priority, setPriority] = useState<'high' | 'medium' | 'low'>('high');
-  const [leadInvestigator, setLeadInvestigator] = useState('Sr. PI Vitthal More (Wakad PS)');
+  const [leadInvestigator, setLeadInvestigator] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
 
@@ -22,7 +24,7 @@ export function NewCaseModal() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim() || !referenceNumber.trim()) {
-      setError('Please provide both case title and FIR reference number.');
+      setError(t('newCase.error'));
       return;
     }
 
@@ -33,7 +35,7 @@ export function NewCaseModal() {
         title: title.trim(),
         referenceNumber: referenceNumber.trim(),
         caseType,
-        incidentLocation: incidentLocation.trim() || 'Wakad, Pimpri Chinchwad',
+        incidentLocation: incidentLocation.trim() || 'Pimpri Chinchwad',
         summary: summary.trim(),
         priority,
         leadInvestigator,
@@ -61,7 +63,7 @@ export function NewCaseModal() {
           <div className="flex items-center gap-2">
             <Shield className="w-4 h-4 text-sky-400" />
             <h2 className="font-bold text-sm text-white font-mono uppercase tracking-wide">
-              Register New FIR Case File
+              {t('newCase.title')}
             </h2>
           </div>
           <button
@@ -82,11 +84,11 @@ export function NewCaseModal() {
 
           <div>
             <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
-              Case / Incident Title *
+              {t('newCase.caseTitle')} *
             </label>
             <input
               type="text"
-              placeholder="e.g. Armed Vault Breach & Dacoity at Hinjawadi Infotech Park"
+              placeholder={t('newCase.titlePlaceholder')}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               className="w-full px-3 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500 font-sans"
@@ -97,11 +99,11 @@ export function NewCaseModal() {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
-                FIR Reference No *
+                {t('newCase.reference')} *
               </label>
               <input
                 type="text"
-                placeholder="e.g. FIR No. 0412/2025 (Hinjawadi PS)"
+                placeholder={t('newCase.referencePlaceholder')}
                 value={referenceNumber}
                 onChange={(e) => setReferenceNumber(e.target.value)}
                 className="w-full px-3 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500 font-mono"
@@ -110,16 +112,16 @@ export function NewCaseModal() {
             </div>
             <div>
               <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
-                Priority Tier
+                {t('newCase.priority')}
               </label>
               <select
                 value={priority}
                 onChange={(e) => setPriority(e.target.value as any)}
                 className="w-full px-3 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 focus:outline-none focus:border-sky-500 font-mono"
               >
-                <option value="high">Priority High</option>
-                <option value="medium">Priority Medium</option>
-                <option value="low">Priority Low</option>
+                <option value="high">{t('priority.high')}</option>
+                <option value="medium">{t('priority.medium')}</option>
+                <option value="low">{t('priority.low')}</option>
               </select>
             </div>
           </div>
@@ -127,7 +129,7 @@ export function NewCaseModal() {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
-                Case Classification / Offense
+                {t('newCase.classification')}
               </label>
               <input
                 type="text"
@@ -138,7 +140,7 @@ export function NewCaseModal() {
             </div>
             <div>
               <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
-                Lead IO / Police Inspector
+                {t('newCase.contact')}
               </label>
               <input
                 type="text"
@@ -151,11 +153,11 @@ export function NewCaseModal() {
 
           <div>
             <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
-              Scene Location / Landmark
+              {t('newCase.location')}
             </label>
             <input
               type="text"
-              placeholder="e.g. Datta Mandir Road, Wakad, Pimpri Chinchwad"
+              placeholder={t('newCase.locationPlaceholder')}
               value={incidentLocation}
               onChange={(e) => setIncidentLocation(e.target.value)}
               className="w-full px-3 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500"
@@ -164,11 +166,11 @@ export function NewCaseModal() {
 
           <div>
             <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
-              Preliminary Incident Brief
+              {t('newCase.summary')}
             </label>
             <textarea
               rows={3}
-              placeholder="Document the primary allegations, estimated loss, suspect names, and telemetry parameters..."
+              placeholder={t('newCase.summaryPlaceholder')}
               value={summary}
               onChange={(e) => setSummary(e.target.value)}
               className="w-full px-3 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500 font-sans"
@@ -181,7 +183,7 @@ export function NewCaseModal() {
               onClick={() => setShowNewCaseModal(false)}
               className="px-3.5 py-1.5 border border-[#22364A] rounded-lg text-slate-400 hover:text-white font-mono"
             >
-              Cancel
+              {t('newCase.cancel')}
             </button>
             <button
               type="submit"
@@ -189,7 +191,7 @@ export function NewCaseModal() {
               className="px-4 py-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg font-mono font-semibold shadow-md flex items-center gap-1.5"
             >
               <Plus className="w-3.5 h-3.5" />
-              <span>{submitting ? 'Creating...' : 'Initialize Dossier'}</span>
+              <span>{submitting ? t('newCase.creating') : t('newCase.submit')}</span>
             </button>
           </div>
         </form>

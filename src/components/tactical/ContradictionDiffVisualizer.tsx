@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useLanguage } from '@/context/LanguageContext';
 import { ContradictionFinding, ContradictionReviewStatus } from '@/types';
 import {
   AlertTriangle,
@@ -28,6 +29,7 @@ export function ContradictionDiffVisualizer({
   onUpdateStatus,
   onSaveNotes,
 }: ContradictionDiffVisualizerProps) {
+  const { t } = useLanguage();
   const [showAlternatives, setShowAlternatives] = useState(false);
   const [notes, setNotes] = useState(finding.investigatorNotes || '');
   const [isEditingNotes, setIsEditingNotes] = useState(false);
@@ -213,7 +215,7 @@ export function ContradictionDiffVisualizer({
       <div className="px-5 py-3 bg-[#0B1522] border-t border-[#1E2E3F] flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex items-center gap-2">
           <span className="text-[10px] font-mono text-slate-400 uppercase font-semibold">
-            Triage Decision:
+            {t('contradictions.review')}:
           </span>
           {onUpdateStatus && (
             <div className="flex items-center gap-1.5">
@@ -225,7 +227,7 @@ export function ContradictionDiffVisualizer({
                     : 'bg-rose-950/40 text-rose-300 border-rose-900 hover:bg-rose-900/60'
                 }`}
               >
-                Confirm Inconsistency
+                {t('contradictions.confirmed')}
               </button>
               <button
                 onClick={() => onUpdateStatus(finding.id, 'under_review')}
@@ -235,7 +237,7 @@ export function ContradictionDiffVisualizer({
                     : 'bg-amber-950/40 text-amber-300 border-amber-900 hover:bg-amber-900/60'
                 }`}
               >
-                Requires Interrogation
+                {t('contradictions.underReview')}
               </button>
               <button
                 onClick={() => onUpdateStatus(finding.id, 'resolved')}
@@ -245,7 +247,7 @@ export function ContradictionDiffVisualizer({
                     : 'bg-emerald-950/40 text-emerald-300 border-emerald-900 hover:bg-emerald-900/60'
                 }`}
               >
-                Mark Resolved
+                {t('contradictions.resolved')}
               </button>
             </div>
           )}

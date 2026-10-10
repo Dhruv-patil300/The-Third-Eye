@@ -9,6 +9,7 @@ import {
   AIMessage,
   AuditLog,
   CaseStore,
+  EvidenceType,
 } from '@/types';
 
 export const DEMO_CASE_ID = 'case-pcpc-wakad-2025';
@@ -36,6 +37,71 @@ export const demoCase: Case = {
     'High Priority',
   ],
 };
+
+export const demoCases: Case[] = [
+  {
+    id: 'case-pcmc-demo-2026-01',
+    title: 'Misplaced Work Folder | Pimpri Market',
+    referenceNumber: 'PCMC-DEMO-2026-01',
+    caseType: 'Lost property / public assistance',
+    incidentDate: '2026-09-18T09:30:00Z',
+    incidentLocation: 'Pimpri Market area, Pimpri Chinchwad',
+    summary: 'Fictional presentation scenario: a commuter reports misplacing a folder of routine work papers after visiting the market. No valuables or identity documents are involved. The record demonstrates intake, location checks, and return-status tracking.',
+    status: 'active',
+    priority: 'low',
+    leadInvestigator: 'Demo Officer',
+    createdAt: '2026-09-18T10:00:00Z',
+    updatedAt: '2026-09-18T10:00:00Z',
+    tags: ['Illustrative Demo', 'Fictional Scenario', 'Public Assistance'],
+  },
+  {
+    id: 'case-pcmc-demo-2026-02',
+    title: 'Minor Non-Injury Collision | Wakad Service Road',
+    referenceNumber: 'PCMC-DEMO-2026-02',
+    caseType: 'Traffic incident / information report',
+    incidentDate: '2026-09-20T13:15:00Z',
+    incidentLocation: 'Wakad service road, Pimpri Chinchwad',
+    summary: 'Fictional presentation scenario: two motorists report a low-speed contact during light rain. No injuries are reported. The record demonstrates neutral intake, a request for nearby camera footage, and follow-up status without assigning fault.',
+    status: 'active',
+    priority: 'low',
+    leadInvestigator: 'Demo Officer',
+    createdAt: '2026-09-20T14:00:00Z',
+    updatedAt: '2026-09-20T14:00:00Z',
+    tags: ['Illustrative Demo', 'Fictional Scenario', 'Traffic'],
+  },
+  {
+    id: 'case-pcmc-demo-2026-03',
+    title: 'Shared Parking Access Enquiry | Thergaon',
+    referenceNumber: 'PCMC-DEMO-2026-03',
+    caseType: 'Neighbourhood enquiry / assisted resolution',
+    incidentDate: '2026-09-23T16:00:00Z',
+    incidentLocation: 'Thergaon, Pimpri Chinchwad',
+    summary: 'Fictional presentation scenario: residents request help documenting a recurring obstruction of a shared parking access lane. No individual is accused. The record demonstrates neutral notes, contact attempts, and referral for a community-level resolution.',
+    status: 'closed',
+    priority: 'low',
+    leadInvestigator: 'Demo Officer',
+    createdAt: '2026-09-23T16:30:00Z',
+    updatedAt: '2026-09-25T11:00:00Z',
+    tags: ['Illustrative Demo', 'Fictional Scenario', 'Community'],
+  },
+  {
+    id: 'case-pcmc-demo-2026-04',
+    title: 'Lost Property Enquiry | Chinchwad Station',
+    referenceNumber: 'PCMC-DEMO-2026-04',
+    caseType: 'Lost property / transit assistance',
+    incidentDate: '2026-09-26T08:45:00Z',
+    incidentLocation: 'Chinchwad railway station area, Pimpri Chinchwad',
+    summary: 'Fictional presentation scenario: a passenger reports leaving a reusable bag with a book and umbrella near a station waiting area. The record demonstrates a lost-property enquiry and a transit desk follow-up; no person or actual complaint is represented.',
+    status: 'active',
+    priority: 'low',
+    leadInvestigator: 'Demo Officer',
+    createdAt: '2026-09-26T09:15:00Z',
+    updatedAt: '2026-09-26T09:15:00Z',
+    tags: ['Illustrative Demo', 'Fictional Scenario', 'Public Assistance'],
+  },
+];
+
+export const DEFAULT_ACTIVE_CASE_ID = demoCases[0].id;
 
 export const demoEvidence: EvidenceItem[] = [
   {
@@ -1196,14 +1262,318 @@ export const demoAuditLogs: AuditLog[] = [
   },
 ];
 
+type PresentationEvidenceInput = {
+  id: string;
+  caseId: string;
+  title: string;
+  timestamp: string;
+  detail: string;
+  evidenceType: EvidenceType;
+  entityIds: string[];
+  eventIds: string[];
+};
+
+function makePresentationEvidence(input: PresentationEvidenceInput): EvidenceItem {
+  return {
+    id: input.id,
+    caseId: input.caseId,
+    title: input.title,
+    evidenceType: input.evidenceType,
+    sourceDescription: 'Synthetic presentation record. Not collected from a real person or official system.',
+    dateReceived: input.timestamp,
+    eventTime: input.timestamp,
+    recordedBy: 'Demo Officer',
+    processingStatus: 'processed',
+    verificationStatus: 'unverified',
+    extractedText: `SIMULATED DATA ONLY\n${input.detail}`,
+    sourceProvenance: {
+      origin: 'Fictional presentation scenario',
+      collector: 'Demo data seed',
+      chainOfCustody: [],
+      collectedAt: input.timestamp,
+    },
+    relatedEntityIds: input.entityIds,
+    relatedEventIds: input.eventIds,
+    claims: [],
+    createdAt: input.timestamp,
+    updatedAt: input.timestamp,
+  };
+}
+
+function makePresentationEntity(
+  id: string,
+  caseId: string,
+  name: string,
+  category: Entity['category'],
+  evidenceIds: string[],
+  timestamp: string
+): Entity {
+  return {
+    id,
+    caseId,
+    name,
+    category,
+    role: 'neutral',
+    details: { recordType: 'Fictional presentation data' },
+    status: 'unverified',
+    notes: 'Illustrative demo entity only. This does not identify a real person, vehicle, or official body.',
+    sourceEvidenceIds: evidenceIds,
+    createdAt: timestamp,
+    updatedAt: timestamp,
+  };
+}
+
+function makePresentationEvent(
+  id: string,
+  caseId: string,
+  title: string,
+  timestamp: string,
+  timeDisplay: string,
+  description: string,
+  location: string,
+  entityIds: string[],
+  evidenceId: string
+): EventItem {
+  return {
+    id,
+    caseId,
+    title,
+    timestamp,
+    timeDisplay,
+    timePrecision: 'reported',
+    description: `SIMULATED DEMO EVENT. ${description}`,
+    location,
+    associatedEntityIds: entityIds,
+    sourceEvidenceId: evidenceId,
+    verificationStatus: 'unverified',
+    confidence: 0.5,
+    createdAt: timestamp,
+  };
+}
+
+function makePresentationRelationship(
+  id: string,
+  caseId: string,
+  sourceEntityId: string,
+  targetEntityId: string,
+  relationshipType: EntityRelationship['relationshipType'],
+  label: string,
+  evidenceId: string
+): EntityRelationship {
+  return {
+    id,
+    caseId,
+    sourceEntityId,
+    targetEntityId,
+    relationshipType,
+    label,
+    description: 'Illustrative relationship from simulated scenario data; not independently verified.',
+    supportingEvidenceIds: [evidenceId],
+    verificationStatus: 'unverified',
+    confidence: 0.5,
+  };
+}
+
+function makePresentationGap(
+  id: string,
+  caseId: string,
+  title: string,
+  category: InvestigationGap['category'],
+  whatIsUnknown: string,
+  suggestedNextStep: string,
+  evidenceIds: string[],
+  entityIds: string[],
+  timestamp: string,
+  status: InvestigationGap['status'] = 'open'
+): InvestigationGap {
+  return {
+    id,
+    caseId,
+    title,
+    category,
+    severity: 'minor',
+    description: 'Routine follow-up item in a fictional presentation scenario.',
+    whyItMatters: 'Completing this item demonstrates how routine case follow-up is tracked.',
+    whatIsUnknown,
+    relatedEvidenceIds: evidenceIds,
+    relatedEntityIds: entityIds,
+    suggestedNextStep,
+    status,
+    createdAt: timestamp,
+    updatedAt: timestamp,
+  };
+}
+
+export const presentationEvidence: EvidenceItem[] = [
+  makePresentationEvidence({
+    id: 'ev-pcmc-demo-01-intake', caseId: 'case-pcmc-demo-2026-01', title: 'Work folder enquiry intake (simulated)',
+    timestamp: '2026-09-18T09:30:00Z', evidenceType: 'witness_statement',
+    detail: 'A commuter reports a misplaced folder containing routine work papers. No valuables or identity documents are reported.',
+    entityIds: ['ent-pcmc-demo-01-reporter', 'ent-pcmc-demo-01-market'], eventIds: ['evt-pcmc-demo-01-intake'],
+  }),
+  makePresentationEvidence({
+    id: 'ev-pcmc-demo-01-search', caseId: 'case-pcmc-demo-2026-01', title: 'Market help desk search note (simulated)',
+    timestamp: '2026-09-18T11:15:00Z', evidenceType: 'other',
+    detail: 'A fictional help desk search is logged. No matching folder is recorded at the time of the sample entry.',
+    entityIds: ['ent-pcmc-demo-01-market'], eventIds: ['evt-pcmc-demo-01-search'],
+  }),
+  makePresentationEvidence({
+    id: 'ev-pcmc-demo-02-intake-a', caseId: 'case-pcmc-demo-2026-02', title: 'Motorist A incident note (simulated)',
+    timestamp: '2026-09-20T13:15:00Z', evidenceType: 'witness_statement',
+    detail: 'An anonymized motorist estimates a low-speed contact occurred at about 1:10 PM during light rain. No injuries are reported.',
+    entityIds: ['ent-pcmc-demo-02-vehicle-a', 'ent-pcmc-demo-02-road'], eventIds: ['evt-pcmc-demo-02-report'],
+  }),
+  makePresentationEvidence({
+    id: 'ev-pcmc-demo-02-intake-b', caseId: 'case-pcmc-demo-2026-02', title: 'Motorist B incident note (simulated)',
+    timestamp: '2026-09-20T13:18:00Z', evidenceType: 'witness_statement',
+    detail: 'A second anonymized motorist estimates the same low-speed contact occurred at about 1:15 PM. The estimate is approximate and assigns no fault.',
+    entityIds: ['ent-pcmc-demo-02-vehicle-b', 'ent-pcmc-demo-02-road'], eventIds: ['evt-pcmc-demo-02-report'],
+  }),
+  makePresentationEvidence({
+    id: 'ev-pcmc-demo-02-camera', caseId: 'case-pcmc-demo-2026-02', title: 'Nearby camera request receipt (simulated)',
+    timestamp: '2026-09-20T14:05:00Z', evidenceType: 'other',
+    detail: 'A request for nearby camera footage is logged as pending. No footage or conclusion is included in this sample.',
+    entityIds: ['ent-pcmc-demo-02-road'], eventIds: ['evt-pcmc-demo-02-request'],
+  }),
+  makePresentationEvidence({
+    id: 'ev-pcmc-demo-03-site', caseId: 'case-pcmc-demo-2026-03', title: 'Shared access site note (simulated)',
+    timestamp: '2026-09-23T16:00:00Z', evidenceType: 'other',
+    detail: 'A neutral site note records a request to review a shared parking access lane. No resident is identified or accused.',
+    entityIds: ['ent-pcmc-demo-03-lane', 'ent-pcmc-demo-03-residents'], eventIds: ['evt-pcmc-demo-03-enquiry'],
+  }),
+  makePresentationEvidence({
+    id: 'ev-pcmc-demo-03-resolution', caseId: 'case-pcmc-demo-2026-03', title: 'Community resolution note (simulated)',
+    timestamp: '2026-09-25T11:00:00Z', evidenceType: 'other',
+    detail: 'A fictional follow-up records that residents agreed to keep the shared access clear. No enforcement finding is made.',
+    entityIds: ['ent-pcmc-demo-03-lane', 'ent-pcmc-demo-03-service-desk'], eventIds: ['evt-pcmc-demo-03-followup'],
+  }),
+  makePresentationEvidence({
+    id: 'ev-pcmc-demo-04-intake', caseId: 'case-pcmc-demo-2026-04', title: 'Station-area lost property enquiry (simulated)',
+    timestamp: '2026-09-26T08:45:00Z', evidenceType: 'witness_statement',
+    detail: 'A passenger reports leaving a reusable bag containing a book and umbrella near a waiting area. No identifying documents or valuables are involved.',
+    entityIds: ['ent-pcmc-demo-04-passenger', 'ent-pcmc-demo-04-waiting-area'], eventIds: ['evt-pcmc-demo-04-enquiry'],
+  }),
+  makePresentationEvidence({
+    id: 'ev-pcmc-demo-04-search', caseId: 'case-pcmc-demo-2026-04', title: 'Transit desk search request (simulated)',
+    timestamp: '2026-09-26T09:20:00Z', evidenceType: 'other',
+    detail: 'A fictional lost-and-found search request is logged. The result is pending and no item recovery is claimed.',
+    entityIds: ['ent-pcmc-demo-04-passenger', 'ent-pcmc-demo-04-transit-desk'], eventIds: ['evt-pcmc-demo-04-request'],
+  }),
+];
+
+export const presentationEntities: Entity[] = [
+  makePresentationEntity('ent-pcmc-demo-01-reporter', 'case-pcmc-demo-2026-01', 'Reporting commuter (demo)', 'person', ['ev-pcmc-demo-01-intake'], '2026-09-18T09:30:00Z'),
+  makePresentationEntity('ent-pcmc-demo-01-market', 'case-pcmc-demo-2026-01', 'Market help desk (demo)', 'organization', ['ev-pcmc-demo-01-search'], '2026-09-18T11:15:00Z'),
+  makePresentationEntity('ent-pcmc-demo-01-area', 'case-pcmc-demo-2026-01', 'Pimpri Market area (demo)', 'location', ['ev-pcmc-demo-01-intake'], '2026-09-18T09:30:00Z'),
+  makePresentationEntity('ent-pcmc-demo-02-vehicle-a', 'case-pcmc-demo-2026-02', 'Vehicle A (demo)', 'vehicle', ['ev-pcmc-demo-02-intake-a'], '2026-09-20T13:15:00Z'),
+  makePresentationEntity('ent-pcmc-demo-02-vehicle-b', 'case-pcmc-demo-2026-02', 'Vehicle B (demo)', 'vehicle', ['ev-pcmc-demo-02-intake-b'], '2026-09-20T13:18:00Z'),
+  makePresentationEntity('ent-pcmc-demo-02-road', 'case-pcmc-demo-2026-02', 'Wakad service road (demo)', 'location', ['ev-pcmc-demo-02-camera'], '2026-09-20T14:05:00Z'),
+  makePresentationEntity('ent-pcmc-demo-03-lane', 'case-pcmc-demo-2026-03', 'Shared access lane (demo)', 'location', ['ev-pcmc-demo-03-site'], '2026-09-23T16:00:00Z'),
+  makePresentationEntity('ent-pcmc-demo-03-residents', 'case-pcmc-demo-2026-03', 'Residents group (demo)', 'organization', ['ev-pcmc-demo-03-site'], '2026-09-23T16:00:00Z'),
+  makePresentationEntity('ent-pcmc-demo-03-service-desk', 'case-pcmc-demo-2026-03', 'Community service desk (demo)', 'organization', ['ev-pcmc-demo-03-resolution'], '2026-09-25T11:00:00Z'),
+  makePresentationEntity('ent-pcmc-demo-04-passenger', 'case-pcmc-demo-2026-04', 'Passenger (demo)', 'person', ['ev-pcmc-demo-04-intake'], '2026-09-26T08:45:00Z'),
+  makePresentationEntity('ent-pcmc-demo-04-waiting-area', 'case-pcmc-demo-2026-04', 'Chinchwad station waiting area (demo)', 'location', ['ev-pcmc-demo-04-intake'], '2026-09-26T08:45:00Z'),
+  makePresentationEntity('ent-pcmc-demo-04-transit-desk', 'case-pcmc-demo-2026-04', 'Transit lost-property desk (demo)', 'organization', ['ev-pcmc-demo-04-search'], '2026-09-26T09:20:00Z'),
+];
+
+export const presentationEvents: EventItem[] = [
+  makePresentationEvent('evt-pcmc-demo-01-intake', 'case-pcmc-demo-2026-01', 'Enquiry recorded', '2026-09-18T09:30:00Z', '09:30 AM', 'Fictional lost-property intake logged.', 'Pimpri Market area', ['ent-pcmc-demo-01-reporter', 'ent-pcmc-demo-01-area'], 'ev-pcmc-demo-01-intake'),
+  makePresentationEvent('evt-pcmc-demo-01-search', 'case-pcmc-demo-2026-01', 'Help desk search requested', '2026-09-18T11:15:00Z', '11:15 AM', 'Sample search note added; outcome remains unverified.', 'Pimpri Market area', ['ent-pcmc-demo-01-market'], 'ev-pcmc-demo-01-search'),
+  makePresentationEvent('evt-pcmc-demo-02-report', 'case-pcmc-demo-2026-02', 'Incident report recorded', '2026-09-20T13:18:00Z', '01:18 PM', 'Fictional non-injury incident details logged without assigning fault.', 'Wakad service road', ['ent-pcmc-demo-02-vehicle-a', 'ent-pcmc-demo-02-vehicle-b'], 'ev-pcmc-demo-02-intake-b'),
+  makePresentationEvent('evt-pcmc-demo-02-request', 'case-pcmc-demo-2026-02', 'Camera request marked pending', '2026-09-20T14:05:00Z', '02:05 PM', 'Sample footage request logged; no footage result is represented.', 'Wakad service road', ['ent-pcmc-demo-02-road'], 'ev-pcmc-demo-02-camera'),
+  makePresentationEvent('evt-pcmc-demo-03-enquiry', 'case-pcmc-demo-2026-03', 'Access enquiry received', '2026-09-23T16:00:00Z', '04:00 PM', 'Fictional community access enquiry recorded.', 'Thergaon', ['ent-pcmc-demo-03-residents', 'ent-pcmc-demo-03-lane'], 'ev-pcmc-demo-03-site'),
+  makePresentationEvent('evt-pcmc-demo-03-followup', 'case-pcmc-demo-2026-03', 'Follow-up resolution recorded', '2026-09-25T11:00:00Z', '11:00 AM', 'Sample note records a voluntary access arrangement.', 'Thergaon', ['ent-pcmc-demo-03-service-desk', 'ent-pcmc-demo-03-lane'], 'ev-pcmc-demo-03-resolution'),
+  makePresentationEvent('evt-pcmc-demo-04-enquiry', 'case-pcmc-demo-2026-04', 'Lost-property enquiry received', '2026-09-26T08:45:00Z', '08:45 AM', 'Fictional passenger enquiry recorded.', 'Chinchwad station area', ['ent-pcmc-demo-04-passenger', 'ent-pcmc-demo-04-waiting-area'], 'ev-pcmc-demo-04-intake'),
+  makePresentationEvent('evt-pcmc-demo-04-request', 'case-pcmc-demo-2026-04', 'Transit desk search requested', '2026-09-26T09:20:00Z', '09:20 AM', 'Sample lost-and-found request logged; result remains pending.', 'Chinchwad station area', ['ent-pcmc-demo-04-transit-desk'], 'ev-pcmc-demo-04-search'),
+];
+
+export const presentationRelationships: EntityRelationship[] = [
+  makePresentationRelationship('rel-pcmc-demo-01-visit', 'case-pcmc-demo-2026-01', 'ent-pcmc-demo-01-reporter', 'ent-pcmc-demo-01-area', 'present_at', 'Reported visit', 'ev-pcmc-demo-01-intake'),
+  makePresentationRelationship('rel-pcmc-demo-01-search', 'case-pcmc-demo-2026-01', 'ent-pcmc-demo-01-market', 'ent-pcmc-demo-01-area', 'present_at', 'Search location', 'ev-pcmc-demo-01-search'),
+  makePresentationRelationship('rel-pcmc-demo-02-location-a', 'case-pcmc-demo-2026-02', 'ent-pcmc-demo-02-vehicle-a', 'ent-pcmc-demo-02-road', 'present_at', 'Reported location', 'ev-pcmc-demo-02-intake-a'),
+  makePresentationRelationship('rel-pcmc-demo-02-location-b', 'case-pcmc-demo-2026-02', 'ent-pcmc-demo-02-vehicle-b', 'ent-pcmc-demo-02-road', 'present_at', 'Reported location', 'ev-pcmc-demo-02-intake-b'),
+  makePresentationRelationship('rel-pcmc-demo-03-access', 'case-pcmc-demo-2026-03', 'ent-pcmc-demo-03-residents', 'ent-pcmc-demo-03-lane', 'present_at', 'Shared access enquiry', 'ev-pcmc-demo-03-site'),
+  makePresentationRelationship('rel-pcmc-demo-03-resolution', 'case-pcmc-demo-2026-03', 'ent-pcmc-demo-03-service-desk', 'ent-pcmc-demo-03-lane', 'associate', 'Follow-up recorded', 'ev-pcmc-demo-03-resolution'),
+  makePresentationRelationship('rel-pcmc-demo-04-visit', 'case-pcmc-demo-2026-04', 'ent-pcmc-demo-04-passenger', 'ent-pcmc-demo-04-waiting-area', 'present_at', 'Reported location', 'ev-pcmc-demo-04-intake'),
+  makePresentationRelationship('rel-pcmc-demo-04-search', 'case-pcmc-demo-2026-04', 'ent-pcmc-demo-04-transit-desk', 'ent-pcmc-demo-04-waiting-area', 'associate', 'Search location', 'ev-pcmc-demo-04-search'),
+];
+
+export const presentationContradictions: ContradictionFinding[] = [
+  {
+    id: 'cntr-pcmc-demo-02-time',
+    caseId: 'case-pcmc-demo-2026-02',
+    title: 'Approximate incident times differ by five minutes',
+    severity: 'low',
+    category: 'timeline_conflict',
+    claimA: {
+      evidenceId: 'ev-pcmc-demo-02-intake-a',
+      evidenceTitle: 'Motorist A incident note (simulated)',
+      excerpt: 'The contact was estimated at about 1:10 PM.',
+      speakerOrSource: 'Motorist A (fictional demo)',
+      timestamp: '2026-09-20T13:15:00Z',
+      location: 'Wakad service road (demo)',
+    },
+    claimB: {
+      evidenceId: 'ev-pcmc-demo-02-intake-b',
+      evidenceTitle: 'Motorist B incident note (simulated)',
+      excerpt: 'The same contact was estimated at about 1:15 PM.',
+      speakerOrSource: 'Motorist B (fictional demo)',
+      timestamp: '2026-09-20T13:18:00Z',
+      location: 'Wakad service road (demo)',
+    },
+    explanation: 'Fictional, low-impact difference between two approximate time estimates. It does not assign fault or indicate wrongdoing.',
+    alternativeExplanations: ['Both estimates are approximate.', 'The notes were recorded at different times.'],
+    suggestedVerificationSteps: ['Check the original intake notes if exact timing is needed.'],
+    reviewStatus: 'under_review',
+    investigatorNotes: 'Presentation example only; no real incident or parties are represented.',
+    updatedAt: '2026-09-20T14:05:00Z',
+  },
+];
+
+export const presentationGaps: InvestigationGap[] = [
+  {
+    id: 'gap-pcmc-demo-01-return', caseId: 'case-pcmc-demo-2026-01', title: 'Property return status', category: 'missing_record', severity: 'minor',
+    description: 'Routine follow-up item in a fictional presentation scenario.', whyItMatters: 'Completing this item demonstrates how routine case follow-up is tracked.',
+    whatIsUnknown: 'Whether the folder was later returned is not recorded.', relatedEvidenceIds: ['ev-pcmc-demo-01-intake', 'ev-pcmc-demo-01-search'], relatedEntityIds: ['ent-pcmc-demo-01-reporter'],
+    suggestedNextStep: 'Add a closure update if the item is found.', status: 'open', createdAt: '2026-09-18T11:15:00Z', updatedAt: '2026-09-18T11:15:00Z',
+  },
+  {
+    id: 'gap-pcmc-demo-02-camera', caseId: 'case-pcmc-demo-2026-02', title: 'Camera request result', category: 'missing_cctv', severity: 'minor',
+    description: 'Routine follow-up item in a fictional presentation scenario.', whyItMatters: 'The response would complete the sample documentation trail.',
+    whatIsUnknown: 'No response or footage result is attached to the sample request.', relatedEvidenceIds: ['ev-pcmc-demo-02-camera'], relatedEntityIds: ['ent-pcmc-demo-02-road'],
+    suggestedNextStep: 'Attach the response or record that footage was unavailable.', status: 'open', createdAt: '2026-09-20T14:05:00Z', updatedAt: '2026-09-20T14:05:00Z',
+  },
+  {
+    id: 'gap-pcmc-demo-03-closure', caseId: 'case-pcmc-demo-2026-03', title: 'Closure note review', category: 'missing_record', severity: 'minor',
+    description: 'Routine follow-up item in a fictional presentation scenario.', whyItMatters: 'The resolution note should remain with the closed sample record.',
+    whatIsUnknown: 'No further follow-up is outstanding in this sample scenario.', relatedEvidenceIds: ['ev-pcmc-demo-03-resolution'], relatedEntityIds: ['ent-pcmc-demo-03-lane'],
+    suggestedNextStep: 'Retain the resolution note with the closed record.', status: 'addressed', createdAt: '2026-09-25T11:00:00Z', updatedAt: '2026-09-25T11:00:00Z',
+  },
+  {
+    id: 'gap-pcmc-demo-04-search', caseId: 'case-pcmc-demo-2026-04', title: 'Lost-and-found search result', category: 'missing_record', severity: 'minor',
+    description: 'Routine follow-up item in a fictional presentation scenario.', whyItMatters: 'A result would complete the sample enquiry trail.',
+    whatIsUnknown: 'The transit desk search outcome is still pending in the sample record.', relatedEvidenceIds: ['ev-pcmc-demo-04-search'], relatedEntityIds: ['ent-pcmc-demo-04-transit-desk'],
+    suggestedNextStep: 'Add the desk response when available.', status: 'open', createdAt: '2026-09-26T09:20:00Z', updatedAt: '2026-09-26T09:20:00Z',
+  },
+];
+
+export const presentationAuditLogs: AuditLog[] = demoCases.map((item, index) => ({
+  id: `log-pcmc-demo-${index + 1}`,
+  caseId: item.id,
+  timestamp: item.createdAt,
+  actor: 'Demo System',
+  action: 'DEMO_SCENARIO_LOADED',
+  details: 'Fictional presentation data loaded. All linked records are simulated and unverified.',
+}));
+
 export const initialStore: CaseStore = {
-  cases: [demoCase],
-  evidence: demoEvidence,
-  entities: demoEntities,
-  events: demoEvents,
-  relationships: demoRelationships,
-  contradictions: demoContradictions,
-  gaps: demoGaps,
+  cases: [...demoCases, demoCase],
+  evidence: [...demoEvidence, ...presentationEvidence],
+  entities: [...demoEntities, ...presentationEntities],
+  events: [...demoEvents, ...presentationEvents],
+  relationships: [...demoRelationships, ...presentationRelationships],
+  contradictions: [...demoContradictions, ...presentationContradictions],
+  gaps: [...demoGaps, ...presentationGaps],
   assistantMessages: demoMessages,
-  auditLogs: demoAuditLogs,
+  auditLogs: [...demoAuditLogs, ...presentationAuditLogs],
 };

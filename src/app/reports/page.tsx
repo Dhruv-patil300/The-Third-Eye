@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { useCase } from '@/context/CaseContext';
+import { useLanguage } from '@/context/LanguageContext';
 import {
-  Case,
   EvidenceItem,
   EventItem,
   Entity,
@@ -26,6 +26,8 @@ import {
 
 export default function ReportsPage() {
   const { activeCaseId, activeCase } = useCase();
+  const { t, locale, caseText } = useLanguage();
+  const isIllustrativeDemo = activeCase?.tags.includes('Illustrative Demo') ?? false;
 
   const [evidence, setEvidence] = useState<EvidenceItem[]>([]);
   const [events, setEvents] = useState<EventItem[]>([]);
@@ -80,25 +82,35 @@ export default function ReportsPage() {
   };
 
   const handleExportJSON = () => {
+    const sections: Record<string, unknown> = {};
+    if (includeOverview) sections.overview = activeCase;
+    if (includeEvidence) sections.evidence = evidence;
+    if (includeTimeline) sections.timeline = events;
+    if (includeContradictions) sections.contradictions = contradictions;
+    if (includeEntities) sections.entities = entities;
+    if (includeGaps) sections.gaps = gaps;
+    if (includeMethodology) sections.limitations = t('reports.description');
+
     const reportData = {
-      dossierTitle: `Investigative Dossier: ${activeCase?.referenceNumber}`,
+      documentType: 'Investigative Case Review Draft',
+      dossierTitle: `Case Review Dossier: ${activeCase?.referenceNumber}`,
       generatedAt: new Date().toISOString(),
-      case: activeCase,
-      evidenceSummary: evidence,
-      timelineEvents: events,
-      entities,
-      flaggedContradictions: contradictions,
-      investigationGaps: gaps,
-      doctrine: 'AI recommends. Humans investigate. Humans decide.',
+      locale,
+      caseReference: activeCase?.referenceNumber,
+      notice: isIllustrativeDemo ? t('reports.demoNotice') : t('reports.description'),
+      sections,
     };
 
     const blob = new Blob([JSON.stringify(reportData, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `Case_Dossier_${activeCase?.referenceNumber || 'Export'}.json`;
+    const reference = (activeCase?.referenceNumber || 'Export').replace(/[^a-z0-9_-]+/gi, '_');
+    a.download = `Case_Review_${reference}.json`;
+    document.body.appendChild(a);
     a.click();
-    URL.revokeObjectURL(url);
+    a.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
   };
 
   return (
@@ -109,18 +121,18 @@ export default function ReportsPage() {
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 font-bold border border-sky-800">
-                PROSECUTION CHARGESHEET DOSSIER
+                {t('reports.draft')}
               </span>
               <span className="text-[10px] font-mono text-slate-400">
-                WAKAD PS // PCPC
+                {t('header.caseFiles')}
               </span>
             </div>
             <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
               <FileBarChart className="w-5 h-5 text-sky-400" />
-              <span>Investigative Dossier & Report Generator</span>
+              <span>{t('reports.title')}</span>
             </h1>
             <p className="text-xs text-slate-400 mt-1 font-sans">
-              Assemble certified intelligence briefs, chronological exhibits, and analytical triage records for Case{' '}
+              {t('reports.description')}{' '}
               <span className="font-semibold text-slate-200 font-mono">{activeCase?.referenceNumber}</span>.
             </p>
           </div>
@@ -131,14 +143,14 @@ export default function ReportsPage() {
               className="px-3.5 py-2 bg-[#122131] hover:bg-[#182b3f] border border-[#22364A] text-slate-200 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors font-mono"
             >
               <Download className="w-4 h-4 text-sky-400" />
-              <span>Export JSON</span>
+              <span>{t('reports.export')}</span>
             </button>
             <button
               onClick={handlePrint}
               className="px-4 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-md font-mono"
             >
               <Printer className="w-4 h-4" />
-              <span>Print / Save PDF</span>
+              <span>{t('reports.print')}</span>
             </button>
           </div>
         </div>
@@ -146,7 +158,7 @@ export default function ReportsPage() {
         {/* Section Selectors */}
         <div className="pt-3 border-t border-[#1E2E3F]">
           <div className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider mb-2">
-            Select Dossier Exhibits to Include:
+            {t('reports.selectSections')}:
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
             <label className="flex items-center gap-2 cursor-pointer">
@@ -156,7 +168,7 @@ export default function ReportsPage() {
                 onChange={(e) => setIncludeOverview(e.target.checked)}
                 className="rounded border-border-light text-brand-deepTeal"
               />
-              <span>Case Overview</span>
+              <span>{t('reports.overview')}</span>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
               <input
@@ -165,7 +177,7 @@ export default function ReportsPage() {
                 onChange={(e) => setIncludeEvidence(e.target.checked)}
                 className="rounded border-border-light text-brand-deepTeal"
               />
-              <span>Evidence Inventory</span>
+              <span>{t('reports.inventory')}</span>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
               <input
@@ -174,7 +186,7 @@ export default function ReportsPage() {
                 onChange={(e) => setIncludeTimeline(e.target.checked)}
                 className="rounded border-border-light text-brand-deepTeal"
               />
-              <span>Timeline Sequence</span>
+              <span>{t('reports.sequence')}</span>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
               <input
@@ -183,7 +195,7 @@ export default function ReportsPage() {
                 onChange={(e) => setIncludeContradictions(e.target.checked)}
                 className="rounded border-border-light text-brand-deepTeal"
               />
-              <span>Contradiction Analysis</span>
+              <span>{t('reports.analysis')}</span>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
               <input
@@ -192,7 +204,7 @@ export default function ReportsPage() {
                 onChange={(e) => setIncludeEntities(e.target.checked)}
                 className="rounded border-border-light text-brand-deepTeal"
               />
-              <span>Entities & Roles</span>
+              <span>{t('reports.entities')}</span>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
               <input
@@ -201,7 +213,7 @@ export default function ReportsPage() {
                 onChange={(e) => setIncludeGaps(e.target.checked)}
                 className="rounded border-border-light text-brand-deepTeal"
               />
-              <span>Investigation Gaps</span>
+              <span>{t('reports.gaps')}</span>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
               <input
@@ -210,7 +222,7 @@ export default function ReportsPage() {
                 onChange={(e) => setIncludeMethodology(e.target.checked)}
                 className="rounded border-border-light text-brand-deepTeal"
               />
-              <span>Doctrine & Limitations</span>
+              <span>{t('reports.limitations')}</span>
             </label>
           </div>
         </div>
@@ -218,53 +230,59 @@ export default function ReportsPage() {
 
       {/* Rendered Printable Dossier Document */}
       <div className="bg-white border border-border-light rounded-lg shadow-card p-8 md:p-12 space-y-8 text-text-primary text-xs print:p-0 print:border-0 print:shadow-none font-serif">
-        {/* Official Header */}
+        {/* Review draft header */}
         <div className="border-b-2 border-slate-900 pb-6 flex items-start justify-between">
           <div>
             <div className="text-[10px] tracking-widest uppercase font-mono font-bold text-sky-800">
-              PIMPRI CHINCHWAD POLICE COMMISSIONERATE • WAKAD POLICE STATION
+              {t('reports.documentHeading')} • {activeCase ? caseText(activeCase.id, 'location', activeCase.incidentLocation) : ''}
             </div>
             <h1 className="text-2xl font-bold text-slate-900 mt-1 font-sans">
-              INVESTIGATIVE CASE DOSSIER // CHARGESHEET BRIEF
+              {t('reports.title')} // {t('reports.draft')}
             </h1>
             <div className="text-xs text-slate-600 mt-1 font-mono">
-              Reference: <strong className="text-slate-900">{activeCase?.referenceNumber}</strong> | Security Level: RESTRICTED // LAW ENFORCEMENT SENSITIVE
+              {t('reports.reference')}: <strong className="text-slate-900">{activeCase?.referenceNumber}</strong> | {t('reports.caseStatus')}: {t('reports.draft')}
             </div>
           </div>
           <div className="text-right text-[11px] text-slate-600 font-mono">
-            <div>Date: {new Date().toLocaleDateString()}</div>
-            <div>Time: {new Date().toLocaleTimeString()}</div>
-            <div className="text-sky-800 font-semibold">Status: {activeCase?.status?.toUpperCase()}</div>
+            <div>{t('reports.date')}: {new Date().toLocaleDateString()}</div>
+            <div>{t('reports.time')}: {new Date().toLocaleTimeString()}</div>
+            <div className="text-sky-800 font-semibold">{t('reports.caseStatus')}: {activeCase?.status}</div>
           </div>
         </div>
+
+        {isIllustrativeDemo && (
+          <div className="rounded border border-amber-300 bg-amber-50 p-3 font-sans text-xs font-semibold text-amber-900">
+            {t('reports.demoNotice')}
+          </div>
+        )}
 
         {/* Section 1: Case Overview */}
         {includeOverview && (
           <section className="space-y-3">
             <h2 className="text-sm font-bold uppercase tracking-wider text-brand-deepTeal border-b border-border-light pb-1 font-sans">
-              1. Case Overview & Incident Summary
+              1. {t('reports.overview')}
             </h2>
             <div className="grid grid-cols-2 gap-4 bg-bg-main p-4 rounded text-xs font-sans">
               <div>
-                <span className="font-semibold text-text-secondary block">Case Title:</span>
-                <span className="font-bold text-text-primary">{activeCase?.title}</span>
+                <span className="font-semibold text-text-secondary block">{t('reports.caseTitle')}:</span>
+                <span className="font-bold text-text-primary">{activeCase ? caseText(activeCase.id, 'title', activeCase.title) : ''}</span>
               </div>
               <div>
-                <span className="font-semibold text-text-secondary block">Jurisdiction / Location:</span>
-                <span>{activeCase?.incidentLocation}</span>
+                <span className="font-semibold text-text-secondary block">{t('reports.location')}:</span>
+                <span>{activeCase ? caseText(activeCase.id, 'location', activeCase.incidentLocation) : ''}</span>
               </div>
               <div>
-                <span className="font-semibold text-text-secondary block">Incident Timestamp:</span>
+                <span className="font-semibold text-text-secondary block">{t('reports.incidentTime')}:</span>
                 <span>{activeCase?.incidentDate ? new Date(activeCase.incidentDate).toLocaleString() : 'N/A'}</span>
               </div>
               <div>
-                <span className="font-semibold text-text-secondary block">Lead Investigating Officer:</span>
+                <span className="font-semibold text-text-secondary block">{t('reports.caseContact')}:</span>
                 <span>{activeCase?.leadInvestigator}</span>
               </div>
             </div>
             <div className="p-4 bg-bg-main/50 rounded border border-border-subtle leading-relaxed">
-              <strong className="block mb-1 font-sans">Executive Summary:</strong>
-              <p className="text-text-primary">{activeCase?.summary}</p>
+              <strong className="block mb-1 font-sans">{t('reports.summary')}:</strong>
+              <p className="text-text-primary">{activeCase ? caseText(activeCase.id, 'summary', activeCase.summary) : ''}</p>
             </div>
           </section>
         )}
@@ -273,16 +291,16 @@ export default function ReportsPage() {
         {includeEvidence && (
           <section className="space-y-3">
             <h2 className="text-sm font-bold uppercase tracking-wider text-brand-deepTeal border-b border-border-light pb-1 font-sans">
-              2. Evidence Vault Inventory & Chain of Custody
+              2. {t('reports.inventory')}
             </h2>
             <table className="w-full text-left border border-border-light font-sans text-xs">
               <thead className="bg-bg-main text-[10px] uppercase font-semibold text-text-secondary">
                 <tr>
-                  <th className="p-2.5 border-b border-border-light">ID</th>
-                  <th className="p-2.5 border-b border-border-light">Classification</th>
-                  <th className="p-2.5 border-b border-border-light">Title & Provenance</th>
-                  <th className="p-2.5 border-b border-border-light">Integrity Hash</th>
-                  <th className="p-2.5 border-b border-border-light">Verification</th>
+                  <th className="p-2.5 border-b border-border-light">{t('reports.id')}</th>
+                  <th className="p-2.5 border-b border-border-light">{t('reports.classification')}</th>
+                  <th className="p-2.5 border-b border-border-light">{t('reports.titleSource')}</th>
+                  <th className="p-2.5 border-b border-border-light">{t('reports.hash')}</th>
+                  <th className="p-2.5 border-b border-border-light">{t('reports.verification')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border-subtle">
@@ -294,10 +312,11 @@ export default function ReportsPage() {
                       <div className="font-semibold text-text-primary">{item.title}</div>
                       <div className="text-[10px] text-text-secondary">{item.sourceDescription}</div>
                     </td>
-                    <td className="p-2.5 font-mono text-[9px] text-text-muted">{item.fileHash?.slice(0, 14)}...</td>
+                    <td className="p-2.5 font-mono text-[9px] text-text-muted">{item.fileHash ? `${item.fileHash.slice(0, 14)}…` : t('reports.notSupplied')}</td>
                     <td className="p-2.5 uppercase text-[10px] font-semibold">{item.verificationStatus}</td>
                   </tr>
                 ))}
+                {evidence.length === 0 && <tr><td colSpan={5} className="p-4 text-center text-text-secondary">{t('common.noData')}</td></tr>}
               </tbody>
             </table>
           </section>
@@ -307,10 +326,10 @@ export default function ReportsPage() {
         {includeTimeline && (
           <section className="space-y-3 print-page-break">
             <h2 className="text-sm font-bold uppercase tracking-wider text-brand-deepTeal border-b border-border-light pb-1 font-sans">
-              3. Chronological Event Sequence
+              3. {t('reports.sequence')}
             </h2>
             <div className="space-y-3 font-sans">
-              {events.map((ev) => (
+              {events.length > 0 ? events.map((ev) => (
                 <div key={ev.id} className="p-3 bg-bg-main/40 rounded border border-border-subtle text-xs">
                   <div className="flex items-center justify-between font-bold text-text-primary">
                     <span>
@@ -322,12 +341,40 @@ export default function ReportsPage() {
                   </div>
                   <p className="text-text-secondary mt-1">{ev.description}</p>
                   <div className="mt-2 text-[10px] text-text-muted flex items-center justify-between">
-                    <span>Location: {ev.location}</span>
-                    <span>Source: {ev.sourceEvidenceId}</span>
+                    <span>{t('reports.location')}: {ev.location}</span>
+                    <span>{t('reports.source')}: {ev.sourceEvidenceId}</span>
                   </div>
                 </div>
-              ))}
+              )) : <p className="py-3 text-text-secondary">{t('common.noData')}</p>}
             </div>
+          </section>
+        )}
+
+        {includeEntities && (
+          <section className="space-y-3">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-brand-deepTeal border-b border-border-light pb-1 font-sans">
+              4. {t('reports.entities')}
+            </h2>
+            {entities.length > 0 ? (
+              <table className="w-full border border-border-light text-left font-sans text-xs">
+                <thead className="bg-bg-main text-[10px] uppercase font-semibold text-text-secondary">
+                  <tr>
+                    <th className="p-2.5">{t('reports.caseTitle')}</th>
+                    <th className="p-2.5">{t('reports.role')}</th>
+                    <th className="p-2.5">{t('reports.sources')}</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border-subtle">
+                  {entities.map((entity) => (
+                    <tr key={entity.id}>
+                      <td className="p-2.5">{entity.name}</td>
+                      <td className="p-2.5 capitalize">{entity.role.replace('_', ' ')}</td>
+                      <td className="p-2.5 font-mono text-[10px]">{entity.sourceEvidenceIds.length > 0 ? entity.sourceEvidenceIds.join(', ') : t('reports.notSupplied')}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : <p className="py-3 text-text-secondary">{t('common.noData')}</p>}
           </section>
         )}
 
@@ -335,10 +382,10 @@ export default function ReportsPage() {
         {includeContradictions && (
           <section className="space-y-3">
             <h2 className="text-sm font-bold uppercase tracking-wider text-brand-deepTeal border-b border-border-light pb-1 font-sans">
-              4. Evidence Contradictions & Claim Discrepancies
+              5. {t('reports.analysis')}
             </h2>
             <div className="space-y-4 font-sans">
-              {contradictions.map((c) => (
+              {contradictions.length > 0 ? contradictions.map((c) => (
                 <div key={c.id} className="p-4 rounded border border-border-light bg-bg-main/20 space-y-3 text-xs">
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-text-primary">{c.title}</span>
@@ -369,7 +416,7 @@ export default function ReportsPage() {
                     </ul>
                   </div>
                 </div>
-              ))}
+              )) : <p className="py-3 text-text-secondary">{t('contradictions.noRecords')}</p>}
             </div>
           </section>
         )}
@@ -378,10 +425,10 @@ export default function ReportsPage() {
         {includeGaps && (
           <section className="space-y-3">
             <h2 className="text-sm font-bold uppercase tracking-wider text-brand-deepTeal border-b border-border-light pb-1 font-sans">
-              5. Outstanding Investigation Gaps & Recommended Next Steps
+              6. {t('reports.gaps')}
             </h2>
             <div className="space-y-3 font-sans">
-              {gaps.map((g) => (
+              {gaps.length > 0 ? gaps.map((g) => (
                 <div key={g.id} className="p-3 bg-bg-main/30 rounded border border-border-subtle text-xs space-y-1.5">
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-text-primary">{g.title}</span>
@@ -392,7 +439,7 @@ export default function ReportsPage() {
                     <strong>Recommended Operational Step: </strong> {g.suggestedNextStep}
                   </div>
                 </div>
-              ))}
+              )) : <p className="py-3 text-text-secondary">{t('gaps.noRecords')}</p>}
             </div>
           </section>
         )}
@@ -402,14 +449,10 @@ export default function ReportsPage() {
           <section className="pt-6 border-t-2 border-brand-deepTeal space-y-2 font-sans text-[11px] text-text-secondary">
             <div className="flex items-center gap-1.5 font-bold text-text-primary">
               <ShieldAlert className="w-4 h-4 text-brand-steelBlue" />
-              <span>Operational Philosophy & AI Admissibility Limitation Notice</span>
+              <span>{t('reports.limitations')}</span>
             </div>
             <p className="leading-relaxed">
-              This dossier has been generated via <strong>The Third Eye Investigation Intelligence System</strong>.
-              In accordance with system policy: <em>"AI recommends. Humans investigate. Humans decide."</em>
-              Analytical inferences, timeline reconstructions, and contradiction flags are analytical decision-support aids
-              derived strictly from ingested records. They do not constitute formal judicial determinations of guilt, intent, or culpability.
-              All technical evidence pings and witness statements require primary source corroboration prior to filing charge sheets.
+              {t('reports.scopeNotice')}
             </p>
           </section>
         )}

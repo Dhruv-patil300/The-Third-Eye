@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useCase } from '@/context/CaseContext';
+import { useLanguage } from '@/context/LanguageContext';
 import { ContradictionFinding, ContradictionReviewStatus, EvidenceItem } from '@/types';
 import {
   AlertTriangle,
@@ -22,6 +23,7 @@ import { ContradictionDiffVisualizer } from '@/components/tactical/Contradiction
 
 export default function ContradictionsPage() {
   const { activeCaseId, activeCase } = useCase();
+  const { t } = useLanguage();
 
   const [contradictions, setContradictions] = useState<ContradictionFinding[]>([]);
   const [evidenceList, setEvidenceList] = useState<EvidenceItem[]>([]);
@@ -116,7 +118,7 @@ export default function ContradictionsPage() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 font-bold border border-rose-800">
-              CROSS-EXAMINATION MATRIX
+              {t('contradictions.title')}
             </span>
             <span className="text-[10px] font-mono text-slate-400">
               WAKAD PS // PCPC FORENSIC CELL
@@ -124,10 +126,10 @@ export default function ContradictionsPage() {
           </div>
           <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
             <AlertTriangle className="w-5 h-5 text-rose-500" />
-            <span>Contradiction & Inconsistency Triage</span>
+            <span>{t('contradictions.title')}</span>
           </h1>
           <p className="text-xs text-slate-400 mt-1 font-sans">
-            Source-attributed cross-examination of conflicting alibis, telecom tower pings, and traffic surveillance logs.
+            {t('contradictions.description')}
           </p>
         </div>
 
@@ -146,18 +148,18 @@ export default function ContradictionsPage() {
         <div className="lg:col-span-5 space-y-3">
           <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl p-3 shadow-md flex items-center justify-between text-xs">
             <span className="font-mono font-bold text-slate-300 uppercase tracking-wide">
-              Flagged Clashes ({filtered.length})
+              {t('contradictions.title')} ({filtered.length})
             </span>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
               className="px-2.5 py-1 border border-[#22364A] rounded-lg bg-[#0E1A27] text-xs text-slate-200 focus:outline-none font-mono"
             >
-              <option value="all">All Triage States</option>
-              <option value="unreviewed">Unreviewed</option>
-              <option value="under_review">Under Review</option>
-              <option value="confirmed_inconsistency">Confirmed Inconsistency</option>
-              <option value="resolved">Resolved</option>
+              <option value="all">{t('contradictions.allStates')}</option>
+              <option value="unreviewed">{t('contradictions.unreviewed')}</option>
+              <option value="under_review">{t('contradictions.underReview')}</option>
+              <option value="confirmed_inconsistency">{t('contradictions.confirmed')}</option>
+              <option value="resolved">{t('contradictions.resolved')}</option>
             </select>
           </div>
 
@@ -244,27 +246,27 @@ export default function ContradictionsPage() {
                     className="px-3 py-1 bg-sky-600 hover:bg-sky-500 text-white rounded text-[11px] font-mono font-semibold flex items-center gap-1 transition-all"
                   >
                     <Save className="w-3 h-3" />
-                    <span>{savingNotes ? 'Saving...' : 'Save Officer Note'}</span>
+                    <span>{savingNotes ? t('contradictions.saving') : t('contradictions.saveNote')}</span>
                   </button>
                 </div>
 
                 <textarea
                   value={notesInput}
                   onChange={(e) => setNotesInput(e.target.value)}
-                  placeholder="Record formal field observations, raid instructions, or interrogation notes..."
+                  placeholder={t('contradictions.notePlaceholder')}
                   rows={3}
                   className="w-full bg-[#08121B] border border-[#1E2E3F] rounded-lg p-2.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500 font-sans"
                 />
 
                 <div className="text-[10px] font-mono text-slate-400 flex items-center justify-between">
-                  <span>Logged under Section 172 Cr.P.C. / BNSS Case Diary</span>
-                  <span className="text-slate-400">Auto-appended to Case Audit</span>
+                  <span>{t('contradictions.noteLogged')}</span>
+                  <span className="text-slate-400">{t('contradictions.noteLogged')}</span>
                 </div>
               </div>
             </>
           ) : (
             <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl p-8 text-center text-slate-400 font-mono text-xs">
-              Select an inconsistency item from the left panel to begin forensic cross-examination.
+              {t('contradictions.noSelection')}
             </div>
           )}
         </div>

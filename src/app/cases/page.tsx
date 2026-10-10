@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useCase } from '@/context/CaseContext';
+import { useLanguage } from '@/context/LanguageContext';
 import { Case } from '@/types';
 import {
   Briefcase,
@@ -21,6 +22,7 @@ import {
 } from 'lucide-react';
 
 export default function CasesPage() {
+  const { t, caseText } = useLanguage();
   const {
     cases,
     activeCaseId,
@@ -81,18 +83,18 @@ export default function CasesPage() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 font-bold border border-sky-800">
-              PCPC CENTRAL CRIME REGISTER
+              {t('cases.title')}
             </span>
             <span className="text-[10px] font-mono text-slate-400">
-              POLICE COMMISSIONERATE DOSSIERS
+              {t('cases.description')}
             </span>
           </div>
           <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
             <Briefcase className="w-5 h-5 text-sky-400" />
-            <span>FIR & Master Case Register</span>
+            <span>{t('cases.title')}</span>
           </h1>
           <p className="text-xs text-slate-400 mt-1 font-sans">
-            Manage official FIR dossiers, station jurisdiction parameters, and investigating officer assignments across Pimpri Chinchwad.
+            {t('cases.description')}
           </p>
         </div>
 
@@ -101,7 +103,7 @@ export default function CasesPage() {
           className="px-3.5 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold transition-all shadow-md flex items-center gap-2 self-start sm:self-auto font-mono"
         >
           <Plus className="w-4 h-4" />
-          <span>Register New FIR Case</span>
+          <span>{t('cases.register')}</span>
         </button>
       </div>
 
@@ -111,7 +113,7 @@ export default function CasesPage() {
           <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search cases by FIR reference, location, or IO..."
+            placeholder={t('cases.search')}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-9 pr-3 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500 font-sans"
@@ -119,16 +121,16 @@ export default function CasesPage() {
         </div>
 
         <div className="flex items-center gap-2 w-full md:w-auto font-mono text-[11px]">
-          <span className="text-slate-400">Status:</span>
+          <span className="text-slate-400">{t('common.status')}:</span>
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
             className="px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#0E1A27] text-slate-200 focus:outline-none focus:border-sky-500"
           >
-            <option value="all">All Statuses ({cases.length})</option>
-            <option value="active">Active</option>
-            <option value="archived">Archived</option>
-            <option value="closed">Closed</option>
+            <option value="all">{t('common.all')} ({cases.length})</option>
+            <option value="active">{t('common.active')}</option>
+            <option value="archived">{t('common.archived')}</option>
+            <option value="closed">{t('common.closed')}</option>
           </select>
         </div>
       </div>
@@ -159,7 +161,7 @@ export default function CasesPage() {
                           : 'bg-[#08121B] text-slate-400 border-[#1E2E3F]'
                       }`}
                     >
-                      {c.priority}
+                      {t(`priority.${c.priority}`)}
                     </span>
                     <span
                       className={`text-[9px] px-1.5 py-0.5 rounded uppercase font-bold border ${
@@ -168,23 +170,23 @@ export default function CasesPage() {
                           : 'bg-[#08121B] text-slate-400 border-[#1E2E3F]'
                       }`}
                     >
-                      {c.status}
+                      {t(`common.${c.status}`)}
                     </span>
                   </div>
                 </div>
 
                 <h3 className="font-bold text-sm text-white leading-snug mt-1 font-sans">
-                  {c.title}
+                  {caseText(c.id, 'title', c.title)}
                 </h3>
 
                 <p className="text-xs text-slate-300 mt-2 line-clamp-3 leading-relaxed font-sans">
-                  {c.summary || 'No preliminary summary documented for this matter.'}
+                  {caseText(c.id, 'summary', c.summary || t('common.noData'))}
                 </p>
 
                 <div className="mt-4 pt-3 border-t border-[#1E2E3F] space-y-1.5 text-[11px] text-slate-400 font-mono">
                   <div className="flex items-center gap-2">
                     <MapPin className="w-3 h-3 text-sky-400 flex-shrink-0" />
-                    <span className="truncate text-slate-300">{c.incidentLocation}</span>
+                    <span className="truncate text-slate-300">{caseText(c.id, 'location', c.incidentLocation)}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Calendar className="w-3 h-3 text-sky-400 flex-shrink-0" />
@@ -202,14 +204,14 @@ export default function CasesPage() {
                 {isActive ? (
                   <span className="text-[11px] font-bold text-emerald-400 flex items-center gap-1">
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    ACTIVE WORKSPACE
+                    {t('cases.activeWorkspace')}
                   </span>
                 ) : (
                   <button
                     onClick={() => setActiveCaseId(c.id)}
                     className="text-[11px] text-sky-400 hover:text-sky-300 font-semibold"
                   >
-                    Set as Active Case →
+                    {t('cases.setActive')} →
                   </button>
                 )}
 
@@ -242,7 +244,7 @@ export default function CasesPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 select-none">
           <div className="bg-[#0C1724] rounded-xl border border-[#1E2E3F] shadow-2xl w-full max-w-lg overflow-hidden text-xs text-slate-100">
             <div className="px-5 py-3 bg-[#0F1B2A] border-b border-[#1E2E3F] flex items-center justify-between font-mono">
-              <h3 className="font-bold text-white uppercase">Edit Police Case Record</h3>
+              <h3 className="font-bold text-white uppercase">{t('cases.editTitle')}</h3>
               <button
                 onClick={() => setEditingCase(null)}
                 className="text-slate-400 hover:text-white"
@@ -253,7 +255,7 @@ export default function CasesPage() {
 
             <form onSubmit={handleUpdateCase} className="p-5 space-y-3">
               <div>
-                <label className="block font-mono text-[11px] mb-1 text-slate-300">Case Title *</label>
+                <label className="block font-mono text-[11px] mb-1 text-slate-300">{t('cases.titleField')} *</label>
                 <input
                   type="text"
                   value={editingCase.title}
@@ -265,7 +267,7 @@ export default function CasesPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-mono text-[11px] mb-1 text-slate-300">FIR Reference No *</label>
+                  <label className="block font-mono text-[11px] mb-1 text-slate-300">{t('cases.referenceField')} *</label>
                   <input
                     type="text"
                     value={editingCase.referenceNumber}
@@ -275,22 +277,22 @@ export default function CasesPage() {
                   />
                 </div>
                 <div>
-                  <label className="block font-mono text-[11px] mb-1 text-slate-300">Status</label>
+                  <label className="block font-mono text-[11px] mb-1 text-slate-300">{t('cases.statusField')}</label>
                   <select
                     value={editingCase.status}
                     onChange={(e) => setEditingCase({ ...editingCase, status: e.target.value as any })}
                     className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 font-mono"
                   >
-                    <option value="active">Active</option>
-                    <option value="archived">Archived</option>
-                    <option value="closed">Closed</option>
-                    <option value="cold">Cold</option>
+                    <option value="active">{t('common.active')}</option>
+                    <option value="archived">{t('common.archived')}</option>
+                    <option value="closed">{t('common.closed')}</option>
+                    <option value="cold">{t('common.cold')}</option>
                   </select>
                 </div>
               </div>
 
               <div>
-                <label className="block font-mono text-[11px] mb-1 text-slate-300">Incident Location</label>
+                <label className="block font-mono text-[11px] mb-1 text-slate-300">{t('cases.locationField')}</label>
                 <input
                   type="text"
                   value={editingCase.incidentLocation}
@@ -300,7 +302,7 @@ export default function CasesPage() {
               </div>
 
               <div>
-                <label className="block font-mono text-[11px] mb-1 text-slate-300">Lead IO / Inspector</label>
+                <label className="block font-mono text-[11px] mb-1 text-slate-300">{t('cases.ioField')}</label>
                 <input
                   type="text"
                   value={editingCase.leadInvestigator}
@@ -310,7 +312,7 @@ export default function CasesPage() {
               </div>
 
               <div>
-                <label className="block font-mono text-[11px] mb-1 text-slate-300">Executive Summary</label>
+                <label className="block font-mono text-[11px] mb-1 text-slate-300">{t('cases.summaryField')}</label>
                 <textarea
                   rows={3}
                   value={editingCase.summary}
@@ -325,13 +327,13 @@ export default function CasesPage() {
                   onClick={() => setEditingCase(null)}
                   className="px-3 py-1.5 border border-[#22364A] rounded-lg text-slate-400 hover:text-white"
                 >
-                  Cancel
+                  {t('action.cancel')}
                 </button>
                 <button
                   type="submit"
                   className="px-4 py-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg font-mono font-semibold"
                 >
-                  Update Case File
+                  {t('cases.update')}
                 </button>
               </div>
             </form>

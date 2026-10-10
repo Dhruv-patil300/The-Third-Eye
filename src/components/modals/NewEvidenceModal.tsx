@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useCase } from '@/context/CaseContext';
+import { useLanguage } from '@/context/LanguageContext';
 import {
   X,
   FilePlus2,
@@ -17,14 +18,15 @@ import {
 } from 'lucide-react';
 
 export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: () => void }) {
+  const { t } = useLanguage();
   const { showNewEvidenceModal, setShowNewEvidenceModal, activeCaseId, activeCase } = useCase();
 
   const [tab, setTab] = useState<'upload' | 'manual'>('upload');
   const [file, setFile] = useState<File | null>(null);
   const [title, setTitle] = useState('');
   const [evidenceType, setEvidenceType] = useState('witness_statement');
-  const [sourceDescription, setSourceDescription] = useState('Wakad Police Station Crime Cell');
-  const [recordedBy, setRecordedBy] = useState('Sr. PI Vitthal More (Wakad PS)');
+  const [sourceDescription, setSourceDescription] = useState('');
+  const [recordedBy, setRecordedBy] = useState('');
   const [manualText, setManualText] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -44,11 +46,11 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (tab === 'upload' && !file) {
-      setError('Please select a file to upload.');
+      setError(t('newEvidence.chooseFile'));
       return;
     }
     if (tab === 'manual' && !manualText.trim()) {
-      setError('Please enter the statement or record text.');
+      setError(t('newEvidence.enterText'));
       return;
     }
 
@@ -108,10 +110,10 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
             <FilePlus2 className="w-4 h-4 text-sky-400" />
             <div>
               <h3 className="font-bold text-sm text-white font-mono uppercase tracking-wide">
-                Ingest Evidence into PCPC Vault
+                {t('newEvidence.title')}
               </h3>
               <p className="text-[10px] text-slate-400 font-mono">
-                Target Dossier:{' '}
+                {t('header.activeCase')}:{' '}
                 <span className="font-bold text-sky-400">
                   {activeCase?.referenceNumber || activeCaseId}
                 </span>
@@ -138,7 +140,7 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
             }`}
           >
             <Upload className="w-3.5 h-3.5" />
-            <span>Upload File (PDF / DOCX / TXT / CSV)</span>
+            <span>{t('newEvidence.upload')} (PDF / DOCX / TXT / CSV)</span>
           </button>
 
           <button
@@ -154,7 +156,7 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
             }`}
           >
             <FileText className="w-3.5 h-3.5" />
-            <span>Verbatim Statement / CDR Entry</span>
+            <span>{t('newEvidence.manual')}</span>
           </button>
         </div>
 
@@ -166,18 +168,18 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
             </div>
             <div>
               <h4 className="font-bold text-sm text-white font-mono uppercase">
-                Evidence Ingested & Cryptographically Sealed
+                {t('newEvidence.success')}
               </h4>
               <p className="text-xs text-slate-300 mt-1 max-w-md mx-auto font-sans">
-                Verbatim text was extracted, SHA-256 hashed, and analyzed for named entities, timestamps, and factual claims.
+                {t('newEvidence.successDetail')}
               </p>
             </div>
 
             <div className="bg-[#08121B] p-3 rounded-lg border border-[#1E2E3F] text-left text-xs space-y-1 font-mono">
               <div className="font-bold text-white font-sans">{successInfo.title}</div>
-              <div className="text-[11px] text-slate-400">Type: <span className="text-sky-300">{successInfo.evidenceType}</span></div>
-              <div className="text-[11px] text-slate-400">Extracted Claims: <span className="font-bold text-sky-400">{successInfo.claims?.length || 0}</span></div>
-              <div className="text-[11px] text-slate-400">Integrity Hash: <span className="text-emerald-400 text-[10px]">{successInfo.fileHash}</span></div>
+              <div className="text-[11px] text-slate-400">{t('newEvidence.type')}: <span className="text-sky-300">{t(`evidence.kind.${successInfo.evidenceType}`)}</span></div>
+              <div className="text-[11px] text-slate-400">{t('evidence.claims')}: <span className="font-bold text-sky-400">{successInfo.claims?.length || 0}</span></div>
+              <div className="text-[11px] text-slate-400">{t('evidence.hash')}: <span className="text-emerald-400 text-[10px]">{successInfo.fileHash || t('reports.notSupplied')}</span></div>
             </div>
 
             <div className="flex justify-center gap-3 pt-2 font-mono">
@@ -191,14 +193,14 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
                 }}
                 className="px-3.5 py-1.5 border border-[#22364A] text-slate-300 rounded-lg text-xs hover:bg-[#122030]"
               >
-                Ingest Another Item
+                {t('newEvidence.addAnother')}
               </button>
               <button
                 type="button"
                 onClick={handleClose}
                 className="px-4 py-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-bold"
               >
-                Done
+                {t('newEvidence.done')}
               </button>
             </div>
           </div>
@@ -214,27 +216,27 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
-                  Evidence Classification *
+                  {t('newEvidence.type')} *
                 </label>
                 <select
                   value={evidenceType}
                   onChange={(e) => setEvidenceType(e.target.value)}
                   className="w-full px-2.5 py-1.5 border border-[#22364A] rounded-lg bg-[#08121B] text-slate-100 focus:outline-none focus:border-sky-500 font-mono"
                 >
-                  <option value="witness_statement">Witness Statement (Sec 161 CrPC)</option>
-                  <option value="fir_document">FIR / Police Report</option>
-                  <option value="cctv_observation">CCTV / ANPR Record</option>
-                  <option value="movement_record">FASTag / Toll Movement Log</option>
-                  <option value="digital_record">Digital CDR / Keypad / Device</option>
-                  <option value="forensic_report">Forensic Panchnama / FSL</option>
-                  <option value="physical_evidence">Physical Seizure Inventory</option>
-                  <option value="other">Other Record</option>
+                  <option value="witness_statement">{t('evidence.kind.witness_statement')}</option>
+                  <option value="fir_document">{t('evidence.kind.fir_document')}</option>
+                  <option value="cctv_observation">{t('evidence.kind.cctv_observation')}</option>
+                  <option value="movement_record">{t('evidence.kind.movement_record')}</option>
+                  <option value="digital_record">{t('evidence.kind.digital_record')}</option>
+                  <option value="forensic_report">{t('evidence.kind.forensic_report')}</option>
+                  <option value="physical_evidence">{t('evidence.kind.physical_evidence')}</option>
+                  <option value="other">{t('evidence.kind.other')}</option>
                 </select>
               </div>
 
               <div>
                 <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
-                  Evidence Title / Reference *
+                  {t('newEvidence.recordTitle')} *
                 </label>
                 <input
                   type="text"
@@ -250,7 +252,7 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
             {tab === 'upload' ? (
               <div>
                 <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
-                  File Attachment (PDF, DOCX, TXT, CSV, JPEG) *
+                  {t('newEvidence.attachment')} (PDF, DOCX, TXT, CSV, JPEG) *
                 </label>
                 <div className="border-2 border-dashed border-[#1E2E3F] hover:border-sky-500 rounded-lg p-5 text-center cursor-pointer bg-[#08121B] transition-colors">
                   <input
@@ -267,10 +269,10 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
                   <label htmlFor="file-upload" className="cursor-pointer block">
                     <Upload className="w-6 h-6 text-sky-400 mx-auto mb-1.5" />
                     <div className="font-semibold text-white">
-                      {file ? file.name : 'Click to select or drag and drop official document'}
+                      {file ? file.name : t('newEvidence.selectFile')}
                     </div>
                     <div className="text-[10px] text-slate-400 mt-0.5">
-                      Supports PDF, Microsoft Word (.docx), Plain Text (.txt), CSV, and Scanned Panchnama
+                      {t('newEvidence.supported')}
                     </div>
                     {file && (
                       <div className="text-[10px] font-mono text-sky-400 mt-1">
@@ -283,7 +285,7 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
             ) : (
               <div>
                 <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
-                  Verbatim Statement or Telemetry Text *
+                  {t('newEvidence.manualText')} *
                 </label>
                 <textarea
                   rows={5}
@@ -299,7 +301,7 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
-                  Source Provenance / Origin
+                  {t('newEvidence.source')}
                 </label>
                 <input
                   type="text"
@@ -312,7 +314,7 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
 
               <div>
                 <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase mb-1">
-                  Collector / Investigating Officer
+                  {t('newEvidence.collector')}
                 </label>
                 <input
                   type="text"
@@ -326,7 +328,7 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
             <div className="pt-3 border-t border-[#1E2E3F] flex items-center justify-between">
               <div className="flex items-center gap-1.5 text-[10px] text-slate-400 font-mono">
                 <Sparkles className="w-3 h-3 text-sky-400" />
-                <span>Deterministic extraction + AI verification active</span>
+                <span>{t('newEvidence.processing')}</span>
               </div>
 
               <div className="flex items-center gap-2 font-mono">
@@ -335,7 +337,7 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
                   onClick={handleClose}
                   className="px-3 py-1.5 border border-[#22364A] text-slate-400 hover:text-white rounded-lg"
                 >
-                  Cancel
+                  {t('newEvidence.cancel')}
                 </button>
                 <button
                   type="submit"
@@ -343,7 +345,7 @@ export function NewEvidenceModal({ onEvidenceCreated }: { onEvidenceCreated?: ()
                   className="px-4 py-1.5 bg-sky-600 hover:bg-sky-500 text-white font-semibold rounded-lg shadow-md flex items-center gap-1.5 disabled:opacity-60"
                 >
                   {submitting && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
-                  <span>{submitting ? 'Extracting & Ingesting...' : 'Ingest & Process'}</span>
+                  <span>{submitting ? t('newEvidence.processing') : t('newEvidence.submit')}</span>
                 </button>
               </div>
             </div>

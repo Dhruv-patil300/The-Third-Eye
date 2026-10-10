@@ -12,7 +12,17 @@ import {
   AIMessage,
   AuditLog,
 } from '@/types';
-import { initialStore, DEMO_CASE_ID } from './demoData';
+import {
+  initialStore,
+  demoCases,
+  presentationEvidence,
+  presentationEntities,
+  presentationEvents,
+  presentationRelationships,
+  presentationContradictions,
+  presentationGaps,
+  presentationAuditLogs,
+} from './demoData';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const STORAGE_FILE = path.join(DATA_DIR, 'storage.json');
@@ -23,6 +33,12 @@ function ensureDataDir(): void {
   if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });
   }
+}
+
+function mergeMissingRecords<T extends { id: string }>(stored: T[], seeded: T[]): { records: T[]; changed: boolean } {
+  const storedIds = new Set(stored.map((item) => item.id));
+  const missing = seeded.filter((item) => !storedIds.has(item.id));
+  return { records: [...missing, ...stored], changed: missing.length > 0 };
 }
 
 export function getStore(): CaseStore {
@@ -36,6 +52,29 @@ export function getStore(): CaseStore {
     try {
       const data = fs.readFileSync(STORAGE_FILE, 'utf-8');
       const parsed = JSON.parse(data) as CaseStore;
+      const cases = mergeMissingRecords(parsed.cases, demoCases);
+      const evidence = mergeMissingRecords(parsed.evidence, presentationEvidence);
+      const entities = mergeMissingRecords(parsed.entities, presentationEntities);
+      const events = mergeMissingRecords(parsed.events, presentationEvents);
+      const relationships = mergeMissingRecords(parsed.relationships, presentationRelationships);
+      const contradictions = mergeMissingRecords(parsed.contradictions, presentationContradictions);
+      const gaps = mergeMissingRecords(parsed.gaps, presentationGaps);
+      const auditLogs = mergeMissingRecords(parsed.auditLogs, presentationAuditLogs);
+
+      parsed.cases = cases.records;
+      parsed.evidence = evidence.records;
+      parsed.entities = entities.records;
+      parsed.events = events.records;
+      parsed.relationships = relationships.records;
+      parsed.contradictions = contradictions.records;
+      parsed.gaps = gaps.records;
+      parsed.auditLogs = auditLogs.records;
+
+      const merges = [cases, evidence, entities, events, relationships, contradictions, gaps, auditLogs];
+      if (merges.some((merge) => merge.changed)) {
+        saveStore(parsed);
+        return parsed;
+      }
       memoryStore = parsed;
       return parsed;
     } catch (err) {

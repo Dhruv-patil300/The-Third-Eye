@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useCase } from '@/context/CaseContext';
+import { useLanguage } from '@/context/LanguageContext';
 import { AuditLog } from '@/types';
 import {
   Settings,
@@ -21,6 +22,7 @@ import {
 
 export default function SettingsPage() {
   const { activeCaseId, activeCase, resetToDemo } = useCase();
+  const { t } = useLanguage();
 
   const [auditLogs, setAuditLogs] = useState<AuditLog[]>([]);
   const [resetting, setResetting] = useState(false);
@@ -72,18 +74,18 @@ export default function SettingsPage() {
       <div>
         <div className="flex items-center gap-2 mb-1">
           <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 font-bold border border-sky-800">
-            SYSTEM INTEGRITY & LOGS
+            {t('settings.title')}
           </span>
           <span className="text-[10px] font-mono text-slate-400">
-            WAKAD PS // PCPC CRIME BRANCH
+              {t('nav.settings')}
           </span>
         </div>
         <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
           <Settings className="w-5 h-5 text-sky-400" />
-          <span>System Administration & Chain of Custody Audit</span>
+          <span>{t('settings.title')}</span>
         </h1>
         <p className="text-slate-400 mt-1 font-sans">
-          Runtime intelligence models, cryptographic persistence status, and immutable Section 172 Cr.P.C. / BNSS case diary audit trail.
+          {t('settings.description')}
         </p>
       </div>
 
@@ -94,26 +96,26 @@ export default function SettingsPage() {
           <div className="flex items-center justify-between border-b border-[#1E2E3F] pb-2.5">
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-sky-400" />
-              <h2 className="font-bold text-sm text-white font-mono uppercase">Analytical AI Engine</h2>
+              <h2 className="font-bold text-sm text-white font-mono uppercase">{t('settings.aiEngine')}</h2>
             </div>
             <span className="text-[10px] px-2 py-0.5 rounded font-mono font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-800">
-              ENGINE READY
+              {t('settings.engineReady')}
             </span>
           </div>
 
           <div className="space-y-2 text-slate-300">
             <div className="flex items-center justify-between p-2.5 rounded-lg bg-[#08121B] border border-[#1E2E3F] font-mono">
-              <span className="font-bold text-slate-200">Primary Provider:</span>
-              <span className="text-sky-400 font-bold">Local Grounded Forensics</span>
+              <span className="font-bold text-slate-200">{t('settings.primaryProvider')}:</span>
+              <span className="text-sky-400 font-bold">{t('settings.localProvider')}</span>
             </div>
             <p className="text-[11px] leading-relaxed font-sans text-slate-300">
-              The local engine indexes CDR towers, ANPR plates, PIN logs, and panchnama depositions with zero external network latency and complete evidentiary air-gapping.
+              {t('settings.description')}
             </p>
           </div>
 
           <form onSubmit={handleSaveKey} className="space-y-2 pt-2 border-t border-[#1E2E3F]">
             <label className="block font-mono text-[11px] font-bold text-slate-300 uppercase">
-              Optional Google Gemini API Key
+              {t('settings.apiKey')}
             </label>
             <div className="flex gap-2 font-mono">
               <input
@@ -127,13 +129,13 @@ export default function SettingsPage() {
                 type="submit"
                 className="px-3 py-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg font-bold text-xs shadow-md"
               >
-                Apply
+                {t('settings.apply')}
               </button>
             </div>
             {keySaved && (
               <span className="text-[10px] text-emerald-400 font-mono font-semibold flex items-center gap-1">
                 <CheckCircle2 className="w-3 h-3" />
-                <span>Configuration updated in runtime memory.</span>
+                <span>{t('settings.saved')}</span>
               </span>
             )}
           </form>
@@ -144,7 +146,7 @@ export default function SettingsPage() {
           <div className="flex items-center justify-between border-b border-[#1E2E3F] pb-2.5">
             <div className="flex items-center gap-2">
               <Database className="w-4 h-4 text-sky-400" />
-              <h2 className="font-bold text-sm text-white font-mono uppercase">Atomic Storage Integrity</h2>
+              <h2 className="font-bold text-sm text-white font-mono uppercase">{t('settings.storage')}</h2>
             </div>
             <span className="text-[10px] px-2 py-0.5 rounded font-mono font-bold bg-sky-950/80 text-sky-300 border border-sky-800">
               ATOMIC DISK DB
@@ -154,27 +156,27 @@ export default function SettingsPage() {
           <div className="space-y-2 text-[11px] text-slate-300">
             <div className="p-2.5 bg-[#08121B] rounded-lg border border-[#1E2E3F] space-y-1 font-mono text-[10px]">
               <div className="flex justify-between">
-                <span className="text-slate-400">Storage Path:</span>
+                <span className="text-slate-400">{t('settings.storagePath')}:</span>
                 <span className="text-sky-300 font-semibold">./data/storage.json</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Lock Mechanism:</span>
+                <span className="text-slate-400">{t('settings.lock')}:</span>
                 <span className="text-emerald-400 font-bold">Active Mutex (Atomic Rename)</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Active Dossier:</span>
+                <span className="text-slate-400">{t('settings.activeCase')}:</span>
                 <span className="text-slate-200 font-bold">{activeCase?.referenceNumber}</span>
               </div>
             </div>
             <p className="leading-relaxed font-sans text-slate-300">
-              Every newly ingested evidence item, created entity, or changed contradiction status is safely persisted to disk.
+              {t('settings.persistence')}
             </p>
           </div>
 
           <div className="pt-2 border-t border-[#1E2E3F] flex items-center justify-between">
             <div>
-              <span className="font-bold text-white block font-mono text-[11px]">Restore Benchmark Case</span>
-              <span className="text-[10px] text-slate-400">Reset to Wakad PS Jewellery Vault Heist.</span>
+              <span className="font-bold text-white block font-mono text-[11px]">{t('settings.resetTitle')}</span>
+              <span className="text-[10px] text-slate-400">{t('settings.resetDescription')}</span>
             </div>
             <button
               onClick={handleResetDemo}
@@ -182,13 +184,13 @@ export default function SettingsPage() {
               className="px-3 py-1.5 bg-[#122030] border border-[#22364A] hover:bg-[#182b3e] text-slate-200 rounded-lg font-mono font-semibold text-xs flex items-center gap-1.5 shadow-md disabled:opacity-50"
             >
               <RotateCcw className={`w-3.5 h-3.5 ${resetting ? 'animate-spin' : ''}`} />
-              <span>{resetting ? 'Resetting...' : 'Restore Benchmark'}</span>
+              <span>{resetting ? t('settings.resetting') : t('settings.reset')}</span>
             </button>
           </div>
           {resetSuccess && (
             <div className="p-2 rounded-lg bg-emerald-950/80 text-emerald-300 border border-emerald-800 text-[11px] font-mono flex items-center gap-1.5">
               <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>PCPC benchmark dataset restored successfully.</span>
+              <span>{t('settings.restored')}</span>
             </div>
           )}
         </div>
@@ -200,7 +202,7 @@ export default function SettingsPage() {
           <div className="flex items-center gap-2">
             <Activity className="w-4 h-4 text-sky-400" />
             <h2 className="font-bold text-sm text-white font-mono uppercase">
-              Immutable Case Audit Log ({auditLogs.length} Events)
+              {t('settings.audit')} ({auditLogs.length} {t('settings.events')})
             </h2>
           </div>
           <span className="text-[10px] font-mono text-sky-400">
@@ -212,11 +214,11 @@ export default function SettingsPage() {
           <table className="w-full text-left font-mono">
             <thead className="bg-[#08121B] text-[10px] uppercase font-bold text-slate-400 border-b border-[#1E2E3F]">
               <tr>
-                <th className="p-2.5">Log ID</th>
-                <th className="p-2.5">Timestamp</th>
-                <th className="p-2.5">Action Event</th>
-                <th className="p-2.5">Actor / Officer</th>
-                <th className="p-2.5">Event Details</th>
+                <th className="p-2.5">{t('settings.logId')}</th>
+                <th className="p-2.5">{t('settings.timestamp')}</th>
+                <th className="p-2.5">{t('settings.action')}</th>
+                <th className="p-2.5">{t('settings.actor')}</th>
+                <th className="p-2.5">{t('settings.details')}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#1A2A3A] text-[11px]">

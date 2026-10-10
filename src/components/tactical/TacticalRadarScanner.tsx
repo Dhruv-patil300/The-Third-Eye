@@ -103,7 +103,7 @@ export function TacticalRadarScanner() {
       ctx.clearRect(0, 0, width, height);
 
       // Radar Background Grid
-      ctx.fillStyle = '#081018';
+      ctx.fillStyle = '#f7f3eb';
       ctx.fillRect(0, 0, width, height);
 
       // Concentric Distance Rings
@@ -111,12 +111,12 @@ export function TacticalRadarScanner() {
       rings.forEach((r, idx) => {
         ctx.beginPath();
         ctx.arc(centerX, centerY, maxRadius * r, 0, Math.PI * 2);
-        ctx.strokeStyle = idx === 3 ? 'rgba(14, 165, 233, 0.45)' : 'rgba(14, 165, 233, 0.18)';
+        ctx.strokeStyle = idx === 3 ? 'rgba(104, 116, 95, 0.48)' : 'rgba(104, 116, 95, 0.2)';
         ctx.lineWidth = idx === 3 ? 1.5 : 1;
         ctx.stroke();
 
         // Ring Labels (Km radius)
-        ctx.fillStyle = 'rgba(56, 189, 248, 0.55)';
+        ctx.fillStyle = 'rgba(98, 95, 86, 0.72)';
         ctx.font = '9px monospace';
         ctx.fillText(`${(r * 8).toFixed(1)} km`, centerX + 4, centerY - maxRadius * r + 11);
       });
@@ -127,7 +127,7 @@ export function TacticalRadarScanner() {
       ctx.lineTo(centerX + maxRadius, centerY);
       ctx.moveTo(centerX, centerY - maxRadius);
       ctx.lineTo(centerX, centerY + maxRadius);
-      ctx.strokeStyle = 'rgba(14, 165, 233, 0.2)';
+      ctx.strokeStyle = 'rgba(104, 116, 95, 0.22)';
       ctx.lineWidth = 1;
       ctx.stroke();
 
@@ -137,8 +137,8 @@ export function TacticalRadarScanner() {
       ctx.rotate(angle);
 
       const sweepGradient = ctx.createRadialGradient(0, 0, 0, 0, 0, maxRadius);
-      sweepGradient.addColorStop(0, 'rgba(14, 165, 233, 0.35)');
-      sweepGradient.addColorStop(1, 'rgba(14, 165, 233, 0.0)');
+      sweepGradient.addColorStop(0, 'rgba(133, 145, 110, 0.22)');
+      sweepGradient.addColorStop(1, 'rgba(133, 145, 110, 0.0)');
 
       ctx.beginPath();
       ctx.moveTo(0, 0);
@@ -151,10 +151,10 @@ export function TacticalRadarScanner() {
       ctx.beginPath();
       ctx.moveTo(0, 0);
       ctx.lineTo(maxRadius, 0);
-      ctx.strokeStyle = '#38BDF8';
+      ctx.strokeStyle = '#85916e';
       ctx.lineWidth = 1.8;
-      ctx.shadowColor = '#0EA5E9';
-      ctx.shadowBlur = 8;
+      ctx.shadowColor = '#85916e';
+      ctx.shadowBlur = 2;
       ctx.stroke();
       ctx.restore();
 
@@ -164,25 +164,25 @@ export function TacticalRadarScanner() {
         const blipY = centerY + (blip.y / 100) * maxRadius;
 
         // Blip color by status & type
-        let blipColor = '#0EA5E9';
-        if (blip.type === 'crime_scene') blipColor = '#EF4444';
-        if (blip.type === 'alibi_disputed') blipColor = '#F59E0B';
-        if (blip.type === 'anpr_hit') blipColor = '#38BDF8';
-        if (blip.type === 'toll_plaza') blipColor = '#10B981';
+        let blipColor = '#829078';
+        if (blip.type === 'crime_scene') blipColor = '#a45f56';
+        if (blip.type === 'alibi_disputed') blipColor = '#b18c5e';
+        if (blip.type === 'anpr_hit') blipColor = '#758b8d';
+        if (blip.type === 'toll_plaza') blipColor = '#71866e';
 
         // Outer glow circle
         ctx.beginPath();
         ctx.arc(blipX, blipY, 4.5, 0, Math.PI * 2);
         ctx.fillStyle = blipColor;
         ctx.shadowColor = blipColor;
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 2;
         ctx.fill();
 
         // Target Reticle if selected
         if (selectedBlip?.id === blip.id) {
           ctx.beginPath();
           ctx.arc(blipX, blipY, 9, 0, Math.PI * 2);
-          ctx.strokeStyle = '#FFFFFF';
+          ctx.strokeStyle = '#514d44';
           ctx.lineWidth = 1.2;
           ctx.setLineDash([2, 2]);
           ctx.stroke();
@@ -191,7 +191,7 @@ export function TacticalRadarScanner() {
 
         // Blip code label
         ctx.shadowBlur = 0;
-        ctx.fillStyle = '#CBD5E1';
+        ctx.fillStyle = '#625f56';
         ctx.font = '8px monospace';
         ctx.fillText(blip.code, blipX + 7, blipY - 4);
       });

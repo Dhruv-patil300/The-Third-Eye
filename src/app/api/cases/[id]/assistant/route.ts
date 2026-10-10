@@ -30,6 +30,7 @@ export async function POST(req: Request, { params }: { params: { id: string } })
 
     const body = await req.json();
     const query = body.query || body.message;
+    const locale = body.locale === 'hi' || body.locale === 'mr' ? body.locale : 'en';
     if (!query) {
       return NextResponse.json({ success: false, error: 'Query is required' }, { status: 400 });
     }
@@ -55,7 +56,8 @@ export async function POST(req: Request, { params }: { params: { id: string } })
       events,
       contradictions,
       gaps,
-      query
+      query,
+      locale
     );
 
     // Save assistant message
