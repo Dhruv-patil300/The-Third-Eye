@@ -58,18 +58,18 @@ const copy: Record<Locale, Record<string, string>> = {
     'case.benchmark.title': 'Armed Vault Breach & Digital Access Bypass at Kothari Jewellers',
     'case.benchmark.summary': 'Vault safe room breached resulting in theft of certified diamonds and 24K bullion valued at ₹4.62 Crores. Rear service entrance (Door 2B) disarmed via valid PIN #7291 at 22:18 IST followed by manual siren relay cutoff. Multiple critical discrepancies detected: primary suspect Sachin Gaikwad claimed dining at Govind Garden, Pimple Saudagar between 21:15 and 23:00, but Jio cellular mast logs (Cell ID 404-869-38291 Wakad) and PCMC Smart City ANPR cameras (Dange Chowk & Bhumkar Chowk) prove his active presence within 280m of the crime scene.',
     'case.benchmark.location': 'Kothari Jewellers & Vault Facility, Datta Mandir Road, Wakad, Pimpri Chinchwad, Pune 411057',
-    'case.demo01.title': 'Misplaced Work Folder | Pimpri Market',
-    'case.demo01.summary': 'Fictional presentation scenario: a commuter reports misplacing routine work papers after visiting the market. No valuables or identity documents are involved.',
-    'case.demo01.location': 'Pimpri Market area, Pimpri Chinchwad',
-    'case.demo02.title': 'Minor Non-Injury Collision | Wakad Service Road',
-    'case.demo02.summary': 'Fictional presentation scenario: two motorists report a low-speed contact during light rain. No injuries are reported and no fault is assigned.',
-    'case.demo02.location': 'Wakad service road, Pimpri Chinchwad',
-    'case.demo03.title': 'Shared Parking Access Enquiry | Thergaon',
-    'case.demo03.summary': 'Fictional presentation scenario: residents request help documenting a shared parking access issue. No individual is accused; the sample shows a community-level follow-up.',
-    'case.demo03.location': 'Thergaon, Pimpri Chinchwad',
-    'case.demo04.title': 'Lost Property Enquiry | Chinchwad Station',
-    'case.demo04.summary': 'Fictional presentation scenario: a passenger reports leaving a reusable bag with a book and umbrella near a station waiting area. No valuables or identifying documents are involved.',
-    'case.demo04.location': 'Chinchwad railway station area, Pimpri Chinchwad',
+    'case.chakan.title': 'Chakan MIDC Industrialist Armed Ambush & Extortion Conspiracy',
+    'case.chakan.summary': 'Armed ambush against manufacturing unit proprietor in Chakan industrial belt. Technical surveillance, ANPR camera network at HP Chowk, and ballistic seizure established premeditated extortion conspiracy.',
+    'case.chakan.location': 'Chakan MIDC Phase II, Mahalunge Road, Pimpri Chinchwad, Pune 410501',
+    'case.cyber.title': 'Hinjawadi IT Corridor Multi-Crore Digital Arrest & Share Trading Syndicate',
+    'case.cyber.summary': 'International cyber syndicate executed digital arrest and fraudulent trading scheme against senior tech executive. PCPC Cyber Crime Squad froze ₹2.10 Crores and traced mule accounts across Surat and Ahmedabad.',
+    'case.cyber.location': 'Phase 1 Tech Park, Hinjawadi, Pimpri Chinchwad, Pune 411057',
+    'case.bhosari.title': 'Bhosari MIDC Scrap Merchant Abduction & Armed Ransom Demand',
+    'case.bhosari.summary': 'Scrap merchant abducted at gunpoint in Bhosari MIDC. PCPC Anti-Extortion Cell mobilized tower triangulation, rescuing victim within 14 hours and impounding getaway vehicle and weapons.',
+    'case.bhosari.location': 'Sector 7, Bhosari MIDC, Pimpri Chinchwad, Pune 411026',
+    'case.chikhali.title': 'Kudalwadi Commercial Bank ATM Gas-Cutter Breach & Arson Heist',
+    'case.chikhali.summary': 'Inter-state gang utilized industrial oxy-acetylene gas cutters to breach HDFC Bank ATM in Kudalwadi, Chikhali. Intense flame triggered cash fire; chemical analysis and vehicle tracking identified interstate syndicate.',
+    'case.chikhali.location': 'Kudalwadi Main Chowk, Chikhali, Pimpri Chinchwad, Pune 411062',
     'evidence.title': 'Evidence Vault', 'evidence.description': 'Review source records, processing status, and provenance for the selected case.',
     'evidence.add': 'Add Evidence', 'evidence.search': 'Search evidence records…', 'evidence.type': 'Record Type',
     'evidence.source': 'Source', 'evidence.received': 'Date Received', 'evidence.provenance': 'Source Details', 'evidence.processing': 'Processing',
@@ -208,18 +208,18 @@ const copy: Record<Locale, Record<string, string>> = {
     'case.benchmark.title': 'कोठारी ज्वेलर्स में सशस्त्र वॉल्ट सेंधमारी एवं डिजिटल एक्सेस बाईपास',
     'case.benchmark.summary': 'वॉल्ट सेफ रूम में सेंधमारी कर ₹4.62 करोड़ के प्रमाणित हीरे और 24K सोने की चोरी। रात 22:18 बजे वैध पिन #7291 द्वारा रियर सर्विस एंट्री (डोर 2B) को निष्क्रिय किया गया और उसके बाद सायरन रिले को काटा गया। संदिग्ध सचिन गायकवाड़ ने गोविंद गार्डन, पिंपले सौदागर में होने का दावा किया, लेकिन जियो सेल टावर लॉग्स और पीसीएमसी स्मार्ट सिटी कैमरों से उसकी उपस्थिति घटनास्थल से 280 मीटर के भीतर साबित हुई।',
     'case.benchmark.location': 'कोठारी ज्वेलर्स एवं वॉल्ट सुविधा, दत्ता मंदिर रोड, वाकड, पिंपरी चिंचवड, पुणे 411057',
-    'case.demo01.title': 'गुम हुई कार्य फ़ाइल | पिंपरी बाज़ार',
-    'case.demo01.summary': 'काल्पनिक प्रस्तुति परिदृश्य: बाज़ार आने के बाद एक यात्री को सामान्य कामकाजी कागज़ नहीं मिलते। इसमें कोई कीमती वस्तु या पहचान दस्तावेज़ नहीं है।',
-    'case.demo01.location': 'पिंपरी बाज़ार क्षेत्र, पिंपरी चिंचवड',
-    'case.demo02.title': 'बिना चोट की मामूली टक्कर | वाकड सर्विस रोड',
-    'case.demo02.summary': 'काल्पनिक प्रस्तुति परिदृश्य: हल्की बारिश में कम गति से हुई टक्कर की सूचना दो वाहन चालक देते हैं। किसी के घायल होने की सूचना नहीं है और दोष तय नहीं किया गया है।',
-    'case.demo02.location': 'वाकड सर्विस रोड, पिंपरी चिंचवड',
-    'case.demo03.title': 'साझे पार्किंग मार्ग की पूछताछ | थेरगाँव',
-    'case.demo03.summary': 'काल्पनिक प्रस्तुति परिदृश्य: निवासी साझा पार्किंग मार्ग की समस्या दर्ज कराने में सहायता माँगते हैं। किसी व्यक्ति पर आरोप नहीं है; नमूने में सामुदायिक स्तर की अगली कार्रवाई दिखाई गई है।',
-    'case.demo03.location': 'थेरगाँव, पिंपरी चिंचवड',
-    'case.demo04.title': 'खोई वस्तु की पूछताछ | चिंचवड़ स्टेशन',
-    'case.demo04.summary': 'काल्पनिक प्रस्तुति परिदृश्य: एक यात्री प्रतीक्षास्थल के पास किताब और छतरी वाला पुन: उपयोग योग्य थैला छोड़ने की सूचना देता है। इसमें कीमती वस्तु या पहचान दस्तावेज़ नहीं है।',
-    'case.demo04.location': 'चिंचवड़ रेलवे स्टेशन क्षेत्र, पिंपरी चिंचवड',
+    'case.chakan.title': 'चाकण एमआईडीसी उद्योगपति पर सशस्त्र हमला एवं रंगदारी षड्यंत्र',
+    'case.chakan.summary': 'चाकण औद्योगिक क्षेत्र में कारखाना मालिक पर सशस्त्र हमला। तकनीकी निगरानी, एचपी चौक एएनपीआर नेटवर्क और बैलिस्टिक साक्ष्यों से रंगदारी सिंडिकेट का पर्दाफाश हुआ।',
+    'case.chakan.location': 'चाकण एमआईडीसी फेज II, महालुंगे रोड, पिंपरी चिंचवड, पुणे 410501',
+    'case.cyber.title': 'हिंजवड़ी आईटी कॉरिडोर मल्टी-करोड़ डिजिटल अरेस्ट एवं शेयर ट्रेडिंग सिंडिकेट',
+    'case.cyber.summary': 'वरिष्ठ टेक अधिकारी के खिलाफ फर्जी डिजिटल अरेस्ट और शेयर ट्रेडिंग धोखाधड़ी। पीसीपीक साइबर पुलिस ने ₹2.10 करोड़ फ्रीज किए और सूरत-अहमदाबाद के म्यूल खातों का पता लगाया।',
+    'case.cyber.location': 'फेज 1 टेक पार्क, हिंजवड़ी, पिंपरी चिंचवड, पुणे 411057',
+    'case.bhosari.title': 'भोसरी एमआईडीसी कबाड़ व्यापारी अपहरण एवं सशस्त्र फिरौती मांग',
+    'case.bhosari.summary': 'भोसरी एमआईडीसी में कबाड़ व्यापारी का बंदूक की नोक पर अपहरण। पीसीपीसी एंटी-एक्सटॉर्शन सेल ने टॉवर ट्रायंगुलेशन से 14 घंटे में पीड़ित को सकुशल छुड़ाया और हथियार जब्त किए।',
+    'case.bhosari.location': 'सेक्टर 7, भोसरी एमआईडीसी, पिंपरी चिंचवड, पुणे 411026',
+    'case.chikhali.title': 'कुदळवाडी कमर्शियल बैंक एटीएम गैस-कटर डकैती एवं आगजनी',
+    'case.chikhali.summary': 'कुदळवाडी में गैस कटर से एचडीएफसी बैंक एटीएम काटकर चोरी का प्रयास। भीषण आग से नकदी जली; रासायनिक फॉरेंसिक और वाहन ट्रैकिंग से अंतर्राज्यीय गिरोह की पहचान हुई।',
+    'case.chikhali.location': 'कुदळवाडी मुख्य चौक, चिखली, पिंपरी चिंचवड, पुणे 411062',
     'evidence.title': 'साक्ष्य संग्रह', 'evidence.description': 'चयनित केस के स्रोत रिकॉर्ड, प्रक्रिया स्थिति और स्रोत विवरण देखें।',
     'evidence.add': 'साक्ष्य जोड़ें', 'evidence.search': 'साक्ष्य रिकॉर्ड खोजें…', 'evidence.type': 'रिकॉर्ड प्रकार',
     'evidence.source': 'स्रोत', 'evidence.received': 'प्राप्ति तिथि', 'evidence.provenance': 'स्रोत विवरण', 'evidence.processing': 'प्रक्रिया स्थिति',
@@ -358,18 +358,18 @@ const copy: Record<Locale, Record<string, string>> = {
     'case.benchmark.title': 'कोठारी ज्वेलर्समध्ये सशस्त्र व्हॉल्ट फोडणे आणि डिजिटल ऍक्सेस बायपास',
     'case.benchmark.summary': 'व्हॉल्ट सेफ रूम फोडून ₹4.62 कोटी किमतीचे प्रमाणित हिरे आणि 24K सोन्याची चोरी. रात्री 22:18 वाजता वैध पिन #7291 द्वारे मागील सर्व्हिस प्रवेशद्वार (डोअर 2B) निष्क्रिय करण्यात आले आणि सायरन रिले तोडण्यात आले. प्राथमिक संशयित सचिन गायकवाड याने गोविंद गार्डन, पिंपळे सौदागर येथे जेवत असल्याचा दावा केला, परंतु जिओ सेल टॉवर नोंदी आणि पीसीएमसी स्मार्ट सिटी कॅमेऱ्यांनी गुन्ह्याच्या ठिकाणापासून 280 मीटर अंतरावर त्याची उपस्थिती सिद्ध केली.',
     'case.benchmark.location': 'कोठारी ज्वेलर्स आणि व्हॉल्ट फॅसिलिटी, दत्त मंदिर रोड, वाकड, पिंपरी चिंचवड, पुणे 411057',
-    'case.demo01.title': 'हरवलेली कामाची फाइल | पिंपरी बाजार',
-    'case.demo01.summary': 'काल्पनिक सादरीकरण प्रसंग: बाजारात भेट दिल्यानंतर एका प्रवाशाची नियमित कामाची कागदपत्रे हरवतात. त्यात मौल्यवान वस्तू किंवा ओळखपत्र नाही.',
-    'case.demo01.location': 'पिंपरी बाजार परिसर, पिंपरी चिंचवड',
-    'case.demo02.title': 'किरकोळ बिन-दुखापत धडक | वाकड सर्व्हिस रोड',
-    'case.demo02.summary': 'काल्पनिक सादरीकरण प्रसंग: हलक्या पावसात कमी वेगाने झालेल्या धडकेची माहिती दोन वाहनचालक देतात. कोणालाही दुखापत झाल्याची नोंद नाही आणि दोष ठरवलेला नाही.',
-    'case.demo02.location': 'वाकड सर्व्हिस रोड, पिंपरी चिंचवड',
-    'case.demo03.title': 'सामायिक पार्किंग मार्गाबाबत चौकशी | थेरगाव',
-    'case.demo03.summary': 'काल्पनिक सादरीकरण प्रसंग: सामायिक पार्किंग मार्गाच्या समस्येची नोंद करण्यासाठी रहिवासी मदत मागतात. कोणत्याही व्यक्तीवर आरोप नाही; नमुन्यात सामुदायिक पुढील कार्यवाही दाखवली आहे.',
-    'case.demo03.location': 'थेरगाव, पिंपरी चिंचवड',
-    'case.demo04.title': 'हरवलेल्या वस्तूबाबत चौकशी | चिंचवड स्थानक',
-    'case.demo04.summary': 'काल्पनिक सादरीकरण प्रसंग: प्रतीक्षास्थळाजवळ पुस्तक आणि छत्री असलेली पुन्हा वापरता येणारी पिशवी राहिल्याची माहिती एक प्रवासी देतो. त्यात मौल्यवान वस्तू किंवा ओळखपत्र नाही.',
-    'case.demo04.location': 'चिंचवड रेल्वे स्थानक परिसर, पिंपरी चिंचवड',
+    'case.chakan.title': 'चाकण एमआयडीसी उद्योगपतीवर सशस्त्र हल्ला आणि खंडणी कट',
+    'case.chakan.summary': 'चाकण औद्योगिक वसाहतीत कारखानदारावर सशस्त्र गोळीबार व खंडणीचा कट. तांत्रिक तपास, एचपी चौक एएनपीआर नेटवर्क व फॉरेन्सिक पुराव्यांच्या आधारे खंडणी टोळी निष्पन्न.',
+    'case.chakan.location': 'चाकण एमआयडीसी फेज II, महाळुंगे रस्ता, पिंपरी चिंचवड, पुणे 410501',
+    'case.cyber.title': 'हिंजवडी आयटी कॉरिडोअर डिजिटल अरेस्ट व शेअर ट्रेडिंग सिंडिकेट',
+    'case.cyber.summary': 'वरिष्ठ आयटी अधिकाऱ्याची खोटी डिजिटल अरेस्ट व शेअर ट्रेडिंग फसवणूक. पीसीपीक सायबर पोलिसांनी ₹2.10 कोटी गोठवले आणि सुरत-अहमदाबाद म्यूल बँक खात्यांचा छडा लावला.',
+    'case.cyber.location': 'फेज 1 टेक पार्क, हिंजवडी, पिंपरी चिंचवड, पुणे 411057',
+    'case.bhosari.title': 'भोसरी एमआयडीसी भंगार व्यापारी अपहरण व खंडणी वसुली',
+    'case.bhosari.summary': 'भोसरी एमआयडीसीतून बंदुकीचा धाक दाखवून भंगार व्यापाऱ्याचे अपहरण. पीसीपीसी खंडणी विरोधी पथकाने टॉवर ट्रायंग्युलेशनद्वारे 14 तासांत व्यापाऱ्याची सुरक्षित सुटका केली.',
+    'case.bhosari.location': 'सेक्टर 7, भोसरी एमआयडीसी, पिंपरी चिंचवड, पुणे 411026',
+    'case.chikhali.title': 'कुदळवाडी बँक एटीएम गॅस-कटर चोरी व आग प्रकरणाचा तपास',
+    'case.chikhali.summary': 'कुदळवाडी येथे गॅस कटरने एटीएम कापून चोरीचा प्रयत्न. भीषण आगीमुळे रोकड जळाली; फॉरेन्सिक सिलिंडर विश्लेषण आणि वाहन ट्रॅकिंगने आंतरराज्यीय टोळी गजाआड.',
+    'case.chikhali.location': 'कुदळवाडी मुख्य चौक, चिखली, पिंपरी चिंचवड, पुणे 411062',
     'evidence.title': 'पुरावा संग्रह', 'evidence.description': 'निवडलेल्या केसच्या स्रोत नोंदी, प्रक्रिया स्थिती आणि स्रोत तपशील पहा.',
     'evidence.add': 'पुरावा जोडा', 'evidence.search': 'पुरावा नोंदी शोधा…', 'evidence.type': 'नोंदीचा प्रकार',
     'evidence.source': 'स्रोत', 'evidence.received': 'प्राप्ती तारीख', 'evidence.provenance': 'स्रोत तपशील', 'evidence.processing': 'प्रक्रिया स्थिती',
@@ -489,9 +489,23 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       const key = `case.benchmark.${field}`;
       return copy[locale]?.[key] ?? copy.en?.[key] ?? fallback;
     }
-    const demoIndex = caseId.match(/^case-pcmc-demo-2026-0([1-4])$/)?.[1];
-    const key = demoIndex ? `case.demo${demoIndex}.${field}` : '';
-    return (key && (copy[locale]?.[key] ?? copy.en?.[key])) || fallback;
+    if (caseId === 'case-pcpc-chakan-2025') {
+      const key = `case.chakan.${field}`;
+      return copy[locale]?.[key] ?? copy.en?.[key] ?? fallback;
+    }
+    if (caseId === 'case-pcpc-cyber-2025') {
+      const key = `case.cyber.${field}`;
+      return copy[locale]?.[key] ?? copy.en?.[key] ?? fallback;
+    }
+    if (caseId === 'case-pcpc-bhosari-2025') {
+      const key = `case.bhosari.${field}`;
+      return copy[locale]?.[key] ?? copy.en?.[key] ?? fallback;
+    }
+    if (caseId === 'case-pcpc-chikhali-2025') {
+      const key = `case.chikhali.${field}`;
+      return copy[locale]?.[key] ?? copy.en?.[key] ?? fallback;
+    }
+    return fallback;
   };
 
   return <LanguageContext.Provider value={{ locale, setLocale, t, caseText }}>{children}</LanguageContext.Provider>;

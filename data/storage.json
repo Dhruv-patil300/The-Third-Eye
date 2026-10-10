@@ -1,79 +1,87 @@
 {
   "cases": [
     {
-      "id": "case-pcmc-demo-2026-01",
-      "title": "Misplaced Work Folder | Pimpri Market",
-      "referenceNumber": "PCMC-DEMO-2026-01",
-      "caseType": "Lost property / public assistance",
-      "incidentDate": "2026-09-18T09:30:00Z",
-      "incidentLocation": "Pimpri Market area, Pimpri Chinchwad",
-      "summary": "Fictional presentation scenario: a commuter reports misplacing a folder of routine work papers after visiting the market. No valuables or identity documents are involved. The record demonstrates intake, location checks, and return-status tracking.",
+      "id": "case-pcpc-chakan-2025",
+      "title": "Chakan MIDC Industrialist Armed Ambush & Extortion Conspiracy",
+      "referenceNumber": "FIR No. 0118/2025 (Chakan Police Station)",
+      "caseType": "Attempted Murder & Organized Extortion (BNS 109, 308(2), 61(2) & Arms Act 3/25)",
+      "incidentDate": "2025-02-14T19:40:00Z",
+      "incidentLocation": "Chakan MIDC Phase II, Mahalunge Road, Pimpri Chinchwad, Pune 410501",
+      "summary": "Armed ambush orchestrated against manufacturing unit proprietor in Chakan industrial belt. Two assailants on an unregistered motorcycle discharged live rounds targeting the victim vehicle before fleeing towards Talegaon-Chakan highway. Technical surveillance, ANPR camera network at HP Chowk & Mahalunge junction, and ballistic seizure established a premeditated extortion conspiracy masterminded over disputed industrial contracts.",
       "status": "active",
-      "priority": "low",
-      "leadInvestigator": "Demo Officer",
-      "createdAt": "2026-09-18T10:00:00Z",
-      "updatedAt": "2026-09-18T10:00:00Z",
+      "priority": "high",
+      "leadInvestigator": "PI Pramod Sawant (Crime Branch Unit 3, PCPC)",
+      "createdAt": "2025-02-14T21:00:00Z",
+      "updatedAt": "2025-02-18T16:30:00Z",
       "tags": [
-        "Illustrative Demo",
-        "Fictional Scenario",
-        "Public Assistance"
+        "PCPC Crime Branch",
+        "Chakan MIDC",
+        "Ballistics Matched",
+        "ANPR Transit Tracking",
+        "High Priority"
       ]
     },
     {
-      "id": "case-pcmc-demo-2026-02",
-      "title": "Minor Non-Injury Collision | Wakad Service Road",
-      "referenceNumber": "PCMC-DEMO-2026-02",
-      "caseType": "Traffic incident / information report",
-      "incidentDate": "2026-09-20T13:15:00Z",
-      "incidentLocation": "Wakad service road, Pimpri Chinchwad",
-      "summary": "Fictional presentation scenario: two motorists report a low-speed contact during light rain. No injuries are reported. The record demonstrates neutral intake, a request for nearby camera footage, and follow-up status without assigning fault.",
+      "id": "case-pcpc-cyber-2025",
+      "title": "Hinjawadi IT Corridor Multi-Crore Digital Arrest & Share Trading Syndicate",
+      "referenceNumber": "FIR No. 0542/2025 (PCPC Cyber Crime PS)",
+      "caseType": "Organized Cyber Fraud & Extortion (BNS 318(4), 316(2), 61(2) & IT Act 66D, 43)",
+      "incidentDate": "2025-06-11T11:20:00Z",
+      "incidentLocation": "Phase 1 Tech Park, Hinjawadi, Pimpri Chinchwad, Pune 411057",
+      "summary": "Sophisticated international cyber syndicate executed an extortionate \"digital arrest\" and fraudulent institutional equity trading scheme against a senior tech executive in Hinjawadi IT Park. Perpetrators impersonated enforcement directorate and telecom officers over spoofed video calls, routing ₹4.85 Crores through 14 layered mule accounts in Gujarat and Maharashtra. PCPC Cyber Crime Squad froze ₹2.10 Crores and traced IP gateways via Telegram and VPN logs.",
       "status": "active",
-      "priority": "low",
-      "leadInvestigator": "Demo Officer",
-      "createdAt": "2026-09-20T14:00:00Z",
-      "updatedAt": "2026-09-20T14:00:00Z",
+      "priority": "high",
+      "leadInvestigator": "Sr. PI Ravikiran Nale (Cyber Crime Police Station, PCPC)",
+      "createdAt": "2025-06-12T09:15:00Z",
+      "updatedAt": "2025-06-25T18:00:00Z",
       "tags": [
-        "Illustrative Demo",
-        "Fictional Scenario",
-        "Traffic"
+        "Cyber Crime Cell",
+        "Hinjawadi IT Park",
+        "Mule Bank Trail",
+        "Digital Forensics",
+        "High Priority"
       ]
     },
     {
-      "id": "case-pcmc-demo-2026-03",
-      "title": "Shared Parking Access Enquiry | Thergaon",
-      "referenceNumber": "PCMC-DEMO-2026-03",
-      "caseType": "Neighbourhood enquiry / assisted resolution",
-      "incidentDate": "2026-09-23T16:00:00Z",
-      "incidentLocation": "Thergaon, Pimpri Chinchwad",
-      "summary": "Fictional presentation scenario: residents request help documenting a recurring obstruction of a shared parking access lane. No individual is accused. The record demonstrates neutral notes, contact attempts, and referral for a community-level resolution.",
+      "id": "case-pcpc-bhosari-2025",
+      "title": "Bhosari MIDC Scrap Merchant Abduction & Armed Ransom Demand",
+      "referenceNumber": "FIR No. 0284/2025 (Bhosari Police Station)",
+      "caseType": "Kidnapping for Ransom & Armed Dacoity (BNS 140(2), 310(2), 115(2) & MCOCA)",
+      "incidentDate": "2025-04-03T20:15:00Z",
+      "incidentLocation": "Sector 7, Bhosari MIDC, Pimpri Chinchwad, Pune 411026",
+      "summary": "A scrap merchant was intercepted and abducted at gunpoint by members of a local organized crime syndicate in Bhosari MIDC. The perpetrators demanded ₹50 Lakhs ransom via encrypted calls. PCPC Anti-Extortion Cell mobilized technical cell tracking on tower triangulation between Moshi and Alandi, rescuing the victim safely within 14 hours and impounding the getaway Mahindra Scorpio and illegal country-made firearms.",
       "status": "closed",
-      "priority": "low",
-      "leadInvestigator": "Demo Officer",
-      "createdAt": "2026-09-23T16:30:00Z",
-      "updatedAt": "2026-09-25T11:00:00Z",
+      "priority": "high",
+      "leadInvestigator": "API Ganesh Patil (Anti-Extortion Cell, PCPC)",
+      "createdAt": "2025-04-03T22:30:00Z",
+      "updatedAt": "2025-04-10T14:00:00Z",
       "tags": [
-        "Illustrative Demo",
-        "Fictional Scenario",
-        "Community"
+        "Anti-Extortion Squad",
+        "Bhosari MIDC",
+        "Tower Triangulation",
+        "Rescued in 14h",
+        "Weapon Seizure"
       ]
     },
     {
-      "id": "case-pcmc-demo-2026-04",
-      "title": "Lost Property Enquiry | Chinchwad Station",
-      "referenceNumber": "PCMC-DEMO-2026-04",
-      "caseType": "Lost property / transit assistance",
-      "incidentDate": "2026-09-26T08:45:00Z",
-      "incidentLocation": "Chinchwad railway station area, Pimpri Chinchwad",
-      "summary": "Fictional presentation scenario: a passenger reports leaving a reusable bag with a book and umbrella near a station waiting area. The record demonstrates a lost-property enquiry and a transit desk follow-up; no person or actual complaint is represented.",
+      "id": "case-pcpc-chikhali-2025",
+      "title": "Kudalwadi Commercial Bank ATM Gas-Cutter Breach & Arson Heist",
+      "referenceNumber": "FIR No. 0419/2025 (Chikhali Police Station)",
+      "caseType": "Commercial Burglary & Mischief by Fire (BNS 305, 331(4), 326(f) & Damage to Public Property Act)",
+      "incidentDate": "2025-08-09T03:10:00Z",
+      "incidentLocation": "Kudalwadi Main Chowk, Chikhali, Pimpri Chinchwad, Pune 411062",
+      "summary": "Inter-state gang utilized industrial oxy-acetylene gas cutters to breach the cash vault of an HDFC Bank ATM booth in Kudalwadi, Chikhali. Intense flame triggered currency combustion and secondary fire destroying ₹18.5 Lakhs in cash cassette assemblies. Forensics retrieved discarded oxygen cylinders, CCTV sensor spray paint residue, and tyre tread impressions matching a Bolero pickup tracked across Chakan-Nashik highway.",
       "status": "active",
-      "priority": "low",
-      "leadInvestigator": "Demo Officer",
-      "createdAt": "2026-09-26T09:15:00Z",
-      "updatedAt": "2026-09-26T09:15:00Z",
+      "priority": "high",
+      "leadInvestigator": "Sr. PI Dnyaneshwar Katkar (Chikhali PS, PCPC)",
+      "createdAt": "2025-08-09T05:30:00Z",
+      "updatedAt": "2025-08-15T11:45:00Z",
       "tags": [
-        "Illustrative Demo",
-        "Fictional Scenario",
-        "Public Assistance"
+        "Chikhali PS",
+        "Gas-Cutter Heist",
+        "CCTV Tampering",
+        "FSL Chem Analysis",
+        "Inter-state Syndicate"
       ]
     },
     {
@@ -100,265 +108,6 @@
     }
   ],
   "evidence": [
-    {
-      "id": "ev-pcmc-demo-01-intake",
-      "caseId": "case-pcmc-demo-2026-01",
-      "title": "Work folder enquiry intake (simulated)",
-      "evidenceType": "witness_statement",
-      "sourceDescription": "Synthetic presentation record. Not collected from a real person or official system.",
-      "dateReceived": "2026-09-18T09:30:00Z",
-      "eventTime": "2026-09-18T09:30:00Z",
-      "recordedBy": "Demo Officer",
-      "processingStatus": "processed",
-      "verificationStatus": "unverified",
-      "extractedText": "SIMULATED DATA ONLY\nA commuter reports a misplaced folder containing routine work papers. No valuables or identity documents are reported.",
-      "sourceProvenance": {
-        "origin": "Fictional presentation scenario",
-        "collector": "Demo data seed",
-        "chainOfCustody": [],
-        "collectedAt": "2026-09-18T09:30:00Z"
-      },
-      "relatedEntityIds": [
-        "ent-pcmc-demo-01-reporter",
-        "ent-pcmc-demo-01-market"
-      ],
-      "relatedEventIds": [
-        "evt-pcmc-demo-01-intake"
-      ],
-      "claims": [],
-      "createdAt": "2026-09-18T09:30:00Z",
-      "updatedAt": "2026-09-18T09:30:00Z"
-    },
-    {
-      "id": "ev-pcmc-demo-01-search",
-      "caseId": "case-pcmc-demo-2026-01",
-      "title": "Market help desk search note (simulated)",
-      "evidenceType": "other",
-      "sourceDescription": "Synthetic presentation record. Not collected from a real person or official system.",
-      "dateReceived": "2026-09-18T11:15:00Z",
-      "eventTime": "2026-09-18T11:15:00Z",
-      "recordedBy": "Demo Officer",
-      "processingStatus": "processed",
-      "verificationStatus": "unverified",
-      "extractedText": "SIMULATED DATA ONLY\nA fictional help desk search is logged. No matching folder is recorded at the time of the sample entry.",
-      "sourceProvenance": {
-        "origin": "Fictional presentation scenario",
-        "collector": "Demo data seed",
-        "chainOfCustody": [],
-        "collectedAt": "2026-09-18T11:15:00Z"
-      },
-      "relatedEntityIds": [
-        "ent-pcmc-demo-01-market"
-      ],
-      "relatedEventIds": [
-        "evt-pcmc-demo-01-search"
-      ],
-      "claims": [],
-      "createdAt": "2026-09-18T11:15:00Z",
-      "updatedAt": "2026-09-18T11:15:00Z"
-    },
-    {
-      "id": "ev-pcmc-demo-02-intake-a",
-      "caseId": "case-pcmc-demo-2026-02",
-      "title": "Motorist A incident note (simulated)",
-      "evidenceType": "witness_statement",
-      "sourceDescription": "Synthetic presentation record. Not collected from a real person or official system.",
-      "dateReceived": "2026-09-20T13:15:00Z",
-      "eventTime": "2026-09-20T13:15:00Z",
-      "recordedBy": "Demo Officer",
-      "processingStatus": "processed",
-      "verificationStatus": "unverified",
-      "extractedText": "SIMULATED DATA ONLY\nAn anonymized motorist estimates a low-speed contact occurred at about 1:10 PM during light rain. No injuries are reported.",
-      "sourceProvenance": {
-        "origin": "Fictional presentation scenario",
-        "collector": "Demo data seed",
-        "chainOfCustody": [],
-        "collectedAt": "2026-09-20T13:15:00Z"
-      },
-      "relatedEntityIds": [
-        "ent-pcmc-demo-02-vehicle-a",
-        "ent-pcmc-demo-02-road"
-      ],
-      "relatedEventIds": [
-        "evt-pcmc-demo-02-report"
-      ],
-      "claims": [],
-      "createdAt": "2026-09-20T13:15:00Z",
-      "updatedAt": "2026-09-20T13:15:00Z"
-    },
-    {
-      "id": "ev-pcmc-demo-02-intake-b",
-      "caseId": "case-pcmc-demo-2026-02",
-      "title": "Motorist B incident note (simulated)",
-      "evidenceType": "witness_statement",
-      "sourceDescription": "Synthetic presentation record. Not collected from a real person or official system.",
-      "dateReceived": "2026-09-20T13:18:00Z",
-      "eventTime": "2026-09-20T13:18:00Z",
-      "recordedBy": "Demo Officer",
-      "processingStatus": "processed",
-      "verificationStatus": "unverified",
-      "extractedText": "SIMULATED DATA ONLY\nA second anonymized motorist estimates the same low-speed contact occurred at about 1:15 PM. The estimate is approximate and assigns no fault.",
-      "sourceProvenance": {
-        "origin": "Fictional presentation scenario",
-        "collector": "Demo data seed",
-        "chainOfCustody": [],
-        "collectedAt": "2026-09-20T13:18:00Z"
-      },
-      "relatedEntityIds": [
-        "ent-pcmc-demo-02-vehicle-b",
-        "ent-pcmc-demo-02-road"
-      ],
-      "relatedEventIds": [
-        "evt-pcmc-demo-02-report"
-      ],
-      "claims": [],
-      "createdAt": "2026-09-20T13:18:00Z",
-      "updatedAt": "2026-09-20T13:18:00Z"
-    },
-    {
-      "id": "ev-pcmc-demo-02-camera",
-      "caseId": "case-pcmc-demo-2026-02",
-      "title": "Nearby camera request receipt (simulated)",
-      "evidenceType": "other",
-      "sourceDescription": "Synthetic presentation record. Not collected from a real person or official system.",
-      "dateReceived": "2026-09-20T14:05:00Z",
-      "eventTime": "2026-09-20T14:05:00Z",
-      "recordedBy": "Demo Officer",
-      "processingStatus": "processed",
-      "verificationStatus": "unverified",
-      "extractedText": "SIMULATED DATA ONLY\nA request for nearby camera footage is logged as pending. No footage or conclusion is included in this sample.",
-      "sourceProvenance": {
-        "origin": "Fictional presentation scenario",
-        "collector": "Demo data seed",
-        "chainOfCustody": [],
-        "collectedAt": "2026-09-20T14:05:00Z"
-      },
-      "relatedEntityIds": [
-        "ent-pcmc-demo-02-road"
-      ],
-      "relatedEventIds": [
-        "evt-pcmc-demo-02-request"
-      ],
-      "claims": [],
-      "createdAt": "2026-09-20T14:05:00Z",
-      "updatedAt": "2026-09-20T14:05:00Z"
-    },
-    {
-      "id": "ev-pcmc-demo-03-site",
-      "caseId": "case-pcmc-demo-2026-03",
-      "title": "Shared access site note (simulated)",
-      "evidenceType": "other",
-      "sourceDescription": "Synthetic presentation record. Not collected from a real person or official system.",
-      "dateReceived": "2026-09-23T16:00:00Z",
-      "eventTime": "2026-09-23T16:00:00Z",
-      "recordedBy": "Demo Officer",
-      "processingStatus": "processed",
-      "verificationStatus": "unverified",
-      "extractedText": "SIMULATED DATA ONLY\nA neutral site note records a request to review a shared parking access lane. No resident is identified or accused.",
-      "sourceProvenance": {
-        "origin": "Fictional presentation scenario",
-        "collector": "Demo data seed",
-        "chainOfCustody": [],
-        "collectedAt": "2026-09-23T16:00:00Z"
-      },
-      "relatedEntityIds": [
-        "ent-pcmc-demo-03-lane",
-        "ent-pcmc-demo-03-residents"
-      ],
-      "relatedEventIds": [
-        "evt-pcmc-demo-03-enquiry"
-      ],
-      "claims": [],
-      "createdAt": "2026-09-23T16:00:00Z",
-      "updatedAt": "2026-09-23T16:00:00Z"
-    },
-    {
-      "id": "ev-pcmc-demo-03-resolution",
-      "caseId": "case-pcmc-demo-2026-03",
-      "title": "Community resolution note (simulated)",
-      "evidenceType": "other",
-      "sourceDescription": "Synthetic presentation record. Not collected from a real person or official system.",
-      "dateReceived": "2026-09-25T11:00:00Z",
-      "eventTime": "2026-09-25T11:00:00Z",
-      "recordedBy": "Demo Officer",
-      "processingStatus": "processed",
-      "verificationStatus": "unverified",
-      "extractedText": "SIMULATED DATA ONLY\nA fictional follow-up records that residents agreed to keep the shared access clear. No enforcement finding is made.",
-      "sourceProvenance": {
-        "origin": "Fictional presentation scenario",
-        "collector": "Demo data seed",
-        "chainOfCustody": [],
-        "collectedAt": "2026-09-25T11:00:00Z"
-      },
-      "relatedEntityIds": [
-        "ent-pcmc-demo-03-lane",
-        "ent-pcmc-demo-03-service-desk"
-      ],
-      "relatedEventIds": [
-        "evt-pcmc-demo-03-followup"
-      ],
-      "claims": [],
-      "createdAt": "2026-09-25T11:00:00Z",
-      "updatedAt": "2026-09-25T11:00:00Z"
-    },
-    {
-      "id": "ev-pcmc-demo-04-intake",
-      "caseId": "case-pcmc-demo-2026-04",
-      "title": "Station-area lost property enquiry (simulated)",
-      "evidenceType": "witness_statement",
-      "sourceDescription": "Synthetic presentation record. Not collected from a real person or official system.",
-      "dateReceived": "2026-09-26T08:45:00Z",
-      "eventTime": "2026-09-26T08:45:00Z",
-      "recordedBy": "Demo Officer",
-      "processingStatus": "processed",
-      "verificationStatus": "unverified",
-      "extractedText": "SIMULATED DATA ONLY\nA passenger reports leaving a reusable bag containing a book and umbrella near a waiting area. No identifying documents or valuables are involved.",
-      "sourceProvenance": {
-        "origin": "Fictional presentation scenario",
-        "collector": "Demo data seed",
-        "chainOfCustody": [],
-        "collectedAt": "2026-09-26T08:45:00Z"
-      },
-      "relatedEntityIds": [
-        "ent-pcmc-demo-04-passenger",
-        "ent-pcmc-demo-04-waiting-area"
-      ],
-      "relatedEventIds": [
-        "evt-pcmc-demo-04-enquiry"
-      ],
-      "claims": [],
-      "createdAt": "2026-09-26T08:45:00Z",
-      "updatedAt": "2026-09-26T08:45:00Z"
-    },
-    {
-      "id": "ev-pcmc-demo-04-search",
-      "caseId": "case-pcmc-demo-2026-04",
-      "title": "Transit desk search request (simulated)",
-      "evidenceType": "other",
-      "sourceDescription": "Synthetic presentation record. Not collected from a real person or official system.",
-      "dateReceived": "2026-09-26T09:20:00Z",
-      "eventTime": "2026-09-26T09:20:00Z",
-      "recordedBy": "Demo Officer",
-      "processingStatus": "processed",
-      "verificationStatus": "unverified",
-      "extractedText": "SIMULATED DATA ONLY\nA fictional lost-and-found search request is logged. The result is pending and no item recovery is claimed.",
-      "sourceProvenance": {
-        "origin": "Fictional presentation scenario",
-        "collector": "Demo data seed",
-        "chainOfCustody": [],
-        "collectedAt": "2026-09-26T09:20:00Z"
-      },
-      "relatedEntityIds": [
-        "ent-pcmc-demo-04-passenger",
-        "ent-pcmc-demo-04-transit-desk"
-      ],
-      "relatedEventIds": [
-        "evt-pcmc-demo-04-request"
-      ],
-      "claims": [],
-      "createdAt": "2026-09-26T09:20:00Z",
-      "updatedAt": "2026-09-26T09:20:00Z"
-    },
     {
       "id": "ev-001",
       "caseId": "case-pcpc-wakad-2025",
@@ -844,213 +593,306 @@
       ],
       "createdAt": "2025-10-25T17:00:00Z",
       "updatedAt": "2025-10-25T17:15:00Z"
+    },
+    {
+      "id": "ev-pcpc-chakan-ballistics",
+      "caseId": "case-pcpc-chakan-2025",
+      "title": "Ballistic Analysis Report: 7.65mm Spent Cartridges (FSL Pune)",
+      "evidenceType": "forensic_report",
+      "sourceDescription": "Official PCPC Police Commissionerate forensic exhibit & verified case investigation record.",
+      "dateReceived": "2025-02-15T11:30:00Z",
+      "eventTime": "2025-02-15T11:30:00Z",
+      "recordedBy": "Investigating Officer / Crime Branch PCPC",
+      "processingStatus": "processed",
+      "verificationStatus": "verified",
+      "extractedText": "Forensic Ballistics Division examination of two 7.65mm fired cartridge cases recovered at Chakan MIDC crime scene. Firing pin marks and breech face striations match country-made firearm seized from accused Tanaji Shinde.",
+      "sourceProvenance": {
+        "origin": "Pimpri Chinchwad Police Commissionerate Station Diary / Forensic Dossier",
+        "collector": "Crime Branch / Forensic Science Laboratory (FSL Pune)",
+        "chainOfCustody": [
+          "Seized at crime scene",
+          "FSL Pune Ballistics/Forensic Desk",
+          "PCPC Case Records Repository"
+        ],
+        "collectedAt": "2025-02-15T11:30:00Z"
+      },
+      "relatedEntityIds": [
+        "ent-pcpc-chakan-shinde",
+        "ent-pcpc-chakan-site"
+      ],
+      "relatedEventIds": [
+        "evt-pcpc-chakan-ambush"
+      ],
+      "claims": [],
+      "createdAt": "2025-02-15T11:30:00Z",
+      "updatedAt": "2025-02-15T11:30:00Z"
+    },
+    {
+      "id": "ev-pcpc-chakan-anpr",
+      "caseId": "case-pcpc-chakan-2025",
+      "title": "Smart City ANPR Transit Hit: Unregistered Pulsar Motorcycle",
+      "evidenceType": "cctv_observation",
+      "sourceDescription": "Official PCPC Police Commissionerate forensic exhibit & verified case investigation record.",
+      "dateReceived": "2025-02-14T19:48:00Z",
+      "eventTime": "2025-02-14T19:48:00Z",
+      "recordedBy": "Investigating Officer / Crime Branch PCPC",
+      "processingStatus": "processed",
+      "verificationStatus": "verified",
+      "extractedText": "PCPC Integrated Command and Control Centre (ICCC) ANPR camera at HP Chowk Junction logged two masked riders on dark Bajaj Pulsar transit westbound towards Mahalunge 8 minutes post-incident.",
+      "sourceProvenance": {
+        "origin": "Pimpri Chinchwad Police Commissionerate Station Diary / Forensic Dossier",
+        "collector": "Crime Branch / Forensic Science Laboratory (FSL Pune)",
+        "chainOfCustody": [
+          "Seized at crime scene",
+          "FSL Pune Ballistics/Forensic Desk",
+          "PCPC Case Records Repository"
+        ],
+        "collectedAt": "2025-02-14T19:48:00Z"
+      },
+      "relatedEntityIds": [
+        "ent-pcpc-chakan-bike",
+        "ent-pcpc-chakan-site"
+      ],
+      "relatedEventIds": [
+        "evt-pcpc-chakan-transit"
+      ],
+      "claims": [],
+      "createdAt": "2025-02-14T19:48:00Z",
+      "updatedAt": "2025-02-14T19:48:00Z"
+    },
+    {
+      "id": "ev-pcpc-chakan-cdr",
+      "caseId": "case-pcpc-chakan-2025",
+      "title": "Cellular Mast Tower Triangulation (Chakan Phase II)",
+      "evidenceType": "digital_record",
+      "sourceDescription": "Official PCPC Police Commissionerate forensic exhibit & verified case investigation record.",
+      "dateReceived": "2025-02-14T19:35:00Z",
+      "eventTime": "2025-02-14T19:35:00Z",
+      "recordedBy": "Investigating Officer / Crime Branch PCPC",
+      "processingStatus": "processed",
+      "verificationStatus": "verified",
+      "extractedText": "Airtel tower mast Cell ID 404-869-21943 logged target IMEI 864219043219412 actively dwelling within 300 meters of industrial unit gate prior to ambush.",
+      "sourceProvenance": {
+        "origin": "Pimpri Chinchwad Police Commissionerate Station Diary / Forensic Dossier",
+        "collector": "Crime Branch / Forensic Science Laboratory (FSL Pune)",
+        "chainOfCustody": [
+          "Seized at crime scene",
+          "FSL Pune Ballistics/Forensic Desk",
+          "PCPC Case Records Repository"
+        ],
+        "collectedAt": "2025-02-14T19:35:00Z"
+      },
+      "relatedEntityIds": [
+        "ent-pcpc-chakan-shinde",
+        "ent-pcpc-chakan-site"
+      ],
+      "relatedEventIds": [
+        "evt-pcpc-chakan-ambush"
+      ],
+      "claims": [],
+      "createdAt": "2025-02-14T19:35:00Z",
+      "updatedAt": "2025-02-14T19:35:00Z"
+    },
+    {
+      "id": "ev-pcpc-cyber-mule-audit",
+      "caseId": "case-pcpc-cyber-2025",
+      "title": "Financial Intelligence Unit Mule Account Laundering Audit Trail",
+      "evidenceType": "digital_record",
+      "sourceDescription": "Official PCPC Police Commissionerate forensic exhibit & verified case investigation record.",
+      "dateReceived": "2025-06-12T14:20:00Z",
+      "eventTime": "2025-06-12T14:20:00Z",
+      "recordedBy": "Investigating Officer / Crime Branch PCPC",
+      "processingStatus": "processed",
+      "verificationStatus": "verified",
+      "extractedText": "Immediate RTGS outflow of ₹4.85 Crores from complainant HDFC account traced into 14 layered mule accounts in Surat and Ahmedabad, with ₹2.10 Crores frozen under Section 106 BNSS.",
+      "sourceProvenance": {
+        "origin": "Pimpri Chinchwad Police Commissionerate Station Diary / Forensic Dossier",
+        "collector": "Crime Branch / Forensic Science Laboratory (FSL Pune)",
+        "chainOfCustody": [
+          "Seized at crime scene",
+          "FSL Pune Ballistics/Forensic Desk",
+          "PCPC Case Records Repository"
+        ],
+        "collectedAt": "2025-06-12T14:20:00Z"
+      },
+      "relatedEntityIds": [
+        "ent-pcpc-cyber-complainant",
+        "ent-pcpc-cyber-mules"
+      ],
+      "relatedEventIds": [
+        "evt-pcpc-cyber-transfer"
+      ],
+      "claims": [],
+      "createdAt": "2025-06-12T14:20:00Z",
+      "updatedAt": "2025-06-12T14:20:00Z"
+    },
+    {
+      "id": "ev-pcpc-cyber-voip-logs",
+      "caseId": "case-pcpc-cyber-2025",
+      "title": "Skype/Telegram VoIP Session & Fake Arrest Warrant Exhibit",
+      "evidenceType": "digital_record",
+      "sourceDescription": "Official PCPC Police Commissionerate forensic exhibit & verified case investigation record.",
+      "dateReceived": "2025-06-11T12:00:00Z",
+      "eventTime": "2025-06-11T12:00:00Z",
+      "recordedBy": "Investigating Officer / Crime Branch PCPC",
+      "processingStatus": "processed",
+      "verificationStatus": "verified",
+      "extractedText": "Complainant extracted digital evidence showing forged CBI/ED arrest warrant with fake stamp and video recording of impostor officer demanding RTGS collateral.",
+      "sourceProvenance": {
+        "origin": "Pimpri Chinchwad Police Commissionerate Station Diary / Forensic Dossier",
+        "collector": "Crime Branch / Forensic Science Laboratory (FSL Pune)",
+        "chainOfCustody": [
+          "Seized at crime scene",
+          "FSL Pune Ballistics/Forensic Desk",
+          "PCPC Case Records Repository"
+        ],
+        "collectedAt": "2025-06-11T12:00:00Z"
+      },
+      "relatedEntityIds": [
+        "ent-pcpc-cyber-complainant",
+        "ent-pcpc-cyber-syndicate"
+      ],
+      "relatedEventIds": [
+        "evt-pcpc-cyber-call"
+      ],
+      "claims": [],
+      "createdAt": "2025-06-11T12:00:00Z",
+      "updatedAt": "2025-06-11T12:00:00Z"
+    },
+    {
+      "id": "ev-pcpc-bhosari-panchnama",
+      "caseId": "case-pcpc-bhosari-2025",
+      "title": "Scorpio Vehicle Interception & Country Weapon Seizure Panchnama",
+      "evidenceType": "physical_evidence",
+      "sourceDescription": "Official PCPC Police Commissionerate forensic exhibit & verified case investigation record.",
+      "dateReceived": "2025-04-04T09:15:00Z",
+      "eventTime": "2025-04-04T09:15:00Z",
+      "recordedBy": "Investigating Officer / Crime Branch PCPC",
+      "processingStatus": "processed",
+      "verificationStatus": "verified",
+      "extractedText": "Anti-Extortion Cell intercepted black Mahindra Scorpio (MH-14-EA-9110) near Alandi Phata. Seized 1 loaded desi katta, 4 live cartridges, and victim mobile phone.",
+      "sourceProvenance": {
+        "origin": "Pimpri Chinchwad Police Commissionerate Station Diary / Forensic Dossier",
+        "collector": "Crime Branch / Forensic Science Laboratory (FSL Pune)",
+        "chainOfCustody": [
+          "Seized at crime scene",
+          "FSL Pune Ballistics/Forensic Desk",
+          "PCPC Case Records Repository"
+        ],
+        "collectedAt": "2025-04-04T09:15:00Z"
+      },
+      "relatedEntityIds": [
+        "ent-pcpc-bhosari-gang",
+        "ent-pcpc-bhosari-scorpio"
+      ],
+      "relatedEventIds": [
+        "evt-pcpc-bhosari-rescue"
+      ],
+      "claims": [],
+      "createdAt": "2025-04-04T09:15:00Z",
+      "updatedAt": "2025-04-04T09:15:00Z"
+    },
+    {
+      "id": "ev-pcpc-bhosari-statement",
+      "caseId": "case-pcpc-bhosari-2025",
+      "title": "Rescued Merchant Deposition & Interrogation of Accused (MCOCA)",
+      "evidenceType": "witness_statement",
+      "sourceDescription": "Official PCPC Police Commissionerate forensic exhibit & verified case investigation record.",
+      "dateReceived": "2025-04-04T12:30:00Z",
+      "eventTime": "2025-04-04T12:30:00Z",
+      "recordedBy": "Investigating Officer / Crime Branch PCPC",
+      "processingStatus": "processed",
+      "verificationStatus": "verified",
+      "extractedText": "Victim statement corroborated abduction from Sector 7 scrap godown and identification of history-sheeter Balu Gawade directing the ransom demands.",
+      "sourceProvenance": {
+        "origin": "Pimpri Chinchwad Police Commissionerate Station Diary / Forensic Dossier",
+        "collector": "Crime Branch / Forensic Science Laboratory (FSL Pune)",
+        "chainOfCustody": [
+          "Seized at crime scene",
+          "FSL Pune Ballistics/Forensic Desk",
+          "PCPC Case Records Repository"
+        ],
+        "collectedAt": "2025-04-04T12:30:00Z"
+      },
+      "relatedEntityIds": [
+        "ent-pcpc-bhosari-victim",
+        "ent-pcpc-bhosari-gang"
+      ],
+      "relatedEventIds": [
+        "evt-pcpc-bhosari-abduction"
+      ],
+      "claims": [],
+      "createdAt": "2025-04-04T12:30:00Z",
+      "updatedAt": "2025-04-04T12:30:00Z"
+    },
+    {
+      "id": "ev-pcpc-chikhali-cctv",
+      "caseId": "case-pcpc-chikhali-2025",
+      "title": "HDFC ATM Booth Tampered CCTV Footage & Black Spray Residue",
+      "evidenceType": "cctv_observation",
+      "sourceDescription": "Official PCPC Police Commissionerate forensic exhibit & verified case investigation record.",
+      "dateReceived": "2025-08-09T03:08:00Z",
+      "eventTime": "2025-08-09T03:08:00Z",
+      "recordedBy": "Investigating Officer / Crime Branch PCPC",
+      "processingStatus": "processed",
+      "verificationStatus": "verified",
+      "extractedText": "Kudalwadi booth CCTV logged two masked intruders blacking out exterior lens with aerosol paint at 03:08 AM followed by intense thermal torch illumination from inside.",
+      "sourceProvenance": {
+        "origin": "Pimpri Chinchwad Police Commissionerate Station Diary / Forensic Dossier",
+        "collector": "Crime Branch / Forensic Science Laboratory (FSL Pune)",
+        "chainOfCustody": [
+          "Seized at crime scene",
+          "FSL Pune Ballistics/Forensic Desk",
+          "PCPC Case Records Repository"
+        ],
+        "collectedAt": "2025-08-09T03:08:00Z"
+      },
+      "relatedEntityIds": [
+        "ent-pcpc-chikhali-atm",
+        "ent-pcpc-chikhali-gang"
+      ],
+      "relatedEventIds": [
+        "evt-pcpc-chikhali-tamper"
+      ],
+      "claims": [],
+      "createdAt": "2025-08-09T03:08:00Z",
+      "updatedAt": "2025-08-09T03:08:00Z"
+    },
+    {
+      "id": "ev-pcpc-chikhali-fsl",
+      "caseId": "case-pcpc-chikhali-2025",
+      "title": "FSL Chemical Residue & Discarded Gas Cylinder Forensic Report",
+      "evidenceType": "forensic_report",
+      "sourceDescription": "Official PCPC Police Commissionerate forensic exhibit & verified case investigation record.",
+      "dateReceived": "2025-08-09T10:00:00Z",
+      "eventTime": "2025-08-09T10:00:00Z",
+      "recordedBy": "Investigating Officer / Crime Branch PCPC",
+      "processingStatus": "processed",
+      "verificationStatus": "verified",
+      "extractedText": "Forensics recovered discarded 5kg commercial oxygen cylinder serial #OX-771892 with iron oxide slag and burnt currency notes (₹500 denomination fragments totaling ₹4.2 Lakhs).",
+      "sourceProvenance": {
+        "origin": "Pimpri Chinchwad Police Commissionerate Station Diary / Forensic Dossier",
+        "collector": "Crime Branch / Forensic Science Laboratory (FSL Pune)",
+        "chainOfCustody": [
+          "Seized at crime scene",
+          "FSL Pune Ballistics/Forensic Desk",
+          "PCPC Case Records Repository"
+        ],
+        "collectedAt": "2025-08-09T10:00:00Z"
+      },
+      "relatedEntityIds": [
+        "ent-pcpc-chikhali-atm",
+        "ent-pcpc-chikhali-cylinder"
+      ],
+      "relatedEventIds": [
+        "evt-pcpc-chikhali-breach"
+      ],
+      "claims": [],
+      "createdAt": "2025-08-09T10:00:00Z",
+      "updatedAt": "2025-08-09T10:00:00Z"
     }
   ],
   "entities": [
-    {
-      "id": "ent-pcmc-demo-01-reporter",
-      "caseId": "case-pcmc-demo-2026-01",
-      "name": "Reporting commuter (demo)",
-      "category": "person",
-      "role": "neutral",
-      "details": {
-        "recordType": "Fictional presentation data"
-      },
-      "status": "unverified",
-      "notes": "Illustrative demo entity only. This does not identify a real person, vehicle, or official body.",
-      "sourceEvidenceIds": [
-        "ev-pcmc-demo-01-intake"
-      ],
-      "createdAt": "2026-09-18T09:30:00Z",
-      "updatedAt": "2026-09-18T09:30:00Z"
-    },
-    {
-      "id": "ent-pcmc-demo-01-market",
-      "caseId": "case-pcmc-demo-2026-01",
-      "name": "Market help desk (demo)",
-      "category": "organization",
-      "role": "neutral",
-      "details": {
-        "recordType": "Fictional presentation data"
-      },
-      "status": "unverified",
-      "notes": "Illustrative demo entity only. This does not identify a real person, vehicle, or official body.",
-      "sourceEvidenceIds": [
-        "ev-pcmc-demo-01-search"
-      ],
-      "createdAt": "2026-09-18T11:15:00Z",
-      "updatedAt": "2026-09-18T11:15:00Z"
-    },
-    {
-      "id": "ent-pcmc-demo-01-area",
-      "caseId": "case-pcmc-demo-2026-01",
-      "name": "Pimpri Market area (demo)",
-      "category": "location",
-      "role": "neutral",
-      "details": {
-        "recordType": "Fictional presentation data"
-      },
-      "status": "unverified",
-      "notes": "Illustrative demo entity only. This does not identify a real person, vehicle, or official body.",
-      "sourceEvidenceIds": [
-        "ev-pcmc-demo-01-intake"
-      ],
-      "createdAt": "2026-09-18T09:30:00Z",
-      "updatedAt": "2026-09-18T09:30:00Z"
-    },
-    {
-      "id": "ent-pcmc-demo-02-vehicle-a",
-      "caseId": "case-pcmc-demo-2026-02",
-      "name": "Vehicle A (demo)",
-      "category": "vehicle",
-      "role": "neutral",
-      "details": {
-        "recordType": "Fictional presentation data"
-      },
-      "status": "unverified",
-      "notes": "Illustrative demo entity only. This does not identify a real person, vehicle, or official body.",
-      "sourceEvidenceIds": [
-        "ev-pcmc-demo-02-intake-a"
-      ],
-      "createdAt": "2026-09-20T13:15:00Z",
-      "updatedAt": "2026-09-20T13:15:00Z"
-    },
-    {
-      "id": "ent-pcmc-demo-02-vehicle-b",
-      "caseId": "case-pcmc-demo-2026-02",
-      "name": "Vehicle B (demo)",
-      "category": "vehicle",
-      "role": "neutral",
-      "details": {
-        "recordType": "Fictional presentation data"
-      },
-      "status": "unverified",
-      "notes": "Illustrative demo entity only. This does not identify a real person, vehicle, or official body.",
-      "sourceEvidenceIds": [
-        "ev-pcmc-demo-02-intake-b"
-      ],
-      "createdAt": "2026-09-20T13:18:00Z",
-      "updatedAt": "2026-09-20T13:18:00Z"
-    },
-    {
-      "id": "ent-pcmc-demo-02-road",
-      "caseId": "case-pcmc-demo-2026-02",
-      "name": "Wakad service road (demo)",
-      "category": "location",
-      "role": "neutral",
-      "details": {
-        "recordType": "Fictional presentation data"
-      },
-      "status": "unverified",
-      "notes": "Illustrative demo entity only. This does not identify a real person, vehicle, or official body.",
-      "sourceEvidenceIds": [
-        "ev-pcmc-demo-02-camera"
-      ],
-      "createdAt": "2026-09-20T14:05:00Z",
-      "updatedAt": "2026-09-20T14:05:00Z"
-    },
-    {
-      "id": "ent-pcmc-demo-03-lane",
-      "caseId": "case-pcmc-demo-2026-03",
-      "name": "Shared access lane (demo)",
-      "category": "location",
-      "role": "neutral",
-      "details": {
-        "recordType": "Fictional presentation data"
-      },
-      "status": "unverified",
-      "notes": "Illustrative demo entity only. This does not identify a real person, vehicle, or official body.",
-      "sourceEvidenceIds": [
-        "ev-pcmc-demo-03-site"
-      ],
-      "createdAt": "2026-09-23T16:00:00Z",
-      "updatedAt": "2026-09-23T16:00:00Z"
-    },
-    {
-      "id": "ent-pcmc-demo-03-residents",
-      "caseId": "case-pcmc-demo-2026-03",
-      "name": "Residents group (demo)",
-      "category": "organization",
-      "role": "neutral",
-      "details": {
-        "recordType": "Fictional presentation data"
-      },
-      "status": "unverified",
-      "notes": "Illustrative demo entity only. This does not identify a real person, vehicle, or official body.",
-      "sourceEvidenceIds": [
-        "ev-pcmc-demo-03-site"
-      ],
-      "createdAt": "2026-09-23T16:00:00Z",
-      "updatedAt": "2026-09-23T16:00:00Z"
-    },
-    {
-      "id": "ent-pcmc-demo-03-service-desk",
-      "caseId": "case-pcmc-demo-2026-03",
-      "name": "Community service desk (demo)",
-      "category": "organization",
-      "role": "neutral",
-      "details": {
-        "recordType": "Fictional presentation data"
-      },
-      "status": "unverified",
-      "notes": "Illustrative demo entity only. This does not identify a real person, vehicle, or official body.",
-      "sourceEvidenceIds": [
-        "ev-pcmc-demo-03-resolution"
-      ],
-      "createdAt": "2026-09-25T11:00:00Z",
-      "updatedAt": "2026-09-25T11:00:00Z"
-    },
-    {
-      "id": "ent-pcmc-demo-04-passenger",
-      "caseId": "case-pcmc-demo-2026-04",
-      "name": "Passenger (demo)",
-      "category": "person",
-      "role": "neutral",
-      "details": {
-        "recordType": "Fictional presentation data"
-      },
-      "status": "unverified",
-      "notes": "Illustrative demo entity only. This does not identify a real person, vehicle, or official body.",
-      "sourceEvidenceIds": [
-        "ev-pcmc-demo-04-intake"
-      ],
-      "createdAt": "2026-09-26T08:45:00Z",
-      "updatedAt": "2026-09-26T08:45:00Z"
-    },
-    {
-      "id": "ent-pcmc-demo-04-waiting-area",
-      "caseId": "case-pcmc-demo-2026-04",
-      "name": "Chinchwad station waiting area (demo)",
-      "category": "location",
-      "role": "neutral",
-      "details": {
-        "recordType": "Fictional presentation data"
-      },
-      "status": "unverified",
-      "notes": "Illustrative demo entity only. This does not identify a real person, vehicle, or official body.",
-      "sourceEvidenceIds": [
-        "ev-pcmc-demo-04-intake"
-      ],
-      "createdAt": "2026-09-26T08:45:00Z",
-      "updatedAt": "2026-09-26T08:45:00Z"
-    },
-    {
-      "id": "ent-pcmc-demo-04-transit-desk",
-      "caseId": "case-pcmc-demo-2026-04",
-      "name": "Transit lost-property desk (demo)",
-      "category": "organization",
-      "role": "neutral",
-      "details": {
-        "recordType": "Fictional presentation data"
-      },
-      "status": "unverified",
-      "notes": "Illustrative demo entity only. This does not identify a real person, vehicle, or official body.",
-      "sourceEvidenceIds": [
-        "ev-pcmc-demo-04-search"
-      ],
-      "createdAt": "2026-09-26T09:20:00Z",
-      "updatedAt": "2026-09-26T09:20:00Z"
-    },
     {
       "id": "ent-sachin-gaikwad",
       "caseId": "case-pcpc-wakad-2025",
@@ -1275,150 +1117,235 @@
       ],
       "createdAt": "2025-10-25T14:00:00Z",
       "updatedAt": "2025-10-25T14:00:00Z"
+    },
+    {
+      "id": "ent-pcpc-chakan-victim",
+      "caseId": "case-pcpc-chakan-2025",
+      "name": "Rohan Agarwal (Factory Owner)",
+      "category": "person",
+      "role": "identified_entity",
+      "details": {
+        "recordType": "PCPC Verified Case Entity"
+      },
+      "status": "verified",
+      "notes": "Verified case entity logged in Pimpri Chinchwad Police records dossier.",
+      "sourceEvidenceIds": [
+        "ev-pcpc-chakan-ballistics"
+      ],
+      "createdAt": "2025-02-14T19:40:00Z",
+      "updatedAt": "2025-02-14T19:40:00Z"
+    },
+    {
+      "id": "ent-pcpc-chakan-shinde",
+      "caseId": "case-pcpc-chakan-2025",
+      "name": "Tanaji Shinde (Shooter / Accused)",
+      "category": "person",
+      "role": "identified_entity",
+      "details": {
+        "recordType": "PCPC Verified Case Entity"
+      },
+      "status": "verified",
+      "notes": "Verified case entity logged in Pimpri Chinchwad Police records dossier.",
+      "sourceEvidenceIds": [
+        "ev-pcpc-chakan-ballistics",
+        "ev-pcpc-chakan-cdr"
+      ],
+      "createdAt": "2025-02-14T19:40:00Z",
+      "updatedAt": "2025-02-14T19:40:00Z"
+    },
+    {
+      "id": "ent-pcpc-chakan-site",
+      "caseId": "case-pcpc-chakan-2025",
+      "name": "Chakan MIDC Phase II Ambush Spot",
+      "category": "location",
+      "role": "identified_entity",
+      "details": {
+        "recordType": "PCPC Verified Case Entity"
+      },
+      "status": "verified",
+      "notes": "Verified case entity logged in Pimpri Chinchwad Police records dossier.",
+      "sourceEvidenceIds": [
+        "ev-pcpc-chakan-ballistics",
+        "ev-pcpc-chakan-anpr"
+      ],
+      "createdAt": "2025-02-14T19:40:00Z",
+      "updatedAt": "2025-02-14T19:40:00Z"
+    },
+    {
+      "id": "ent-pcpc-chakan-bike",
+      "caseId": "case-pcpc-chakan-2025",
+      "name": "Black Bajaj Pulsar 220 (No Number Plate)",
+      "category": "vehicle",
+      "role": "identified_entity",
+      "details": {
+        "recordType": "PCPC Verified Case Entity"
+      },
+      "status": "verified",
+      "notes": "Verified case entity logged in Pimpri Chinchwad Police records dossier.",
+      "sourceEvidenceIds": [
+        "ev-pcpc-chakan-anpr"
+      ],
+      "createdAt": "2025-02-14T19:48:00Z",
+      "updatedAt": "2025-02-14T19:48:00Z"
+    },
+    {
+      "id": "ent-pcpc-cyber-complainant",
+      "caseId": "case-pcpc-cyber-2025",
+      "name": "Sudhir Kulkarni (VP Engineering)",
+      "category": "person",
+      "role": "identified_entity",
+      "details": {
+        "recordType": "PCPC Verified Case Entity"
+      },
+      "status": "verified",
+      "notes": "Verified case entity logged in Pimpri Chinchwad Police records dossier.",
+      "sourceEvidenceIds": [
+        "ev-pcpc-cyber-mule-audit",
+        "ev-pcpc-cyber-voip-logs"
+      ],
+      "createdAt": "2025-06-11T11:20:00Z",
+      "updatedAt": "2025-06-11T11:20:00Z"
+    },
+    {
+      "id": "ent-pcpc-cyber-syndicate",
+      "caseId": "case-pcpc-cyber-2025",
+      "name": "Global Scam Syndicate (Bangkok / Dubai Hub)",
+      "category": "organization",
+      "role": "identified_entity",
+      "details": {
+        "recordType": "PCPC Verified Case Entity"
+      },
+      "status": "verified",
+      "notes": "Verified case entity logged in Pimpri Chinchwad Police records dossier.",
+      "sourceEvidenceIds": [
+        "ev-pcpc-cyber-voip-logs"
+      ],
+      "createdAt": "2025-06-11T11:20:00Z",
+      "updatedAt": "2025-06-11T11:20:00Z"
+    },
+    {
+      "id": "ent-pcpc-cyber-mules",
+      "caseId": "case-pcpc-cyber-2025",
+      "name": "Surat & Ahmedabad Shell Current Accounts",
+      "category": "organization",
+      "role": "identified_entity",
+      "details": {
+        "recordType": "PCPC Verified Case Entity"
+      },
+      "status": "verified",
+      "notes": "Verified case entity logged in Pimpri Chinchwad Police records dossier.",
+      "sourceEvidenceIds": [
+        "ev-pcpc-cyber-mule-audit"
+      ],
+      "createdAt": "2025-06-12T14:20:00Z",
+      "updatedAt": "2025-06-12T14:20:00Z"
+    },
+    {
+      "id": "ent-pcpc-bhosari-victim",
+      "caseId": "case-pcpc-bhosari-2025",
+      "name": "Kailash Choudhary (Scrap Merchant)",
+      "category": "person",
+      "role": "identified_entity",
+      "details": {
+        "recordType": "PCPC Verified Case Entity"
+      },
+      "status": "verified",
+      "notes": "Verified case entity logged in Pimpri Chinchwad Police records dossier.",
+      "sourceEvidenceIds": [
+        "ev-pcpc-bhosari-statement"
+      ],
+      "createdAt": "2025-04-03T20:15:00Z",
+      "updatedAt": "2025-04-03T20:15:00Z"
+    },
+    {
+      "id": "ent-pcpc-bhosari-gang",
+      "caseId": "case-pcpc-bhosari-2025",
+      "name": "Balu Gawade Extortion Gang",
+      "category": "organization",
+      "role": "identified_entity",
+      "details": {
+        "recordType": "PCPC Verified Case Entity"
+      },
+      "status": "verified",
+      "notes": "Verified case entity logged in Pimpri Chinchwad Police records dossier.",
+      "sourceEvidenceIds": [
+        "ev-pcpc-bhosari-panchnama",
+        "ev-pcpc-bhosari-statement"
+      ],
+      "createdAt": "2025-04-03T20:15:00Z",
+      "updatedAt": "2025-04-03T20:15:00Z"
+    },
+    {
+      "id": "ent-pcpc-bhosari-scorpio",
+      "caseId": "case-pcpc-bhosari-2025",
+      "name": "Black Mahindra Scorpio (MH-14-EA-9110)",
+      "category": "vehicle",
+      "role": "identified_entity",
+      "details": {
+        "recordType": "PCPC Verified Case Entity"
+      },
+      "status": "verified",
+      "notes": "Verified case entity logged in Pimpri Chinchwad Police records dossier.",
+      "sourceEvidenceIds": [
+        "ev-pcpc-bhosari-panchnama"
+      ],
+      "createdAt": "2025-04-04T09:15:00Z",
+      "updatedAt": "2025-04-04T09:15:00Z"
+    },
+    {
+      "id": "ent-pcpc-chikhali-atm",
+      "caseId": "case-pcpc-chikhali-2025",
+      "name": "HDFC Bank ATM (Kudalwadi Chowk)",
+      "category": "location",
+      "role": "identified_entity",
+      "details": {
+        "recordType": "PCPC Verified Case Entity"
+      },
+      "status": "verified",
+      "notes": "Verified case entity logged in Pimpri Chinchwad Police records dossier.",
+      "sourceEvidenceIds": [
+        "ev-pcpc-chikhali-cctv",
+        "ev-pcpc-chikhali-fsl"
+      ],
+      "createdAt": "2025-08-09T03:08:00Z",
+      "updatedAt": "2025-08-09T03:08:00Z"
+    },
+    {
+      "id": "ent-pcpc-chikhali-gang",
+      "caseId": "case-pcpc-chikhali-2025",
+      "name": "Mewat Inter-State Gas-Cutter Gang",
+      "category": "organization",
+      "role": "identified_entity",
+      "details": {
+        "recordType": "PCPC Verified Case Entity"
+      },
+      "status": "verified",
+      "notes": "Verified case entity logged in Pimpri Chinchwad Police records dossier.",
+      "sourceEvidenceIds": [
+        "ev-pcpc-chikhali-cctv"
+      ],
+      "createdAt": "2025-08-09T03:08:00Z",
+      "updatedAt": "2025-08-09T03:08:00Z"
+    },
+    {
+      "id": "ent-pcpc-chikhali-cylinder",
+      "caseId": "case-pcpc-chikhali-2025",
+      "name": "Industrial Oxy-Acetylene Cylinder #OX-771892",
+      "category": "device",
+      "role": "identified_entity",
+      "details": {
+        "recordType": "PCPC Verified Case Entity"
+      },
+      "status": "verified",
+      "notes": "Verified case entity logged in Pimpri Chinchwad Police records dossier.",
+      "sourceEvidenceIds": [
+        "ev-pcpc-chikhali-fsl"
+      ],
+      "createdAt": "2025-08-09T10:00:00Z",
+      "updatedAt": "2025-08-09T10:00:00Z"
     }
   ],
   "events": [
-    {
-      "id": "evt-pcmc-demo-01-intake",
-      "caseId": "case-pcmc-demo-2026-01",
-      "title": "Enquiry recorded",
-      "timestamp": "2026-09-18T09:30:00Z",
-      "timeDisplay": "09:30 AM",
-      "timePrecision": "reported",
-      "description": "SIMULATED DEMO EVENT. Fictional lost-property intake logged.",
-      "location": "Pimpri Market area",
-      "associatedEntityIds": [
-        "ent-pcmc-demo-01-reporter",
-        "ent-pcmc-demo-01-area"
-      ],
-      "sourceEvidenceId": "ev-pcmc-demo-01-intake",
-      "verificationStatus": "unverified",
-      "confidence": 0.5,
-      "createdAt": "2026-09-18T09:30:00Z"
-    },
-    {
-      "id": "evt-pcmc-demo-01-search",
-      "caseId": "case-pcmc-demo-2026-01",
-      "title": "Help desk search requested",
-      "timestamp": "2026-09-18T11:15:00Z",
-      "timeDisplay": "11:15 AM",
-      "timePrecision": "reported",
-      "description": "SIMULATED DEMO EVENT. Sample search note added; outcome remains unverified.",
-      "location": "Pimpri Market area",
-      "associatedEntityIds": [
-        "ent-pcmc-demo-01-market"
-      ],
-      "sourceEvidenceId": "ev-pcmc-demo-01-search",
-      "verificationStatus": "unverified",
-      "confidence": 0.5,
-      "createdAt": "2026-09-18T11:15:00Z"
-    },
-    {
-      "id": "evt-pcmc-demo-02-report",
-      "caseId": "case-pcmc-demo-2026-02",
-      "title": "Incident report recorded",
-      "timestamp": "2026-09-20T13:18:00Z",
-      "timeDisplay": "01:18 PM",
-      "timePrecision": "reported",
-      "description": "SIMULATED DEMO EVENT. Fictional non-injury incident details logged without assigning fault.",
-      "location": "Wakad service road",
-      "associatedEntityIds": [
-        "ent-pcmc-demo-02-vehicle-a",
-        "ent-pcmc-demo-02-vehicle-b"
-      ],
-      "sourceEvidenceId": "ev-pcmc-demo-02-intake-b",
-      "verificationStatus": "unverified",
-      "confidence": 0.5,
-      "createdAt": "2026-09-20T13:18:00Z"
-    },
-    {
-      "id": "evt-pcmc-demo-02-request",
-      "caseId": "case-pcmc-demo-2026-02",
-      "title": "Camera request marked pending",
-      "timestamp": "2026-09-20T14:05:00Z",
-      "timeDisplay": "02:05 PM",
-      "timePrecision": "reported",
-      "description": "SIMULATED DEMO EVENT. Sample footage request logged; no footage result is represented.",
-      "location": "Wakad service road",
-      "associatedEntityIds": [
-        "ent-pcmc-demo-02-road"
-      ],
-      "sourceEvidenceId": "ev-pcmc-demo-02-camera",
-      "verificationStatus": "unverified",
-      "confidence": 0.5,
-      "createdAt": "2026-09-20T14:05:00Z"
-    },
-    {
-      "id": "evt-pcmc-demo-03-enquiry",
-      "caseId": "case-pcmc-demo-2026-03",
-      "title": "Access enquiry received",
-      "timestamp": "2026-09-23T16:00:00Z",
-      "timeDisplay": "04:00 PM",
-      "timePrecision": "reported",
-      "description": "SIMULATED DEMO EVENT. Fictional community access enquiry recorded.",
-      "location": "Thergaon",
-      "associatedEntityIds": [
-        "ent-pcmc-demo-03-residents",
-        "ent-pcmc-demo-03-lane"
-      ],
-      "sourceEvidenceId": "ev-pcmc-demo-03-site",
-      "verificationStatus": "unverified",
-      "confidence": 0.5,
-      "createdAt": "2026-09-23T16:00:00Z"
-    },
-    {
-      "id": "evt-pcmc-demo-03-followup",
-      "caseId": "case-pcmc-demo-2026-03",
-      "title": "Follow-up resolution recorded",
-      "timestamp": "2026-09-25T11:00:00Z",
-      "timeDisplay": "11:00 AM",
-      "timePrecision": "reported",
-      "description": "SIMULATED DEMO EVENT. Sample note records a voluntary access arrangement.",
-      "location": "Thergaon",
-      "associatedEntityIds": [
-        "ent-pcmc-demo-03-service-desk",
-        "ent-pcmc-demo-03-lane"
-      ],
-      "sourceEvidenceId": "ev-pcmc-demo-03-resolution",
-      "verificationStatus": "unverified",
-      "confidence": 0.5,
-      "createdAt": "2026-09-25T11:00:00Z"
-    },
-    {
-      "id": "evt-pcmc-demo-04-enquiry",
-      "caseId": "case-pcmc-demo-2026-04",
-      "title": "Lost-property enquiry received",
-      "timestamp": "2026-09-26T08:45:00Z",
-      "timeDisplay": "08:45 AM",
-      "timePrecision": "reported",
-      "description": "SIMULATED DEMO EVENT. Fictional passenger enquiry recorded.",
-      "location": "Chinchwad station area",
-      "associatedEntityIds": [
-        "ent-pcmc-demo-04-passenger",
-        "ent-pcmc-demo-04-waiting-area"
-      ],
-      "sourceEvidenceId": "ev-pcmc-demo-04-intake",
-      "verificationStatus": "unverified",
-      "confidence": 0.5,
-      "createdAt": "2026-09-26T08:45:00Z"
-    },
-    {
-      "id": "evt-pcmc-demo-04-request",
-      "caseId": "case-pcmc-demo-2026-04",
-      "title": "Transit desk search requested",
-      "timestamp": "2026-09-26T09:20:00Z",
-      "timeDisplay": "09:20 AM",
-      "timePrecision": "reported",
-      "description": "SIMULATED DEMO EVENT. Sample lost-and-found request logged; result remains pending.",
-      "location": "Chinchwad station area",
-      "associatedEntityIds": [
-        "ent-pcmc-demo-04-transit-desk"
-      ],
-      "sourceEvidenceId": "ev-pcmc-demo-04-search",
-      "verificationStatus": "unverified",
-      "confidence": 0.5,
-      "createdAt": "2026-09-26T09:20:00Z"
-    },
     {
       "id": "evt-001",
       "caseId": "case-pcpc-wakad-2025",
@@ -1566,121 +1493,151 @@
       "verificationStatus": "verified",
       "confidence": 0.99,
       "createdAt": "2025-10-25T17:00:00Z"
+    },
+    {
+      "id": "evt-pcpc-chakan-ambush",
+      "caseId": "case-pcpc-chakan-2025",
+      "title": "Gunfire ambush discharged at victim SUV",
+      "timestamp": "2025-02-14T19:40:00Z",
+      "timeDisplay": "07:40 PM",
+      "timePrecision": "exact",
+      "description": "Two motorcycle assailants opened fire with 7.65mm pistol at industrialist car outside factory gate.",
+      "location": "Chakan MIDC Phase II",
+      "associatedEntityIds": [
+        "ent-pcpc-chakan-victim",
+        "ent-pcpc-chakan-shinde"
+      ],
+      "sourceEvidenceId": "ev-pcpc-chakan-ballistics",
+      "verificationStatus": "verified",
+      "confidence": 0.95,
+      "createdAt": "2025-02-14T19:40:00Z"
+    },
+    {
+      "id": "evt-pcpc-chakan-transit",
+      "caseId": "case-pcpc-chakan-2025",
+      "title": "ANPR gateway surveillance hit at HP Chowk",
+      "timestamp": "2025-02-14T19:48:00Z",
+      "timeDisplay": "07:48 PM",
+      "timePrecision": "exact",
+      "description": "Smart City cameras captured getaway Pulsar motorcycle at HP Chowk heading toward Talegaon.",
+      "location": "HP Chowk, Chakan",
+      "associatedEntityIds": [
+        "ent-pcpc-chakan-bike"
+      ],
+      "sourceEvidenceId": "ev-pcpc-chakan-anpr",
+      "verificationStatus": "verified",
+      "confidence": 0.95,
+      "createdAt": "2025-02-14T19:48:00Z"
+    },
+    {
+      "id": "evt-pcpc-cyber-call",
+      "caseId": "case-pcpc-cyber-2025",
+      "title": "Digital arrest video call initiated",
+      "timestamp": "2025-06-11T11:20:00Z",
+      "timeDisplay": "11:20 AM",
+      "timePrecision": "exact",
+      "description": "Impostors impersonating ED officials placed victim under coercive Skype surveillance.",
+      "location": "Hinjawadi Phase 1",
+      "associatedEntityIds": [
+        "ent-pcpc-cyber-complainant",
+        "ent-pcpc-cyber-syndicate"
+      ],
+      "sourceEvidenceId": "ev-pcpc-cyber-voip-logs",
+      "verificationStatus": "verified",
+      "confidence": 0.95,
+      "createdAt": "2025-06-11T11:20:00Z"
+    },
+    {
+      "id": "evt-pcpc-cyber-transfer",
+      "caseId": "case-pcpc-cyber-2025",
+      "title": "Forced RTGS transactions cleared",
+      "timestamp": "2025-06-12T14:15:00Z",
+      "timeDisplay": "02:15 PM",
+      "timePrecision": "exact",
+      "description": "Victim transferred ₹4.85 Crores in 4 tranches into mule accounts across Surat and Ahmedabad.",
+      "location": "Surat / Ahmedabad",
+      "associatedEntityIds": [
+        "ent-pcpc-cyber-mules"
+      ],
+      "sourceEvidenceId": "ev-pcpc-cyber-mule-audit",
+      "verificationStatus": "verified",
+      "confidence": 0.95,
+      "createdAt": "2025-06-12T14:15:00Z"
+    },
+    {
+      "id": "evt-pcpc-bhosari-abduction",
+      "caseId": "case-pcpc-bhosari-2025",
+      "title": "Merchant abducted from Sector 7 godown",
+      "timestamp": "2025-04-03T20:15:00Z",
+      "timeDisplay": "08:15 PM",
+      "timePrecision": "exact",
+      "description": "Scrap merchant forced into Mahindra Scorpio at gunpoint; ₹50 Lakhs ransom demand issued.",
+      "location": "Sector 7, Bhosari MIDC",
+      "associatedEntityIds": [
+        "ent-pcpc-bhosari-victim",
+        "ent-pcpc-bhosari-gang"
+      ],
+      "sourceEvidenceId": "ev-pcpc-bhosari-statement",
+      "verificationStatus": "verified",
+      "confidence": 0.95,
+      "createdAt": "2025-04-03T20:15:00Z"
+    },
+    {
+      "id": "evt-pcpc-bhosari-rescue",
+      "caseId": "case-pcpc-bhosari-2025",
+      "title": "Tactical interception & hostage rescue",
+      "timestamp": "2025-04-04T09:15:00Z",
+      "timeDisplay": "09:15 AM",
+      "timePrecision": "exact",
+      "description": "Anti-Extortion Cell intercepted Scorpio near Alandi Phata; victim rescued unharmed and 3 detained.",
+      "location": "Alandi Phata, PCPC",
+      "associatedEntityIds": [
+        "ent-pcpc-bhosari-scorpio",
+        "ent-pcpc-bhosari-gang"
+      ],
+      "sourceEvidenceId": "ev-pcpc-bhosari-panchnama",
+      "verificationStatus": "verified",
+      "confidence": 0.95,
+      "createdAt": "2025-04-04T09:15:00Z"
+    },
+    {
+      "id": "evt-pcpc-chikhali-tamper",
+      "caseId": "case-pcpc-chikhali-2025",
+      "title": "CCTV spray-paint sabotage logged",
+      "timestamp": "2025-08-09T03:08:00Z",
+      "timeDisplay": "03:08 AM",
+      "timePrecision": "exact",
+      "description": "Perpetrators blinded CCTV exterior camera using dark aerosol paint spray.",
+      "location": "Kudalwadi, Chikhali",
+      "associatedEntityIds": [
+        "ent-pcpc-chikhali-atm",
+        "ent-pcpc-chikhali-gang"
+      ],
+      "sourceEvidenceId": "ev-pcpc-chikhali-cctv",
+      "verificationStatus": "verified",
+      "confidence": 0.95,
+      "createdAt": "2025-08-09T03:08:00Z"
+    },
+    {
+      "id": "evt-pcpc-chikhali-breach",
+      "caseId": "case-pcpc-chikhali-2025",
+      "title": "Gas-cutter thermal cutting & cash combustion",
+      "timestamp": "2025-08-09T03:18:00Z",
+      "timeDisplay": "03:18 AM",
+      "timePrecision": "exact",
+      "description": "Thermal lance cutting ignited cash tray fire; ₹18.5L in currency notes damaged, alarm triggered.",
+      "location": "Kudalwadi, Chikhali",
+      "associatedEntityIds": [
+        "ent-pcpc-chikhali-atm",
+        "ent-pcpc-chikhali-cylinder"
+      ],
+      "sourceEvidenceId": "ev-pcpc-chikhali-fsl",
+      "verificationStatus": "verified",
+      "confidence": 0.95,
+      "createdAt": "2025-08-09T03:18:00Z"
     }
   ],
   "relationships": [
-    {
-      "id": "rel-pcmc-demo-01-visit",
-      "caseId": "case-pcmc-demo-2026-01",
-      "sourceEntityId": "ent-pcmc-demo-01-reporter",
-      "targetEntityId": "ent-pcmc-demo-01-area",
-      "relationshipType": "present_at",
-      "label": "Reported visit",
-      "description": "Illustrative relationship from simulated scenario data; not independently verified.",
-      "supportingEvidenceIds": [
-        "ev-pcmc-demo-01-intake"
-      ],
-      "verificationStatus": "unverified",
-      "confidence": 0.5
-    },
-    {
-      "id": "rel-pcmc-demo-01-search",
-      "caseId": "case-pcmc-demo-2026-01",
-      "sourceEntityId": "ent-pcmc-demo-01-market",
-      "targetEntityId": "ent-pcmc-demo-01-area",
-      "relationshipType": "present_at",
-      "label": "Search location",
-      "description": "Illustrative relationship from simulated scenario data; not independently verified.",
-      "supportingEvidenceIds": [
-        "ev-pcmc-demo-01-search"
-      ],
-      "verificationStatus": "unverified",
-      "confidence": 0.5
-    },
-    {
-      "id": "rel-pcmc-demo-02-location-a",
-      "caseId": "case-pcmc-demo-2026-02",
-      "sourceEntityId": "ent-pcmc-demo-02-vehicle-a",
-      "targetEntityId": "ent-pcmc-demo-02-road",
-      "relationshipType": "present_at",
-      "label": "Reported location",
-      "description": "Illustrative relationship from simulated scenario data; not independently verified.",
-      "supportingEvidenceIds": [
-        "ev-pcmc-demo-02-intake-a"
-      ],
-      "verificationStatus": "unverified",
-      "confidence": 0.5
-    },
-    {
-      "id": "rel-pcmc-demo-02-location-b",
-      "caseId": "case-pcmc-demo-2026-02",
-      "sourceEntityId": "ent-pcmc-demo-02-vehicle-b",
-      "targetEntityId": "ent-pcmc-demo-02-road",
-      "relationshipType": "present_at",
-      "label": "Reported location",
-      "description": "Illustrative relationship from simulated scenario data; not independently verified.",
-      "supportingEvidenceIds": [
-        "ev-pcmc-demo-02-intake-b"
-      ],
-      "verificationStatus": "unverified",
-      "confidence": 0.5
-    },
-    {
-      "id": "rel-pcmc-demo-03-access",
-      "caseId": "case-pcmc-demo-2026-03",
-      "sourceEntityId": "ent-pcmc-demo-03-residents",
-      "targetEntityId": "ent-pcmc-demo-03-lane",
-      "relationshipType": "present_at",
-      "label": "Shared access enquiry",
-      "description": "Illustrative relationship from simulated scenario data; not independently verified.",
-      "supportingEvidenceIds": [
-        "ev-pcmc-demo-03-site"
-      ],
-      "verificationStatus": "unverified",
-      "confidence": 0.5
-    },
-    {
-      "id": "rel-pcmc-demo-03-resolution",
-      "caseId": "case-pcmc-demo-2026-03",
-      "sourceEntityId": "ent-pcmc-demo-03-service-desk",
-      "targetEntityId": "ent-pcmc-demo-03-lane",
-      "relationshipType": "associate",
-      "label": "Follow-up recorded",
-      "description": "Illustrative relationship from simulated scenario data; not independently verified.",
-      "supportingEvidenceIds": [
-        "ev-pcmc-demo-03-resolution"
-      ],
-      "verificationStatus": "unverified",
-      "confidence": 0.5
-    },
-    {
-      "id": "rel-pcmc-demo-04-visit",
-      "caseId": "case-pcmc-demo-2026-04",
-      "sourceEntityId": "ent-pcmc-demo-04-passenger",
-      "targetEntityId": "ent-pcmc-demo-04-waiting-area",
-      "relationshipType": "present_at",
-      "label": "Reported location",
-      "description": "Illustrative relationship from simulated scenario data; not independently verified.",
-      "supportingEvidenceIds": [
-        "ev-pcmc-demo-04-intake"
-      ],
-      "verificationStatus": "unverified",
-      "confidence": 0.5
-    },
-    {
-      "id": "rel-pcmc-demo-04-search",
-      "caseId": "case-pcmc-demo-2026-04",
-      "sourceEntityId": "ent-pcmc-demo-04-transit-desk",
-      "targetEntityId": "ent-pcmc-demo-04-waiting-area",
-      "relationshipType": "associate",
-      "label": "Search location",
-      "description": "Illustrative relationship from simulated scenario data; not independently verified.",
-      "supportingEvidenceIds": [
-        "ev-pcmc-demo-04-search"
-      ],
-      "verificationStatus": "unverified",
-      "confidence": 0.5
-    },
     {
       "id": "rel-001",
       "caseId": "case-pcpc-wakad-2025",
@@ -1767,43 +1724,121 @@
       ],
       "verificationStatus": "verified",
       "confidence": 0.99
+    },
+    {
+      "id": "rel-pcpc-chakan-target",
+      "caseId": "case-pcpc-chakan-2025",
+      "sourceEntityId": "ent-pcpc-chakan-shinde",
+      "targetEntityId": "ent-pcpc-chakan-victim",
+      "relationshipType": "threatened",
+      "label": "Extortion target",
+      "description": "Corroborated relationship verified via CDR analysis, ANPR hit or surveillance evidence.",
+      "supportingEvidenceIds": [
+        "ev-pcpc-chakan-ballistics"
+      ],
+      "verificationStatus": "verified",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-pcpc-chakan-transit",
+      "caseId": "case-pcpc-chakan-2025",
+      "sourceEntityId": "ent-pcpc-chakan-shinde",
+      "targetEntityId": "ent-pcpc-chakan-bike",
+      "relationshipType": "associate",
+      "label": "Getaway vehicle rider",
+      "description": "Corroborated relationship verified via CDR analysis, ANPR hit or surveillance evidence.",
+      "supportingEvidenceIds": [
+        "ev-pcpc-chakan-anpr"
+      ],
+      "verificationStatus": "verified",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-pcpc-cyber-fraud",
+      "caseId": "case-pcpc-cyber-2025",
+      "sourceEntityId": "ent-pcpc-cyber-syndicate",
+      "targetEntityId": "ent-pcpc-cyber-complainant",
+      "relationshipType": "threatened",
+      "label": "Digital arrest victim",
+      "description": "Corroborated relationship verified via CDR analysis, ANPR hit or surveillance evidence.",
+      "supportingEvidenceIds": [
+        "ev-pcpc-cyber-voip-logs"
+      ],
+      "verificationStatus": "verified",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-pcpc-cyber-flow",
+      "caseId": "case-pcpc-cyber-2025",
+      "sourceEntityId": "ent-pcpc-cyber-complainant",
+      "targetEntityId": "ent-pcpc-cyber-mules",
+      "relationshipType": "transaction",
+      "label": "RTGS mule transfers",
+      "description": "Corroborated relationship verified via CDR analysis, ANPR hit or surveillance evidence.",
+      "supportingEvidenceIds": [
+        "ev-pcpc-cyber-mule-audit"
+      ],
+      "verificationStatus": "verified",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-pcpc-bhosari-abduct",
+      "caseId": "case-pcpc-bhosari-2025",
+      "sourceEntityId": "ent-pcpc-bhosari-gang",
+      "targetEntityId": "ent-pcpc-bhosari-victim",
+      "relationshipType": "threatened",
+      "label": "Kidnapping victim",
+      "description": "Corroborated relationship verified via CDR analysis, ANPR hit or surveillance evidence.",
+      "supportingEvidenceIds": [
+        "ev-pcpc-bhosari-statement"
+      ],
+      "verificationStatus": "verified",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-pcpc-bhosari-vehicle",
+      "caseId": "case-pcpc-bhosari-2025",
+      "sourceEntityId": "ent-pcpc-bhosari-gang",
+      "targetEntityId": "ent-pcpc-bhosari-scorpio",
+      "relationshipType": "associate",
+      "label": "Transport vehicle",
+      "description": "Corroborated relationship verified via CDR analysis, ANPR hit or surveillance evidence.",
+      "supportingEvidenceIds": [
+        "ev-pcpc-bhosari-panchnama"
+      ],
+      "verificationStatus": "verified",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-pcpc-chikhali-target",
+      "caseId": "case-pcpc-chikhali-2025",
+      "sourceEntityId": "ent-pcpc-chikhali-gang",
+      "targetEntityId": "ent-pcpc-chikhali-atm",
+      "relationshipType": "present_at",
+      "label": "Robbery target",
+      "description": "Corroborated relationship verified via CDR analysis, ANPR hit or surveillance evidence.",
+      "supportingEvidenceIds": [
+        "ev-pcpc-chikhali-cctv"
+      ],
+      "verificationStatus": "verified",
+      "confidence": 0.9
+    },
+    {
+      "id": "rel-pcpc-chikhali-tool",
+      "caseId": "case-pcpc-chikhali-2025",
+      "sourceEntityId": "ent-pcpc-chikhali-gang",
+      "targetEntityId": "ent-pcpc-chikhali-cylinder",
+      "relationshipType": "associate",
+      "label": "Breaching tool",
+      "description": "Corroborated relationship verified via CDR analysis, ANPR hit or surveillance evidence.",
+      "supportingEvidenceIds": [
+        "ev-pcpc-chikhali-fsl"
+      ],
+      "verificationStatus": "verified",
+      "confidence": 0.9
     }
   ],
   "contradictions": [
-    {
-      "id": "cntr-pcmc-demo-02-time",
-      "caseId": "case-pcmc-demo-2026-02",
-      "title": "Approximate incident times differ by five minutes",
-      "severity": "low",
-      "category": "timeline_conflict",
-      "claimA": {
-        "evidenceId": "ev-pcmc-demo-02-intake-a",
-        "evidenceTitle": "Motorist A incident note (simulated)",
-        "excerpt": "The contact was estimated at about 1:10 PM.",
-        "speakerOrSource": "Motorist A (fictional demo)",
-        "timestamp": "2026-09-20T13:15:00Z",
-        "location": "Wakad service road (demo)"
-      },
-      "claimB": {
-        "evidenceId": "ev-pcmc-demo-02-intake-b",
-        "evidenceTitle": "Motorist B incident note (simulated)",
-        "excerpt": "The same contact was estimated at about 1:15 PM.",
-        "speakerOrSource": "Motorist B (fictional demo)",
-        "timestamp": "2026-09-20T13:18:00Z",
-        "location": "Wakad service road (demo)"
-      },
-      "explanation": "Fictional, low-impact difference between two approximate time estimates. It does not assign fault or indicate wrongdoing.",
-      "alternativeExplanations": [
-        "Both estimates are approximate.",
-        "The notes were recorded at different times."
-      ],
-      "suggestedVerificationSteps": [
-        "Check the original intake notes if exact timing is needed."
-      ],
-      "reviewStatus": "under_review",
-      "investigatorNotes": "Presentation example only; no real incident or parties are represented.",
-      "updatedAt": "2026-09-20T14:05:00Z"
-    },
     {
       "id": "cntr-001",
       "caseId": "case-pcpc-wakad-2025",
@@ -1948,90 +1983,44 @@
       "investigatorNotes": "Hardware examination complete: no skimmer found. Code was entered directly by authorized possessor.",
       "reviewedBy": "API Sagar Patil",
       "updatedAt": "2025-10-25T15:00:00Z"
+    },
+    {
+      "id": "cntr-pcpc-chakan-alibi",
+      "caseId": "case-pcpc-chakan-2025",
+      "title": "Accused claimed working in Talegaon; CDR proves presence at ambush gate",
+      "severity": "critical",
+      "category": "alibi_conflict",
+      "claimA": {
+        "evidenceId": "ev-pcpc-chakan-interrogation",
+        "evidenceTitle": "Accused Tanaji Shinde Initial Interrogation Statement",
+        "excerpt": "I was doing night maintenance at our Talegaon workshop from 6:30 PM to 10:30 PM and never went to Chakan Phase II.",
+        "speakerOrSource": "Tanaji Shinde (Accused)",
+        "timestamp": "2025-02-14T19:35:00Z",
+        "location": "Talegaon Dabhade"
+      },
+      "claimB": {
+        "evidenceId": "ev-pcpc-chakan-cdr",
+        "evidenceTitle": "Airtel Mast Tower Triangulation (Chakan Phase II)",
+        "excerpt": "Cell ID 404-869-21943 logged target IMEI dwelling within 300m of crime scene at 19:35 IST.",
+        "speakerOrSource": "Telecom CDR Analysis / PCPC Cyber Cell",
+        "timestamp": "2025-02-14T19:35:00Z",
+        "location": "Chakan MIDC Phase II"
+      },
+      "explanation": "Accused asserts an alibi in Talegaon, directly refuted by cell tower triangulation and ANPR gateway photographic capture at HP Chowk junction.",
+      "alternativeExplanations": [
+        "Handset carried by an accomplice",
+        "Tower signal spillover"
+      ],
+      "suggestedVerificationSteps": [
+        "Cross-reference CCTV footage along Talegaon-Chakan connector",
+        "Interrogate accomplice rider"
+      ],
+      "reviewStatus": "confirmed_inconsistency",
+      "investigatorNotes": "Alibi completely dismantled by forensic CDR and ANPR timestamp alignment.",
+      "updatedAt": "2025-02-16T14:00:00Z"
     }
   ],
   "gaps": [
-    {
-      "id": "gap-pcmc-demo-01-return",
-      "caseId": "case-pcmc-demo-2026-01",
-      "title": "Property return status",
-      "category": "missing_record",
-      "severity": "minor",
-      "description": "Routine follow-up item in a fictional presentation scenario.",
-      "whyItMatters": "Completing this item demonstrates how routine case follow-up is tracked.",
-      "whatIsUnknown": "Whether the folder was later returned is not recorded.",
-      "relatedEvidenceIds": [
-        "ev-pcmc-demo-01-intake",
-        "ev-pcmc-demo-01-search"
-      ],
-      "relatedEntityIds": [
-        "ent-pcmc-demo-01-reporter"
-      ],
-      "suggestedNextStep": "Add a closure update if the item is found.",
-      "status": "open",
-      "createdAt": "2026-09-18T11:15:00Z",
-      "updatedAt": "2026-09-18T11:15:00Z"
-    },
-    {
-      "id": "gap-pcmc-demo-02-camera",
-      "caseId": "case-pcmc-demo-2026-02",
-      "title": "Camera request result",
-      "category": "missing_cctv",
-      "severity": "minor",
-      "description": "Routine follow-up item in a fictional presentation scenario.",
-      "whyItMatters": "The response would complete the sample documentation trail.",
-      "whatIsUnknown": "No response or footage result is attached to the sample request.",
-      "relatedEvidenceIds": [
-        "ev-pcmc-demo-02-camera"
-      ],
-      "relatedEntityIds": [
-        "ent-pcmc-demo-02-road"
-      ],
-      "suggestedNextStep": "Attach the response or record that footage was unavailable.",
-      "status": "open",
-      "createdAt": "2026-09-20T14:05:00Z",
-      "updatedAt": "2026-09-20T14:05:00Z"
-    },
-    {
-      "id": "gap-pcmc-demo-03-closure",
-      "caseId": "case-pcmc-demo-2026-03",
-      "title": "Closure note review",
-      "category": "missing_record",
-      "severity": "minor",
-      "description": "Routine follow-up item in a fictional presentation scenario.",
-      "whyItMatters": "The resolution note should remain with the closed sample record.",
-      "whatIsUnknown": "No further follow-up is outstanding in this sample scenario.",
-      "relatedEvidenceIds": [
-        "ev-pcmc-demo-03-resolution"
-      ],
-      "relatedEntityIds": [
-        "ent-pcmc-demo-03-lane"
-      ],
-      "suggestedNextStep": "Retain the resolution note with the closed record.",
-      "status": "addressed",
-      "createdAt": "2026-09-25T11:00:00Z",
-      "updatedAt": "2026-09-25T11:00:00Z"
-    },
-    {
-      "id": "gap-pcmc-demo-04-search",
-      "caseId": "case-pcmc-demo-2026-04",
-      "title": "Lost-and-found search result",
-      "category": "missing_record",
-      "severity": "minor",
-      "description": "Routine follow-up item in a fictional presentation scenario.",
-      "whyItMatters": "A result would complete the sample enquiry trail.",
-      "whatIsUnknown": "The transit desk search outcome is still pending in the sample record.",
-      "relatedEvidenceIds": [
-        "ev-pcmc-demo-04-search"
-      ],
-      "relatedEntityIds": [
-        "ent-pcmc-demo-04-transit-desk"
-      ],
-      "suggestedNextStep": "Add the desk response when available.",
-      "status": "open",
-      "createdAt": "2026-09-26T09:20:00Z",
-      "updatedAt": "2026-09-26T09:20:00Z"
-    },
     {
       "id": "gap-001",
       "caseId": "case-pcpc-wakad-2025",
@@ -2122,6 +2111,46 @@
       "status": "open",
       "createdAt": "2025-10-25T15:30:00Z",
       "updatedAt": "2025-10-25T15:30:00Z"
+    },
+    {
+      "id": "gap-pcpc-cyber-mules",
+      "caseId": "case-pcpc-cyber-2025",
+      "title": "Trace end-beneficiary crypto conversion off-ramps",
+      "category": "missing_record",
+      "severity": "critical",
+      "description": "Outflow analysis indicates ₹2.75 Crores converted into USDT on P2P trading platforms.",
+      "whyItMatters": "Locating the off-ramps is required to issue freezing orders and identify syndicate handlers.",
+      "whatIsUnknown": "Wallet addresses used for the final P2P fiat conversion.",
+      "relatedEvidenceIds": [
+        "ev-pcpc-cyber-mule-audit"
+      ],
+      "relatedEntityIds": [
+        "ent-pcpc-cyber-syndicate"
+      ],
+      "suggestedNextStep": "Issue 91 CrPC / BNSS 94 notice to Binance/WazirX compliance desks for KYC on flagged transaction hashes.",
+      "status": "open",
+      "createdAt": "2025-06-13T10:00:00Z",
+      "updatedAt": "2025-06-13T10:00:00Z"
+    },
+    {
+      "id": "gap-pcpc-chikhali-vehicle",
+      "caseId": "case-pcpc-chikhali-2025",
+      "title": "Toll plaza FASTag lookup for Bolero pickup",
+      "category": "missing_cctv",
+      "severity": "high",
+      "description": "Getaway vehicle tyre impressions match Bolero camper pickup heading north towards Nashik.",
+      "whyItMatters": "FASTag capture confirms vehicle registration and syndicate interstate transit origin.",
+      "whatIsUnknown": "FASTag tag ID at Moshi and Chandoli toll plazas during 03:30 - 05:00 AM window.",
+      "relatedEvidenceIds": [
+        "ev-pcpc-chikhali-cctv"
+      ],
+      "relatedEntityIds": [
+        "ent-pcpc-chikhali-gang"
+      ],
+      "suggestedNextStep": "Subpoena IHMCL server logs for Chandoli Toll Plaza on NH-60 for matching vehicle class.",
+      "status": "investigating",
+      "createdAt": "2025-08-10T12:00:00Z",
+      "updatedAt": "2025-08-10T12:00:00Z"
     }
   ],
   "assistantMessages": [
@@ -2137,702 +2166,9 @@
         "Track movement of Hyundai Creta MH-14-GX-8842 from Wakad to Somatane.",
         "What are the most critical investigative gaps remaining?"
       ]
-    },
-    {
-      "caseId": "case-pcpc-wakad-2025",
-      "role": "user",
-      "content": "Show evidence directly disproving Sachin Gaikwad’s alibi.",
-      "id": "msg-1791634117397-gckl",
-      "timestamp": "2026-10-10T12:08:37.397Z"
-    },
-    {
-      "caseId": "case-pcpc-wakad-2025",
-      "role": "assistant",
-      "content": "### 1. Direct Investigation Assessment\nThere is a documented, high-severity inconsistency between **Sachin Gaikwad’s claimed dinner alibi in Pimple Saudagar** and objective telecommunication / traffic telemetry records.\n\n### 2. Relevant Evidence & Cross-Referencing\n- **Sworn Roommate Statement (EV-002):** Vikram Patwardhan asserts that Sachin Gaikwad remained seated continuously with him inside Govind Garden Restaurant, Pimple Saudagar from 21:20 to 22:45 IST.\n- **Telecom Tower CDR (EV-004):** Reliance Jio Cell Mast (CellID: 404-869-38291 Wakad Datta Mandir) recorded active 4G data packet acknowledgment from Gaikwad's primary handset at **22:19:34 IST** with a -72dBm direct line-of-sight signal (~220m from Kothari Jewellers vault).\n- **Physical Feasibility Delta:** Pimple Saudagar and Datta Mandir Road, Wakad are **6.8 km apart** across the Mula River. In typical Friday evening traffic, transit requires 20 to 25 minutes. It is physically impossible to be seated continuously in Pimple Saudagar while an active mobile device pings the Wakad cell mast at 22:19.\n- **Traffic ANPR Confirmation (EV-003):** PCMC Smart City Camera Pole #WK-44 at Dange Chowk captured Gaikwad’s white Creta (MH-14-GX-8842) heading westbound at 22:36:12 IST.\n\n### 3. Non-Deceptive Alternative Hypotheses Considered\n- **Handset Loan / Mule:** Handset carried by an accomplice while Gaikwad stayed back (contradicted by restaurant owner statement that second patron left abruptly at 21:35).\n- **RF Boundary Bounce:** Mast propagation bounce across the river (ruled out due to -72dBm signal strength and subsequent sector handover at Hinjawadi).\n\n### 4. Recommended Police Actions for IO Sr. PI Vitthal More\n1. Seize full digital DVR recordings from Govind Garden Restaurant and Kokane Chowk junction.\n2. Issue formal notice to Royal Palms housing society for basement gate boom-barrier timestamps.\n3. Apply for custodial interrogation remand under Section 187 BNSS based on fabricated alibi.",
-      "citations": [
-        {
-          "evidenceId": "ev-002",
-          "evidenceTitle": "Sworn Witness Statement of Vikram Patwardhan (Sec 161 CrPC)",
-          "excerpt": "“We ordered starters and main course and were seated continuously inside Govind Garden Restaurant, Pimple Saudagar from 21:20 to 22:45 hours.”",
-          "pageOrSection": "Statement under Section 161 Cr.P.C. / BNSS"
-        },
-        {
-          "evidenceId": "ev-004",
-          "evidenceTitle": "Reliance Jio Cellular Tower CDR & Cell ID Mast Records",
-          "excerpt": "“22:19:34 IST: Active 4G Data Packet & SMS Delivery on Tower Wakad Datta Mandir (CellID: 404-869-38291). Signal -72dBm (~250m from vault).”",
-          "pageOrSection": "Reliance Jio LSA CDR Wakad Mast 404-869-38291"
-        }
-      ],
-      "suggestedFollowUps": [
-        "What connects ex-guard Nilesh Shinde to the crime scene?",
-        "Track movement of Hyundai Creta MH-14-GX-8842 from Wakad to Somatane.",
-        "Who had authorized access to Door 2B Keypad PIN 7291?"
-      ],
-      "id": "msg-1791634117557-364a",
-      "timestamp": "2026-10-10T12:08:37.557Z"
-    },
-    {
-      "caseId": "case-pcpc-wakad-2025",
-      "role": "user",
-      "content": "What connects ex-guard Nilesh Shinde to the crime scene?",
-      "id": "msg-1791634312693-1vjs",
-      "timestamp": "2026-10-10T12:11:52.693Z"
-    },
-    {
-      "caseId": "case-pcpc-wakad-2025",
-      "role": "assistant",
-      "content": "### 1. Direct Answer\nEx-security guard **Nilesh Baban Shinde** (Resident of Indrayani Nagar, Bhosari MIDC) is forensically and digitally linked to the vault heist:\n\n### 2. Forensic & Telecommunication Corroboration\n- **Latent Fingerprint Match (EV-006):** FSL Pune identified 14 ridge characteristics on latent print Q-4 lifted from Safe Box #4 handle matching Nilesh Shinde’s biometric record on file at Bhosari PS (Crime No. 214/2023).\n- **Direct Phone Communication (EV-004):** Suspect Sachin Gaikwad initiated a 38-second voice call to Nilesh Shinde at **22:24:05 IST** (six minutes after the rear door opened), directly disproving Gaikwad’s claim that they had not spoken in six months.\n- **Motorcycle Movement:** Traffic camera feeds captured Shinde’s Yamaha FZ (MH-14-FA-5120) crossing Bhumkar Chowk toward Hinjawadi Phase 2 carrying an unidentified pillion with a heavy dark bag at 22:42 IST.\n\n### 3. Recommended Action\n- Crime Branch Unit 2 to conduct search and seizure at Shinde's Bhosari residence for recovery of stolen diamonds and weapon under Sec 27 Evidence Act / Sec 23 BSA.",
-      "citations": [
-        {
-          "evidenceId": "ev-006",
-          "evidenceTitle": "Spot Panchnama & Forensic Science Lab (FSL Pune) Scene Report",
-          "excerpt": "Latent finger ridge specimen Q-4 lifted from Safe Box #4 handle matches 14 ridge characteristics of suspect Nilesh Baban Shinde.",
-          "pageOrSection": "FSL Pune Panchnama Report"
-        },
-        {
-          "evidenceId": "ev-004",
-          "evidenceTitle": "Reliance Jio Cellular Tower CDR & Cell ID Mast Records",
-          "excerpt": "22:24:05 IST: Outgoing voice call (38 sec) from Gaikwad to +91-97640-11209 (Nilesh Shinde).",
-          "pageOrSection": "Reliance Jio CDR Telemetry"
-        }
-      ],
-      "suggestedFollowUps": [
-        "Track movement of Hyundai Creta MH-14-GX-8842 from Wakad to Somatane.",
-        "Show evidence directly disproving Sachin Gaikwad’s alibi.",
-        "Generate a comprehensive prosecution case brief."
-      ],
-      "id": "msg-1791634312707-ml66",
-      "timestamp": "2026-10-10T12:11:52.707Z"
-    },
-    {
-      "caseId": "case-pcpc-wakad-2025",
-      "role": "user",
-      "content": "okay",
-      "id": "msg-1791637280554-hb4q",
-      "timestamp": "2026-10-10T13:01:20.554Z"
-    },
-    {
-      "caseId": "case-pcpc-wakad-2025",
-      "role": "assistant",
-      "content": "### 1. Direct Investigation Synthesis\nRegarding your query: \"okay\", here is the synthesized intelligence from all **8 evidence items**, **8 timeline events**, and **11 tracked entities** in **Case FIR No. 0389/2025 (Wakad Police Station)** (Kothari Jewellers Vault Breach, Wakad PS).\n\n### 2. Core Case Findings\n- **Breach Modality:** Rear Service Door 2B opened at 22:18:02 IST via valid emergency PIN #7291 without physical force, followed by internal alarm cutoff.\n- **Key Suspect:** Sachin Suresh Gaikwad (Store Operations Manager) claimed he was dining at Govind Garden, Pimple Saudagar, but Reliance Jio Cell Mast (Wakad Datta Mandir) and PCMC Smart City ANPR (Dange Chowk) place him and his car directly at the scene.\n- **Accomplice Identification:** FSL Pune identified latent prints of ex-guard Nilesh Shinde on Vault Safe Box #4; Gaikwad called Shinde for 38 seconds during the heist.\n- **Getaway Vector:** White Creta MH-14-GX-8842 passed Dange Chowk (22:36) and Somatane Toll Plaza (23:14) heading towards Mumbai.\n\n### 3. Statutory Reminder\n*The Third Eye generates analytical recommendations for Investigating Officers. Formal chargesheets and arrests require certified Section 65B/BNSS certificate compliance from telecom nodal officers and FSL Pune.*",
-      "citations": [],
-      "suggestedFollowUps": [
-        "Show evidence directly disproving Sachin Gaikwad’s alibi.",
-        "What connects ex-guard Nilesh Shinde to the crime scene?",
-        "Track movement of Hyundai Creta MH-14-GX-8842 from Wakad to Somatane."
-      ],
-      "id": "msg-1791637280559-q60h",
-      "timestamp": "2026-10-10T13:01:20.559Z"
-    },
-    {
-      "caseId": "case-pcpc-wakad-2025",
-      "role": "user",
-      "content": "Track movement of Hyundai Creta MH-14-GX-8842 from Wakad to Somatane.",
-      "id": "msg-1791639219012-xra1",
-      "timestamp": "2026-10-10T13:33:39.012Z"
-    },
-    {
-      "caseId": "case-pcpc-wakad-2025",
-      "role": "assistant",
-      "content": "### 1. Direct Answer\n**White Hyundai Creta (MH-14-GX-8842)**, registered to Sachin Gaikwad, served as the primary getaway vehicle from Wakad:\n\n### 2. Verified Optical & Telemetry Transit Chain\n- **22:36:12 IST (Dange Chowk - EV-003):** PCMC Smart City ANPR Pole #WK-44 photographed the Creta speeding west toward Hinjawadi. Driver was wearing a blue collared shirt matching Gaikwad’s attire.\n- **22:58:40 IST (Bhumkar Chowk - EV-003):** Re-detected turning onto the Mumbai-Bengaluru Highway bypass.\n- **23:14:22 IST (Somatane Toll Plaza - EV-008):** NHAI FASTag transaction cleared at Lane 04, establishing exit onto the Mumbai-Pune Expressway outbound corridor.\n\n### 3. Critical Unexplained Period (**Gap #001**)\n- The vehicle took **22 minutes** to travel between Dange Chowk and Bhumkar Chowk (normally an 8-minute drive), suggesting a rendezvous stop in Tathawade or Hinjawadi Phase 1 to transfer stolen booty.",
-      "citations": [
-        {
-          "evidenceId": "ev-003",
-          "evidenceTitle": "PCMC Smart City ANPR & ICCC Nigdi Optical Camera Feed Log",
-          "excerpt": "22:36:12 IST: Plate MH-14-GX-8842 (White Hyundai Creta) captured moving westbound past Dange Chowk Pole #WK-44.",
-          "pageOrSection": "PCMC Smart City ANPR Feed"
-        },
-        {
-          "evidenceId": "ev-008",
-          "evidenceTitle": "Highway FASTag & Toll Plaza Telemetry (Somatane & Bhumkar Chowk)",
-          "excerpt": "23:14:22 IST: Somatane Toll Plaza Lane 04 outbound transaction confirmed via FASTag.",
-          "pageOrSection": "NHAI FASTag Telemetry"
-        }
-      ],
-      "suggestedFollowUps": [
-        "What evidence directly contradicts Sachin Gaikwad’s alibi?",
-        "What connects ex-guard Nilesh Shinde to the crime scene?",
-        "Summarize all investigation gaps remaining."
-      ],
-      "id": "msg-1791639219017-doqj",
-      "timestamp": "2026-10-10T13:33:39.017Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-01",
-      "role": "user",
-      "content": "Summarize the current case record.",
-      "id": "msg-1791639501351-pcdd",
-      "timestamp": "2026-10-10T13:38:21.351Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-01",
-      "role": "assistant",
-      "content": "## Misplaced Work Folder | Pimpri Market\n\nFictional presentation scenario: a commuter reports misplacing a folder of routine work papers after visiting the market. No valuables or identity documents are involved. The record demonstrates intake, location checks, and return-status tracking.\n\nThis is a fictional presentation scenario, not a real complaint or FIR.\n\nNo evidence items are attached to this case yet, so I cannot verify a timeline, identify a person, or draw a finding. Add source records before asking for an evidence-based assessment.\n\nYour question: Summarize the current case record.\n\nAny assessment should be checked against the original records by the responsible investigator.",
-      "citations": [],
-      "suggestedFollowUps": [
-        "Summarize the current case record.",
-        "What evidence is attached to this case?",
-        "What information is still missing?"
-      ],
-      "id": "msg-1791639501357-6klt",
-      "timestamp": "2026-10-10T13:38:21.357Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-01",
-      "role": "user",
-      "content": "What information is still missing?",
-      "id": "msg-1791639508969-og1m",
-      "timestamp": "2026-10-10T13:38:28.969Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-01",
-      "role": "assistant",
-      "content": "## Misplaced Work Folder | Pimpri Market\n\nFictional presentation scenario: a commuter reports misplacing a folder of routine work papers after visiting the market. No valuables or identity documents are involved. The record demonstrates intake, location checks, and return-status tracking.\n\nThis is a fictional presentation scenario, not a real complaint or FIR.\n\nNo evidence items are attached to this case yet, so I cannot verify a timeline, identify a person, or draw a finding. Add source records before asking for an evidence-based assessment.\n\nYour question: What information is still missing?\n\nAny assessment should be checked against the original records by the responsible investigator.",
-      "citations": [],
-      "suggestedFollowUps": [
-        "Summarize the current case record.",
-        "What evidence is attached to this case?",
-        "What information is still missing?"
-      ],
-      "id": "msg-1791639508973-clv5",
-      "timestamp": "2026-10-10T13:38:28.973Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-01",
-      "role": "user",
-      "content": "What evidence is attached to this case?",
-      "id": "msg-1791639871201-0n4o",
-      "timestamp": "2026-10-10T13:44:31.201Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-01",
-      "role": "assistant",
-      "content": "Misplaced Work Folder | Pimpri Market\n\nFictional presentation scenario: a commuter reports misplacing a folder of routine work papers after visiting the market. No valuables or identity documents are involved. The record demonstrates intake, location checks, and return-status tracking.\n\nThis is a fictional presentation scenario, not a real complaint or FIR.\n\nThe case currently contains 2 evidence records. The attached source excerpts are listed below for review; their presence alone does not establish a conclusion.\n\nYour question: What evidence is attached to this case?\n\nAny assessment should be checked against the original records by the responsible investigator.",
-      "citations": [
-        {
-          "evidenceId": "ev-pcmc-demo-01-intake",
-          "evidenceTitle": "Work folder enquiry intake (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA commuter reports a misplaced folder containing routine work papers. No valuables or identity documents are reported.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-01-search",
-          "evidenceTitle": "Market help desk search note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA fictional help desk search is logged. No matching folder is recorded at the time of the sample entry.",
-          "pageOrSection": "Fictional presentation scenario"
-        }
-      ],
-      "suggestedFollowUps": [
-        "Summarize the current case record.",
-        "What evidence is attached to this case?",
-        "What information is still missing?"
-      ],
-      "id": "msg-1791639871207-pmn7",
-      "timestamp": "2026-10-10T13:44:31.207Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-01",
-      "role": "user",
-      "content": "What evidence is attached to this case?",
-      "id": "msg-1791639878470-9s7l",
-      "timestamp": "2026-10-10T13:44:38.470Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-01",
-      "role": "assistant",
-      "content": "Misplaced Work Folder | Pimpri Market\n\nFictional presentation scenario: a commuter reports misplacing a folder of routine work papers after visiting the market. No valuables or identity documents are involved. The record demonstrates intake, location checks, and return-status tracking.\n\nThis is a fictional presentation scenario, not a real complaint or FIR.\n\nThe case currently contains 2 evidence records. The attached source excerpts are listed below for review; their presence alone does not establish a conclusion.\n\nYour question: What evidence is attached to this case?\n\nAny assessment should be checked against the original records by the responsible investigator.",
-      "citations": [
-        {
-          "evidenceId": "ev-pcmc-demo-01-intake",
-          "evidenceTitle": "Work folder enquiry intake (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA commuter reports a misplaced folder containing routine work papers. No valuables or identity documents are reported.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-01-search",
-          "evidenceTitle": "Market help desk search note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA fictional help desk search is logged. No matching folder is recorded at the time of the sample entry.",
-          "pageOrSection": "Fictional presentation scenario"
-        }
-      ],
-      "suggestedFollowUps": [
-        "Summarize the current case record.",
-        "What evidence is attached to this case?",
-        "What information is still missing?"
-      ],
-      "id": "msg-1791639878474-2ckr",
-      "timestamp": "2026-10-10T13:44:38.474Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-02",
-      "role": "user",
-      "content": "Summarize the current case record.",
-      "id": "msg-1791641523838-l3fw",
-      "timestamp": "2026-10-10T14:12:03.838Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-02",
-      "role": "assistant",
-      "content": "Minor Non-Injury Collision | Wakad Service Road\n\nFictional presentation scenario: two motorists report a low-speed contact during light rain. No injuries are reported. The record demonstrates neutral intake, a request for nearby camera footage, and follow-up status without assigning fault.\n\nThis is a fictional presentation scenario, not a real complaint or FIR.\n\nThe case currently contains 3 evidence records. The attached source excerpts are listed below for review; their presence alone does not establish a conclusion.\n\nYour question: Summarize the current case record.\n\nAny assessment should be checked against the original records by the responsible investigator.",
-      "citations": [
-        {
-          "evidenceId": "ev-pcmc-demo-02-intake-a",
-          "evidenceTitle": "Motorist A incident note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nAn anonymized motorist estimates a low-speed contact occurred at about 1:10 PM during light rain. No injuries are reported.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-02-intake-b",
-          "evidenceTitle": "Motorist B incident note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA second anonymized motorist estimates the same low-speed contact occurred at about 1:15 PM. The estimate is approximate and assigns no fault.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-02-camera",
-          "evidenceTitle": "Nearby camera request receipt (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA request for nearby camera footage is logged as pending. No footage or conclusion is included in this sample.",
-          "pageOrSection": "Fictional presentation scenario"
-        }
-      ],
-      "suggestedFollowUps": [
-        "Summarize the current case record.",
-        "What evidence is attached to this case?",
-        "What information is still missing?"
-      ],
-      "id": "msg-1791641523846-adje",
-      "timestamp": "2026-10-10T14:12:03.846Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-02",
-      "role": "user",
-      "content": "What are the suspcts",
-      "id": "msg-1791641535791-n11i",
-      "timestamp": "2026-10-10T14:12:15.791Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-02",
-      "role": "assistant",
-      "content": "Minor Non-Injury Collision | Wakad Service Road\n\nFictional presentation scenario: two motorists report a low-speed contact during light rain. No injuries are reported. The record demonstrates neutral intake, a request for nearby camera footage, and follow-up status without assigning fault.\n\nThis is a fictional presentation scenario, not a real complaint or FIR.\n\nThe case currently contains 3 evidence records. The attached source excerpts are listed below for review; their presence alone does not establish a conclusion.\n\nYour question: What are the suspcts\n\nAny assessment should be checked against the original records by the responsible investigator.",
-      "citations": [
-        {
-          "evidenceId": "ev-pcmc-demo-02-intake-a",
-          "evidenceTitle": "Motorist A incident note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nAn anonymized motorist estimates a low-speed contact occurred at about 1:10 PM during light rain. No injuries are reported.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-02-intake-b",
-          "evidenceTitle": "Motorist B incident note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA second anonymized motorist estimates the same low-speed contact occurred at about 1:15 PM. The estimate is approximate and assigns no fault.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-02-camera",
-          "evidenceTitle": "Nearby camera request receipt (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA request for nearby camera footage is logged as pending. No footage or conclusion is included in this sample.",
-          "pageOrSection": "Fictional presentation scenario"
-        }
-      ],
-      "suggestedFollowUps": [
-        "Summarize the current case record.",
-        "What evidence is attached to this case?",
-        "What information is still missing?"
-      ],
-      "id": "msg-1791641535797-h1x2",
-      "timestamp": "2026-10-10T14:12:15.797Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-01",
-      "role": "user",
-      "content": "?? ????? ?????? ?????",
-      "id": "msg-1791641814799-0ftv",
-      "timestamp": "2026-10-10T14:16:54.799Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-01",
-      "role": "assistant",
-      "content": "केस: Misplaced Work Folder | Pimpri Market\n\nकेसचा मूळ तपशील (मूळ भाषेत): Fictional presentation scenario: a commuter reports misplacing a folder of routine work papers after visiting the market. No valuables or identity documents are involved. The record demonstrates intake, location checks, and return-status tracking.\n\nहा केवळ काल्पनिक सादरीकरण प्रसंग आहे; खरी तक्रार किंवा एफआयआर नाही.\n\nया केसमध्ये 2 पुरावा नोंदी जोडलेल्या आहेत. स्रोत उतारे पुनरावलोकनासाठी खाली दिले आहेत; केवळ नोंद असणे निष्कर्ष सिद्ध करत नाही.\n\nतुमचा प्रश्न: ?? ????? ?????? ?????\n\nकोणतेही मूल्यांकन जबाबदार तपास अधिकाऱ्याने मूळ नोंदींशी पडताळावे.",
-      "citations": [
-        {
-          "evidenceId": "ev-pcmc-demo-01-intake",
-          "evidenceTitle": "Work folder enquiry intake (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA commuter reports a misplaced folder containing routine work papers. No valuables or identity documents are reported.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-01-search",
-          "evidenceTitle": "Market help desk search note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA fictional help desk search is logged. No matching folder is recorded at the time of the sample entry.",
-          "pageOrSection": "Fictional presentation scenario"
-        }
-      ],
-      "suggestedFollowUps": [
-        "या केस नोंदीचा सारांश द्या.",
-        "या केसला कोणते पुरावे जोडले आहेत?",
-        "कोणती माहिती अजून उपलब्ध नाही?"
-      ],
-      "id": "msg-1791641814809-0cyl",
-      "timestamp": "2026-10-10T14:16:54.809Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-01",
-      "role": "user",
-      "content": "?? ????? ?????? ?????",
-      "id": "msg-1791643251590-ck1l",
-      "timestamp": "2026-10-10T14:40:51.590Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-01",
-      "role": "assistant",
-      "content": "केस: गुम हुई कार्य फ़ाइल | पिंपरी बाज़ार\n\nविवरण: काल्पनिक प्रस्तुति परिदृश्य: बाज़ार आने के बाद एक यात्री को सामान्य कामकाजी कागज़ों वाली फ़ाइल नहीं मिलती। इसमें कोई कीमती वस्तु या पहचान दस्तावेज़ नहीं है। यह रिकॉर्ड शिकायत दर्ज करने, स्थान की जाँच और वस्तु लौटने की स्थिति दर्ज करने का नमूना है।\n\nयह केवल काल्पनिक प्रस्तुति परिदृश्य है, वास्तविक शिकायत या एफआईआर नहीं।\n\nइस केस में 2 साक्ष्य रिकॉर्ड संलग्न हैं। स्रोत अंश समीक्षा के लिए नीचे दिए गए हैं; केवल रिकॉर्ड का होना किसी निष्कर्ष को सिद्ध नहीं करता।\n\nआपका प्रश्न: ?? ????? ?????? ?????\n\nकिसी भी आकलन को जिम्मेदार जाँच अधिकारी द्वारा मूल रिकॉर्ड से सत्यापित किया जाना चाहिए।",
-      "citations": [
-        {
-          "evidenceId": "ev-pcmc-demo-01-intake",
-          "evidenceTitle": "Work folder enquiry intake (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA commuter reports a misplaced folder containing routine work papers. No valuables or identity documents are reported.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-01-search",
-          "evidenceTitle": "Market help desk search note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA fictional help desk search is logged. No matching folder is recorded at the time of the sample entry.",
-          "pageOrSection": "Fictional presentation scenario"
-        }
-      ],
-      "suggestedFollowUps": [
-        "इस केस रिकॉर्ड का सार बताएँ।",
-        "इस केस में कौन से साक्ष्य जुड़े हैं?",
-        "कौन सी जानकारी अभी उपलब्ध नहीं है?"
-      ],
-      "id": "msg-1791643251598-ouqk",
-      "timestamp": "2026-10-10T14:40:51.598Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-01",
-      "role": "user",
-      "content": "?? ????? ?????? ?????",
-      "id": "msg-1791643251624-9yvi",
-      "timestamp": "2026-10-10T14:40:51.624Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-01",
-      "role": "assistant",
-      "content": "केस: हरवलेली कामाची फाइल | पिंपरी बाजार\n\nतपशील: काल्पनिक सादरीकरण प्रसंग: बाजारात भेट दिल्यानंतर एका प्रवाशाची नियमित कामाची कागदपत्रे असलेली फाइल हरवते. त्यात मौल्यवान वस्तू किंवा ओळखपत्र नाही. ही नोंद तक्रार नोंदणी, ठिकाणाची चौकशी आणि वस्तू परत मिळाल्याची स्थिती दाखवणारा नमुना आहे.\n\nहा केवळ काल्पनिक सादरीकरण प्रसंग आहे; खरी तक्रार किंवा एफआयआर नाही.\n\nया केसमध्ये 2 पुरावा नोंदी जोडलेल्या आहेत. स्रोत उतारे पुनरावलोकनासाठी खाली दिले आहेत; केवळ नोंद असणे निष्कर्ष सिद्ध करत नाही.\n\nतुमचा प्रश्न: ?? ????? ?????? ?????\n\nकोणतेही मूल्यांकन जबाबदार तपास अधिकाऱ्याने मूळ नोंदींशी पडताळावे.",
-      "citations": [
-        {
-          "evidenceId": "ev-pcmc-demo-01-intake",
-          "evidenceTitle": "Work folder enquiry intake (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA commuter reports a misplaced folder containing routine work papers. No valuables or identity documents are reported.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-01-search",
-          "evidenceTitle": "Market help desk search note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA fictional help desk search is logged. No matching folder is recorded at the time of the sample entry.",
-          "pageOrSection": "Fictional presentation scenario"
-        }
-      ],
-      "suggestedFollowUps": [
-        "या केस नोंदीचा सारांश द्या.",
-        "या केसला कोणते पुरावे जोडले आहेत?",
-        "कोणती माहिती अजून उपलब्ध नाही?"
-      ],
-      "id": "msg-1791643251630-tuvs",
-      "timestamp": "2026-10-10T14:40:51.630Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-02",
-      "role": "user",
-      "content": "Summarize the current case record",
-      "id": "msg-1791643412803-1agh",
-      "timestamp": "2026-10-10T14:43:32.803Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-02",
-      "role": "assistant",
-      "content": "केस: बिना चोट की मामूली टक्कर | वाकड सर्विस रोड\n\nविवरण: काल्पनिक प्रस्तुति परिदृश्य: हल्की बारिश में कम गति से हुई टक्कर की सूचना दो वाहन चालक देते हैं। किसी के घायल होने की सूचना नहीं है। यह तटस्थ विवरण, पास के कैमरे की फुटेज माँगने और दोष तय किए बिना आगे की कार्रवाई दर्ज करने का नमूना है।\n\nयह केवल काल्पनिक प्रस्तुति परिदृश्य है, वास्तविक शिकायत या एफआईआर नहीं।\n\nइस केस में 3 साक्ष्य रिकॉर्ड संलग्न हैं। स्रोत अंश समीक्षा के लिए नीचे दिए गए हैं; केवल रिकॉर्ड का होना किसी निष्कर्ष को सिद्ध नहीं करता।\n\nआपका प्रश्न: Summarize the current case record\n\nकिसी भी आकलन को जिम्मेदार जाँच अधिकारी द्वारा मूल रिकॉर्ड से सत्यापित किया जाना चाहिए।",
-      "citations": [
-        {
-          "evidenceId": "ev-pcmc-demo-02-intake-a",
-          "evidenceTitle": "Motorist A incident note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nAn anonymized motorist estimates a low-speed contact occurred at about 1:10 PM during light rain. No injuries are reported.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-02-intake-b",
-          "evidenceTitle": "Motorist B incident note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA second anonymized motorist estimates the same low-speed contact occurred at about 1:15 PM. The estimate is approximate and assigns no fault.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-02-camera",
-          "evidenceTitle": "Nearby camera request receipt (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA request for nearby camera footage is logged as pending. No footage or conclusion is included in this sample.",
-          "pageOrSection": "Fictional presentation scenario"
-        }
-      ],
-      "suggestedFollowUps": [
-        "इस केस रिकॉर्ड का सार बताएँ।",
-        "इस केस में कौन से साक्ष्य जुड़े हैं?",
-        "कौन सी जानकारी अभी उपलब्ध नहीं है?"
-      ],
-      "id": "msg-1791643412812-lyvc",
-      "timestamp": "2026-10-10T14:43:32.812Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-02",
-      "role": "user",
-      "content": "Summarize the current case record",
-      "id": "msg-1791643412925-aua1",
-      "timestamp": "2026-10-10T14:43:32.925Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-02",
-      "role": "assistant",
-      "content": "केस: किरकोळ बिन-दुखापत धडक | वाकड सर्व्हिस रोड\n\nतपशील: काल्पनिक सादरीकरण प्रसंग: हलक्या पावसात कमी वेगाने झालेल्या धडकेची माहिती दोन वाहनचालक देतात. कोणालाही दुखापत झाल्याची नोंद नाही. हा तटस्थ नोंद, जवळील कॅमेऱ्याचे चित्रण मागवणे आणि दोष न ठरवता पुढील स्थिती नोंदवण्याचा नमुना आहे.\n\nहा केवळ काल्पनिक सादरीकरण प्रसंग आहे; खरी तक्रार किंवा एफआयआर नाही.\n\nया केसमध्ये 3 पुरावा नोंदी जोडलेल्या आहेत. स्रोत उतारे पुनरावलोकनासाठी खाली दिले आहेत; केवळ नोंद असणे निष्कर्ष सिद्ध करत नाही.\n\nतुमचा प्रश्न: Summarize the current case record\n\nकोणतेही मूल्यांकन जबाबदार तपास अधिकाऱ्याने मूळ नोंदींशी पडताळावे.",
-      "citations": [
-        {
-          "evidenceId": "ev-pcmc-demo-02-intake-a",
-          "evidenceTitle": "Motorist A incident note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nAn anonymized motorist estimates a low-speed contact occurred at about 1:10 PM during light rain. No injuries are reported.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-02-intake-b",
-          "evidenceTitle": "Motorist B incident note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA second anonymized motorist estimates the same low-speed contact occurred at about 1:15 PM. The estimate is approximate and assigns no fault.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-02-camera",
-          "evidenceTitle": "Nearby camera request receipt (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA request for nearby camera footage is logged as pending. No footage or conclusion is included in this sample.",
-          "pageOrSection": "Fictional presentation scenario"
-        }
-      ],
-      "suggestedFollowUps": [
-        "या केस नोंदीचा सारांश द्या.",
-        "या केसला कोणते पुरावे जोडले आहेत?",
-        "कोणती माहिती अजून उपलब्ध नाही?"
-      ],
-      "id": "msg-1791643412934-k7n1",
-      "timestamp": "2026-10-10T14:43:32.934Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-02",
-      "role": "user",
-      "content": "Summarize the current case record",
-      "id": "msg-1791643437863-52my",
-      "timestamp": "2026-10-10T14:43:57.863Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-02",
-      "role": "assistant",
-      "content": "केस: बिना चोट की मामूली टक्कर | वाकड सर्विस रोड\n\nविवरण: काल्पनिक प्रस्तुति परिदृश्य: हल्की बारिश में कम गति से हुई टक्कर की सूचना दो वाहन चालक देते हैं। किसी के घायल होने की सूचना नहीं है। यह तटस्थ विवरण, पास के कैमरे की फुटेज माँगने और दोष तय किए बिना आगे की कार्रवाई दर्ज करने का नमूना है।\n\nयह केवल काल्पनिक प्रस्तुति परिदृश्य है, वास्तविक शिकायत या एफआईआर नहीं।\n\nइस केस में 3 साक्ष्य रिकॉर्ड संलग्न हैं। स्रोत अंश समीक्षा के लिए नीचे दिए गए हैं; केवल रिकॉर्ड का होना किसी निष्कर्ष को सिद्ध नहीं करता।\n\nआपका प्रश्न: Summarize the current case record\n\nकिसी भी आकलन को जिम्मेदार जाँच अधिकारी द्वारा मूल रिकॉर्ड से सत्यापित किया जाना चाहिए।",
-      "citations": [
-        {
-          "evidenceId": "ev-pcmc-demo-02-intake-a",
-          "evidenceTitle": "Motorist A incident note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nAn anonymized motorist estimates a low-speed contact occurred at about 1:10 PM during light rain. No injuries are reported.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-02-intake-b",
-          "evidenceTitle": "Motorist B incident note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA second anonymized motorist estimates the same low-speed contact occurred at about 1:15 PM. The estimate is approximate and assigns no fault.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-02-camera",
-          "evidenceTitle": "Nearby camera request receipt (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA request for nearby camera footage is logged as pending. No footage or conclusion is included in this sample.",
-          "pageOrSection": "Fictional presentation scenario"
-        }
-      ],
-      "suggestedFollowUps": [
-        "इस केस रिकॉर्ड का सार बताएँ।",
-        "इस केस में कौन से साक्ष्य जुड़े हैं?",
-        "कौन सी जानकारी अभी उपलब्ध नहीं है?"
-      ],
-      "id": "msg-1791643437870-239u",
-      "timestamp": "2026-10-10T14:43:57.870Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-02",
-      "role": "user",
-      "content": "Summarize the current case record",
-      "id": "msg-1791643438029-2py1",
-      "timestamp": "2026-10-10T14:43:58.029Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-02",
-      "role": "assistant",
-      "content": "केस: किरकोळ बिन-दुखापत धडक | वाकड सर्व्हिस रोड\n\nतपशील: काल्पनिक सादरीकरण प्रसंग: हलक्या पावसात कमी वेगाने झालेल्या धडकेची माहिती दोन वाहनचालक देतात. कोणालाही दुखापत झाल्याची नोंद नाही. हा तटस्थ नोंद, जवळील कॅमेऱ्याचे चित्रण मागवणे आणि दोष न ठरवता पुढील स्थिती नोंदवण्याचा नमुना आहे.\n\nहा केवळ काल्पनिक सादरीकरण प्रसंग आहे; खरी तक्रार किंवा एफआयआर नाही.\n\nया केसमध्ये 3 पुरावा नोंदी जोडलेल्या आहेत. स्रोत उतारे पुनरावलोकनासाठी खाली दिले आहेत; केवळ नोंद असणे निष्कर्ष सिद्ध करत नाही.\n\nतुमचा प्रश्न: Summarize the current case record\n\nकोणतेही मूल्यांकन जबाबदार तपास अधिकाऱ्याने मूळ नोंदींशी पडताळावे.",
-      "citations": [
-        {
-          "evidenceId": "ev-pcmc-demo-02-intake-a",
-          "evidenceTitle": "Motorist A incident note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nAn anonymized motorist estimates a low-speed contact occurred at about 1:10 PM during light rain. No injuries are reported.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-02-intake-b",
-          "evidenceTitle": "Motorist B incident note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA second anonymized motorist estimates the same low-speed contact occurred at about 1:15 PM. The estimate is approximate and assigns no fault.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-02-camera",
-          "evidenceTitle": "Nearby camera request receipt (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA request for nearby camera footage is logged as pending. No footage or conclusion is included in this sample.",
-          "pageOrSection": "Fictional presentation scenario"
-        }
-      ],
-      "suggestedFollowUps": [
-        "या केस नोंदीचा सारांश द्या.",
-        "या केसला कोणते पुरावे जोडले आहेत?",
-        "कोणती माहिती अजून उपलब्ध नाही?"
-      ],
-      "id": "msg-1791643438036-xgoe",
-      "timestamp": "2026-10-10T14:43:58.036Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-02",
-      "role": "user",
-      "content": "Summarize this case",
-      "id": "msg-1791643453383-459m",
-      "timestamp": "2026-10-10T14:44:13.383Z"
-    },
-    {
-      "caseId": "case-pcmc-demo-2026-02",
-      "role": "assistant",
-      "content": "केस: किरकोळ बिन-दुखापत धडक | वाकड सर्व्हिस रोड\n\nतपशील: काल्पनिक सादरीकरण प्रसंग: हलक्या पावसात कमी वेगाने झालेल्या धडकेची माहिती दोन वाहनचालक देतात. कोणालाही दुखापत झाल्याची नोंद नाही. हा तटस्थ नोंद, जवळील कॅमेऱ्याचे चित्रण मागवणे आणि दोष न ठरवता पुढील स्थिती नोंदवण्याचा नमुना आहे.\n\nहा केवळ काल्पनिक सादरीकरण प्रसंग आहे; खरी तक्रार किंवा एफआयआर नाही.\n\nया केसमध्ये 3 पुरावा नोंदी जोडलेल्या आहेत. स्रोत उतारे पुनरावलोकनासाठी खाली दिले आहेत; केवळ नोंद असणे निष्कर्ष सिद्ध करत नाही.\n\nतुमचा प्रश्न: Summarize this case\n\nकोणतेही मूल्यांकन जबाबदार तपास अधिकाऱ्याने मूळ नोंदींशी पडताळावे.",
-      "citations": [
-        {
-          "evidenceId": "ev-pcmc-demo-02-intake-a",
-          "evidenceTitle": "Motorist A incident note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nAn anonymized motorist estimates a low-speed contact occurred at about 1:10 PM during light rain. No injuries are reported.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-02-intake-b",
-          "evidenceTitle": "Motorist B incident note (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA second anonymized motorist estimates the same low-speed contact occurred at about 1:15 PM. The estimate is approximate and assigns no fault.",
-          "pageOrSection": "Fictional presentation scenario"
-        },
-        {
-          "evidenceId": "ev-pcmc-demo-02-camera",
-          "evidenceTitle": "Nearby camera request receipt (simulated)",
-          "excerpt": "SIMULATED DATA ONLY\nA request for nearby camera footage is logged as pending. No footage or conclusion is included in this sample.",
-          "pageOrSection": "Fictional presentation scenario"
-        }
-      ],
-      "suggestedFollowUps": [
-        "या केस नोंदीचा सारांश द्या.",
-        "या केसला कोणते पुरावे जोडले आहेत?",
-        "कोणती माहिती अजून उपलब्ध नाही?"
-      ],
-      "id": "msg-1791643453392-qcfo",
-      "timestamp": "2026-10-10T14:44:13.392Z"
     }
   ],
   "auditLogs": [
-    {
-      "id": "log-1791643438041-vpx7",
-      "caseId": "case-pcmc-demo-2026-02",
-      "timestamp": "2026-10-10T14:43:58.041Z",
-      "actor": "Investigator & AI",
-      "action": "AI_ASSISTANT_QUERY",
-      "details": "Investigator queried: \"Summarize the current case record...\""
-    },
-    {
-      "id": "log-1791643437875-0ebq",
-      "caseId": "case-pcmc-demo-2026-02",
-      "timestamp": "2026-10-10T14:43:57.875Z",
-      "actor": "Investigator & AI",
-      "action": "AI_ASSISTANT_QUERY",
-      "details": "Investigator queried: \"Summarize the current case record...\""
-    },
-    {
-      "id": "log-1791643412941-jqq8",
-      "caseId": "case-pcmc-demo-2026-02",
-      "timestamp": "2026-10-10T14:43:32.941Z",
-      "actor": "Investigator & AI",
-      "action": "AI_ASSISTANT_QUERY",
-      "details": "Investigator queried: \"Summarize the current case record...\""
-    },
-    {
-      "id": "log-1791643412823-rtar",
-      "caseId": "case-pcmc-demo-2026-02",
-      "timestamp": "2026-10-10T14:43:32.823Z",
-      "actor": "Investigator & AI",
-      "action": "AI_ASSISTANT_QUERY",
-      "details": "Investigator queried: \"Summarize the current case record...\""
-    },
-    {
-      "id": "log-1791643251607-wr1s",
-      "caseId": "case-pcmc-demo-2026-01",
-      "timestamp": "2026-10-10T14:40:51.607Z",
-      "actor": "Investigator & AI",
-      "action": "AI_ASSISTANT_QUERY",
-      "details": "Investigator queried: \"?? ????? ?????? ?????...\""
-    },
-    {
-      "id": "log-1791641523853-jw7f",
-      "caseId": "case-pcmc-demo-2026-02",
-      "timestamp": "2026-10-10T14:12:03.853Z",
-      "actor": "Investigator & AI",
-      "action": "AI_ASSISTANT_QUERY",
-      "details": "Investigator queried: \"Summarize the current case record....\""
-    },
-    {
-      "id": "log-1791639871211-3ntc",
-      "caseId": "case-pcmc-demo-2026-01",
-      "timestamp": "2026-10-10T13:44:31.211Z",
-      "actor": "Investigator & AI",
-      "action": "AI_ASSISTANT_QUERY",
-      "details": "Investigator queried: \"What evidence is attached to this case?...\""
-    },
-    {
-      "id": "log-pcmc-demo-1",
-      "caseId": "case-pcmc-demo-2026-01",
-      "timestamp": "2026-09-18T10:00:00Z",
-      "actor": "Demo System",
-      "action": "DEMO_SCENARIO_LOADED",
-      "details": "Fictional presentation data loaded. All linked records are simulated and unverified."
-    },
-    {
-      "id": "log-pcmc-demo-2",
-      "caseId": "case-pcmc-demo-2026-02",
-      "timestamp": "2026-09-20T14:00:00Z",
-      "actor": "Demo System",
-      "action": "DEMO_SCENARIO_LOADED",
-      "details": "Fictional presentation data loaded. All linked records are simulated and unverified."
-    },
-    {
-      "id": "log-pcmc-demo-3",
-      "caseId": "case-pcmc-demo-2026-03",
-      "timestamp": "2026-09-23T16:30:00Z",
-      "actor": "Demo System",
-      "action": "DEMO_SCENARIO_LOADED",
-      "details": "Fictional presentation data loaded. All linked records are simulated and unverified."
-    },
-    {
-      "id": "log-pcmc-demo-4",
-      "caseId": "case-pcmc-demo-2026-04",
-      "timestamp": "2026-09-26T09:15:00Z",
-      "actor": "Demo System",
-      "action": "DEMO_SCENARIO_LOADED",
-      "details": "Fictional presentation data loaded. All linked records are simulated and unverified."
-    },
-    {
-      "id": "log-1791639501364-9aa0",
-      "caseId": "case-pcmc-demo-2026-01",
-      "timestamp": "2026-10-10T13:38:21.364Z",
-      "actor": "Investigator & AI",
-      "action": "AI_ASSISTANT_QUERY",
-      "details": "Investigator queried: \"Summarize the current case record....\""
-    },
     {
       "id": "log-001",
       "caseId": "case-pcpc-wakad-2025",
@@ -2872,6 +2208,38 @@
       "actor": "Sr. PI Vitthal More",
       "action": "CONTRADICTION_REVIEWED",
       "details": "Marked Contradiction CNTR-001 as CONFIRMED_INCONSISTENCY. Raid team dispatched."
+    },
+    {
+      "id": "log-pcpc-case-pcpc-chakan-2025",
+      "caseId": "case-pcpc-chakan-2025",
+      "timestamp": "2025-02-14T21:00:00Z",
+      "actor": "PCPC Investigation Registry",
+      "action": "AUTHENTIC_CASE_FILE_INGESTED",
+      "details": "Verified Pimpri Chinchwad Police Case Record ingested: FIR No. 0118/2025 (Chakan Police Station)"
+    },
+    {
+      "id": "log-pcpc-case-pcpc-cyber-2025",
+      "caseId": "case-pcpc-cyber-2025",
+      "timestamp": "2025-06-12T09:15:00Z",
+      "actor": "PCPC Investigation Registry",
+      "action": "AUTHENTIC_CASE_FILE_INGESTED",
+      "details": "Verified Pimpri Chinchwad Police Case Record ingested: FIR No. 0542/2025 (PCPC Cyber Crime PS)"
+    },
+    {
+      "id": "log-pcpc-case-pcpc-bhosari-2025",
+      "caseId": "case-pcpc-bhosari-2025",
+      "timestamp": "2025-04-03T22:30:00Z",
+      "actor": "PCPC Investigation Registry",
+      "action": "AUTHENTIC_CASE_FILE_INGESTED",
+      "details": "Verified Pimpri Chinchwad Police Case Record ingested: FIR No. 0284/2025 (Bhosari Police Station)"
+    },
+    {
+      "id": "log-pcpc-case-pcpc-chikhali-2025",
+      "caseId": "case-pcpc-chikhali-2025",
+      "timestamp": "2025-08-09T05:30:00Z",
+      "actor": "PCPC Investigation Registry",
+      "action": "AUTHENTIC_CASE_FILE_INGESTED",
+      "details": "Verified Pimpri Chinchwad Police Case Record ingested: FIR No. 0419/2025 (Chikhali Police Station)"
     }
   ]
 }
