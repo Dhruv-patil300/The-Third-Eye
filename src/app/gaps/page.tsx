@@ -17,7 +17,29 @@ import {
   XCircle,
   Target,
   Sparkles,
+  Plus,
+  X,
+  Save,
 } from 'lucide-react';
+
+type GapCategory =
+  | 'missing_timestamp'
+  | 'unexplained_period'
+  | 'unverified_claim'
+  | 'missing_cctv'
+  | 'unidentified_entity'
+  | 'unverified_alibi'
+  | 'missing_record';
+
+const BLANK_FORM = {
+  title: '',
+  category: 'missing_record' as GapCategory,
+  severity: 'moderate' as 'critical' | 'moderate' | 'minor',
+  description: '',
+  whyItMatters: '',
+  whatIsUnknown: '',
+  suggestedNextStep: '',
+};
 
 export default function InvestigationGapsPage() {
   const { activeCaseId, activeCase } = useCase();
@@ -28,6 +50,10 @@ export default function InvestigationGapsPage() {
   const [statusFilter, setStatusFilter] = useState('all');
   const [dismissalNote, setDismissalNote] = useState('');
   const [loading, setLoading] = useState(true);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [formData, setFormData] = useState(BLANK_FORM);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const fetchGaps = async () => {
     if (!activeCaseId) return;
@@ -76,6 +102,33 @@ export default function InvestigationGapsPage() {
     }
   };
 
+  const handleAddGap = async () => {
+    if (!activeCaseId || !formData.title.trim()) return;
+    try {
+      setSubmitting(true);
+      const res = await fetch(`/api/cases/${activeCaseId}/gaps`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        const json = await res.json();
+        setSubmitSuccess(true);
+        setTimeout(() => {
+          setShowAddModal(false);
+          setFormData(BLANK_FORM);
+          setSubmitSuccess(false);
+          fetchGaps();
+        }, 900);
+        setSelectedGap(json.data);
+      }
+    } catch (err) {
+      console.error('Failed to add gap:', err);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   const filtered = gaps.filter((g) => statusFilter === 'all' || g.status === statusFilter);
 
   return (
@@ -100,8 +153,7 @@ export default function InvestigationGapsPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-xs font-mono">
-          <span className="text-slate-400">{t('common.status')}:</span>
+        <div className="flex items-center gap-2 text-xs font-mono flex-wrap">
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
@@ -113,6 +165,13 @@ export default function InvestigationGapsPage() {
             <option value="addressed">{t('common.addressed')}</option>
             <option value="dismissed">{t('common.closed')}</option>
           </select>
+          <button
+            onClick={() => setShowAddModal(true)}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-lg font-mono font-semibold text-xs transition-colors shadow-md"
+          >
+            <Plus className="w-3.5 h-3.5" />
+            <span>File New Gap</span>
+          </button>
         </div>
       </div>
 
@@ -172,6 +231,12 @@ export default function InvestigationGapsPage() {
                 </div>
               );
             })}
+
+            {filtered.length === 0 && (
+              <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl p-8 text-center text-xs text-slate-400 font-mono">
+                No gaps found. File a new one above.
+              </div>
+            )}
           </div>
         </div>
 
@@ -278,6 +343,158 @@ export default function InvestigationGapsPage() {
           )}
         </div>
       </div>
+
+      {/* ─── Add New Gap Modal ─── */}
+      {showAddModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="bg-[#0C1724] border border-[#22364A] rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto text-slate-100">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-[#1E2E3F]">
+              <div>
+                <span className="text-[10px] font-mono text-amber-400 font-bold uppercase tracking-widest block">
+                  FILE NEW DEFICIENCY
+                </span>
+                <h2 className="text-sm font-bold text-white font-sans">Log Investigation Gap</h2>
+              </div>
+              <button
+                onClick={() => { setShowAddModal(false); setFormData(BLANK_FORM); }}
+                className="text-slate-400 hover:text-white p-1 rounded transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="px-6 py-5 space-y-4 text-xs">
+              {/* Title */}
+              <div>
+                <label className="font-mono text-[11px] font-bold text-slate-300 block uppercase mb-1">
+                  Gap Title <span className="text-rose-400">*</span>
+                </label>
+                <input
+                  type="text"
+                  value={formData.title}
+                  onChange={(e) => setFormData((f) => ({ ...f, title: e.target.value }))}
+                  placeholder="e.g. Missing CCTV coverage between 22:00–23:00 at Wakad Circle"
+                  className="w-full p-2.5 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500"
+                />
+              </div>
+
+              {/* Category + Severity */}
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="font-mono text-[11px] font-bold text-slate-300 block uppercase mb-1">Category</label>
+                  <select
+                    value={formData.category}
+                    onChange={(e) => setFormData((f) => ({ ...f, category: e.target.value as GapCategory }))}
+                    className="w-full p-2.5 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 focus:outline-none focus:border-amber-500"
+                  >
+                    <option value="missing_timestamp">Missing Timestamp</option>
+                    <option value="unexplained_period">Unexplained Period</option>
+                    <option value="unverified_claim">Unverified Claim</option>
+                    <option value="missing_cctv">Missing CCTV</option>
+                    <option value="unidentified_entity">Unidentified Entity</option>
+                    <option value="unverified_alibi">Unverified Alibi</option>
+                    <option value="missing_record">Missing Record</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="font-mono text-[11px] font-bold text-slate-300 block uppercase mb-1">Severity</label>
+                  <select
+                    value={formData.severity}
+                    onChange={(e) => setFormData((f) => ({ ...f, severity: e.target.value as any }))}
+                    className="w-full p-2.5 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 focus:outline-none focus:border-amber-500"
+                  >
+                    <option value="critical">Critical</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="minor">Minor</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Description */}
+              <div>
+                <label className="font-mono text-[11px] font-bold text-slate-300 block uppercase mb-1">Factual Description</label>
+                <textarea
+                  rows={3}
+                  value={formData.description}
+                  onChange={(e) => setFormData((f) => ({ ...f, description: e.target.value }))}
+                  placeholder="Describe the evidentiary gap in objective terms..."
+                  className="w-full p-2.5 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500 resize-none"
+                />
+              </div>
+
+              {/* Why It Matters */}
+              <div>
+                <label className="font-mono text-[11px] font-bold text-amber-400 block uppercase mb-1">Why It Matters (Legal Impact)</label>
+                <textarea
+                  rows={2}
+                  value={formData.whyItMatters}
+                  onChange={(e) => setFormData((f) => ({ ...f, whyItMatters: e.target.value }))}
+                  placeholder="How does this gap affect the prosecution case or suspect credibility?"
+                  className="w-full p-2.5 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500 resize-none"
+                />
+              </div>
+
+              {/* What Is Unknown */}
+              <div>
+                <label className="font-mono text-[11px] font-bold text-rose-400 block uppercase mb-1">What Remains Unknown</label>
+                <textarea
+                  rows={2}
+                  value={formData.whatIsUnknown}
+                  onChange={(e) => setFormData((f) => ({ ...f, whatIsUnknown: e.target.value }))}
+                  placeholder="What specific question or fact is left unanswered by available evidence?"
+                  className="w-full p-2.5 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-rose-500 resize-none"
+                />
+              </div>
+
+              {/* Suggested Next Step */}
+              <div>
+                <label className="font-mono text-[11px] font-bold text-emerald-400 block uppercase mb-1">Suggested Investigative Action</label>
+                <textarea
+                  rows={2}
+                  value={formData.suggestedNextStep}
+                  onChange={(e) => setFormData((f) => ({ ...f, suggestedNextStep: e.target.value }))}
+                  placeholder="e.g. Obtain CCTV DVR from Kothari Petrol Pump adjacent to Wakad Circle..."
+                  className="w-full p-2.5 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-600 resize-none"
+                />
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="px-6 pb-5 flex items-center justify-end gap-3">
+              <button
+                onClick={() => { setShowAddModal(false); setFormData(BLANK_FORM); }}
+                className="px-4 py-1.5 rounded-lg border border-[#22364A] text-slate-300 text-xs font-mono hover:bg-[#1a2535] transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleAddGap}
+                disabled={submitting || !formData.title.trim()}
+                className={`flex items-center gap-1.5 px-5 py-1.5 rounded-lg text-white text-xs font-mono font-semibold transition-all ${
+                  submitSuccess
+                    ? 'bg-emerald-600'
+                    : submitting || !formData.title.trim()
+                    ? 'bg-amber-800/50 cursor-not-allowed'
+                    : 'bg-amber-600 hover:bg-amber-500'
+                }`}
+              >
+                {submitSuccess ? (
+                  <><CheckCircle2 className="w-3.5 h-3.5" /> Filed</>
+                ) : submitting ? (
+                  <>
+                    <span className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    Filing…
+                  </>
+                ) : (
+                  <><Save className="w-3.5 h-3.5" /> File Gap</>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

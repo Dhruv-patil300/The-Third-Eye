@@ -18,6 +18,8 @@ import {
   Info,
   Radio,
   Crosshair,
+  Plus,
+  X,
 } from 'lucide-react';
 import { ContradictionDiffVisualizer } from '@/components/tactical/ContradictionDiffVisualizer';
 
@@ -32,6 +34,19 @@ export default function ContradictionsPage() {
   const [notesInput, setNotesInput] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [loading, setLoading] = useState(true);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [addForm, setAddForm] = useState({
+    title: '',
+    severity: 'high' as 'high' | 'medium' | 'low',
+    category: 'statement_inconsistency' as ContradictionFinding['category'],
+    claimAText: '',
+    claimASpeaker: '',
+    claimBText: '',
+    claimBSpeaker: '',
+    explanation: '',
+  });
+  const [addSubmitting, setAddSubmitting] = useState(false);
+  const [addSuccess, setAddSuccess] = useState(false);
 
   const fetchContradictions = async () => {
     if (!activeCaseId) return;
@@ -111,6 +126,31 @@ export default function ContradictionsPage() {
     (c) => statusFilter === 'all' || c.reviewStatus === statusFilter
   );
 
+  const handleAddContradiction = async () => {
+    if (!activeCaseId || !addForm.title.trim()) return;
+    try {
+      setAddSubmitting(true);
+      const res = await fetch(`/api/cases/${activeCaseId}/contradictions`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(addForm),
+      });
+      if (res.ok) {
+        setAddSuccess(true);
+        setTimeout(() => {
+          setShowAddModal(false);
+          setAddForm({ title: '', severity: 'high', category: 'statement_inconsistency', claimAText: '', claimASpeaker: '', claimBText: '', claimBSpeaker: '', explanation: '' });
+          setAddSuccess(false);
+          fetchContradictions();
+        }, 900);
+      }
+    } catch (err) {
+      console.error('Failed to add contradiction:', err);
+    } finally {
+      setAddSubmitting(false);
+    }
+  };
+
   return (
     <div className="space-y-6 max-w-7xl mx-auto text-slate-100">
       {/* Header */}
@@ -133,12 +173,21 @@ export default function ContradictionsPage() {
           </p>
         </div>
 
-        {/* Responsible Police Doctrine Banner */}
-        <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-lg p-2.5 max-w-md text-[11px] text-slate-300 flex items-start gap-2 shadow-md">
-          <Info className="w-4 h-4 text-sky-400 flex-shrink-0 mt-0.5" />
-          <div className="leading-snug font-sans">
-            <strong className="text-sky-400 font-mono">Investigative Doctrine:</strong> A flagged conflict is not automatic proof of guilt. Cross-reference antenna azimuths, room CCTV, and independent Pancha panchnama before executing custody.
+        <div className="flex items-center gap-3">
+          {/* Responsible Police Doctrine Banner */}
+          <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-lg p-2.5 max-w-md text-[11px] text-slate-300 flex items-start gap-2 shadow-md">
+            <Info className="w-4 h-4 text-sky-400 flex-shrink-0 mt-0.5" />
+            <div className="leading-snug font-sans">
+              <strong className="text-sky-400 font-mono">Investigative Doctrine:</strong> A flagged conflict is not automatic proof of guilt. Cross-reference antenna azimuths, room CCTV, and independent Pancha panchnama before executing custody.
+            </div>
           </div>
+          <button
+            onClick={() => setShowAddModal(true)}
+            className="flex items-center gap-1.5 px-3.5 py-2 bg-rose-700 hover:bg-rose-600 text-white rounded-lg font-mono font-semibold text-xs transition-colors shadow-md shrink-0 cursor-pointer"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Log Inconsistency</span>
+          </button>
         </div>
       </div>
 
@@ -150,17 +199,26 @@ export default function ContradictionsPage() {
             <span className="font-mono font-bold text-slate-300 uppercase tracking-wide">
               {t('contradictions.title')} ({filtered.length})
             </span>
-            <select
-              value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-2.5 py-1 border border-[#22364A] rounded-lg bg-[#0E1A27] text-xs text-slate-200 focus:outline-none font-mono"
-            >
-              <option value="all">{t('contradictions.allStates')}</option>
-              <option value="unreviewed">{t('contradictions.unreviewed')}</option>
-              <option value="under_review">{t('contradictions.underReview')}</option>
-              <option value="confirmed_inconsistency">{t('contradictions.confirmed')}</option>
-              <option value="resolved">{t('contradictions.resolved')}</option>
-            </select>
+            <div className="flex items-center gap-2">
+              <select
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value)}
+                className="px-2.5 py-1 border border-[#22364A] rounded-lg bg-[#0E1A27] text-xs text-slate-200 focus:outline-none font-mono"
+              >
+                <option value="all">{t('contradictions.allStates')}</option>
+                <option value="unreviewed">{t('contradictions.unreviewed')}</option>
+                <option value="under_review">{t('contradictions.underReview')}</option>
+                <option value="confirmed_inconsistency">{t('contradictions.confirmed')}</option>
+                <option value="resolved">{t('contradictions.resolved')}</option>
+              </select>
+              <button
+                onClick={() => setShowAddModal(true)}
+                className="flex items-center gap-1 px-2.5 py-1 bg-rose-700 hover:bg-rose-600 text-white rounded-lg font-mono font-semibold text-xs transition-colors cursor-pointer"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>Log</span>
+              </button>
+            </div>
           </div>
 
           <div className="space-y-2.5">
@@ -271,6 +329,81 @@ export default function ContradictionsPage() {
           )}
         </div>
       </div>
+
+    {/* ─── Add Contradiction Modal ─── */}
+    {showAddModal && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <div className="bg-[#0C1724] border border-[#22364A] rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto text-slate-100">
+          {/* Modal Header */}
+          <div className="flex items-center justify-between px-6 py-4 border-b border-[#1E2E3F]">
+            <div>
+              <span className="text-[10px] font-mono text-rose-400 font-bold uppercase tracking-widest block">LOG NEW CONFLICT</span>
+              <h2 className="text-sm font-bold text-white font-sans">Register Statement Inconsistency</h2>
+            </div>
+            <button onClick={() => setShowAddModal(false)} className="text-slate-400 hover:text-white p-1 rounded">
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+          {/* Modal Body */}
+          <div className="px-6 py-5 space-y-4 text-xs">
+            <div>
+              <label className="font-mono text-[11px] font-bold text-slate-300 block uppercase mb-1">Inconsistency Title <span className="text-rose-400">*</span></label>
+              <input type="text" value={addForm.title} onChange={(e) => setAddForm(f => ({ ...f, title: e.target.value }))} placeholder="e.g. Suspect's restaurant alibi contradicts Jio tower ping at crime scene" className="w-full p-2.5 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-rose-500" />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="font-mono text-[11px] font-bold text-slate-300 block uppercase mb-1">Severity</label>
+                <select value={addForm.severity} onChange={(e) => setAddForm(f => ({ ...f, severity: e.target.value as any }))} className="w-full p-2.5 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 focus:outline-none focus:border-rose-500">
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+              <div>
+                <label className="font-mono text-[11px] font-bold text-slate-300 block uppercase mb-1">Category</label>
+                <select value={addForm.category} onChange={(e) => setAddForm(f => ({ ...f, category: e.target.value as any }))} className="w-full p-2.5 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 focus:outline-none focus:border-rose-500">
+                  <option value="timeline_conflict">Timeline Conflict</option>
+                  <option value="alibi_discrepancy">Alibi Discrepancy</option>
+                  <option value="identity_mismatch">Identity Mismatch</option>
+                  <option value="location_impossibility">Location Impossibility</option>
+                  <option value="statement_inconsistency">Statement Inconsistency</option>
+                </select>
+              </div>
+            </div>
+            {/* Claim A */}
+            <div className="p-3.5 bg-sky-950/20 border border-sky-900/50 rounded-xl space-y-2">
+              <span className="font-mono text-[11px] font-bold text-sky-400 uppercase">Claim / Statement A</span>
+              <input type="text" value={addForm.claimASpeaker} onChange={(e) => setAddForm(f => ({ ...f, claimASpeaker: e.target.value }))} placeholder="Speaker / Source (e.g. Accused Tanaji Shinde, statement dt. 15-Jan-2025)" className="w-full p-2 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500" />
+              <textarea rows={2} value={addForm.claimAText} onChange={(e) => setAddForm(f => ({ ...f, claimAText: e.target.value }))} placeholder="Exact excerpt from statement or evidence..." className="w-full p-2 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500 resize-none" />
+            </div>
+            {/* Claim B */}
+            <div className="p-3.5 bg-rose-950/20 border border-rose-900/50 rounded-xl space-y-2">
+              <span className="font-mono text-[11px] font-bold text-rose-400 uppercase">Contradicting Claim / Evidence B</span>
+              <input type="text" value={addForm.claimBSpeaker} onChange={(e) => setAddForm(f => ({ ...f, claimBSpeaker: e.target.value }))} placeholder="Source (e.g. Airtel CDR Record, Cell Mast #404-869-21943)" className="w-full p-2 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-rose-500" />
+              <textarea rows={2} value={addForm.claimBText} onChange={(e) => setAddForm(f => ({ ...f, claimBText: e.target.value }))} placeholder="Exact excerpt or description of contradicting evidence..." className="w-full p-2 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-rose-500 resize-none" />
+            </div>
+            {/* Explanation */}
+            <div>
+              <label className="font-mono text-[11px] font-bold text-slate-300 block uppercase mb-1">Forensic Explanation</label>
+              <textarea rows={2} value={addForm.explanation} onChange={(e) => setAddForm(f => ({ ...f, explanation: e.target.value }))} placeholder="Why are these two claims mutually exclusive? What does this prove?" className="w-full p-2.5 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500 resize-none" />
+            </div>
+          </div>
+          {/* Modal Footer */}
+          <div className="px-6 pb-5 flex items-center justify-end gap-3">
+            <button onClick={() => setShowAddModal(false)} className="px-4 py-1.5 rounded-lg border border-[#22364A] text-slate-300 text-xs font-mono hover:bg-[#1a2535] transition-colors">Cancel</button>
+            <button
+              onClick={handleAddContradiction}
+              disabled={addSubmitting || !addForm.title.trim()}
+              className={`flex items-center gap-1.5 px-5 py-1.5 rounded-lg text-white text-xs font-mono font-semibold transition-all ${
+                addSuccess ? 'bg-emerald-600' : addSubmitting || !addForm.title.trim() ? 'bg-rose-900/50 cursor-not-allowed' : 'bg-rose-700 hover:bg-rose-600'
+              }`}
+            >
+              {addSuccess ? (<><CheckCircle2 className="w-3.5 h-3.5" /> Logged</>) : addSubmitting ? (<><span className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />Logging…</>) : (<><Save className="w-3.5 h-3.5" /> Log Inconsistency</>)}
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
     </div>
   );
 }

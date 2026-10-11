@@ -50,6 +50,29 @@ export interface Claim {
   confidence: number;
 }
 
+export interface ForensicMediaMetadata {
+  mediaType: 'cctv_video' | 'anpr_photo' | 'fir_panchnama_pdf' | 'ballistics_photo' | 'cyber_trail';
+  mediaUrl?: string;
+  previewUrl?: string;
+  timestampDisplay?: string;
+  cameraOrScannerId?: string;
+  locationGeo?: string;
+  ocrExtractedPlate?: string;
+  speedKmh?: number;
+  confidenceScore?: number;
+  boundingBoxes?: {
+    label: string;
+    x: number; // percentage
+    y: number; // percentage
+    width: number;
+    height: number;
+    color?: string;
+  }[];
+  pdfHighlightedPhrases?: string[];
+  pdfOfficialStamp?: string;
+  panchnamaOfficer?: string;
+}
+
 export interface EvidenceItem {
   id: string;
   caseId: string;
@@ -70,6 +93,7 @@ export interface EvidenceItem {
   relatedEntityIds: string[];
   relatedEventIds: string[];
   claims: Claim[];
+  forensicMedia?: ForensicMediaMetadata;
   createdAt: string;
   updatedAt: string;
 }

@@ -16,6 +16,7 @@ import {
   FileBarChart,
   Settings,
   Crosshair,
+  MapPin,
 } from 'lucide-react';
 
 interface NavSection {
@@ -43,6 +44,7 @@ const navSections: NavSection[] = [
       { name: 'nav.evidence', href: '/evidence', icon: FileText },
       { name: 'nav.timeline', href: '/timeline', icon: Clock },
       { name: 'nav.graph', href: '/graph', icon: Network },
+      { name: 'nav.map', href: '/map', icon: MapPin, badge: 'GIS LIVE', badgeColor: 'bg-sky-100 text-sky-800 border-sky-200' },
       {
         name: 'nav.contradictions',
         href: '/contradictions',

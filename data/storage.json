@@ -894,6 +894,23 @@
   ],
   "entities": [
     {
+      "id": "ent-pcpc-chakan-pandey",
+      "caseId": "case-pcpc-chakan-2025",
+      "name": "Rohit Sudhan Pandey (Accomplice / Weapons Custody)",
+      "category": "person",
+      "role": "person_of_interest",
+      "details": {
+        "recordType": "PCPC Verified Case Entity"
+      },
+      "status": "verified",
+      "notes": "Verified case entity logged in Pimpri Chinchwad Police records dossier.",
+      "sourceEvidenceIds": [
+        "ev-pcpc-chakan-ballistics"
+      ],
+      "createdAt": "2025-01-20T15:40:00Z",
+      "updatedAt": "2025-01-20T15:40:00Z"
+    },
+    {
       "id": "ent-sachin-gaikwad",
       "caseId": "case-pcpc-wakad-2025",
       "name": "Sachin Suresh Gaikwad",

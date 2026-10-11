@@ -16,7 +16,23 @@ import {
   FileText,
   Search,
   ShieldCheck,
+  Compass,
+  MapPin,
 } from 'lucide-react';
+import dynamic from 'next/dynamic';
+import { PCPC_TACTICAL_GEOPOINTS } from '@/lib/mapData';
+
+const TacticalMapComponent = dynamic(
+  () => import('@/components/map/TacticalMap'),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-[460px] w-full flex items-center justify-center bg-[#fbf9f5] border border-[#e2dcd2] rounded-xl text-xs font-mono text-[#64748b]">
+        Loading PCPC GIS Grid…
+      </div>
+    ),
+  }
+);
 
 export default function OverviewPage() {
   const { activeCaseId, activeCase, cases } = useCase();
@@ -241,6 +257,29 @@ export default function OverviewPage() {
               <Link href="/graph" className="text-[#475669]">{t('dashboard.openGraph')}</Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* PCPC Tactical GIS Section */}
+      <section className="mt-6 overflow-hidden rounded-2xl border border-[#e6dfd5] bg-white/85 shadow-[0_18px_35px_rgba(31,41,55,0.03)]">
+        <div className="flex items-center justify-between border-b border-[#e6dfd5] px-4 py-3">
+          <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.16em] text-[#667085]">
+            <Compass className="w-3.5 h-3.5 text-[#0284c7]" />
+            <span>PCPC GIS Telemetry & Field Radar</span>
+          </div>
+          <Link href="/map" className="text-xs text-[#0284c7] hover:underline font-medium">
+            Open Full Tactical Map &rarr;
+          </Link>
+        </div>
+        <div className="p-4">
+          <TacticalMapComponent
+            markers={
+              PCPC_TACTICAL_GEOPOINTS.filter((m) => m.caseId === activeCaseId).length > 0
+                ? PCPC_TACTICAL_GEOPOINTS.filter((m) => m.caseId === activeCaseId)
+                : PCPC_TACTICAL_GEOPOINTS
+            }
+            activeCaseTitle={activeCase?.title}
+          />
         </div>
       </section>
 

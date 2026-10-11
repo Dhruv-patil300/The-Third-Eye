@@ -5,6 +5,7 @@ import { useCase } from '@/context/CaseContext';
 import { useLanguage } from '@/context/LanguageContext';
 import { EvidenceItem, VerificationStatus } from '@/types';
 import { FileText, Plus, Search, Trash2 } from 'lucide-react';
+import ForensicMediaViewer from '@/components/evidence/ForensicMediaViewer';
 
 export default function EvidenceVaultPage() {
   const { t } = useLanguage();
@@ -274,12 +275,15 @@ export default function EvidenceVaultPage() {
               </div>
 
               <div className="space-y-5 p-4">
+                {/* Visual / Forensic Media Scrutiny Viewport */}
+                <ForensicMediaViewer evidence={selectedItem} />
+
                 <div>
                   <div className="mb-2 flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.14em] text-[#667085]">
                     <span>{t('evidence.transcript')}</span>
                     <span className="text-[#475669]">{t('evidence.buffer')}</span>
                   </div>
-                  <pre className="max-h-[420px] overflow-y-auto whitespace-pre-wrap rounded-xl border border-[#e6dfd5] bg-[#faf8f5] p-4 text-[11px] leading-6 text-[#253042]">
+                  <pre className="max-h-[340px] overflow-y-auto whitespace-pre-wrap rounded-xl border border-[#e6dfd5] bg-[#faf8f5] p-4 text-[11px] leading-6 text-[#253042]">
                     {selectedItem.extractedText || t('evidence.noTranscript')}
                   </pre>
                 </div>
@@ -315,7 +319,7 @@ export default function EvidenceVaultPage() {
             </div>
           ) : (
             <div className="rounded-2xl border border-[#e6dfd5] bg-white/85 p-14 text-center text-xs font-mono text-[#67717d] shadow-sm">
-              {t('evidence.selectPrompt')}
+              {t('evidence.selectRecord')}
             </div>
           )}
         </div>

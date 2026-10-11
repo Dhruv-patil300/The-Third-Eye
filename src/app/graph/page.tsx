@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useCase } from '@/context/CaseContext';
 import { useLanguage } from '@/context/LanguageContext';
 import {
@@ -32,6 +32,11 @@ import {
   ExternalLink,
   Crosshair,
   ShieldAlert,
+  Play,
+  Pause,
+  RotateCcw,
+  FastForward,
+  Sliders,
 } from 'lucide-react';
 
 const CATEGORY_COLORS: Record<string, { bg: string; border: string; text: string }> = {
@@ -52,8 +57,14 @@ export default function RelationshipGraphPage() {
   const [selectedEntity, setSelectedEntity] = useState<Entity | null>(null);
   const [selectedRelationship, setSelectedRelationship] = useState<EntityRelationship | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
+  const [statusFilter, setStatusFilter] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
+
+  // Timeline playback state
+  const [playbackIndex, setPlaybackIndex] = useState<number>(0);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const playIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const [nodes, setNodes, onNodesChange] = useNodesState<Node>([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([]);
@@ -69,7 +80,11 @@ export default function RelationshipGraphPage() {
       ]);
 
       if (entRes.success) setEntities(entRes.data || []);
-      if (relRes.success) setRelationships(relRes.data || []);
+      if (relRes.success) {
+        const rels: EntityRelationship[] = relRes.data || [];
+        setRelationships(rels);
+        setPlaybackIndex(rels.length); // Default to full graph view
+      }
       if (evRes.success) setEvidenceList(evRes.data || []);
     } catch (err) {
       console.error('Failed to load graph data:', err);
@@ -82,20 +97,63 @@ export default function RelationshipGraphPage() {
     fetchGraphData();
   }, [activeCaseId]);
 
-  // Construct React Flow Nodes & Edges deterministically
+  // Handle Timeline Playback
+  useEffect(() => {
+    if (isPlaying) {
+      playIntervalRef.current = setInterval(() => {
+        setPlaybackIndex((prev) => {
+          if (prev >= relationships.length) {
+            setIsPlaying(false);
+            return prev;
+          }
+          return prev + 1;
+        });
+      }, 1600);
+    } else {
+      if (playIntervalRef.current) clearInterval(playIntervalRef.current);
+    }
+    return () => {
+      if (playIntervalRef.current) clearInterval(playIntervalRef.current);
+    };
+  }, [isPlaying, relationships.length]);
+
+  // Construct React Flow Nodes & Edges dynamically based on filters & playback
   useEffect(() => {
     if (entities.length === 0) return;
 
-    const centerX = 420;
-    const centerY = 300;
-    const radius = 250;
+    // Filter entities
+    const filteredEntities = entities.filter((ent) => {
+      const matchCategory = categoryFilter === 'all' || ent.category === categoryFilter;
+      const matchStatus = statusFilter === 'all' || ent.status === statusFilter;
+      const matchSearch =
+        !searchTerm.trim() ||
+        ent.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        ent.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        ent.id.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchCategory && matchStatus && matchSearch;
+    });
 
-    const flowNodes: Node[] = entities.map((ent, i) => {
-      const angle = (i / entities.length) * 2 * Math.PI;
+    const visibleEntityIds = new Set(filteredEntities.map((e) => e.id));
+
+    // Slice relationships based on timeline playback slider
+    const currentRelationships = relationships.slice(0, playbackIndex);
+
+    // Active relationships are only those connecting visible entities
+    const visibleRelationships = currentRelationships.filter(
+      (rel) => visibleEntityIds.has(rel.sourceEntityId) && visibleEntityIds.has(rel.targetEntityId)
+    );
+
+    const centerX = 440;
+    const centerY = 320;
+    const radius = 260;
+
+    const flowNodes: Node[] = filteredEntities.map((ent, i) => {
+      const angle = (i / filteredEntities.length) * 2 * Math.PI;
       const x = centerX + radius * Math.cos(angle);
       const y = centerY + radius * Math.sin(angle);
 
       const color = CATEGORY_COLORS[ent.category] || CATEGORY_COLORS.person;
+      const isSelected = selectedEntity?.id === ent.id;
 
       return {
         id: ent.id,
@@ -109,7 +167,9 @@ export default function RelationshipGraphPage() {
                 </span>
                 <span
                   className={`text-[8px] px-1 py-0.2 rounded font-bold uppercase ${
-                    ent.status === 'flagged' ? 'bg-rose-950 text-rose-300 border border-rose-800' : 'bg-emerald-950 text-emerald-300 border border-emerald-800'
+                    ent.status === 'flagged'
+                      ? 'bg-rose-950 text-rose-300 border border-rose-800'
+                      : 'bg-emerald-950 text-emerald-300 border border-emerald-800'
                   }`}
                 >
                   {ent.status}
@@ -125,46 +185,50 @@ export default function RelationshipGraphPage() {
         },
         style: {
           background: color.bg,
-          border: `1.5px solid ${color.border}`,
+          border: isSelected ? '2.5px solid #0284c7' : `1.5px solid ${color.border}`,
           borderRadius: '10px',
           color: color.text,
           width: 185,
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)',
+          boxShadow: isSelected
+            ? '0 0 16px rgba(2, 132, 199, 0.6)'
+            : '0 4px 12px rgba(0, 0, 0, 0.4)',
         },
       };
     });
 
-    const flowEdges: Edge[] = relationships.map((rel) => {
+    const flowEdges: Edge[] = visibleRelationships.map((rel, idx) => {
       const isDisputed = rel.verificationStatus === 'disputed';
+      const isLatest = idx === visibleRelationships.length - 1 && isPlaying;
+
       return {
         id: rel.id,
         source: rel.sourceEntityId,
         target: rel.targetEntityId,
         label: rel.label,
         type: 'smoothstep',
-        animated: isDisputed,
+        animated: isDisputed || isLatest,
         style: {
-          stroke: isDisputed ? '#a45f56' : '#829078',
-          strokeWidth: 2,
+          stroke: isLatest ? '#38bdf8' : isDisputed ? '#dc2626' : '#829078',
+          strokeWidth: isLatest ? 3 : 2,
           strokeDasharray: isDisputed ? '4,4' : undefined,
         },
         labelStyle: {
-          fill: '#514d44',
-          fontWeight: 600,
+          fill: isLatest ? '#0284c7' : '#514d44',
+          fontWeight: 700,
           fontSize: 10,
           fontFamily: 'monospace',
         },
         labelBgStyle: {
           fill: '#f7f3eb',
           fillOpacity: 0.96,
-          stroke: isDisputed ? '#a45f56' : '#d4c9b7',
+          stroke: isLatest ? '#38bdf8' : isDisputed ? '#dc2626' : '#d4c9b7',
           strokeWidth: 1,
           rx: 4,
           ry: 4,
         },
         markerEnd: {
           type: MarkerType.ArrowClosed,
-          color: isDisputed ? '#a45f56' : '#829078',
+          color: isLatest ? '#38bdf8' : isDisputed ? '#dc2626' : '#829078',
           width: 16,
           height: 16,
         },
@@ -174,7 +238,7 @@ export default function RelationshipGraphPage() {
 
     setNodes(flowNodes);
     setEdges(flowEdges);
-  }, [entities, relationships]);
+  }, [entities, relationships, categoryFilter, statusFilter, searchTerm, playbackIndex, isPlaying, selectedEntity]);
 
   const onNodeClick = (_: any, node: Node) => {
     setSelectedRelationship(null);
@@ -185,6 +249,11 @@ export default function RelationshipGraphPage() {
     setSelectedEntity(null);
     setSelectedRelationship(edge.data?.rawRel as EntityRelationship);
   };
+
+  const activePlaybackRel =
+    playbackIndex > 0 && playbackIndex <= relationships.length
+      ? relationships[playbackIndex - 1]
+      : null;
 
   return (
     <div className="space-y-4 max-w-7xl mx-auto h-[calc(100vh-6.5rem)] flex flex-col text-slate-100">
@@ -204,7 +273,7 @@ export default function RelationshipGraphPage() {
             <span>{t('graph.title')}</span>
           </h1>
           <p className="text-xs text-slate-400 mt-0.5 font-sans">
-            {t('graph.description')} {activeCase?.referenceNumber}.
+            Interactive multi-entity intelligence network with timeline relationship playback for {activeCase?.referenceNumber}.
           </p>
         </div>
 
@@ -212,21 +281,84 @@ export default function RelationshipGraphPage() {
         <div className="flex flex-wrap items-center gap-3 text-[10px] font-mono bg-[#0C1724] border border-[#1E2E3F] px-3 py-1.5 rounded-lg shadow-md">
           <span className="text-slate-400">{t('graph.legend')}:</span>
           <span className="flex items-center gap-1 text-slate-200">
-            <span className="w-2.5 h-2.5 rounded-full bg-sky-400" /> {t('graph.person')}
+            <span className="w-2.5 h-2.5 rounded-full bg-sky-400" /> Person
           </span>
           <span className="flex items-center gap-1 text-slate-200">
-            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400" /> {t('graph.vehicle')}
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" /> Vehicle
           </span>
           <span className="flex items-center gap-1 text-slate-200">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" /> {t('graph.location')}
+            <span className="w-2.5 h-2.5 rounded-full bg-teal-400" /> Location
           </span>
           <span className="flex items-center gap-1 text-slate-200">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-400" /> Device / Tower
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-400" /> Device/Tower
           </span>
         </div>
       </div>
 
-      {/* Main Flow Canvas with Slide-out Inspector Panel */}
+      {/* Filter Ribbon */}
+      <div className="bg-[#0C1724] border border-[#1E2E3F] rounded-xl p-3 shadow-md flex flex-wrap items-center justify-between gap-3 flex-shrink-0 text-xs">
+        {/* Search */}
+        <div className="relative min-w-[200px] flex-1 max-w-xs">
+          <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search entity, role or plate..."
+            className="w-full pl-8 pr-3 py-1 bg-[#08121B] border border-[#22364A] rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500 font-sans"
+          />
+          {searchTerm && (
+            <button
+              onClick={() => setSearchTerm('')}
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+            >
+              <X className="w-3 h-3" />
+            </button>
+          )}
+        </div>
+
+        {/* Category Pills */}
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <span className="text-[10px] font-mono text-slate-400 mr-1 uppercase font-semibold">
+            Filter:
+          </span>
+          {[
+            { id: 'all', label: 'All' },
+            { id: 'person', label: 'Persons' },
+            { id: 'vehicle', label: 'Vehicles' },
+            { id: 'location', label: 'Locations' },
+            { id: 'device', label: 'Devices' },
+          ].map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setCategoryFilter(cat.id)}
+              className={`px-2.5 py-1 rounded-lg text-[11px] font-mono transition-colors cursor-pointer ${
+                categoryFilter === cat.id
+                  ? 'bg-sky-600 text-white font-bold'
+                  : 'bg-[#08121B] border border-[#22364A] text-slate-300 hover:bg-[#122131]'
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Status Filter */}
+        <div className="flex items-center gap-1.5">
+          <span className="text-[10px] font-mono text-slate-400 uppercase font-semibold">Status:</span>
+          <select
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+            className="px-2.5 py-1 bg-[#08121B] border border-[#22364A] rounded-lg text-[11px] font-mono text-slate-200 focus:outline-none focus:border-sky-500"
+          >
+            <option value="all">All Statuses</option>
+            <option value="flagged">Flagged Only</option>
+            <option value="verified">Verified Only</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Main Flow Canvas with Slide-out Inspector Panel & Timeline Playback */}
       <div className="flex-1 bg-[#070E17] border border-[#1E2E3F] rounded-xl shadow-2xl relative overflow-hidden">
         <ReactFlow
           nodes={nodes}
@@ -252,6 +384,72 @@ export default function RelationshipGraphPage() {
           />
         </ReactFlow>
 
+        {/* Floating Timeline Playback Slider Bar */}
+        <div className="absolute bottom-4 left-4 right-4 max-w-2xl mx-auto bg-[#0C1724]/95 backdrop-blur-md border border-[#22364A] rounded-2xl p-3 shadow-2xl z-30 flex flex-col gap-2">
+          <div className="flex items-center justify-between text-xs font-mono">
+            <div className="flex items-center gap-2">
+              <Sliders className="w-3.5 h-3.5 text-sky-400" />
+              <span className="font-bold text-white uppercase text-[11px]">
+                Timeline Relationship Playback
+              </span>
+              <span className="text-[10px] px-2 py-0.5 rounded bg-sky-950 border border-sky-800 text-sky-300 font-bold">
+                Step {playbackIndex} / {relationships.length}
+              </span>
+            </div>
+
+            {activePlaybackRel && (
+              <span className="text-[10px] text-slate-300 truncate max-w-xs font-sans">
+                Active: <strong className="text-amber-400 font-mono">{activePlaybackRel.label}</strong>
+              </span>
+            )}
+          </div>
+
+          <div className="flex items-center gap-3">
+            {/* Play/Pause Button */}
+            <button
+              onClick={() => {
+                if (playbackIndex >= relationships.length) {
+                  setPlaybackIndex(1);
+                  setIsPlaying(true);
+                } else {
+                  setIsPlaying(!isPlaying);
+                }
+              }}
+              className="p-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white transition-colors cursor-pointer shrink-0 shadow-md"
+              title={isPlaying ? 'Pause Playback' : 'Play Timeline'}
+            >
+              {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
+            </button>
+
+            {/* Reset Button */}
+            <button
+              onClick={() => {
+                setIsPlaying(false);
+                setPlaybackIndex(relationships.length);
+              }}
+              className="p-2 rounded-xl bg-[#122131] hover:bg-[#182b3f] border border-[#22364A] text-slate-300 transition-colors cursor-pointer shrink-0"
+              title="Reset to Full Graph"
+            >
+              <RotateCcw className="w-4 h-4" />
+            </button>
+
+            {/* Slider */}
+            <div className="flex-1 flex items-center gap-2">
+              <input
+                type="range"
+                min="1"
+                max={Math.max(1, relationships.length)}
+                value={playbackIndex}
+                onChange={(e) => {
+                  setIsPlaying(false);
+                  setPlaybackIndex(parseInt(e.target.value));
+                }}
+                className="w-full accent-sky-500 cursor-pointer h-1.5 bg-[#08121B] rounded-lg border border-[#22364A]"
+              />
+            </div>
+          </div>
+        </div>
+
         {/* Node Detail Inspector Slide-out */}
         {selectedEntity && (
           <div className="absolute top-4 right-4 w-84 bg-[#0C1724] border border-[#1E2E3F] rounded-xl shadow-2xl p-4 text-xs z-40 max-h-[85%] overflow-y-auto space-y-3 text-slate-100">
@@ -266,7 +464,7 @@ export default function RelationshipGraphPage() {
               </div>
               <button
                 onClick={() => setSelectedEntity(null)}
-                className="text-slate-400 hover:text-white p-0.5 rounded"
+                className="text-slate-400 hover:text-white p-0.5 rounded cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -292,53 +490,18 @@ export default function RelationshipGraphPage() {
             </div>
 
             <div>
-              <span className="font-mono text-[10px] font-bold text-slate-400 block mb-1 uppercase">
-                {t('graph.annotations')}
-              </span>
-              <p className="bg-[#08121B] p-2.5 rounded-lg border border-[#1E2E3F] text-slate-200 leading-relaxed text-[11px] font-sans">
-                {selectedEntity.notes || t('graph.noAnnotations')}
+              <span className="text-slate-400 block text-[10px] font-mono mb-1">{t('graph.role')}</span>
+              <p className="bg-[#08121B] p-2 rounded-lg border border-[#1E2E3F] text-slate-200 capitalize font-mono text-[11px]">
+                {selectedEntity.role.replace('_', ' ')}
               </p>
             </div>
 
-            {selectedEntity.details && Object.keys(selectedEntity.details).length > 0 && (
+            {selectedEntity.notes && (
               <div>
-                <span className="font-mono text-[10px] font-bold text-slate-400 block mb-1 uppercase">
-                  {t('graph.metadata')}
-                </span>
-                <div className="space-y-1 font-mono text-[10px] bg-[#08121B] p-2 rounded-lg border border-[#1E2E3F]">
-                  {Object.entries(selectedEntity.details).map(([k, v]) => (
-                    <div key={k} className="flex justify-between gap-2">
-                      <span className="text-slate-400 capitalize">{k}:</span>
-                      <span className="text-sky-300 font-semibold truncate">{String(v)}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {selectedEntity.sourceEvidenceIds && selectedEntity.sourceEvidenceIds.length > 0 && (
-              <div>
-                <span className="font-mono text-[10px] font-bold text-slate-400 block mb-1 uppercase">
-                  {t('graph.sourceEvidence')}
-                </span>
-                <div className="space-y-1">
-                  {selectedEntity.sourceEvidenceIds.map((evId) => {
-                    const ev = evidenceList.find((e) => e.id === evId);
-                    return (
-                      <div
-                        key={evId}
-                        className="p-1.5 rounded bg-[#0F1B2A] border border-[#1E2E3F] flex items-center justify-between text-[11px]"
-                      >
-                        <span className="font-medium text-slate-200 truncate">
-                          {ev ? ev.title : evId}
-                        </span>
-                        <span className="font-mono text-[9px] text-sky-400 uppercase font-bold flex-shrink-0 ml-2">
-                          {evId}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
+                <span className="text-slate-400 block text-[10px] font-mono mb-1">{t('graph.notes')}</span>
+                <p className="bg-[#08121B] p-2.5 rounded-lg border border-[#1E2E3F] text-slate-300 leading-relaxed font-sans text-xs">
+                  {selectedEntity.notes}
+                </p>
               </div>
             )}
           </div>
@@ -346,62 +509,39 @@ export default function RelationshipGraphPage() {
 
         {/* Edge Detail Inspector Slide-out */}
         {selectedRelationship && (
-          <div className="absolute top-4 right-4 w-84 bg-[#0C1724] border border-[#1E2E3F] rounded-xl shadow-2xl p-4 text-xs z-40 space-y-3 text-slate-100">
+          <div className="absolute top-4 right-4 w-84 bg-[#0C1724] border border-[#1E2E3F] rounded-xl shadow-2xl p-4 text-xs z-40 max-h-[85%] overflow-y-auto space-y-3 text-slate-100">
             <div className="flex items-start justify-between gap-2 border-b border-[#1E2E3F] pb-2">
               <div>
                 <span className="text-[9px] uppercase font-mono font-bold text-sky-400 block">
-                  {t('graph.relationshipProof')}
+                  Relationship Link
                 </span>
-                <h3 className="font-bold text-sm text-white font-sans">
+                <h3 className="font-bold text-sm text-white leading-tight font-sans">
                   {selectedRelationship.label}
                 </h3>
               </div>
               <button
                 onClick={() => setSelectedRelationship(null)}
-                className="text-slate-400 hover:text-white p-0.5 rounded"
+                className="text-slate-400 hover:text-white p-0.5 rounded cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             <div className="bg-[#08121B] p-2.5 rounded-lg border border-[#1E2E3F] space-y-1">
-              <span className="font-mono text-[10px] text-slate-400 uppercase block font-bold">
-                {t('graph.connection')}:
-              </span>
-              <p className="text-slate-200 text-xs leading-relaxed font-sans">
-                {selectedRelationship.description}
-              </p>
-            </div>
-
-            <div className="flex items-center justify-between text-[11px] font-mono">
-              <span className="text-slate-400">Verification Status:</span>
-              <span
-                className={`px-1.5 py-0.5 rounded uppercase font-bold text-[9px] border ${
-                  selectedRelationship.verificationStatus === 'disputed'
-                    ? 'bg-rose-950 text-rose-300 border-rose-800'
-                    : 'bg-emerald-950 text-emerald-300 border-emerald-800'
-                }`}
-              >
-                {selectedRelationship.verificationStatus}
+              <span className="text-slate-400 block text-[10px] font-mono uppercase">Forensic Classification</span>
+              <span className="text-xs font-bold text-amber-300 font-mono">
+                {selectedRelationship.relationshipType.replace('_', ' ').toUpperCase()}
               </span>
             </div>
 
-            <div>
-              <span className="font-mono text-[10px] font-bold text-slate-400 block mb-1 uppercase">
-                Supporting Source Documents
-              </span>
-              <div className="space-y-1">
-                {selectedRelationship.supportingEvidenceIds.map((evId) => (
-                  <div
-                    key={evId}
-                    className="p-1.5 rounded bg-[#0F1B2A] border border-[#1E2E3F] flex items-center justify-between text-[11px]"
-                  >
-                    <span className="text-slate-200 font-medium">Evidence Record</span>
-                    <span className="font-mono text-[9px] text-sky-400 uppercase font-bold">{evId}</span>
-                  </div>
-                ))}
+            {selectedRelationship.description && (
+              <div>
+                <span className="text-slate-400 block text-[10px] font-mono mb-1">Evidentiary Basis</span>
+                <p className="bg-[#08121B] p-2.5 rounded-lg border border-[#1E2E3F] text-slate-300 leading-relaxed font-sans text-xs">
+                  {selectedRelationship.description}
+                </p>
               </div>
-            </div>
+            )}
           </div>
         )}
       </div>
