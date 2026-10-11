@@ -2187,6 +2187,39 @@
   ],
   "auditLogs": [
     {
+      "id": "aud-1791695714067-i8j02",
+      "caseId": "test-case-1791695714063",
+      "timestamp": "2026-10-11T05:15:14.066Z",
+      "actor": "PI Vikram Shinde (PCPC-CRIME-4819)",
+      "action": "EVIDENCE_INGESTED",
+      "details": "Ingested Ballistic Report - Genuine Digest Verified [Outcome: SUCCESS]",
+      "integrityHash": "02bbfc9b15269a7fc483790a76c385ff332ce49ebb5cb867e3576929c2529ef5",
+      "prevHash": "GENESIS",
+      "outcome": "SUCCESS"
+    },
+    {
+      "id": "aud-1791695515301-lstnl",
+      "caseId": "test-case-1791695515296",
+      "timestamp": "2026-10-11T05:11:55.299Z",
+      "actor": "PI Vikram Shinde (PCPC-CRIME-4819)",
+      "action": "EVIDENCE_INGESTED",
+      "details": "Ingested Ballistic Report - Genuine Digest Verified [Outcome: SUCCESS]",
+      "integrityHash": "db73780682a0fd68654d44fe4dc165cddb0d9514280314c61d1cd43a41eb751a",
+      "prevHash": "GENESIS",
+      "outcome": "SUCCESS"
+    },
+    {
+      "id": "aud-1791695479650-9azbm",
+      "caseId": "test-case-1791695479644",
+      "timestamp": "2026-10-11T05:11:19.650Z",
+      "actor": "PI Vikram Shinde (PCPC-CRIME-4819)",
+      "action": "EVIDENCE_INGESTED",
+      "details": "Ingested Ballistic Report - Genuine Digest Verified [Outcome: SUCCESS]",
+      "integrityHash": "2a8261ccdad1e2a65b83be4f991bef299a7e46980e9d81c37594eee88c8c3409",
+      "prevHash": "GENESIS",
+      "outcome": "SUCCESS"
+    },
+    {
       "id": "log-001",
       "caseId": "case-pcpc-wakad-2025",
       "timestamp": "2025-10-25T06:45:00Z",

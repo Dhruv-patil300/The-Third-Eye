@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import {
+import type {
   CaseStore,
   Case,
   EvidenceItem,
@@ -11,7 +11,7 @@ import {
   InvestigationGap,
   AIMessage,
   AuditLog,
-} from '@/types';
+} from '../types';
 import {
   initialStore,
   demoCases,
@@ -24,14 +24,27 @@ import {
   presentationAuditLogs,
 } from './demoData';
 
-const DATA_DIR = path.join(process.cwd(), 'data');
-const STORAGE_FILE = path.join(DATA_DIR, 'storage.json');
+function getStorageFilePath(): string {
+  if (process.env.STORAGE_FILE_PATH) {
+    return path.resolve(process.env.STORAGE_FILE_PATH);
+  }
+  // Vercel / AWS Lambda has read-only filesystem except /tmp
+  if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
+    return path.join('/tmp', 'the-third-eye-storage.json');
+  }
+  return path.join(process.cwd(), 'data', 'storage.json');
+}
 
 let memoryStore: CaseStore | null = null;
 
-function ensureDataDir(): void {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
+function ensureDataDir(filePath: string): void {
+  const dir = path.dirname(filePath);
+  if (!fs.existsSync(dir)) {
+    try {
+      fs.mkdirSync(dir, { recursive: true });
+    } catch (e) {
+      // Ignore in read-only environments
+    }
   }
 }
 
@@ -41,69 +54,129 @@ function mergeMissingRecords<T extends { id: string }>(stored: T[], seeded: T[])
   return { records: [...missing, ...stored], changed: missing.length > 0 };
 }
 
+export function shouldEnableDemoFixtures(): boolean {
+  if (process.env.ENABLE_DEMO_FIXTURES === 'false') return false;
+  if (process.env.ENABLE_DEMO_FIXTURES === 'true') return true;
+  return process.env.NODE_ENV !== 'production';
+}
+
 export function getStore(): CaseStore {
   if (memoryStore) {
     return memoryStore;
   }
 
-  ensureDataDir();
+  const storageFile = getStorageFilePath();
+  ensureDataDir(storageFile);
 
-  if (fs.existsSync(STORAGE_FILE)) {
+  const enableDemo = shouldEnableDemoFixtures();
+
+  if (fs.existsSync(storageFile)) {
     try {
-      const data = fs.readFileSync(STORAGE_FILE, 'utf-8');
+      const data = fs.readFileSync(storageFile, 'utf-8');
       const parsed = JSON.parse(data) as CaseStore;
-      const cases = mergeMissingRecords(parsed.cases, demoCases);
-      const evidence = mergeMissingRecords(parsed.evidence, presentationEvidence);
-      const entities = mergeMissingRecords(parsed.entities, presentationEntities);
-      const events = mergeMissingRecords(parsed.events, presentationEvents);
-      const relationships = mergeMissingRecords(parsed.relationships, presentationRelationships);
-      const contradictions = mergeMissingRecords(parsed.contradictions, presentationContradictions);
-      const gaps = mergeMissingRecords(parsed.gaps, presentationGaps);
-      const auditLogs = mergeMissingRecords(parsed.auditLogs, presentationAuditLogs);
 
-      parsed.cases = cases.records;
-      parsed.evidence = evidence.records;
-      parsed.entities = entities.records;
-      parsed.events = events.records;
-      parsed.relationships = relationships.records;
-      parsed.contradictions = contradictions.records;
-      parsed.gaps = gaps.records;
-      parsed.auditLogs = auditLogs.records;
+      if (enableDemo) {
+        const cases = mergeMissingRecords(parsed.cases, demoCases);
+        const evidence = mergeMissingRecords(parsed.evidence, presentationEvidence);
+        const entities = mergeMissingRecords(parsed.entities, presentationEntities);
+        const events = mergeMissingRecords(parsed.events, presentationEvents);
+        const relationships = mergeMissingRecords(parsed.relationships, presentationRelationships);
+        const contradictions = mergeMissingRecords(parsed.contradictions, presentationContradictions);
+        const gaps = mergeMissingRecords(parsed.gaps, presentationGaps);
+        const auditLogs = mergeMissingRecords(parsed.auditLogs, presentationAuditLogs);
 
-      const merges = [cases, evidence, entities, events, relationships, contradictions, gaps, auditLogs];
-      if (merges.some((merge) => merge.changed)) {
-        saveStore(parsed);
-        return parsed;
+        parsed.cases = cases.records;
+        parsed.evidence = evidence.records;
+        parsed.entities = entities.records;
+        parsed.events = events.records;
+        parsed.relationships = relationships.records;
+        parsed.contradictions = contradictions.records;
+        parsed.gaps = gaps.records;
+        parsed.auditLogs = auditLogs.records;
+
+        const merges = [cases, evidence, entities, events, relationships, contradictions, gaps, auditLogs];
+        if (merges.some((merge) => merge.changed)) {
+          saveStore(parsed);
+          return parsed;
+        }
       }
+
       memoryStore = parsed;
       return parsed;
     } catch (err) {
-      console.error('Failed to parse storage.json, initializing demo store:', err);
+      console.error('Failed to parse storage file, initializing store:', err);
     }
   }
 
-  // Deep clone initialStore to prevent mutations
-  const clone = JSON.parse(JSON.stringify(initialStore)) as CaseStore;
-  saveStore(clone);
-  return clone;
+  // Initial store setup
+  const baseStore: CaseStore = enableDemo
+    ? JSON.parse(JSON.stringify(initialStore))
+    : {
+        cases: [],
+        evidence: [],
+        entities: [],
+        events: [],
+        relationships: [],
+        contradictions: [],
+        gaps: [],
+        assistantMessages: [],
+        auditLogs: [],
+      };
+
+  saveStore(baseStore);
+  return baseStore;
 }
 
 export function saveStore(store: CaseStore): void {
-  ensureDataDir();
+  const storageFile = getStorageFilePath();
+  ensureDataDir(storageFile);
   memoryStore = store;
   try {
-    const tempFile = `${STORAGE_FILE}.tmp.${Date.now()}`;
+    const tempFile = `${storageFile}.tmp.${Date.now()}`;
     fs.writeFileSync(tempFile, JSON.stringify(store, null, 2), 'utf-8');
-    fs.renameSync(tempFile, STORAGE_FILE);
+    fs.renameSync(tempFile, storageFile);
   } catch (err) {
-    console.error('Error saving storage.json:', err);
+    // If filesystem write fails on serverless, keep memoryStore intact so requests still succeed
+    console.warn('Filesystem write warning (continuing in-memory):', err);
   }
 }
 
 export function resetStorage(): CaseStore {
-  const clone = JSON.parse(JSON.stringify(initialStore)) as CaseStore;
-  saveStore(clone);
-  return clone;
+  const enableDemo = shouldEnableDemoFixtures();
+  const baseStore: CaseStore = enableDemo
+    ? JSON.parse(JSON.stringify(initialStore))
+    : {
+        cases: [],
+        evidence: [],
+        entities: [],
+        events: [],
+        relationships: [],
+        contradictions: [],
+        gaps: [],
+        assistantMessages: [],
+        auditLogs: [],
+      };
+  saveStore(baseStore);
+  return baseStore;
+}
+
+export function exportDatabaseBackup(): string {
+  const store = getStore();
+  return JSON.stringify(store, null, 2);
+}
+
+export function restoreDatabaseBackup(backupJson: string): boolean {
+  try {
+    const parsed = JSON.parse(backupJson) as CaseStore;
+    if (!Array.isArray(parsed.cases) || !Array.isArray(parsed.evidence)) {
+      throw new Error('Invalid database backup structure');
+    }
+    saveStore(parsed);
+    return true;
+  } catch (err) {
+    console.error('Failed to restore database backup:', err);
+    return false;
+  }
 }
 
 // -------------------------------------------------------------
